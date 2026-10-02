@@ -29,7 +29,7 @@ export default function ProjectCard({
         <div className="relative h-64 overflow-hidden">
           {image ? (
             <Image
-              src={image}
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH}${image}`}
               alt={title}
               fill
               sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"

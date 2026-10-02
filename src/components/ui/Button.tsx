@@ -51,7 +51,9 @@ export default function Button(props: AsButton | AsLink) {
     .join(" ");
 
   if ("href" in rest && rest.href) {
-    const { href, ...anchorRest } = rest as AnchorHTMLAttributes<HTMLAnchorElement>;
+    const { href, ...anchorRest } = rest as AnchorHTMLAttributes<HTMLAnchorElement> & {
+      href: string;
+    };
     const isExternal = href.startsWith("http");
     return (
       <Link
