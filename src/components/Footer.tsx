@@ -28,6 +28,7 @@ export default function Footer() {
             </p>
             <Link href="/">Home</Link>
             <Link href="/websites/">Websites</Link>
+            <Link href="/what-i-do/">What I do</Link>
             <Link href="/marketing/">Marketing</Link>
             <Link href="/icp-builder/">ICP builder</Link>
             <Link href="/about/">About</Link>

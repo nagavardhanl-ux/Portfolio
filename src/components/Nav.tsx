@@ -8,7 +8,7 @@ import ThemeToggle from "./ThemeToggle";
 
 const links = [
   { href: "/websites/", label: "Websites" },
-  { href: "/marketing/", label: "Marketing" },
+  { href: "/what-i-do/", label: "What I do" },
   { href: "/icp-builder/", label: "ICP builder" },
   { href: "/about/", label: "About" },
 ];

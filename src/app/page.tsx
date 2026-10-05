@@ -6,6 +6,7 @@ import { ArrowRight, ArrowUpRight } from "@/components/icons";
 import SectionHead from "@/components/SectionHead";
 import { capabilities, hero, keyFigures, thread, whatIDo } from "@/data/content";
 import { siteById } from "@/data/sites";
+import { capabilityAnchors } from "@/data/whatIDo";
 import { pageMetadata } from "@/lib/meta";
 
 export const metadata = pageMetadata("/");
@@ -57,7 +58,10 @@ export default function Home() {
           {capabilities.map((c, i) => (
             <li key={c} className="hover-lift">
               <span className="num">{pad(i + 1)}</span>
-              {c}
+              <Link href={`/what-i-do/#${capabilityAnchors[i]}`} className="stretch">
+                {c}
+              </Link>
+              <ArrowRight className="go" />
             </li>
           ))}
         </ul>
@@ -145,8 +149,15 @@ export default function Home() {
             {whatIDo.map((d, i) => (
               <li key={d.title} className="do-block hover-lift reveal" style={{ ["--delay" as string]: `${(i % 2) * 50}ms` }}>
                 <span className="num">{pad(i + 1)}</span>
-                <h3 className="h3">{d.title}</h3>
+                <h3 className="h3">
+                  <Link href={`/what-i-do/#${capabilityAnchors[i]}`} className="stretch">
+                    {d.title}
+                  </Link>
+                </h3>
                 <p className="body">{d.body}</p>
+                <span className="do-block__more" aria-hidden="true">
+                  More on {d.title} <ArrowRight className="go" />
+                </span>
               </li>
             ))}
           </ul>

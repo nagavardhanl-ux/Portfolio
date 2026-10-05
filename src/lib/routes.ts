@@ -19,6 +19,12 @@ export const routeMeta: RouteMeta[] = [
       "Eight websites, shipped and managed: three company sites (AIQoD, VentureHub360, AIQoD360) and five concept builds. Open each one in place.",
   },
   {
+    path: "/what-i-do/",
+    title: "What I do · Nagavardhan Reddy Lella",
+    description:
+      "Product marketing, demand generation, websites and SEO, and AI-led execution for two AI platforms: what each involves and the work behind it.",
+  },
+  {
     path: "/marketing/",
     title: "Marketing · Nagavardhan Reddy Lella",
     description:

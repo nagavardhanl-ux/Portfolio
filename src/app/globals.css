@@ -2527,3 +2527,505 @@ textarea.input {
 .site-row__intro .tag {
   margin-top: 6px;
 }
+
+/* ==========================================================================
+   What I do page (/what-i-do)
+   ========================================================================== */
+
+.wid {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 56px;
+  padding-bottom: var(--section);
+}
+
+.wid__aside {
+  padding-top: clamp(56px, 7vw, 96px);
+}
+
+/* Sticky section nav: side rail on wide screens */
+.secnav {
+  position: sticky;
+  top: 112px;
+}
+
+.secnav__title {
+  margin-bottom: 14px;
+}
+
+.secnav__list {
+  display: grid;
+  gap: 2px;
+  border-left: 1px solid var(--hairline);
+}
+
+.secnav__link {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  padding: 9px 0 9px 16px;
+  font-size: 0.9375rem;
+  color: var(--text-2);
+  transition: color var(--dur) var(--ease);
+}
+
+.secnav__link .num {
+  font-size: 0.75rem;
+}
+
+.secnav__link::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transition: transform var(--dur) var(--ease);
+}
+
+.secnav__link:hover {
+  color: var(--text);
+}
+
+.secnav__link[aria-current="location"] {
+  color: var(--text);
+}
+
+.secnav__link[aria-current="location"]::before {
+  transform: scaleY(1);
+}
+
+.secnav__link[aria-current="location"] .num {
+  color: var(--link);
+}
+
+/* Below 1024px: a sticky bar under the main nav */
+@media (max-width: 1023px) {
+  .wid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .wid__aside {
+    position: sticky;
+    top: 72px;
+    z-index: 40;
+    padding-top: 0;
+    margin-inline: calc(var(--gutter) * -1);
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .secnav {
+    position: static;
+  }
+
+  .secnav__title {
+    display: none;
+  }
+
+  .secnav__list {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-left: 0;
+    padding: 0 var(--gutter);
+  }
+
+  .secnav__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .secnav__link {
+    white-space: nowrap;
+    padding: 14px 12px;
+  }
+
+  .secnav__link::before {
+    left: 12px;
+    right: 12px;
+    top: auto;
+    bottom: 0;
+    width: auto;
+    height: 1px;
+    transform: scaleX(0);
+  }
+
+  .secnav__link[aria-current="location"]::before {
+    transform: scaleX(1);
+  }
+}
+
+/* Sections: strong breaks, generous space */
+.cap {
+  display: grid;
+  gap: clamp(28px, 4vw, 44px);
+  padding-block: clamp(64px, 9vw, 120px);
+  border-top: 1px solid var(--hairline);
+  /* html already has scroll-padding-top for the main nav */
+  scroll-margin-top: -24px;
+}
+
+.cap:first-child {
+  border-top: 0;
+}
+
+@media (max-width: 1023px) {
+  .cap {
+    scroll-margin-top: 28px; /* room for the sticky section bar */
+  }
+}
+
+.cap__head {
+  display: grid;
+  gap: 18px;
+  max-width: 760px;
+}
+
+.cap__head .lead {
+  max-width: 54ch;
+}
+
+.cap__head--center {
+  justify-items: center;
+  text-align: center;
+  margin-inline: auto;
+}
+
+.cap__index {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 9vw, 7.5rem);
+  line-height: 0.8;
+  color: var(--hairline-strong);
+  letter-spacing: -0.03em;
+}
+
+.cap__sub {
+  margin-bottom: -12px;
+  font-weight: 400;
+}
+
+/* 01: two-column grid of points */
+.pts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--hairline);
+  border-left: 1px solid var(--hairline);
+}
+
+.pts-grid li {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  padding: clamp(22px, 3vw, 32px);
+  border-right: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  background-color: color-mix(in srgb, var(--bg) 86%, transparent);
+}
+
+.pts-grid .num,
+.pts-row .num,
+.ledger .num {
+  font-size: 0.75rem;
+  color: var(--text-2);
+}
+
+.work-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 20px);
+}
+
+.work-cards .card,
+.tiles .tile {
+  display: grid;
+  align-content: space-between;
+  gap: 28px;
+  padding: clamp(20px, 2.4vw, 28px);
+  min-height: 190px;
+}
+
+/* 02: split with a surface band on the right */
+.cap--split {
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+}
+
+.cap--split__left,
+.cap--split__right {
+  display: grid;
+  gap: clamp(28px, 4vw, 40px);
+}
+
+.cap--split__right {
+  padding: clamp(24px, 3vw, 36px);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.pts-list {
+  display: grid;
+  border-top: 1px solid var(--hairline);
+}
+
+.pts-list li {
+  position: relative;
+  padding: 18px 0 18px 28px;
+  border-bottom: 1px solid var(--hairline);
+  color: var(--text-2);
+}
+
+.pts-list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 1.55em;
+  width: 12px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.panels {
+  display: grid;
+  gap: 12px;
+}
+
+.panel {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.panel__num {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--text-2);
+}
+
+/* 03: points as a row, ledger + thumbnails */
+.pts-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.pts-row li {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  padding: 24px 22px 28px;
+  background-color: color-mix(in srgb, var(--bg) 86%, transparent);
+}
+
+.pts-row li:first-child {
+  padding-left: 0;
+}
+
+.pts-row li + li {
+  border-left: 1px solid var(--hairline);
+}
+
+.cap--row__work {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+}
+
+.cap--row__work > div {
+  display: grid;
+  gap: clamp(28px, 4vw, 40px);
+}
+
+.ledger {
+  display: grid;
+  border-top: 1px solid var(--hairline);
+}
+
+.ledger li {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 8px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.ledger .num {
+  padding-top: 0.3em;
+}
+
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.thumbs li:first-child {
+  grid-column: 1 / -1;
+}
+
+.thumb {
+  display: block;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.thumb .shot {
+  display: block;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.thumb__cap {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  font-size: 0.9375rem;
+}
+
+/* 04: centred, workflow row, tiles */
+.cap--flow .cap__sub {
+  justify-self: center;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 20px);
+}
+
+.tile {
+  border: 1px solid var(--hairline);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+@media (max-width: 899px) {
+  .pts-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pts-row li:nth-child(3) {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .pts-row li:nth-child(n + 3) {
+    border-top: 1px solid var(--hairline);
+  }
+
+  .cap--split,
+  .cap--row__work {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .work-cards,
+  .tiles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .work-cards .card,
+  .tiles .tile {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 599px) {
+  .pts-grid,
+  .pts-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pts-row li {
+    padding-left: 0;
+  }
+
+  .pts-row li + li {
+    border-left: 0;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .thumbs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Home: capability strip items and What I do blocks link into /what-i-do */
+.capstrip a,
+a.do-block {
+  color: inherit;
+}
+
+.capstrip a {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  width: 100%;
+}
+
+.go {
+  margin-left: auto;
+  color: var(--text-2);
+  opacity: 0.55;
+  transition:
+    transform var(--dur) var(--ease),
+    color var(--dur) var(--ease),
+    opacity var(--dur) var(--ease);
+}
+
+.hover-lift:hover .go,
+.hover-lift:focus-within .go,
+a.hover-lift:focus-visible .go {
+  opacity: 1;
+  color: var(--link);
+  transform: translateX(3px);
+}
+
+.do-block__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--link);
+}
+
+/* Stretched link: the whole block is clickable, the heading stays the link text. */
+.stretch::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.stretch:focus-visible {
+  outline: none;
+}
+
+.hover-lift:has(.stretch:focus-visible)::after {
+  opacity: 1;
+}
+
+.capstrip li .go {
+  align-self: center;
+}
+
+.do-block__more .go {
+  margin-left: 0;
+}
