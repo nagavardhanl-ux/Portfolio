@@ -10,9 +10,9 @@ const nextConfig: NextConfig = {
   output: "export",
   distDir: "dist",
   basePath,
-  // Emit /projects/x/index.html so GitHub Pages resolves folder URLs
+  // Emit /websites/index.html so GitHub Pages resolves folder URLs
   trailingSlash: true,
-  // The image optimizer needs a server; GitHub Pages is static
+  // The image optimizer needs a server; screenshots are pre-optimised by scripts/screenshots.mjs
   images: { unoptimized: true },
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,

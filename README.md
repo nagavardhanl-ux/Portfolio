@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nagavardhan Reddy Lella · Portfolio
 
-## Getting Started
+Next.js 16 (App Router) exported as static HTML and hosted on GitHub Pages at
+https://nagavardhanl-ux.github.io/Portfolio/
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # http://localhost:3000  (no base path in dev)
+npm run build        # static site in ./dist, served under /Portfolio/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Every push to `main` builds and deploys through `.github/workflows/deploy.yml`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Where to change things
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| What | File |
+| --- | --- |
+| Email, phone, LinkedIn, CV switch, Formspree ID | `src/lib/config.ts` |
+| Hero, capabilities, the thread, What I do, About text, AI workflow | `src/data/content.ts` |
+| The seven websites, embed URLs, deep links | `src/data/sites.ts` |
+| Case study facts and bodies | `src/data/caseStudies.ts` |
+| Marketing images and videos | `src/data/marketing.ts` |
+| ICP builder industries, sizes, regions | `src/data/icp.ts` |
+| Page titles and meta descriptions | `src/lib/routes.ts` |
+| Colours, type, spacing | `src/app/globals.css` (tokens at the top) |
 
-## Learn More
+## Placeholders still to fill
 
-To learn more about Next.js, take a look at the following resources:
+Everything marked **PLACEHOLDER** on the site renders at the final size, so filling
+it in never moves the layout.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Contact form:** create a form at formspree.io and paste its ID into
+  `formspreeId` in `src/lib/config.ts`. Until then the form says it isn't connected.
+- **Case study bodies:** fill the `body` arrays in `src/data/caseStudies.ts`.
+- **Marketing images:** put files in `public/work/` and set `src` (e.g.
+  `"work/brochure-01.webp"`) on the item in `src/data/marketing.ts`.
+- **Videos:** set `embedUrl` (YouTube/Vimeo embed link) on each video in
+  `src/data/marketing.ts`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Screenshots and OG image
 
-## Deploy on Vercel
+Website screenshots in `public/shots/` and the social card in `public/og/` are
+generated with headless Chrome:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run screenshots            # all sites + OG image
+npm run screenshots -- aiqod   # one site
+npm run screenshots -- og      # OG image only (from scripts/og.html)
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes
+
+- `scripts/flatten-prefetch.mjs` runs after `next build`. Next 16's static export
+  writes prefetch files in nested folders but requests them with dotted names;
+  the script adds the dotted copies so a static host doesn't return 404s.
+- `public/.nojekyll` stops GitHub Pages from hiding the `_next/` folder.

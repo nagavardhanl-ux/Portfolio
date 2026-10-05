@@ -1,59 +1,72 @@
-import type { Metadata } from "next";
-import { Outfit, JetBrains_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
+import Footer from "@/components/Footer";
+import Nav from "@/components/Nav";
+import RevealObserver from "@/components/RevealObserver";
+import { asset, site } from "@/lib/config";
 import "./globals.css";
 
-const outfit = Outfit({
+// Self-hosted at build time by next/font: no third-party request at runtime,
+// metric-matched fallbacks so text doesn't shift when the fonts arrive.
+const instrument = Instrument_Serif({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument",
+  display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-jetbrains",
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
-  title: "Nagavardhan Reddy Lella | Digital Marketing Executive & AI-Native Marketer",
-  description:
-    "Digital Marketing Executive who builds and ships full marketing systems — brands, websites, campaigns — using AI tools like Lovable, Antigravity, and ChatGPT as the execution layer.",
+  metadataBase: new URL(site.url),
+  applicationName: site.name,
+  authors: [{ name: site.name }],
+  icons: { icon: asset("favicon.svg") },
 };
 
-import NeuralThreading from "@/components/ui/NeuralThreading";
-import BackToTop from "@/components/ui/BackToTop";
-import { ThemeProvider } from "@/contexts/ThemeContext";
+export const viewport: Viewport = {
+  themeColor: "#0B0B0C",
+  colorScheme: "dark light",
+};
 
-const themeInitScript = `
-(function() {
-  try {
-    var stored = localStorage.getItem('theme');
-    var theme = stored === 'light' || stored === 'dark'
-      ? stored
-      : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-    document.documentElement.setAttribute('data-theme', theme);
-  } catch (e) {}
-})();
-`;
+// Runs before paint: marks JS as available (enables reveal animations) and
+// applies the saved theme so there's no flash.
+const bootScript = `(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){d.dataset.theme=t;if(t==='light'){var m=document.querySelector('meta[name="theme-color"]');m&&m.setAttribute('content','#FFFFFF')}}}catch(e){}})();`;
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
+      data-theme="dark"
       suppressHydrationWarning
-      className={`${outfit.variable} ${jetbrainsMono.variable}`}
+      className={`${instrument.variable} ${inter.variable} ${jetbrains.variable}`}
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script dangerouslySetInnerHTML={{ __html: bootScript }} />
       </head>
-      <body style={{ fontFamily: "var(--font-outfit), sans-serif" }} className="bg-bg-primary overflow-x-hidden">
-        <ThemeProvider>
-          <NeuralThreading />
-          <BackToTop />
+      <body>
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
+        <Nav />
+        <main id="main" tabIndex={-1}>
           {children}
-        </ThemeProvider>
+        </main>
+        <Footer />
+        <RevealObserver />
       </body>
     </html>
   );
