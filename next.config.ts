@@ -8,7 +8,8 @@ const basePath = isProd ? "/Portfolio" : "";
 const nextConfig: NextConfig = {
   // Static HTML export, written to ./dist instead of ./out
   output: "export",
-  distDir: "dist",
+  // Dev uses .next so a production build into dist/ never breaks a running dev server.
+  distDir: isProd ? "dist" : ".next",
   basePath,
   // Emit /websites/index.html so GitHub Pages resolves folder URLs
   trailingSlash: true,
