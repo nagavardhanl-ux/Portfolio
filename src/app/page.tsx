@@ -12,8 +12,8 @@ export const metadata = pageMetadata("/");
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-/** Selected work on the home page: the lead concept build and the two company sites I built. */
-const selected = ["wayfarer", "venturehub360", "aiqod"].map(siteById);
+/** Selected work on the home page: the two company sites I built, then the lead concept build. */
+const selected = ["venturehub360", "aiqod", "wayfarer"].map(siteById);
 
 export default function Home() {
   const [first, second] = hero.headline.split(". ");
@@ -71,7 +71,7 @@ export default function Home() {
             label="Selected work"
             id="work-title"
             title="Three sites, end to end."
-            intro="A study-abroad concept build, and the company sites for the two AI platforms I run marketing for. Each preview plays a short scroll-through of the real site."
+            intro="The company sites for the two AI platforms I run marketing for, and a study-abroad concept build. Each preview plays a short scroll-through of the real site."
           />
           <ul className="work-grid" role="list">
             {selected.map((s, i) => (

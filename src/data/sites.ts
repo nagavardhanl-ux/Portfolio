@@ -1,4 +1,4 @@
-/** Three live company sites, five concept builds. Nothing else. */
+/** Three live company sites first, then five concept builds. Order here is display order. */
 export type Status = "Live company site" | "Concept build";
 
 export interface Site {
@@ -20,6 +20,33 @@ export interface Site {
 
 export const sites: Site[] = [
   {
+    id: "venturehub360",
+    name: "VentureHub360",
+    line: "Live company site for an AI pitch and deal-evaluation platform. Built the brand and the site from scratch.",
+    url: "https://www.venturehub360.com/",
+    embedUrl: "https://www.venturehub360.com/",
+    status: "Live company site",
+    shot: "venturehub360",
+  },
+  {
+    id: "aiqod",
+    name: "AIQoD",
+    line: "Live company site for an enterprise agentic AI platform. Moved off WordPress and rebuilt, with new content and SEO.",
+    url: "https://aiqod.com/",
+    embedUrl: "https://aiqod.com/",
+    status: "Live company site",
+    shot: "aiqod",
+  },
+  {
+    id: "aiqod360",
+    name: "AIQoD360",
+    line: "Live company site on Wix. I manage it rather than build it: creating new pages, writing and publishing blog posts, and keeping the content up to date.",
+    url: "https://www.aiqod360.com/",
+    embedUrl: "https://www.aiqod360.com/",
+    status: "Live company site",
+    shot: "aiqod360",
+  },
+  {
     id: "wayfarer",
     name: "Wayfarer",
     line: "A full study-abroad consultancy site: 11 country pages, four branches, and working cost, loan and eligibility tools. Open the cost calculator.",
@@ -34,33 +61,6 @@ export const sites: Site[] = [
     ],
     status: "Concept build",
     shot: "wayfarer",
-  },
-  {
-    id: "venturehub360",
-    name: "VentureHub360",
-    line: "Live company site for an AI pitch and deal-evaluation platform. Built the brand and the site from scratch.",
-    url: "https://www.venturehub360.com/",
-    embedUrl: "https://www.venturehub360.com/",
-    status: "Live company site",
-    shot: "venturehub360",
-  },
-  {
-    id: "aiqod",
-    name: "AIQoD",
-    line: "Live site for an enterprise agentic AI platform. Rebuilt from its previous version, with content and SEO.",
-    url: "https://aiqod.com/",
-    embedUrl: "https://aiqod.com/",
-    status: "Live company site",
-    shot: "aiqod",
-  },
-  {
-    id: "aiqod360",
-    name: "AIQoD360",
-    line: "Live company site. Managed and updated in Wix: content, new pages and ongoing changes.",
-    url: "https://www.aiqod360.com/",
-    embedUrl: "https://www.aiqod360.com/",
-    status: "Live company site",
-    shot: "aiqod360",
   },
   {
     id: "f1-experience",
