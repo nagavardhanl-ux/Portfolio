@@ -19,8 +19,7 @@ Every push to `main` builds and deploys through `.github/workflows/deploy.yml`.
 | --- | --- |
 | Email, phone, LinkedIn, CV switch, Formspree ID | `src/lib/config.ts` |
 | Hero, capabilities, the thread, What I do, About text, AI workflow | `src/data/content.ts` |
-| The seven websites, embed URLs, deep links | `src/data/sites.ts` |
-| Case study facts and bodies | `src/data/caseStudies.ts` |
+| The eight websites, labels, embed URLs, deep links | `src/data/sites.ts` |
 | Marketing images and videos | `src/data/marketing.ts` |
 | ICP builder industries, sizes, regions | `src/data/icp.ts` |
 | Page titles and meta descriptions | `src/lib/routes.ts` |
@@ -33,22 +32,35 @@ it in never moves the layout.
 
 - **Contact form:** create a form at formspree.io and paste its ID into
   `formspreeId` in `src/lib/config.ts`. Until then the form says it isn't connected.
-- **Case study bodies:** fill the `body` arrays in `src/data/caseStudies.ts`.
 - **Marketing images:** put files in `public/work/` and set `src` (e.g.
   `"work/brochure-01.webp"`) on the item in `src/data/marketing.ts`.
 - **Videos:** set `embedUrl` (YouTube/Vimeo embed link) on each video in
   `src/data/marketing.ts`.
 
-## Screenshots and OG image
+## Screenshots, scroll clips and OG image
 
-Website screenshots in `public/shots/` and the social card in `public/og/` are
-generated with headless Chrome:
+Generated with headless Chrome from the URLs in `src/data/sites.ts`:
 
 ```bash
-npm run screenshots            # all sites + OG image
+npm run screenshots            # public/shots/: AVIF + WebP stills, plus the OG image
 npm run screenshots -- aiqod   # one site
 npm run screenshots -- og      # OG image only (from scripts/og.html)
+npm run clips                  # public/clips/: silent MP4 + WebM scroll-throughs
+npm run clips -- aiqod360      # one site
 ```
+
+Re-run both for a site after it changes. Adding a site = add it to `sites.ts`,
+then run both commands for its `shot` name.
+
+## Motion and background
+
+- `HeroFx`: the one WebGL effect (Vanta.js NET, three.js + Vanta from CDN),
+  hero only, 768px+ only, loaded after idle, ~30fps, paused off-screen.
+- `AmbientField`: one fixed dot-grid canvas behind every page; animated on
+  desktop, a single static frame below 768px.
+- `Clip`: scroll clips load lazily one at a time, play only while visible, and
+  fall back to the still on phones, slow/data-saver connections and reduced motion.
+- Everything animated is off under `prefers-reduced-motion`.
 
 ## Notes
 

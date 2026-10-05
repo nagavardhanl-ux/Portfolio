@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { caseStudies } from "@/data/caseStudies";
-import { Chevron, Close, MenuIcon } from "./icons";
+import { Close, MenuIcon } from "./icons";
 import ThemeToggle from "./ThemeToggle";
 
 const links = [
@@ -19,10 +18,7 @@ const norm = (p: string) => (p.endsWith("/") ? p : `${p}/`);
 export default function Nav() {
   const pathname = norm(usePathname() || "/");
   const [scrolled, setScrolled] = useState(false);
-  const [workOpen, setWorkOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const menuRef = useRef<HTMLLIElement>(null);
-  const workBtn = useRef<HTMLButtonElement>(null);
   const mobileBtn = useRef<HTMLButtonElement>(null);
   const mobilePanel = useRef<HTMLDivElement>(null);
 
@@ -33,33 +29,12 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close menus on navigation (state adjusted during render, not in an effect).
+  // Close the menu on navigation (state adjusted during render, not in an effect).
   const [prevPath, setPrevPath] = useState(pathname);
   if (pathname !== prevPath) {
     setPrevPath(pathname);
-    setWorkOpen(false);
     setMobileOpen(false);
   }
-
-  // Work menu: close on outside click and Escape.
-  useEffect(() => {
-    if (!workOpen) return;
-    const onDown = (e: PointerEvent) => {
-      if (!menuRef.current?.contains(e.target as Node)) setWorkOpen(false);
-    };
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setWorkOpen(false);
-        workBtn.current?.focus();
-      }
-    };
-    document.addEventListener("pointerdown", onDown);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("pointerdown", onDown);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [workOpen]);
 
   // Mobile menu: lock scroll, focus first link, Escape closes, close if resized to desktop.
   useEffect(() => {
@@ -84,27 +59,6 @@ export default function Nav() {
     };
   }, [mobileOpen]);
 
-  const onWorkKey = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      setWorkOpen(true);
-      requestAnimationFrame(() => menuRef.current?.querySelector<HTMLElement>(".menu__item")?.focus());
-    }
-  };
-
-  const onPanelKey = (e: React.KeyboardEvent) => {
-    const items = Array.from(menuRef.current?.querySelectorAll<HTMLElement>(".menu__item") ?? []);
-    const i = items.indexOf(document.activeElement as HTMLElement);
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      items[(i + 1) % items.length]?.focus();
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      items[(i - 1 + items.length) % items.length]?.focus();
-    }
-  };
-
-  const inWork = pathname.startsWith("/work/");
   const current = (href: string) => (pathname === href ? "page" : undefined);
 
   return (
@@ -116,36 +70,6 @@ export default function Nav() {
 
         <nav aria-label="Main">
           <ul className="nav__links" role="list">
-            <li className="menu" ref={menuRef}>
-              <button
-                ref={workBtn}
-                type="button"
-                className="nav__link"
-                aria-expanded={workOpen}
-                aria-controls="work-menu"
-                data-active={inWork}
-                onClick={() => setWorkOpen((o) => !o)}
-                onKeyDown={onWorkKey}
-              >
-                Work <Chevron />
-              </button>
-              <div id="work-menu" className="menu__panel" hidden={!workOpen} onKeyDown={onPanelKey}>
-                <ul role="list">
-                  {caseStudies.map((c) => (
-                    <li key={c.slug}>
-                      <Link
-                        href={`/work/${c.slug}/`}
-                        className="menu__item"
-                        aria-current={current(`/work/${c.slug}/`)}
-                      >
-                        <strong>{c.title}</strong>
-                        <span>Case study</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </li>
             {links.map((l) => (
               <li key={l.href}>
                 <Link href={l.href} className="nav__link" aria-current={current(l.href)}>
@@ -182,20 +106,6 @@ export default function Nav() {
               <Link href="/" aria-current={current("/")}>
                 Home
               </Link>
-            </li>
-            <li>
-              <span className="label" style={{ display: "block", padding: "22px 0 4px" }}>
-                Case studies
-              </span>
-              <ul role="list" className="sub">
-                {caseStudies.map((c) => (
-                  <li key={c.slug}>
-                    <Link href={`/work/${c.slug}/`} aria-current={current(`/work/${c.slug}/`)}>
-                      {c.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
             </li>
             {links.map((l) => (
               <li key={l.href}>

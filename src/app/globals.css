@@ -20,7 +20,7 @@
   --dot: 154, 154, 163;
   --dot-accent: 143, 168, 255;
   --overlay: rgba(11, 11, 12, 0.72);
-  --nav-bg: rgba(11, 11, 12, 0.94);
+  --nav-bg: rgba(11, 11, 12, 0.97);
   --success: #7ee2a8;
   --danger: #ff8f8f;
 
@@ -57,7 +57,7 @@
   --dot: 91, 91, 100;
   --dot-accent: 59, 91, 255;
   --overlay: rgba(255, 255, 255, 0.78);
-  --nav-bg: rgba(255, 255, 255, 0.95);
+  --nav-bg: rgba(255, 255, 255, 0.97);
   --success: #137a43;
   --danger: #b42318;
 
@@ -753,47 +753,163 @@ a {
 }
 
 /* ==========================================================================
-   Dot field (canvas behind hero + section breaks)
+   Background layers
+   - .ambient: one fixed canvas behind every page (AmbientField)
+   - .herofx: the single WebGL effect, hero only, desktop only (HeroFx)
+   Both are removed entirely under prefers-reduced-motion.
    ========================================================================== */
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 800ms var(--ease);
+}
+
+.ambient.is-on {
+  opacity: 1;
+}
 
 .has-field {
   position: relative;
   isolation: isolate;
 }
 
-.dotfield {
+.herofx {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  opacity: 0;
+  transition: opacity 1200ms var(--ease);
+  -webkit-mask-image: linear-gradient(180deg, #000 65%, transparent);
+  mask-image: linear-gradient(180deg, #000 65%, transparent);
+}
+
+.herofx.is-on {
+  opacity: 0.75;
+}
+
+/* Readability wash: hero text always sits on a semi-opaque surface. */
+.hero::before {
+  content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 600ms var(--ease);
-  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 60% 45%, #000 35%, transparent 85%);
-  mask-image: radial-gradient(ellipse 75% 70% at 60% 45%, #000 35%, transparent 85%);
-}
-
-.dotfield.is-on {
-  opacity: 1;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--bg) 90%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 70%, transparent) 50%,
+    color-mix(in srgb, var(--bg) 20%, transparent) 100%
+  );
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dotfield {
+  .ambient,
+  .herofx {
     display: none;
   }
 }
 
-.section-break {
-  height: clamp(140px, 18vw, 240px);
-  display: grid;
-  place-items: center;
-  border-block: 1px solid var(--hairline);
+/* Semi-opaque surface for content blocks that sit on the ambient field. */
+.veil,
+.capstrip li,
+.do-block,
+.beat,
+.flow > li,
+.contact-list a,
+.site-row__meta,
+.icp__form,
+.notice {
+  background-color: color-mix(in srgb, var(--bg) 86%, transparent);
 }
 
-.section-break .dotfield {
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
+@media (hover: hover) {
+  .capstrip li.hover-lift:hover,
+  .do-block.hover-lift:hover {
+    background-color: var(--surface);
+  }
+}
+
+/* ==========================================================================
+   Scroll clips (Clip): screenshot underneath, video fades in once playing
+   ========================================================================== */
+
+.clip {
+  position: relative;
+}
+
+.clip video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  opacity: 0;
+  transition: opacity 250ms var(--ease);
+  pointer-events: none;
+}
+
+.clip[data-playing="true"] video {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Hover polish: subtle lift + hairline that brightens to the accent
+   ========================================================================== */
+
+.hover-lift {
+  position: relative;
+  transition:
+    transform 200ms var(--ease),
+    background-color 200ms var(--ease),
+    border-color 200ms var(--ease);
+}
+
+.hover-lift::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--accent);
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms var(--ease);
+}
+
+.hover-lift:focus-within::after {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .hover-lift:hover {
+    transform: translateY(-3px);
+  }
+
+  .hover-lift:hover::after {
+    opacity: 1;
+  }
+}
+
+/* Once revealed, hover transitions take over with no stagger delay. */
+.js .reveal.is-in.hover-lift {
+  transition:
+    transform 200ms var(--ease),
+    opacity 240ms var(--ease),
+    background-color 200ms var(--ease);
+  transition-delay: 0ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hover-lift,
+  .hover-lift:hover {
+    transform: none;
+  }
 }
 
 /* ==========================================================================
@@ -1039,8 +1155,13 @@ a.card:focus-visible {
   transition: transform 400ms var(--ease);
 }
 
-a.card:hover .shot img {
+a.card:hover .shot img,
+.card.hover-lift:hover .shot img {
   transform: scale(1.012);
+}
+
+.card.hover-lift:hover {
+  border-color: var(--hairline-strong);
 }
 
 .card__body {
@@ -1672,14 +1793,43 @@ a.card:hover .card__more svg {
   object-fit: cover;
 }
 
-.gallery {
-  columns: 3 260px;
-  column-gap: clamp(16px, 2vw, 24px);
+/* Collateral strip: horizontal, drifts slowly, pauses on hover (Gallery.tsx) */
+.strip {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--hairline-strong) transparent;
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--gutter), #000 calc(100% - var(--gutter)), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 var(--gutter), #000 calc(100% - var(--gutter)), transparent);
 }
 
-.gallery__item {
-  break-inside: avoid;
-  margin-bottom: clamp(16px, 2vw, 24px);
+.strip:focus-visible {
+  outline-offset: -2px;
+}
+
+.strip__track {
+  display: flex;
+  gap: clamp(16px, 2vw, 24px);
+  width: max-content;
+  padding-block: 8px 18px;
+}
+
+.strip__item {
+  flex: none;
+  --h: clamp(220px, 26vw, 340px);
+}
+
+.strip__item .ph,
+.strip__item .media-img {
+  height: var(--h);
+  width: auto;
+  aspect-ratio: var(--r);
+}
+
+.strip__item .gallery__cap {
+  max-width: calc(var(--h) * var(--r));
 }
 
 .gallery__btn {
@@ -2372,4 +2522,8 @@ textarea.input {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.site-row__intro .tag {
+  margin-top: 6px;
 }

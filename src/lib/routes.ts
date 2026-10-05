@@ -16,25 +16,7 @@ export const routeMeta: RouteMeta[] = [
     path: "/websites/",
     title: "Websites · Nagavardhan Reddy Lella",
     description:
-      "Seven websites, live: Wayfarer, VentureHub360, AIQoD, F1 Experience, Mustang Archive, Axion Growth and ÉTHER. Open each one in place.",
-  },
-  {
-    path: "/work/wayfarer/",
-    title: "Wayfarer case study · Nagavardhan Reddy Lella",
-    description:
-      "A full study-abroad consultancy site with 11 country pages, four branches, and working cost, loan and eligibility tools.",
-  },
-  {
-    path: "/work/venturehub360/",
-    title: "VentureHub360 case study · Nagavardhan Reddy Lella",
-    description:
-      "Brand and website for an AI pitch and deal-evaluation platform, built from scratch.",
-  },
-  {
-    path: "/work/aiqod/",
-    title: "AIQoD case study · Nagavardhan Reddy Lella",
-    description:
-      "Rebuild of the website for an enterprise agentic AI platform, with content and SEO.",
+      "Eight websites, shipped and managed: three company sites (AIQoD, VentureHub360, AIQoD360) and five concept builds. Open each one in place.",
   },
   {
     path: "/marketing/",

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { caseStudies } from "@/data/caseStudies";
 import { contact, site } from "@/lib/config";
 import CvButton from "./CvButton";
 
@@ -36,20 +35,13 @@ export default function Footer() {
 
           <div className="footer__links">
             <p className="label" style={{ marginBottom: 6 }}>
-              Case studies
-            </p>
-            {caseStudies.map((c) => (
-              <Link key={c.slug} href={`/work/${c.slug}/`}>
-                {c.title}
-              </Link>
-            ))}
-            <p className="label" style={{ margin: "18px 0 6px" }}>
               Elsewhere
             </p>
             <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>
             <a href={contact.phoneHref}>{contact.phone}</a>
+            <a href={`mailto:${contact.email}`}>Email</a>
           </div>
         </div>
 

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import DotField from "@/components/DotField";
 import { ArrowRight } from "@/components/icons";
 import { notFoundMeta } from "@/lib/routes";
 
@@ -12,8 +11,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <section className="has-field" aria-labelledby="nf-title">
-      <DotField />
+    <section aria-labelledby="nf-title">
       <div className="container notfound">
         <p className="marker">
           <span className="num">404</span>

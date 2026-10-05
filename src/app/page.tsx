@@ -1,10 +1,9 @@
 import Link from "next/link";
 import CvButton from "@/components/CvButton";
-import DotField from "@/components/DotField";
-import { ArrowRight } from "@/components/icons";
+import Clip from "@/components/Clip";
+import HeroFx from "@/components/HeroFx";
+import { ArrowRight, ArrowUpRight } from "@/components/icons";
 import SectionHead from "@/components/SectionHead";
-import Shot from "@/components/Shot";
-import { caseStudies } from "@/data/caseStudies";
 import { capabilities, hero, keyFigures, thread, whatIDo } from "@/data/content";
 import { siteById } from "@/data/sites";
 import { pageMetadata } from "@/lib/meta";
@@ -13,13 +12,16 @@ export const metadata = pageMetadata("/");
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
+/** Selected work on the home page: the lead concept build and the two company sites I built. */
+const selected = ["wayfarer", "venturehub360", "aiqod"].map(siteById);
+
 export default function Home() {
   const [first, second] = hero.headline.split(". ");
   return (
     <>
       {/* Hero */}
       <section className="hero has-field" aria-labelledby="hero-title">
-        <DotField />
+        <HeroFx />
         <div className="container">
           <p className="marker hero__eyebrow">
             <b>{hero.eyebrow}</b>
@@ -53,7 +55,7 @@ export default function Home() {
       <div className="container">
         <ul className="capstrip" role="list" aria-label="Capabilities">
           {capabilities.map((c, i) => (
-            <li key={c}>
+            <li key={c} className="hover-lift">
               <span className="num">{pad(i + 1)}</span>
               {c}
             </li>
@@ -69,53 +71,46 @@ export default function Home() {
             label="Selected work"
             id="work-title"
             title="Three sites, end to end."
-            intro="A study-abroad consultancy, and the two AI platforms I run marketing for. Each one built, written and shipped by me."
+            intro="A study-abroad concept build, and the company sites for the two AI platforms I run marketing for. Each preview plays a short scroll-through of the real site."
           />
-          <div className="work-grid">
-            {caseStudies.map((c, i) => {
-              const s = siteById(c.siteId);
-              return (
-                <Link
-                  key={c.slug}
-                  href={`/work/${c.slug}/`}
-                  className={`card work-card reveal${i === 0 ? " work-card--lead" : ""}`}
-                  style={{ ["--delay" as string]: `${i * 50}ms` }}
-                >
-                  <div className="shot">
-                    <Shot
-                      name={s.shot}
-                      alt={`Screenshot of the ${c.title} website`}
-                      sizes={i === 0 ? "(min-width: 1320px) 1320px, 100vw" : "(min-width: 768px) 50vw, 100vw"}
-                    />
-                  </div>
-                  <div className="card__body">
-                    <div className="card__meta">
-                      <span className="label num">{pad(i + 1)} · Case study</span>
-                      <span className="tag" data-live={s.status === "Live" ? "" : undefined}>
-                        {s.status}
-                      </span>
-                    </div>
-                    <h3 className={i === 0 ? "h2" : "h3"}>{c.title}</h3>
-                    <p className="body">{c.summary}</p>
-                    <span className="card__more">
-                      Read the case study <ArrowRight />
+          <ul className="work-grid" role="list">
+            {selected.map((s, i) => (
+              <li
+                key={s.id}
+                className={`card work-card hover-lift reveal${i === 0 ? " work-card--lead" : ""}`}
+                style={{ ["--delay" as string]: `${i * 50}ms` }}
+              >
+                <Clip
+                  name={s.shot}
+                  alt={`Screenshot of the ${s.name} website`}
+                  sizes={i === 0 ? "(min-width: 1320px) 1320px, 100vw" : "(min-width: 768px) 50vw, 100vw"}
+                />
+                <div className="card__body">
+                  <div className="card__meta">
+                    <span className="label num">{pad(i + 1)}</span>
+                    <span className="tag" data-live={s.status === "Live company site" ? "" : undefined}>
+                      {s.status}
                     </span>
                   </div>
-                </Link>
-              );
-            })}
-          </div>
+                  <h3 className={i === 0 ? "h2" : "h3"}>{s.name}</h3>
+                  <p className="body">{s.line}</p>
+                  <div>
+                    <a className="btn btn--ghost btn--sm" href={s.url} target="_blank" rel="noopener noreferrer">
+                      Open live site <ArrowUpRight />
+                      <span className="sr-only">(opens {s.name} in a new tab)</span>
+                    </a>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
           <p className="reveal" style={{ marginTop: 40 }}>
             <Link href="/websites/" className="arrow-link">
-              All seven websites, live <ArrowRight />
+              All eight websites <ArrowRight />
             </Link>
           </p>
         </div>
       </section>
-
-      <div className="section-break has-field" aria-hidden="true">
-        <DotField density={22} />
-      </div>
 
       {/* The thread */}
       <section className="section" aria-labelledby="thread-title">
@@ -148,7 +143,7 @@ export default function Home() {
           <SectionHead index="03" label="What I do" id="do-title" title="Four jobs, one person." />
           <ul className="do-grid" role="list">
             {whatIDo.map((d, i) => (
-              <li key={d.title} className="do-block reveal" style={{ ["--delay" as string]: `${(i % 2) * 50}ms` }}>
+              <li key={d.title} className="do-block hover-lift reveal" style={{ ["--delay" as string]: `${(i % 2) * 50}ms` }}>
                 <span className="num">{pad(i + 1)}</span>
                 <h3 className="h3">{d.title}</h3>
                 <p className="body">{d.body}</p>

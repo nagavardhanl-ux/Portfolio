@@ -14,7 +14,7 @@ export const capabilities = [
 /** The two figures that get the accent colour. Both come straight from the brief. */
 export const keyFigures = [
   { value: "2", label: "AI platforms I run marketing for" },
-  { value: "7", label: "Websites built and live" },
+  { value: "8", label: "Websites shipped and managed" },
 ];
 
 export const thread = [

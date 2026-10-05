@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import type { Site } from "@/data/sites";
 import { Alert, ArrowUpRight, Close, Play } from "./icons";
+import Clip from "./Clip";
 import Shot from "./Shot";
 
 type State = "idle" | "loading" | "ready" | "blocked";
@@ -11,14 +12,14 @@ const EVENT = "embed:open";
 const TIMEOUT_MS = 15000;
 
 const stateLabel: Record<State, string> = {
-  idle: "Screenshot",
+  idle: "Preview",
   loading: "Loading",
-  ready: "Live",
-  blocked: "Screenshot",
+  ready: "Interactive",
+  blocked: "Preview",
 };
 
 /**
- * Live site preview. Rests as a screenshot; the iframe mounts only on click,
+ * Site preview. Rests as a scroll clip (screenshot on phones); the iframe mounts only on click,
  * and opening one embed closes any other. If the frame never loads (refused or
  * too slow) it falls back to the screenshot plus a link. Below 900px the load
  * control is hidden by CSS, so phones only ever get the screenshot + link.
@@ -68,6 +69,7 @@ export default function SiteEmbed({ site, priority = false }: { site: Site; prio
   };
 
   const live = state === "loading" || state === "ready";
+  const shotAlt = `Screenshot of the ${site.name} website${site.embedLabel ? `, ${site.embedLabel.toLowerCase()}` : ""}`;
   const display = site.embedUrl.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
   return (
@@ -87,13 +89,11 @@ export default function SiteEmbed({ site, priority = false }: { site: Site; prio
       </div>
 
       <div className="embed__stage">
-        {!live || state === "loading" ? (
+        {state === "idle" ? (
+          <Clip name={site.shot} alt={shotAlt} priority={priority} />
+        ) : state !== "ready" ? (
           <div className="shot" aria-hidden={live}>
-            <Shot
-              name={site.shot}
-              alt={`Screenshot of the ${site.name} website${site.embedLabel ? `, ${site.embedLabel.toLowerCase()}` : ""}`}
-              priority={priority}
-            />
+            <Shot name={site.shot} alt={shotAlt} priority={priority} />
           </div>
         ) : null}
 
@@ -111,7 +111,7 @@ export default function SiteEmbed({ site, priority = false }: { site: Site; prio
         {state === "idle" && (
           <div className="embed__overlay embed__load">
             <button type="button" className="btn btn--primary" onClick={load}>
-              <Play size={14} /> Load live site{site.embedLabel ? `: ${site.embedLabel}` : ""}
+              <Play size={14} /> Use it here{site.embedLabel ? `: ${site.embedLabel}` : ""}
             </button>
           </div>
         )}
@@ -153,7 +153,7 @@ export default function SiteEmbed({ site, priority = false }: { site: Site; prio
         <span className="spacer" />
         {live && (
           <button type="button" className="btn btn--quiet btn--sm" onClick={reset} data-desktop-only="">
-            <Close size={14} /> Close live site
+            <Close size={14} /> Close
           </button>
         )}
       </figcaption>

@@ -1,15 +1,24 @@
-import Link from "next/link";
-import { ArrowRight } from "@/components/icons";
 import SiteEmbed from "@/components/SiteEmbed";
-import { sites } from "@/data/sites";
+import { sites, type Site } from "@/data/sites";
 import { pageMetadata } from "@/lib/meta";
 
 export const metadata = pageMetadata("/websites/");
 
 const pad = (n: number) => String(n).padStart(2, "0");
+const words = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+const word = (n: number) => words[n] ?? String(n);
+const cap = (t: string) => t[0].toUpperCase() + t.slice(1);
+
+const Tag = ({ site }: { site: Site }) => (
+  <span className="tag" data-live={site.status === "Live company site" ? "" : undefined}>
+    {site.status}
+  </span>
+);
 
 export default function WebsitesPage() {
   const [lead, ...rest] = sites;
+  const companies = sites.filter((s) => s.status === "Live company site").length;
+  const concepts = sites.length - companies;
   return (
     <>
       <header className="page-head">
@@ -17,10 +26,11 @@ export default function WebsitesPage() {
           <p className="marker">
             <b>Websites</b>
           </p>
-          <h1 className="h1">Seven websites. All live.</h1>
+          <h1 className="h1">{cap(word(sites.length))} websites, shipped and managed.</h1>
           <p className="lead">
-            Each preview is a screenshot until you load it. Load one to use the real site in place; nothing loads until
-            you ask. On a phone, each one opens in its own tab.
+            {cap(word(companies))} company sites and {word(concepts)} concept builds.
+            Each preview plays a short scroll-through; select one to use the real site in place. On a phone, each opens in
+            its own tab.
           </p>
         </div>
       </header>
@@ -30,21 +40,17 @@ export default function WebsitesPage() {
           <article className="site-row site-row--lead" aria-labelledby={`site-${lead.id}`}>
             <div className="site-row__meta">
               <div className="site-row__intro stack" style={{ ["--stack" as string]: "18px" }}>
-                <span className="num label">{pad(1)} · Lead build</span>
+                <span className="num label">{pad(1)} · Featured</span>
                 <h2 id={`site-${lead.id}`} className="h2">
                   {lead.name}
                 </h2>
+                <span>
+                  <Tag site={lead} />
+                </span>
               </div>
               <p className="lead" style={{ maxWidth: "52ch" }}>
                 {lead.line}
               </p>
-              {lead.caseStudy && (
-                <div className="site-row__links">
-                  <Link href={lead.caseStudy} className="arrow-link">
-                    Read the case study <ArrowRight />
-                  </Link>
-                </div>
-              )}
             </div>
             <div className="reveal">
               <SiteEmbed site={lead} />
@@ -59,18 +65,9 @@ export default function WebsitesPage() {
                   {s.name}
                 </h2>
                 <span>
-                  <span className="tag" data-live={s.status === "Live" ? "" : undefined}>
-                    {s.status}
-                  </span>
+                  <Tag site={s} />
                 </span>
                 <p className="body">{s.line}</p>
-                {s.caseStudy && (
-                  <div className="site-row__links">
-                    <Link href={s.caseStudy} className="arrow-link">
-                      Read the case study <ArrowRight />
-                    </Link>
-                  </div>
-                )}
               </div>
               <div className="reveal">
                 <SiteEmbed site={s} />

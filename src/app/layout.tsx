@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
+import AmbientField from "@/components/AmbientField";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import RevealObserver from "@/components/RevealObserver";
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
       </head>
       <body>
+        <AmbientField />
         <a className="skip-link" href="#main">
           Skip to content
         </a>
