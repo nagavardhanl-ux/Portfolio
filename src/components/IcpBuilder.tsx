@@ -119,13 +119,13 @@ export default function IcpBuilder() {
             </div>
             <div className="icp__block">
               <h3 className="label">Three pain points</h3>
-              <ol className="icp__list" role="list">
+              <ul className="icp__list" role="list">
                 {result.pains.map((p) => (
                   <li key={p}>
                     <span>{p}</span>
                   </li>
                 ))}
-              </ol>
+              </ul>
             </div>
             <div className="icp__block">
               <h3 className="label">Three job titles to target</h3>

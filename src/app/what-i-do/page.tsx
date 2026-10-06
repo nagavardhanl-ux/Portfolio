@@ -53,14 +53,14 @@ export default function WhatIDoPage() {
           <section id={pm.id} className="cap cap--grid" aria-labelledby={`${pm.id}-title`}>
             <CapHead c={pm} />
             <SubLabel>What I do</SubLabel>
-            <ol className="pts-grid" role="list">
+            <ul className="pts-grid" role="list">
               {pm.points.map((p, i) => (
                 <li key={p} className="reveal" style={{ ["--delay" as string]: `${(i % 2) * 40}ms` }}>
                   <span className="num">{pad(i + 1)}</span>
                   <p>{p}</p>
                 </li>
               ))}
-            </ol>
+            </ul>
             <SubLabel>Selected work</SubLabel>
             <ul className="work-cards" role="list">
               {pm.work.map((w, i) => (
@@ -92,14 +92,14 @@ export default function WhatIDoPage() {
             </div>
             <div className="cap--split__right">
               <SubLabel>Selected work</SubLabel>
-              <ol className="panels" role="list">
+              <ul className="panels" role="list">
                 {dg.work.map((w, i) => (
                   <li key={w} className="panel hover-lift reveal" style={{ ["--delay" as string]: `${i * 50}ms` }}>
                     <span className="panel__num">{pad(i + 1)}</span>
                     <p>{w}</p>
                   </li>
                 ))}
-              </ol>
+              </ul>
               <p className="reveal">
                 <Link href="/marketing/" className="arrow-link">
                   See the marketing work <ArrowRight />
@@ -112,25 +112,25 @@ export default function WhatIDoPage() {
           <section id={web.id} className="cap cap--row" aria-labelledby={`${web.id}-title`}>
             <CapHead c={web} />
             <SubLabel>What I do</SubLabel>
-            <ol className="pts-row" role="list">
+            <ul className="pts-row" role="list">
               {web.points.map((p, i) => (
                 <li key={p} className="reveal" style={{ ["--delay" as string]: `${i * 40}ms` }}>
                   <span className="num">{pad(i + 1)}</span>
                   <p>{p}</p>
                 </li>
               ))}
-            </ol>
+            </ul>
             <div className="cap--row__work">
               <div>
                 <SubLabel>Selected work</SubLabel>
-                <ol className="ledger" role="list">
+                <ul className="ledger" role="list">
                   {web.work.map((w, i) => (
                     <li key={w} className="reveal">
                       <span className="num">{pad(i + 1)}</span>
                       <p>{w}</p>
                     </li>
                   ))}
-                </ol>
+                </ul>
                 <p className="reveal" style={{ marginTop: 28 }}>
                   <Link href="/websites/" className="btn btn--primary">
                     See all eight websites <ArrowRight />
@@ -160,7 +160,7 @@ export default function WhatIDoPage() {
           <section id={ai.id} className="cap cap--flow" aria-labelledby={`${ai.id}-title`}>
             <CapHead c={ai} align="center" />
             <SubLabel>What I do</SubLabel>
-            <ol className="flow reveal" role="list" aria-label="AI workflow">
+            <ul className="flow reveal" role="list" aria-label="AI workflow">
               {aiWorkflow.map((s, i) => (
                 <li key={s.step}>
                   <span className="label num">{pad(i + 1)}</span>
@@ -172,7 +172,7 @@ export default function WhatIDoPage() {
                   </ul>
                 </li>
               ))}
-            </ol>
+            </ul>
             <SubLabel>Selected work</SubLabel>
             <ul className="tiles" role="list">
               {ai.work.map((w, i) => (

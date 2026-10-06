@@ -43,7 +43,7 @@ export default function AboutPage() {
             title="The workflow, step by step."
             intro="The tools are chosen for the job each step needs, not the other way round."
           />
-          <ol className="flow reveal" role="list">
+          <ul className="flow reveal" role="list">
             {aiWorkflow.map((s, i) => (
               <li key={s.step}>
                 <span className="label num">{pad(i + 1)}</span>
@@ -55,7 +55,7 @@ export default function AboutPage() {
                 </ul>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       </section>
 

@@ -128,7 +128,7 @@ export default function Home() {
             </h2>
             <p className="body">Five steps, each one adding to the last.</p>
           </div>
-          <ol className="beats" role="list">
+          <ul className="beats" role="list">
             {thread.map((b, i) => (
               <li key={b.title} className="beat reveal">
                 <span className="num">{pad(i + 1)}</span>
@@ -136,7 +136,7 @@ export default function Home() {
                 <p className="body">{b.line}</p>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       </section>
 
