@@ -72,5 +72,5 @@ export const aiWorkflow = [
   { step: "Research", tools: ["ChatGPT", "Claude"] },
   { step: "Build", tools: ["Lovable", "Antigravity", "Claude Code"] },
   { step: "Content & video", tools: ["Canva", "HeyGen", "Google Flow"] },
-  { step: "Analyse", tools: ["Search Console", "GA4", "Frase"] },
+  { step: "Analyse", tools: ["Search Console", "GA4"] },
 ];

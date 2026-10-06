@@ -83,7 +83,7 @@ export const capabilitySections: Capability[] = [
       "Research with ChatGPT and Claude.",
       "Build sites with Lovable, Antigravity and Claude Code.",
       "Create content and video with Canva, HeyGen and Google Flow.",
-      "Analyse with Search Console, GA4 and Frase.",
+      "Analyse with Search Console and GA4.",
     ],
     work: [
       "Built a daily AI intelligence brief that goes to the company's leadership team every morning.",
