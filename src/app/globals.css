@@ -3210,3 +3210,21 @@ a.hover-lift:focus-visible .go {
   }
 }
 
+
+/* Monochrome tool marks (e.g. ChatGPT) take the text colour: white on dark, black on light. */
+.tools-tile__icon {
+  color: var(--text);
+}
+
+/* Logos that ship separate dark and light versions. */
+.theme-light-only {
+  display: none !important;
+}
+
+:root[data-theme="light"] .theme-light-only {
+  display: block !important;
+}
+
+:root[data-theme="light"] .theme-dark-only {
+  display: none !important;
+}
