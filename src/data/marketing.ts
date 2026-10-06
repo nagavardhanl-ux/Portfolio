@@ -17,6 +17,8 @@ export interface Asset {
   ratio: number;
   src?: string;
   alt?: string;
+  /** Tile size on the collateral wall. Real images are cropped to fit; the lightbox shows them whole. */
+  span?: "tall" | "wide" | "big";
 }
 
 export interface Video {
@@ -27,13 +29,14 @@ export interface Video {
   youtube?: string;
 }
 
+/** Order matters: it is the reading order and fills the wall's grid without gaps. */
 export const collateral: Asset[] = [
-  { id: "col-1", title: "Product brochure", kind: "Brochure", ratio: 3 / 4 },
+  { id: "col-1", title: "Product brochure", kind: "Brochure", ratio: 3 / 4, span: "tall" },
+  { id: "col-4", title: "Event banner", kind: "Banner", ratio: 16 / 9, span: "wide" },
   { id: "col-2", title: "Product one-pager", kind: "One-pager", ratio: 3 / 4 },
   { id: "col-3", title: "Pricing sheet", kind: "Pricing sheet", ratio: 3 / 4 },
-  { id: "col-4", title: "Event banner", kind: "Banner", ratio: 16 / 9 },
-  { id: "col-5", title: "Launch poster", kind: "Poster", ratio: 2 / 3 },
-  { id: "col-6", title: "Web banner", kind: "Banner", ratio: 16 / 9 },
+  { id: "col-6", title: "Web banner", kind: "Banner", ratio: 16 / 9, span: "big" },
+  { id: "col-5", title: "Launch poster", kind: "Poster", ratio: 2 / 3, span: "tall" },
 ];
 
 export const icpWork: Asset[] = [

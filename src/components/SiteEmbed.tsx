@@ -86,6 +86,11 @@ export default function SiteEmbed({ site, priority = false }: { site: Site; prio
         <span className="embed__state" data-state={state} aria-live="polite">
           {stateLabel[state]}
         </span>
+        {live && (
+          <button type="button" className="embed__close" onClick={reset} data-desktop-only="" aria-label={`Close ${site.name}`}>
+            <Close size={12} />
+          </button>
+        )}
       </div>
 
       <div className="embed__stage">
@@ -139,24 +144,6 @@ export default function SiteEmbed({ site, priority = false }: { site: Site; prio
         )}
       </div>
 
-      <figcaption className="embed__foot">
-        <a className="btn btn--ghost btn--sm" href={site.embedUrl} target="_blank" rel="noopener noreferrer">
-          Open live site <ArrowUpRight />
-          <span className="sr-only">(opens in a new tab)</span>
-        </a>
-        {site.extraLinks?.map((l) => (
-          <a key={l.href} className="arrow-link" data-external="" href={l.href} target="_blank" rel="noopener noreferrer">
-            {l.label} <ArrowUpRight />
-            <span className="sr-only">(opens in a new tab)</span>
-          </a>
-        ))}
-        <span className="spacer" />
-        {live && (
-          <button type="button" className="btn btn--quiet btn--sm" onClick={reset} data-desktop-only="">
-            <Close size={14} /> Close
-          </button>
-        )}
-      </figcaption>
     </figure>
   );
 }

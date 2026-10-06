@@ -2,9 +2,9 @@ import Link from "next/link";
 import CvButton from "@/components/CvButton";
 import Clip from "@/components/Clip";
 import HeroFx from "@/components/HeroFx";
-import { ArrowRight, ArrowUpRight } from "@/components/icons";
+import { ArrowRight } from "@/components/icons";
 import SectionHead from "@/components/SectionHead";
-import SiteTags from "@/components/SiteTags";
+import SiteCard from "@/components/SiteCard";
 import { capabilities, hero, keyFigures, thread, whatIDo } from "@/data/content";
 import { siteById } from "@/data/sites";
 import { capabilityAnchors } from "@/data/whatIDo";
@@ -78,35 +78,24 @@ export default function Home() {
             title="Three company sites."
             intro="VentureHub360, built from scratch; AIQoD, rebuilt from its previous version; and AIQoD360, which I manage. Each preview plays a short scroll-through of the real site."
           />
-          <ul className="work-grid" role="list">
+          <div className="site-gallery">
             {selected.map((s, i) => (
-              <li
+              <SiteCard
                 key={s.id}
-                className={`card work-card hover-lift reveal${i === 0 ? " work-card--lead" : ""}`}
-                style={{ ["--delay" as string]: `${i * 50}ms` }}
-              >
-                <Clip
-                  name={s.shot}
-                  alt={`Screenshot of the ${s.name} website`}
-                  sizes={i === 0 ? "(min-width: 1320px) 1320px, 100vw" : "(min-width: 768px) 50vw, 100vw"}
-                />
-                <div className="card__body">
-                  <div className="card__meta">
-                    <span className="label num">{pad(i + 1)}</span>
-                    <SiteTags site={s} detailed />
-                  </div>
-                  <h3 className={i === 0 ? "h2" : "h3"}>{s.name}</h3>
-                  <p className="body">{s.line}</p>
-                  <div>
-                    <a className="btn btn--ghost btn--sm" href={s.url} target="_blank" rel="noopener noreferrer">
-                      Open live site <ArrowUpRight />
-                      <span className="sr-only">(opens {s.name} in a new tab)</span>
-                    </a>
-                  </div>
-                </div>
-              </li>
+                site={s}
+                index={i + 1}
+                size={i === 0 ? "lead" : "regular"}
+                detailed
+                media={
+                  <Clip
+                    name={s.shot}
+                    alt={`Screenshot of the ${s.name} website`}
+                    sizes={i === 0 ? "(min-width: 1320px) 1320px, 100vw" : "(min-width: 768px) 50vw, 100vw"}
+                  />
+                }
+              />
             ))}
-          </ul>
+          </div>
           <p className="reveal" style={{ marginTop: 40 }}>
             <Link href="/websites/" className="arrow-link">
               All eight websites <ArrowRight />

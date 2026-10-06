@@ -2,13 +2,13 @@ import ContactForm from "@/components/ContactForm";
 import CvButton from "@/components/CvButton";
 import { ArrowUpRight } from "@/components/icons";
 import SectionHead from "@/components/SectionHead";
-import { about, aiWorkflow } from "@/data/content";
+import Workflow from "@/components/Workflow";
+import { about } from "@/data/content";
 import { contact } from "@/lib/config";
 import { pageMetadata } from "@/lib/meta";
 
 export const metadata = pageMetadata("/about/");
 
-const pad = (n: number) => String(n).padStart(2, "0");
 
 export default function AboutPage() {
   return (
@@ -43,19 +43,7 @@ export default function AboutPage() {
             title="The workflow, step by step."
             intro="The tools are chosen for the job each step needs, not the other way round."
           />
-          <ul className="flow reveal" role="list">
-            {aiWorkflow.map((s, i) => (
-              <li key={s.step}>
-                <span className="label num">{pad(i + 1)}</span>
-                <h3 className="h3">{s.step}</h3>
-                <ul className="flow__tools" role="list">
-                  {s.tools.map((t) => (
-                    <li key={t}>{t}</li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
+          <Workflow label="AI stack" />
         </div>
       </section>
 

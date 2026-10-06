@@ -8,17 +8,17 @@ import { Media } from "./Placeholder";
 /**
  * Image grid where every item opens in a native <dialog> lightbox
  * (arrow keys step through, Escape or the backdrop closes, focus returns).
- * `layout="masonry"` keeps each item's own aspect ratio in columns;
- * `layout="even"` is a regular grid for same-shaped items.
+ * `layout="wall"`: a varied grid of tall, wide and large tiles (each item's `span`);
+ * `layout="even"`: a regular grid for same-shaped items.
  */
 export default function Gallery({
   items,
   label,
-  layout = "masonry",
+  layout = "wall",
 }: {
   items: Asset[];
   label: string;
-  layout?: "masonry" | "even";
+  layout?: "wall" | "even";
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const triggers = useRef<(HTMLButtonElement | null)[]>([]);
@@ -68,7 +68,9 @@ export default function Gallery({
     <>
       <ul className={`gallery gallery--${layout}`} role="list" aria-label={label}>
         {items.map((item, i) => (
-          <li key={item.id} className="gallery__item reveal" style={{ ["--delay" as string]: `${(i % 3) * 40}ms` }}>
+          <li
+            key={item.id}
+            className={`gallery__item${item.span ? ` gallery__item--${item.span}` : ""} reveal`} style={{ ["--delay" as string]: `${(i % 3) * 40}ms` }}>
             <button
               ref={(el) => {
                 triggers.current[i] = el;
