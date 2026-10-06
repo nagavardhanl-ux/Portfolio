@@ -10,11 +10,14 @@ export function Placeholder({
   kind,
   ratio,
   hint,
+  compact = false,
 }: {
   title: string;
   kind: string;
   ratio?: number;
   hint?: string;
+  /** Flag only, for thumbnails that already carry a caption. */
+  compact?: boolean;
 }) {
   return (
     <div
@@ -24,17 +27,19 @@ export function Placeholder({
       aria-label={`Placeholder for ${kind.toLowerCase()}: ${title}`}
     >
       <span className="ph__flag">Placeholder</span>
-      <span className="ph__body">
-        <span className="ph__title">{title}</span>
-        <span className="label">{kind}</span>
-        {hint && <span className="ph__path">{hint}</span>}
-      </span>
+      {!compact && (
+        <span className="ph__body">
+          <span className="ph__title">{title}</span>
+          <span className="label">{kind}</span>
+          {hint && <span className="ph__path">{hint}</span>}
+        </span>
+      )}
     </div>
   );
 }
 
 /** Real image when `src` is set, otherwise a placeholder at the same ratio. */
-export function Media({ item, showHint = true }: { item: Asset; showHint?: boolean }) {
+export function Media({ item, compact = false }: { item: Asset; compact?: boolean }) {
   if (item.src) {
     return (
       // eslint-disable-next-line @next/next/no-img-element -- static export
@@ -53,7 +58,8 @@ export function Media({ item, showHint = true }: { item: Asset; showHint?: boole
       title={item.title}
       kind={item.kind}
       ratio={item.ratio}
-      hint={showHint ? `Add image → src/data/marketing.ts · ${item.id}` : undefined}
+      hint={`Add image → src/data/marketing.ts · ${item.id}`}
+      compact={compact}
     />
   );
 }

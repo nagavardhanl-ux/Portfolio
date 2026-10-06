@@ -102,7 +102,7 @@ export default function WhatIDoPage() {
               </ol>
               <p className="reveal">
                 <Link href="/marketing/" className="arrow-link">
-                  See the campaigns <ArrowRight />
+                  See the marketing work <ArrowRight />
                 </Link>
               </p>
             </div>

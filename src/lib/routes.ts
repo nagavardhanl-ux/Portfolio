@@ -26,9 +26,9 @@ export const routeMeta: RouteMeta[] = [
   },
   {
     path: "/marketing/",
-    title: "Marketing · Nagavardhan Reddy Lella",
+    title: "Marketing work · Nagavardhan Reddy Lella",
     description:
-      "Campaigns, ICPs and positioning, collateral and video for two AI platforms, run into the US, UK, Europe, the Middle East and Southeast Asia.",
+      "The actual things I made: collateral, ICP and positioning work, and video for two AI platforms.",
   },
   {
     path: "/icp-builder/",

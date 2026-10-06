@@ -20,7 +20,7 @@ Every push to `main` builds and deploys through `.github/workflows/deploy.yml`.
 | Email, phone, LinkedIn, CV switch, Formspree ID | `src/lib/config.ts` |
 | Hero, capabilities, the thread, What I do, About text, AI workflow | `src/data/content.ts` |
 | The eight websites, labels, embed URLs, deep links | `src/data/sites.ts` |
-| Marketing images and videos | `src/data/marketing.ts` |
+| Marketing work page: collateral, ICP samples, videos | `src/data/marketing.ts` |
 | ICP builder industries, sizes, regions | `src/data/icp.ts` |
 | Page titles and meta descriptions | `src/lib/routes.ts` |
 | Colours, type, spacing | `src/app/globals.css` (tokens at the top) |
@@ -34,8 +34,8 @@ it in never moves the layout.
   `formspreeId` in `src/lib/config.ts`. Until then the form says it isn't connected.
 - **Marketing images:** put files in `public/work/` and set `src` (e.g.
   `"work/brochure-01.webp"`) on the item in `src/data/marketing.ts`.
-- **Videos:** set `embedUrl` (YouTube/Vimeo embed link) on each video in
-  `src/data/marketing.ts`.
+- **Videos:** set `youtube` to a YouTube link (watch, youtu.be or shorts) or
+  video ID on each video in `src/data/marketing.ts`. It loads only on Play.
 
 ## Screenshots, scroll clips and OG image
 
