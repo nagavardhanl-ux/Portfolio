@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import AmbientField from "@/components/AmbientField";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
@@ -7,13 +7,15 @@ import RevealObserver from "@/components/RevealObserver";
 import { asset, site } from "@/lib/config";
 import "./globals.css";
 
-// Self-hosted at build time by next/font: no third-party request at runtime,
+// Google Fonts, downloaded at build time by next/font and served from this site:
+// no third-party request (so no preconnect needed), font-display: swap, and
 // metric-matched fallbacks so text doesn't shift when the fonts arrive.
-const instrument = Instrument_Serif({
+// Fraunces is variable with the optical-size axis: big headings get the high-opsz cut.
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: "400",
   style: ["normal", "italic"],
-  variable: "--font-instrument",
+  axes: ["opsz"],
+  variable: "--font-fraunces",
   display: "swap",
 });
 
@@ -25,10 +27,8 @@ const inter = Inter({
 
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400"],
   variable: "--font-jetbrains",
   display: "swap",
-  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -53,7 +53,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       lang="en"
       data-theme="dark"
       suppressHydrationWarning
-      className={`${instrument.variable} ${inter.variable} ${jetbrains.variable}`}
+      className={`${fraunces.variable} ${inter.variable} ${jetbrains.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />

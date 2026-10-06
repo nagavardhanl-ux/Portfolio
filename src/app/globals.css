@@ -24,7 +24,7 @@
   --success: #7ee2a8;
   --danger: #ff8f8f;
 
-  --font-display: var(--font-instrument), "Times New Roman", serif;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
   --font-body: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, monospace;
 
@@ -221,39 +221,45 @@ a {
    Type
    ========================================================================== */
 
-.display {
+/* Fraunces is variable with an optical-size axis; font-optical-sizing: auto picks
+   the high-opsz cut for big headings. Sizes are tuned to Fraunces' wider set. */
+.display,
+.h1,
+.h2,
+.h3 {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(3.1rem, 9vw, 9rem);
-  line-height: 0.94;
-  letter-spacing: -0.025em;
+  font-optical-sizing: auto;
   text-wrap: balance;
+}
+
+/* Very large hero text reads better a touch lighter. */
+.display {
+  font-weight: 400;
+  font-size: clamp(2.75rem, 7.4vw, 7.25rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
 }
 
 .h1 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2.75rem, 7vw, 6.5rem);
-  line-height: 0.98;
-  letter-spacing: -0.022em;
-  text-wrap: balance;
+  font-weight: 600;
+  font-size: clamp(2.5rem, 5.8vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.028em;
 }
 
 .h2 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2.25rem, 5vw, 4.5rem);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  text-wrap: balance;
+  font-weight: 600;
+  font-size: clamp(2rem, 4.2vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.024em;
 }
 
 .h3 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(1.625rem, 2.6vw, 2.25rem);
-  line-height: 1.08;
-  letter-spacing: -0.012em;
+  font-weight: 600;
+  font-size: clamp(1.375rem, 2.1vw, 1.875rem);
+  line-height: 1.12;
+  letter-spacing: -0.016em;
+  text-wrap: pretty;
 }
 
 .h4 {
@@ -588,10 +594,21 @@ a {
   align-items: baseline;
   gap: 10px;
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-weight: 600;
+  font-size: 1.375rem;
   line-height: 1;
   letter-spacing: -0.01em;
   white-space: nowrap;
+}
+
+@media (max-width: 479px) {
+  .wordmark span {
+    display: none;
+  }
+}
+
+.wordmark {
+  min-width: 0;
 }
 
 .wordmark span {
@@ -726,7 +743,8 @@ a {
   padding: 18px 0;
   border-bottom: 1px solid var(--hairline);
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-weight: 500;
+  font-size: 1.75rem;
   line-height: 1.1;
 }
 
@@ -952,7 +970,9 @@ a {
 }
 
 .figure__value {
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
+  font-weight: 300;
+  letter-spacing: -0.04em;
   font-size: clamp(3.5rem, 6vw, 5.5rem);
   line-height: 0.85;
   color: var(--ice);
@@ -2289,7 +2309,7 @@ a.card:hover .card__more svg {
 
 .contact-list a strong {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: clamp(1.375rem, 2.4vw, 1.875rem);
   line-height: 1.15;
   overflow-wrap: anywhere;
@@ -2670,7 +2690,8 @@ textarea.input {
 }
 
 .cap__index {
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
+  font-weight: 300;
   font-size: clamp(4rem, 9vw, 7.5rem);
   line-height: 0.8;
   color: var(--hairline-strong);
@@ -2780,7 +2801,8 @@ textarea.input {
 }
 
 .panel__num {
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
+  font-weight: 300;
   font-size: 1.75rem;
   line-height: 1;
   color: var(--text-2);
