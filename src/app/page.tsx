@@ -5,6 +5,7 @@ import HeroFx from "@/components/HeroFx";
 import { ArrowRight } from "@/components/icons";
 import SectionHead from "@/components/SectionHead";
 import SiteCard from "@/components/SiteCard";
+import ToolsGrid from "@/components/ToolsGrid";
 import { capabilities, hero, keyFigures, thread, whatIDo } from "@/data/content";
 import { siteById } from "@/data/sites";
 import { capabilityAnchors } from "@/data/whatIDo";
@@ -104,12 +105,26 @@ export default function Home() {
         </div>
       </section>
 
+      {/* The tools I work with */}
+      <section className="section" aria-labelledby="tools-title" id="tools">
+        <div className="container">
+          <SectionHead
+            index="02"
+            label="Tools"
+            id="tools-title"
+            title="The tools I work with."
+            intro="The real AI and marketing tools used, grouped by what they're used for."
+          />
+          <ToolsGrid />
+        </div>
+      </section>
+
       {/* The thread */}
       <section className="section" aria-labelledby="thread-title">
         <div className="container thread">
           <div className="thread__aside reveal">
             <p className="marker">
-              <span className="num">02</span>
+              <span className="num">03</span>
               <b>The thread</b>
             </p>
             <h2 id="thread-title" className="h2">
@@ -132,7 +147,7 @@ export default function Home() {
       {/* What I do */}
       <section className="section" aria-labelledby="do-title" style={{ paddingTop: 0 }}>
         <div className="container">
-          <SectionHead index="03" label="What I do" id="do-title" title="Four jobs, one person." />
+          <SectionHead index="04" label="What I do" id="do-title" title="Four jobs, one person." />
           <ul className="do-grid" role="list">
             {whatIDo.map((d, i) => (
               <li key={d.title} className="do-block hover-lift reveal" style={{ ["--delay" as string]: `${(i % 2) * 50}ms` }}>
