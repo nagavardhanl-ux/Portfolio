@@ -1,3 +1,5 @@
+import { sites } from "./sites";
+
 export const hero = {
   eyebrow: "Nagavardhan Reddy Lella",
   headline: "B2B marketer. I build the websites too.",
@@ -11,10 +13,13 @@ export const capabilities = [
   "AI-Led Execution",
 ];
 
-/** The two figures that get the accent colour. Both come straight from the brief. */
+const built = sites.filter((s) => s.role === "Built").length;
+const managed = sites.filter((s) => s.role === "Managed").length;
+
+/** The two figures that get the accent colour. Website counts come from src/data/sites.ts. */
 export const keyFigures = [
   { value: "2", label: "AI platforms I run marketing for" },
-  { value: "8", label: "Websites shipped and managed" },
+  { value: String(built + managed), label: `Websites: ${built} built, ${managed} managed` },
 ];
 
 export const thread = [

@@ -3029,3 +3029,9 @@ a.hover-lift:focus-visible .go {
 .do-block__more .go {
   margin-left: 0;
 }
+
+.tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}

@@ -1,5 +1,6 @@
 import SiteEmbed from "@/components/SiteEmbed";
-import { sites, type Site } from "@/data/sites";
+import SiteTags from "@/components/SiteTags";
+import { sites } from "@/data/sites";
 import { pageMetadata } from "@/lib/meta";
 
 export const metadata = pageMetadata("/websites/");
@@ -8,12 +9,6 @@ const pad = (n: number) => String(n).padStart(2, "0");
 const words = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
 const word = (n: number) => words[n] ?? String(n);
 const cap = (t: string) => t[0].toUpperCase() + t.slice(1);
-
-const Tag = ({ site }: { site: Site }) => (
-  <span className="tag" data-live={site.status === "Live company site" ? "" : undefined}>
-    {site.status}
-  </span>
-);
 
 export default function WebsitesPage() {
   const [lead, ...rest] = sites;
@@ -45,7 +40,7 @@ export default function WebsitesPage() {
                   {lead.name}
                 </h2>
                 <span>
-                  <Tag site={lead} />
+                  <SiteTags site={lead} />
                 </span>
               </div>
               <p className="lead" style={{ maxWidth: "52ch" }}>
@@ -65,7 +60,7 @@ export default function WebsitesPage() {
                   {s.name}
                 </h2>
                 <span>
-                  <Tag site={s} />
+                  <SiteTags site={s} />
                 </span>
                 <p className="body">{s.line}</p>
               </div>

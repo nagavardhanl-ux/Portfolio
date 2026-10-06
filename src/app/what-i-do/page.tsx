@@ -146,7 +146,7 @@ export default function WhatIDoPage() {
                       </span>
                       <span className="thumb__cap">
                         <span>{s.name}</span>
-                        <span className="label">{s.id === "aiqod360" ? "Managed" : "Built"}</span>
+                        <span className="label">{s.roleDetail ?? s.role}</span>
                       </span>
                       <span className="sr-only">(opens in a new tab)</span>
                     </a>

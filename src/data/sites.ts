@@ -1,6 +1,9 @@
 /** Three live company sites first, then five concept builds. Order here is display order. */
 export type Status = "Live company site" | "Concept build";
 
+/** What I did: built it, or manage a site someone else built. */
+export type Role = "Built" | "Managed";
+
 export interface Site {
   id: string;
   name: string;
@@ -14,6 +17,9 @@ export interface Site {
   /** Extra deep links shown next to the embed. */
   extraLinks?: { label: string; href: string }[];
   status: Status;
+  role: Role;
+  /** Longer role label for the home work cards and the What I do page. */
+  roleDetail?: string;
   /** Basename for public/shots (screenshot) and public/clips (scroll clip), made by the scripts. */
   shot: string;
 }
@@ -26,6 +32,8 @@ export const sites: Site[] = [
     url: "https://www.venturehub360.com/",
     embedUrl: "https://www.venturehub360.com/",
     status: "Live company site",
+    role: "Built",
+    roleDetail: "Built from scratch",
     shot: "venturehub360",
   },
   {
@@ -35,15 +43,18 @@ export const sites: Site[] = [
     url: "https://aiqod.com/",
     embedUrl: "https://aiqod.com/",
     status: "Live company site",
+    role: "Built",
+    roleDetail: "Rebuilt from its previous version",
     shot: "aiqod",
   },
   {
     id: "aiqod360",
     name: "AIQoD360",
-    line: "Live company site on Wix. I manage it rather than build it: creating new pages, writing and publishing blog posts, and keeping the content up to date.",
+    line: "Managed and updated in Wix: content, new pages and ongoing changes.",
     url: "https://www.aiqod360.com/",
     embedUrl: "https://www.aiqod360.com/",
     status: "Live company site",
+    role: "Managed",
     shot: "aiqod360",
   },
   {
@@ -60,6 +71,7 @@ export const sites: Site[] = [
       },
     ],
     status: "Concept build",
+    role: "Built",
     shot: "wayfarer",
   },
   {
@@ -69,6 +81,7 @@ export const sites: Site[] = [
     url: "https://nagavardhanl-ux.github.io/f1-experience/",
     embedUrl: "https://nagavardhanl-ux.github.io/f1-experience/",
     status: "Concept build",
+    role: "Built",
     shot: "f1-experience",
   },
   {
@@ -79,6 +92,7 @@ export const sites: Site[] = [
     embedUrl: "https://nagavardhanl-ux.github.io/Project-3-Mustang/#/timeline",
     embedLabel: "Timeline",
     status: "Concept build",
+    role: "Built",
     shot: "mustang",
   },
   {
@@ -88,6 +102,7 @@ export const sites: Site[] = [
     url: "https://nagavardhanl-ux.github.io/Project-1/",
     embedUrl: "https://nagavardhanl-ux.github.io/Project-1/",
     status: "Concept build",
+    role: "Built",
     shot: "axion",
   },
   {
@@ -97,6 +112,7 @@ export const sites: Site[] = [
     url: "https://nagavardhanl-ux.github.io/Project-2/#/",
     embedUrl: "https://nagavardhanl-ux.github.io/Project-2/#/",
     status: "Concept build",
+    role: "Built",
     shot: "ether",
   },
 ];

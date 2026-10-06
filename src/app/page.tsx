@@ -4,6 +4,7 @@ import Clip from "@/components/Clip";
 import HeroFx from "@/components/HeroFx";
 import { ArrowRight, ArrowUpRight } from "@/components/icons";
 import SectionHead from "@/components/SectionHead";
+import SiteTags from "@/components/SiteTags";
 import { capabilities, hero, keyFigures, thread, whatIDo } from "@/data/content";
 import { siteById } from "@/data/sites";
 import { capabilityAnchors } from "@/data/whatIDo";
@@ -75,7 +76,7 @@ export default function Home() {
             label="Selected work"
             id="work-title"
             title="Three company sites."
-            intro="VentureHub360 and AIQoD, which I built, and AIQoD360, which I manage. Each preview plays a short scroll-through of the real site."
+            intro="VentureHub360, built from scratch; AIQoD, rebuilt from its previous version; and AIQoD360, which I manage. Each preview plays a short scroll-through of the real site."
           />
           <ul className="work-grid" role="list">
             {selected.map((s, i) => (
@@ -92,9 +93,7 @@ export default function Home() {
                 <div className="card__body">
                   <div className="card__meta">
                     <span className="label num">{pad(i + 1)}</span>
-                    <span className="tag" data-live={s.status === "Live company site" ? "" : undefined}>
-                      {s.status}
-                    </span>
+                    <SiteTags site={s} detailed />
                   </div>
                   <h3 className={i === 0 ? "h2" : "h3"}>{s.name}</h3>
                   <p className="body">{s.line}</p>

@@ -48,7 +48,7 @@ export default function Footer() {
 
         <div className="footer__bottom">
           <p className="label">© {new Date().getFullYear()} {site.name}</p>
-          <p className="label">Built with Next.js · Hosted on GitHub Pages</p>
+          <p className="label">Designed and built by {site.name}</p>
         </div>
       </div>
     </footer>
