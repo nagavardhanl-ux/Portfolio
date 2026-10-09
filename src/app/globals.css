@@ -3045,186 +3045,119 @@ a.hover-lift:focus-visible .go {
 }
 
 /* ==========================================================================
-   The tools I work with
+   The tools I work with (ToolsGrid.tsx)
+   Six groups: 3 columns on desktop, 2 on tablet, 1 on mobile.
+   Separated by whitespace and a hairline, not boxes.
    ========================================================================== */
 
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: clamp(40px, 6vw, 88px);
-  row-gap: clamp(44px, 5.5vw, 68px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(40px, 5vw, 64px) clamp(32px, 4vw, 56px);
 }
 
 .tools-group {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding-top: clamp(20px, 2.5vw, 28px);
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding-top: 22px;
   border-top: 1px solid var(--hairline);
-}
-
-.tools-group__header {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
 }
 
 .tools-group__heading {
   font-family: var(--font-mono);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text);
-  line-height: 1.4;
 }
 
 .tools-group__caption {
   font-size: 0.9375rem;
-  line-height: 1.45;
   color: var(--text-2);
 }
 
-.tools-tiles {
+.tools-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  gap: 8px;
+  margin-top: 8px;
 }
 
-.tools-tile {
-  position: relative;
+.tool-chip {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 58px;
-  height: 58px;
+  gap: 8px;
+  min-height: 36px;
+  padding: 6px 14px 6px 8px;
   border: 1px solid var(--hairline);
-  border-radius: 14px;
-  background: var(--surface);
-  cursor: pointer;
-  user-select: none;
-  transition:
-    border-color var(--dur) var(--ease),
-    background-color var(--dur) var(--ease),
-    box-shadow var(--dur) var(--ease),
-    transform var(--dur) var(--ease);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  color: var(--text);
+  transition: border-color 200ms var(--ease);
 }
 
-.tools-tile:hover,
-.tools-tile:focus-visible {
-  border-color: var(--accent);
-  background: var(--surface-2);
-  transform: translateY(-3px) scale(1.04);
-  box-shadow: 0 10px 24px -8px rgba(59, 91, 255, 0.22);
-  outline: none;
-}
-
-.tools-tile__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
+/* One mark per chip: a monochrome brand icon in the text colour... */
+.tool-chip__icon {
+  display: inline-grid;
+  place-items: center;
   flex: none;
+  width: 20px;
+  height: 20px;
+  color: var(--text);
+  transition: color 200ms var(--ease);
 }
 
-.tools-tile__icon svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: contain;
+.tool-chip__icon svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
-.tools-tile__img-contain {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-  display: block;
-}
-
-.tools-tile__tooltip {
-  position: absolute;
-  bottom: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%) translateY(4px);
-  padding: 4px 9px;
-  background: #0d1117;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 6px;
+/* ...or, for tools without one, a neutral circular letter glyph. */
+.tool-chip__glyph {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 50%;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+  font-size: 0.625rem;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--text-2);
   transition:
-    opacity 160ms var(--ease),
-    transform 160ms var(--ease),
-    visibility 160ms var(--ease);
-  z-index: 20;
+    color 200ms var(--ease),
+    border-color 200ms var(--ease);
 }
 
-.tools-tile:hover .tools-tile__tooltip,
-.tools-tile:focus-visible .tools-tile__tooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
+@media (hover: hover) {
+  .tool-chip:hover {
+    border-color: var(--hairline-strong);
+  }
+
+  .tool-chip:hover .tool-chip__icon,
+  .tool-chip:hover .tool-chip__glyph {
+    color: var(--accent);
+  }
+
+  .tool-chip:hover .tool-chip__glyph {
+    border-color: var(--accent);
+  }
+}
+
+@media (max-width: 1023px) {
+  .tools-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 767px) {
   .tools-grid {
     grid-template-columns: minmax(0, 1fr);
-    row-gap: 36px;
   }
-
-  .tools-group {
-    padding-top: 20px;
-  }
-
-  .tools-tile {
-    width: 52px;
-    height: 52px;
-    border-radius: 12px;
-  }
-
-  .tools-tile__icon,
-  .tools-tile__img-contain {
-    width: 32px;
-    height: 32px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tools-tile {
-    transition: none;
-  }
-  .tools-tile:hover {
-    transform: none;
-  }
-}
-
-
-/* Monochrome tool marks (e.g. ChatGPT) take the text colour: white on dark, black on light. */
-.tools-tile__icon {
-  color: var(--text);
-}
-
-/* Logos that ship separate dark and light versions. */
-.theme-light-only {
-  display: none !important;
-}
-
-:root[data-theme="light"] .theme-light-only {
-  display: block !important;
-}
-
-:root[data-theme="light"] .theme-dark-only {
-  display: none !important;
 }
