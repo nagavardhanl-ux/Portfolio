@@ -9,6 +9,7 @@ export const hero = {
 export const capabilities = [
   "Product Marketing",
   "Demand Generation",
+  "Content",
   "Websites & SEO",
   "AI-Led Execution",
 ];
@@ -53,6 +54,10 @@ export const whatIDo = [
   {
     title: "Demand Generation",
     body: "Cold email, LinkedIn outreach and multi-sequence campaigns for partners, products and investors, into the US, UK, Europe, the Middle East and Southeast Asia.",
+  },
+  {
+    title: "Content",
+    body: "I write the blogs, posts and series that bring people to the product, built to rank on Google and show up in AI search.",
   },
   {
     title: "Websites & SEO",

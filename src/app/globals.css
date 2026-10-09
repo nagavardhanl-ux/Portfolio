@@ -3550,3 +3550,39 @@ body:has(.signal-home) .ambient { display:none; }
 :root[data-theme="light"] .tools-tile__img-invert-light {
   filter: invert(1);
 }
+
+/* Section 04: intro, then the tools block, then selected work (same order as 01-03). */
+.cap-row--tools-first,
+.cap-row--tools-first.cap-row--flip {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "text"
+    "full"
+    "work";
+}
+
+.cap-row--tools-first .workflow {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 767px) {
+  .cap-row--tools-first .workflow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Section 05 has four tool stages. */
+.cap-row--tools-first .workflow {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 767px) {
+  .cap-row--tools-first .workflow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Five capability blocks on a two-column grid: the last one spans the row. */
+.do-grid > li:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}

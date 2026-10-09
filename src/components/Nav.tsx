@@ -9,7 +9,6 @@ import ThemeToggle from "./ThemeToggle";
 const links = [
   { href: "/websites/", label: "Websites" },
   { href: "/what-i-do/", label: "What I do" },
-  { href: "/about/", label: "About" },
 ];
 
 const norm = (p: string) => (p.endsWith("/") ? p : `${p}/`);
@@ -81,7 +80,7 @@ export default function Nav() {
 
         <div className="nav__actions">
           <ThemeToggle />
-          <Link href="/about/#contact" className="btn btn--primary btn--sm nav__cta">
+          <Link href="/contact/" className="btn btn--primary btn--sm nav__cta">
             Get in touch
           </Link>
           <button
@@ -114,7 +113,7 @@ export default function Nav() {
               </li>
             ))}
             <li>
-              <Link href="/about/#contact">Get in touch</Link>
+              <Link href="/contact/">Get in touch</Link>
             </li>
           </ul>
         </nav>

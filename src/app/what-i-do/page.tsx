@@ -3,7 +3,7 @@ import { ArrowRight } from "@/components/icons";
 import IndexList from "@/components/IndexList";
 import SectionNav from "@/components/SectionNav";
 import Workflow from "@/components/Workflow";
-import { capabilitySections, whatIDoPage, type Capability } from "@/data/whatIDo";
+import { aiExecutionTools, capabilitySections, whatIDoPage, type Capability } from "@/data/whatIDo";
 import { pageMetadata } from "@/lib/meta";
 
 export const metadata = pageMetadata("/what-i-do/");
@@ -23,7 +23,7 @@ function CapabilityRow({ c, flip }: { c: Capability; flip: boolean }) {
   const extra = extras[c.id];
   const isAi = c.id === "ai-execution";
   return (
-    <section id={c.id} className={`cap-row${flip ? " cap-row--flip" : ""}`} aria-labelledby={`${c.id}-title`}>
+    <section id={c.id} className={`cap-row${flip ? " cap-row--flip" : ""}${isAi ? " cap-row--tools-first" : ""}`} aria-labelledby={`${c.id}-title`}>
       <div className="cap-row__text reveal">
         <p className="cap-row__index" aria-hidden="true">
           {c.index}
@@ -59,7 +59,7 @@ function CapabilityRow({ c, flip }: { c: Capability; flip: boolean }) {
       {isAi && (
         <div className="cap-row__full">
           <Sub>What I do</Sub>
-          <Workflow />
+          <Workflow steps={aiExecutionTools} label="AI-led execution tools" />
         </div>
       )}
     </section>

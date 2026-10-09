@@ -17,21 +17,27 @@ const pad = (n: number) => String(n).padStart(2, "0");
 /** Selected work on the home page: the three live company sites (two built, one managed). */
 const selected = ["venturehub360", "aiqod", "aiqod360"].map(siteById);
 
-function CapabilityArtifact({ index }: { index: number }) {
-  if (index === 0) return (
+function CapabilityArtifact({ title }: { title: string }) {
+  if (title === "Product Marketing") return (
     <div className="signal-artifact signal-positioning" aria-label="Product positioning workflow">
       <div><span>WHO IT&apos;S FOR</span><b>ICP &amp; buyer persona</b></div><i>→</i><div><span>WHY IT MATTERS</span><b>Positioning &amp; messaging</b></div>
       <p>Competitor research <span>·</span> sales material</p>
     </div>
   );
-  if (index === 1) return (
+  if (title === "Demand Generation") return (
     <div className="signal-artifact signal-sequence" aria-label="Demand generation workflow">
       <div className="signal-sequence__head"><span>OUTBOUND / MULTI-SEQUENCE</span><span>EMAIL + LINKEDIN</span></div>
       <ol><li><i>01</i><b>Build and verify the list</b></li><li><i>02</i><b>Write and run the sequence</b></li><li><i>03</i><b>Read replies; refine</b></li></ol>
       <p>US <span>·</span> UK <span>·</span> Europe <span>·</span> Middle East <span>·</span> Southeast Asia</p>
     </div>
   );
-  if (index === 2) return (
+  if (title === "Content") return (
+    <div className="signal-artifact signal-site-work" aria-label="Content workflow">
+      <div className="signal-site-work__bar"><i /><i /><i /><span>CONTENT / RANK + GET CITED</span></div>
+      <div className="signal-site-work__steps"><span><b>01</b>Blog clusters</span><i>→</i><span><b>02</b>Social posts</span><i>→</i><span><b>03</b>SEO · AEO · GEO</span></div>
+    </div>
+  );
+  if (title === "Websites & SEO") return (
     <div className="signal-artifact signal-site-work" aria-label="Website and SEO workflow">
       <div className="signal-site-work__bar"><i /><i /><i /><span>WEBSITE / SHIP + MEASURE</span></div>
       <div className="signal-site-work__steps"><span><b>01</b>Structure &amp; content</span><i>→</i><span><b>02</b>On-page SEO</span><i>→</i><span><b>03</b>Search Console &amp; GA4</span></div>
@@ -157,12 +163,12 @@ export default function Home() {
       {/* Capabilities */}
       <section className="section signal-capabilities" aria-labelledby="do-title" id="capabilities" style={{ paddingTop: 0 }}>
         <div className="container">
-          <SectionHead index="04" label="Capabilities" id="do-title" title="One person, end to end." intro="Product marketing, demand generation, websites and AI-led execution—from the brief to the thing that ships." />
+          <SectionHead index="04" label="Capabilities" id="do-title" title="One person, end to end." intro="Product marketing, demand generation, content, websites and AI-led execution, from the brief to the thing that ships." />
           <ul className="do-grid signal-capability-grid" role="list">
             {whatIDo.map((d, i) => (
               <li key={d.title} className="do-block signal-capability reveal" style={{ ["--delay" as string]: `${i * 55}ms` }}>
-                <div className="signal-capability__title"><span className="num">{pad(i + 1)} / 04</span><h3 className="h3">{d.title}</h3></div>
-                <CapabilityArtifact index={i} />
+                <div className="signal-capability__title"><span className="num">{pad(i + 1)} / {pad(whatIDo.length)}</span><h3 className="h3">{d.title}</h3></div>
+                <CapabilityArtifact title={d.title} />
                 <p className="body">{d.body}</p>
                 <span className="do-block__more" aria-hidden="true">
                   <Link href={`/what-i-do/#${capabilityAnchors[i]}`}>More on {d.title} <ArrowRight className="go" /></Link>

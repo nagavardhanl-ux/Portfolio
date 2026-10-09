@@ -14,7 +14,7 @@ export default function Footer() {
               </a>
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <Link href="/about/#contact" className="btn btn--primary" data-magnetic="">
+              <Link href="/contact/" className="btn btn--primary" data-magnetic="">
                 Get in touch
               </Link>
             </div>
@@ -27,7 +27,7 @@ export default function Footer() {
             <Link href="/">Home</Link>
             <Link href="/websites/">Websites</Link>
             <Link href="/what-i-do/">What I do</Link>
-            <Link href="/about/">About</Link>
+            <Link href="/contact/">Contact</Link>
           </nav>
 
           <div className="footer__links">

@@ -4,10 +4,16 @@ import { aiWorkflow } from "@/data/content";
  * The AI stack as one process: stages on a thin connecting line, tools under each.
  * Horizontal from 768px, a vertical line on phones.
  */
-export default function Workflow({ label = "AI workflow" }: { label?: string }) {
+export default function Workflow({
+  label = "AI workflow",
+  steps = aiWorkflow,
+}: {
+  label?: string;
+  steps?: { step: string; tools: string[] }[];
+}) {
   return (
     <ul className="workflow reveal" role="list" aria-label={label}>
-      {aiWorkflow.map((s, i) => (
+      {steps.map((s, i) => (
         <li key={s.step} className="workflow__stage">
           <span className="workflow__node" aria-hidden="true" />
           <span className="label num">{String(i + 1).padStart(2, "0")}</span>

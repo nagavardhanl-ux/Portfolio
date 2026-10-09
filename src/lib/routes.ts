@@ -25,10 +25,9 @@ export const routeMeta: RouteMeta[] = [
       "Product marketing, demand generation, websites and SEO, and AI-led execution for two AI platforms: what each involves and the work behind it.",
   },
   {
-    path: "/about/",
-    title: "About · Nagavardhan Reddy Lella",
-    description:
-      "From operations and vendor work to running marketing for two AI platforms. The AI workflow and how to get in touch.",
+    path: "/contact/",
+    title: "Contact · Nagavardhan Reddy Lella",
+    description: "Get in touch with Nagavardhan Reddy Lella by email, phone or LinkedIn, or send a message through the form.",
   },
   {
     path: "/theme-directions/",
