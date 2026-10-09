@@ -4,11 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Close, MenuIcon } from "./icons";
-import ThemeToggle from "./ThemeToggle";
 
 const links = [
   { href: "/websites/", label: "Websites" },
   { href: "/what-i-do/", label: "What I do" },
+  { href: "/experience/", label: "Experience" },
 ];
 
 const norm = (p: string) => (p.endsWith("/") ? p : `${p}/`);
@@ -79,7 +79,6 @@ export default function Nav() {
         </nav>
 
         <div className="nav__actions">
-          <ThemeToggle />
           <Link href="/contact/" className="btn btn--primary btn--sm nav__cta">
             Get in touch
           </Link>

@@ -13,7 +13,7 @@ export default function ContactPage() {
           <p className="marker">
             <b>Contact</b>
           </p>
-          <h1 className="h1">Get in touch.</h1>
+          <h1 className="h1">Get in touch</h1>
           <p className="lead">Questions about the work, a role or a website build. Email, call or message on LinkedIn.</p>
         </div>
       </header>

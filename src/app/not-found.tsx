@@ -18,7 +18,7 @@ export default function NotFound() {
           <b>Not found</b>
         </p>
         <h1 id="nf-title" className="h1">
-          This page doesn&apos;t exist.
+          This page doesn&apos;t exist
         </h1>
         <p className="lead">The link may be old, or the address mistyped. Everything else is one click away.</p>
         <div className="notfound__links">

@@ -25,23 +25,23 @@ export const keyFigures = [
 
 export const thread = [
   {
-    title: "Marketing before the title.",
+    title: "Marketing before the title",
     line: "Started in offline marketing: brochures, posters, banners, a venue promo video and a local TV spot, with bookings coming through referrals.",
   },
   {
-    title: "Learning the catalogue.",
+    title: "Learning the catalogue",
     line: "Ran product marketing for a trading company: a 30-product brochure book, pricing sheets, website content, and inbound leads handled over calls.",
   },
   {
-    title: "Getting in.",
+    title: "Getting in",
     line: "First marketing job at an AI company: lead sourcing, content and the first AI tools in the workflow.",
   },
   {
-    title: "Building a brand from nothing.",
+    title: "Building a brand from nothing",
     line: "Rebuilt one company website and built a second as a brand new product and site: brand kit, product copy, sales decks and the website.",
   },
   {
-    title: "Running it.",
+    title: "Running it",
     line: "Now runs marketing for two AI platforms: campaigns into international markets, ICPs across products and markets, SEO and AI search visibility.",
   },
 ];

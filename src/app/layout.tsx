@@ -5,6 +5,7 @@ import BrandCursor from "@/components/BrandCursor";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import RevealObserver from "@/components/RevealObserver";
+import TextHoverEffect from "@/components/TextHoverEffect";
 import { asset, site } from "@/lib/config";
 import "./globals.css";
 
@@ -40,19 +41,18 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#151716",
-  colorScheme: "dark light",
+  themeColor: "#F7F7F2",
+  colorScheme: "light",
 };
 
-// Runs before paint: marks JS as available (enables reveal animations) and
-// applies the saved theme so there's no flash.
-const bootScript = `(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){d.dataset.theme=t;if(t==='light'){var m=document.querySelector('meta[name="theme-color"]');m&&m.setAttribute('content','#F7F7F2')}}}catch(e){}})();`;
+// Runs before paint: marks JS as available. The site is light-only.
+const bootScript = `(function(){document.documentElement.classList.add('js');})();`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
-      data-theme="dark"
+      data-theme="light"
       suppressHydrationWarning
       className={`${fraunces.variable} ${inter.variable} ${jetbrains.variable}`}
     >
@@ -70,6 +70,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {children}
         </main>
         <Footer />
+        <section className="name-statement" aria-label="Nagavardhan">
+          <TextHoverEffect text="NAGAVARDHAN" />
+        </section>
         <RevealObserver />
       </body>
     </html>

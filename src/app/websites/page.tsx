@@ -20,7 +20,7 @@ export default function WebsitesPage() {
           <p className="marker">
             <b>Websites</b>
           </p>
-          <h1 className="h1">{cap(word(sites.length))} websites, shipped and managed.</h1>
+          <h1 className="h1">{cap(word(sites.length))} websites, shipped and managed</h1>
           <p className="lead">
             {cap(word(companies))} company sites and {word(concepts)} concept builds. Each preview plays a short
             scroll-through; select one to use the real site in place. On a phone, each opens in its own tab.

@@ -7,6 +7,7 @@ import SiteCard from "@/components/SiteCard";
 import ToolsGrid from "@/components/ToolsGrid";
 import { aiWorkflow, hero, keyFigures, thread, whatIDo } from "@/data/content";
 import { siteById } from "@/data/sites";
+import { shipped } from "@/data/shipped";
 import { capabilityAnchors } from "@/data/whatIDo";
 import { pageMetadata } from "@/lib/meta";
 
@@ -51,17 +52,14 @@ function CapabilityArtifact({ title }: { title: string }) {
 }
 
 export default function Home() {
-  const [first, second] = hero.headline.split(". ");
+  const [first] = hero.headline.split(". ");
   return (
     <div className="signal-home">
       {/* Hero */}
-      <section className="hero signal-hero" aria-labelledby="hero-title">
+      <section className="hero signal-hero hero--center" aria-labelledby="hero-title">
         <div className="container">
-          <p className="marker hero__eyebrow">
-            <b>{hero.eyebrow}</b>
-          </p>
           <h1 id="hero-title" className="display hero__title">
-            {first}.<span className="line2">{second}</span>
+            {first}
           </h1>
           <div className="hero__foot">
             <div>
@@ -79,7 +77,6 @@ export default function Home() {
       {/* Proof points */}
       <section className="signal-proof" aria-label="At a glance">
         <div className="container signal-proof__inner">
-          <p className="marker"><span className="num">01</span><b>At a glance</b></p>
           <dl className="figures">
             {keyFigures.map((f) => (
               <div key={f.label}>
@@ -99,7 +96,7 @@ export default function Home() {
             index="02"
             label="Selected work"
             id="work-title"
-            title="Three company sites."
+            title="Three company sites"
             intro="VentureHub360, built from scratch; AIQoD, rebuilt from its previous version; and AIQoD360, which I manage. Each preview plays a short scroll-through of the real site."
           />
           <div className="site-gallery">
@@ -139,12 +136,8 @@ export default function Home() {
       <section className="section" aria-labelledby="thread-title">
         <div className="container thread">
           <div className="thread__aside reveal">
-            <p className="marker">
-              <span className="num">03</span>
-              <b>Career story</b>
-            </p>
             <h2 id="thread-title" className="h2">
-              From brochures to two AI platforms.
+              From brochures to two AI platforms
             </h2>
             <p className="body">Five steps, each one adding to the last.</p>
           </div>
@@ -163,7 +156,7 @@ export default function Home() {
       {/* Capabilities */}
       <section className="section signal-capabilities" aria-labelledby="do-title" id="capabilities" style={{ paddingTop: 0 }}>
         <div className="container">
-          <SectionHead index="04" label="Capabilities" id="do-title" title="One person, end to end." intro="Product marketing, demand generation, content, websites and AI-led execution, from the brief to the thing that ships." />
+          <SectionHead index="04" label="Capabilities" id="do-title" title="One person, end to end" intro="Product marketing, demand generation, content, websites and AI-led execution, from the brief to the thing that ships." />
           <ul className="do-grid signal-capability-grid" role="list">
             {whatIDo.map((d, i) => (
               <li key={d.title} className="do-block signal-capability reveal" style={{ ["--delay" as string]: `${i * 55}ms` }}>
@@ -179,10 +172,26 @@ export default function Home() {
         </div>
       </section>
 
+      {/* What I've shipped */}
+      <section className="section" aria-labelledby="shipped-title" id="shipped" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <SectionHead index="05" label="Shipped" id="shipped-title" title="What I&apos;ve shipped" intro="A sample of the work behind the roles." />
+          <ul className="shipped-grid" role="list">
+            {shipped.map((c, i) => (
+              <li key={c.label} className="shipped-card reveal" style={{ ["--delay" as string]: `${(i % 4) * 40}ms` }}>
+                {c.figure ? <span className="shipped-card__figure">{c.figure}</span> : <span className="shipped-card__index num">{pad(i + 1)}</span>}
+                <h3 className="shipped-card__label">{c.label}</h3>
+                <p className="shipped-card__detail">{c.detail}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* The tools I work with */}
       <section className="section signal-tools" aria-labelledby="tools-title" id="tools" style={{ paddingTop: 0 }}>
         <div className="container">
-          <SectionHead index="05" label="Tools in the workflow" id="tools-title" title="The tools I work with." intro="The real AI and marketing tools used, grouped by what they're used for." />
+          <SectionHead index="06" label="Tools in the workflow" id="tools-title" title="The tools I work with" intro="The real AI and marketing tools used, grouped by what they're used for." />
           <ToolsGrid />
         </div>
       </section>
