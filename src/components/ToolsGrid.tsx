@@ -1,8 +1,26 @@
-import Image from "next/image";
 import { asset } from "@/lib/config";
 import type { ComponentType, SVGProps } from "react";
 
 type IconProps = SVGProps<SVGSVGElement>;
+
+/** File-based logo: one eagerly loaded image, sized by the tile. */
+function Logo({ file, alt, className = "" }: { file: string; alt: string; className?: string }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element -- static export; tiny logos load immediately
+    <img
+      src={asset(`icons/${file}`)}
+      alt={alt}
+      width={36}
+      height={36}
+      loading="eager"
+      decoding="async"
+      className={`tools-tile__img-contain ${className}`.trim()}
+    />
+  );
+}
+
+const OPENAI_MARK =
+  "M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z";
 
 /* -------------------------------------------------------------------------
    Official Full-Color Brand SVGs & Icons
@@ -96,17 +114,9 @@ function IconApollo(props: IconProps) {
   );
 }
 
-// 6. Seamless.AI — official app icon from seamless.ai (public/icons/seamless-webclip.png)
+// Seamless.AI — official app icon from seamless.ai
 function IconSeamless() {
-  return (
-    <Image
-      src={asset("icons/seamless-webclip.png")}
-      alt="Seamless.AI"
-      width={36}
-      height={36}
-      className="tools-tile__img-contain"
-    />
-  );
+  return <Logo file="seamless-webclip.png" alt="Seamless.AI" />;
 }
 
 // 7. YAMM (Yet Another Mail Merge) — Official brand SVG
@@ -154,24 +164,13 @@ function IconYAMM(props: IconProps) {
   );
 }
 
-// 8. AIQoD — Official Campaign & Agentic AI logo
-function IconAIQoD() {
-  return (
-    <Image
-      src={asset("icons/aiqod.png")}
-      alt="AIQoD"
-      width={48}
-      height={32}
-      className="tools-tile__img-contain"
-    />
-  );
-}
 
 // 9. ZeroBounce — Official ZeroBounce BIMI SVG
 function IconZeroBounce(props: IconProps) {
   return (
     <svg viewBox="0 0 300 300" aria-hidden="true" focusable="false" {...props}>
       <rect width="300" height="300" rx="60" fill="#573BFF" />
+      <g transform="translate(150 150) scale(2.05) translate(-107.5 -128.5)">
       {/* Dynamic bouncing wave & envelope paper plane */}
       <path
         d="M43.5 118c21.7-5.6 58.6-9.6 72.3 21.3.2.4.6.6 1 .4.2-.1.4-.3.4-.5 1-4 5.2-11 20.5-16.6.4-.2.8 0 1 .4s0 .8-.4 1c-7.2 4.2-17.3 11.2-20.9 19.6 0 0-.2 1-.7.1 0 0-16.6-33.6-72.9-24.4-.4 0-.7-.4-.7-.8.1-.4.3-.6.7-.9Z"
@@ -185,33 +184,14 @@ function IconZeroBounce(props: IconProps) {
           fillRule="evenodd"
         />
       </g>
-      <text
-        x="150"
-        y="235"
-        textAnchor="middle"
-        fill="#FFFFFF"
-        fontSize="34"
-        fontFamily="system-ui, -apple-system, sans-serif"
-        fontWeight="800"
-        letterSpacing="2"
-      >
-        ZEROBOUNCE
-      </text>
+      </g>
     </svg>
   );
 }
 
-// 10. NeverBounce — Official high-resolution 256x256 mark
+// NeverBounce — official mark
 function IconNeverBounce() {
-  return (
-    <Image
-      src={asset("icons/neverbounce.png")}
-      alt="NeverBounce"
-      width={40}
-      height={40}
-      className="tools-tile__img-contain"
-    />
-  );
+  return <Logo file="neverbounce.png" alt="NeverBounce" />;
 }
 
 // 11. ChatGPT (OpenAI) — current monochrome mark; follows the text colour (white on dark, black on light)
@@ -219,7 +199,7 @@ function IconOpenAI(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" {...props}>
       <path
-        d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"
+        d={OPENAI_MARK}
         fill="currentColor"
       />
     </svg>
@@ -328,33 +308,31 @@ function IconCanva(props: IconProps) {
   );
 }
 
-// 18. HeyGen — HeyGen's mark in its brand gradient (public/icons/heygen-logo.png)
+// HeyGen — HeyGen's mark in its brand gradient
 function IconHeyGen() {
+  return <Logo file="heygen-logo.png" alt="HeyGen" />;
+}
+
+// Google Flow — official Flow favicon (white); one image, inverted to black in light mode
+function IconGoogleFlow() {
+  return <Logo file="flow-w.png" alt="Google Flow" className="tools-tile__img-invert-light" />;
+}
+
+// Codex — OpenAI mark on the blue disc used for Codex on developers.openai.com
+function IconCodex(props: IconProps) {
   return (
-    <Image src={asset("icons/heygen-logo.png")} alt="HeyGen" width={36} height={36} className="tools-tile__img-contain" />
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" {...props}>
+      <circle cx="12" cy="12" r="12" fill="#0080F7" />
+      <g transform="translate(4.8 4.8) scale(0.6)">
+        <path d={OPENAI_MARK} fill="#FFFFFF" />
+      </g>
+    </svg>
   );
 }
 
-// 19. Google Flow — official Flow favicon from flow.google.com: white on dark, black on light
-function IconGoogleFlow() {
-  return (
-    <>
-      <Image
-        src={asset("icons/flow-w.png")}
-        alt="Google Flow"
-        width={40}
-        height={32}
-        className="tools-tile__img-contain theme-dark-only"
-      />
-      <Image
-        src={asset("icons/flow-b.png")}
-        alt="Google Flow"
-        width={40}
-        height={32}
-        className="tools-tile__img-contain theme-light-only"
-      />
-    </>
-  );
+// MillionVerifier — the check from the official MillionVerifier logo
+function IconMillionVerifier() {
+  return <Logo file="millionverifier-mark.png" alt="MillionVerifier" />;
 }
 
 /* -------------------------------------------------------------------------
@@ -380,32 +358,26 @@ const groups: ToolGroup[] = [
       { name: "Lovable", Icon: IconLovable },
       { name: "Antigravity", Icon: IconAntigravity },
       { name: "Claude Code", Icon: IconClaude },
+      { name: "Codex", Icon: IconCodex },
     ],
   },
   {
     heading: "Lead generation",
     caption: "Target lists, prospect data and enrichment.",
     tools: [
-      { name: "Hunter.io", Icon: IconHunter },
       { name: "Apollo", Icon: IconApollo },
-      { name: "Seamless AI", Icon: IconSeamless },
+      { name: "Hunter", Icon: IconHunter },
+      { name: "Seamless.AI", Icon: IconSeamless },
     ],
   },
   {
-    heading: "Email sending & campaigns",
-    caption: "Mail merge, automated sequences and outreach.",
+    heading: "Email and outreach",
+    caption: "Mail merge, sequences and list cleaning.",
     tools: [
       { name: "YAMM", Icon: IconYAMM },
-      { name: "AIQoD", Icon: IconAIQoD },
-    ],
-  },
-  {
-    heading: "Email validation",
-    caption: "List cleaning, deliverability and bounce prevention.",
-    tools: [
       { name: "ZeroBounce", Icon: IconZeroBounce },
       { name: "NeverBounce", Icon: IconNeverBounce },
-      { name: "Hunter.io", Icon: IconHunter },
+      { name: "MillionVerifier", Icon: IconMillionVerifier },
     ],
   },
   {
@@ -418,29 +390,21 @@ const groups: ToolGroup[] = [
     ],
   },
   {
-    heading: "SEO & analytics",
-    caption: "Search visibility, keyword strategy and performance.",
+    heading: "Content and video",
+    caption: "Creatives, product videos and AI avatar videos.",
+    tools: [
+      { name: "Canva", Icon: IconCanva },
+      { name: "HeyGen", Icon: IconHeyGen },
+      { name: "Google Flow", Icon: IconGoogleFlow },
+    ],
+  },
+  {
+    heading: "SEO and analytics",
+    caption: "Search visibility, keywords and performance.",
     tools: [
       { name: "Google Search Console", Icon: IconGoogleSearchConsole },
       { name: "Google Analytics 4", Icon: IconGoogleAnalytics },
       { name: "Google Keyword Planner", Icon: IconGoogleAds },
-    ],
-  },
-  {
-    heading: "Images & creatives",
-    caption: "Visual assets, AI generations and creative design.",
-    tools: [
-      { name: "Canva", Icon: IconCanva },
-      { name: "ChatGPT", Icon: IconOpenAI },
-      { name: "Google Flow", Icon: IconGoogleFlow },
-    ],
-  },
-  {
-    heading: "Video",
-    caption: "AI avatars, product videos and motion.",
-    tools: [
-      { name: "HeyGen", Icon: IconHeyGen },
-      { name: "Google Flow", Icon: IconGoogleFlow },
     ],
   },
 ];

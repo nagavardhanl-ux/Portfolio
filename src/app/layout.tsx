@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import AmbientField from "@/components/AmbientField";
+import BrandCursor from "@/components/BrandCursor";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import RevealObserver from "@/components/RevealObserver";
@@ -39,13 +40,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0B0B0C",
+  themeColor: "#151716",
   colorScheme: "dark light",
 };
 
 // Runs before paint: marks JS as available (enables reveal animations) and
 // applies the saved theme so there's no flash.
-const bootScript = `(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){d.dataset.theme=t;if(t==='light'){var m=document.querySelector('meta[name="theme-color"]');m&&m.setAttribute('content','#FFFFFF')}}}catch(e){}})();`;
+const bootScript = `(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){d.dataset.theme=t;if(t==='light'){var m=document.querySelector('meta[name="theme-color"]');m&&m.setAttribute('content','#F7F7F2')}}}catch(e){}})();`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body>
         <AmbientField />
+        <BrandCursor />
         <a className="skip-link" href="#main">
           Skip to content
         </a>

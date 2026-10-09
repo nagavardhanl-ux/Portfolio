@@ -28,9 +28,6 @@ export default function NotFound() {
           <Link href="/websites/" className="btn btn--ghost">
             Websites
           </Link>
-          <Link href="/icp-builder/" className="btn btn--ghost">
-            ICP builder
-          </Link>
         </div>
       </div>
     </section>

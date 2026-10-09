@@ -12,8 +12,6 @@ const Sub = ({ children }: { children: React.ReactNode }) => <h3 className="mark
 
 /** Extra link under each section's selected work, where there is one. */
 const extras: Record<string, { href: string; label: string; primary?: boolean }> = {
-  "product-marketing": { href: "/marketing/", label: "See the collateral and ICP samples" },
-  "demand-generation": { href: "/marketing/", label: "See the marketing work" },
   "websites-seo": { href: "/websites/", label: "See all eight websites", primary: true },
 };
 

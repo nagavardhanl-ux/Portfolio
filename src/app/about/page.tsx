@@ -1,5 +1,4 @@
 import ContactForm from "@/components/ContactForm";
-import CvButton from "@/components/CvButton";
 import { ArrowUpRight } from "@/components/icons";
 import SectionHead from "@/components/SectionHead";
 import Workflow from "@/components/Workflow";
@@ -24,7 +23,6 @@ export default function AboutPage() {
             <h1 className="h1">From operations to two AI platforms.</h1>
             <p className="about-text">{about}</p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <CvButton variant="primary" />
               <a className="btn btn--ghost" href={contact.linkedin} target="_blank" rel="noopener noreferrer">
                 LinkedIn <ArrowUpRight />
                 <span className="sr-only">(opens in a new tab)</span>

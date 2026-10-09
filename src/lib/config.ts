@@ -19,17 +19,6 @@ export const contact = {
 };
 
 /**
- * CV download. The PDF lives at public/cv/Nagavardhan-Reddy-Lella-CV.pdf.
- * Replace that file to update the CV. Set `available: false` to disable every
- * "Download CV" button without touching layout.
- */
-export const cv = {
-  available: true,
-  path: "cv/Nagavardhan-Reddy-Lella-CV.pdf",
-  fileName: "Nagavardhan-Reddy-Lella-CV.pdf",
-};
-
-/**
  * Contact form.
  * PLACEHOLDER: create a form at formspree.io and paste its ID (the part after /f/).
  * While empty, the form says it is not connected yet and offers email instead.

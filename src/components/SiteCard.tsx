@@ -39,7 +39,7 @@ export default function SiteCard({
         </H>
         <p className="body">{site.line}</p>
         <p className="site-card__links">
-          <a className="arrow-link" data-external="" href={site.embedUrl} target="_blank" rel="noopener noreferrer">
+          <a className="arrow-link" data-external="" data-cursor="VISIT" href={site.embedUrl} target="_blank" rel="noopener noreferrer">
             Open live site <ArrowUpRight />
             <span className="sr-only">(opens {site.name} in a new tab)</span>
           </a>

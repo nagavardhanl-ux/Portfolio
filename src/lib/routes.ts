@@ -25,22 +25,16 @@ export const routeMeta: RouteMeta[] = [
       "Product marketing, demand generation, websites and SEO, and AI-led execution for two AI platforms: what each involves and the work behind it.",
   },
   {
-    path: "/marketing/",
-    title: "Marketing work · Nagavardhan Reddy Lella",
-    description:
-      "The actual things I made: collateral, ICP and positioning work, and video for two AI platforms.",
-  },
-  {
-    path: "/icp-builder/",
-    title: "ICP builder · Nagavardhan Reddy Lella",
-    description:
-      "Pick an industry, company size and region. Get who to sell to, three pain points, three job titles to target and an opening line.",
-  },
-  {
     path: "/about/",
     title: "About · Nagavardhan Reddy Lella",
     description:
-      "From operations and vendor work to running marketing for two AI platforms. The AI workflow, the CV and how to get in touch.",
+      "From operations and vendor work to running marketing for two AI platforms. The AI workflow and how to get in touch.",
+  },
+  {
+    path: "/theme-directions/",
+    title: "Portfolio theme directions · Nagavardhan Reddy Lella",
+    description:
+      "Compare three editorial design directions for Nagavardhan Reddy Lella's portfolio, with desktop and mobile previews of the same work, career story and capabilities.",
   },
 ];
 

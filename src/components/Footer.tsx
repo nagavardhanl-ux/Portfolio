@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { contact, site } from "@/lib/config";
-import CvButton from "./CvButton";
 
 export default function Footer() {
   return (
@@ -8,17 +7,16 @@ export default function Footer() {
       <div className="container">
         <div className="footer__top">
           <div className="stack" style={{ ["--stack" as string]: "24px" }}>
-            <p className="h2">Marketing, and the site it runs on.</p>
+            <p className="footer__statement">Marketing, and the site it runs on.</p>
             <p className="body">
               <a className="link" href={`mailto:${contact.email}`}>
                 {contact.email}
               </a>
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <Link href="/about/#contact" className="btn btn--primary">
+              <Link href="/about/#contact" className="btn btn--primary" data-magnetic="">
                 Get in touch
               </Link>
-              <CvButton />
             </div>
           </div>
 
@@ -29,8 +27,6 @@ export default function Footer() {
             <Link href="/">Home</Link>
             <Link href="/websites/">Websites</Link>
             <Link href="/what-i-do/">What I do</Link>
-            <Link href="/marketing/">Marketing</Link>
-            <Link href="/icp-builder/">ICP builder</Link>
             <Link href="/about/">About</Link>
           </nav>
 
