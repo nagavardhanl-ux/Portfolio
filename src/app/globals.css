@@ -4024,3 +4024,9 @@ body:has(.signal-home) .footer {
 .signal-home .signal-proof__inner {
   grid-template-columns: minmax(0, 1fr);
 }
+
+/* Name statement: filled letters, more visible at rest. */
+.text-hover__base {
+  fill: var(--text-2);
+  opacity: 0.3;
+}
