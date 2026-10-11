@@ -431,16 +431,11 @@ export default function ToolsGrid() {
               <li
                 key={`${tool.name}-${idx}`}
                 className="tools-tile"
-                title={tool.name}
-                aria-label={tool.name}
-                tabIndex={0}
               >
                 <span className="tools-tile__icon" aria-hidden="true">
                   <tool.Icon />
                 </span>
-                <span className="tools-tile__tooltip" role="tooltip">
-                  {tool.name}
-                </span>
+                <span className="tools-tile__name">{tool.name}</span>
               </li>
             ))}
           </ul>

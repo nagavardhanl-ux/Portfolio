@@ -2,7 +2,7 @@ import { sites } from "./sites";
 
 export const hero = {
   eyebrow: "Nagavardhan Reddy Lella",
-  headline: "B2B marketer. I build the websites too.",
+  headline: "B2B marketer and I also build websites",
   sub: "I run marketing for two AI platforms, and I build the sites, the content and the campaigns that go with them.",
 };
 

@@ -49,11 +49,9 @@ export default function TextHoverEffect({ text }: { text: string }) {
     >
       <defs>
         <linearGradient id={`grad-${id}`} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="300" y2="0">
-          <stop offset="0%" stopColor="#3B5BFF" />
-          <stop offset="30%" stopColor="#6D7CFF" />
-          <stop offset="55%" stopColor="#8FA8FF" />
-          <stop offset="78%" stopColor="#B9A8FF" />
-          <stop offset="100%" stopColor="#3B5BFF" />
+          <stop offset="0%" stopColor="#6366F1" />
+          <stop offset="50%" stopColor="#A855F7" />
+          <stop offset="100%" stopColor="#EC4899" />
         </linearGradient>
         <radialGradient id={`reveal-${id}`} gradientUnits="userSpaceOnUse" r={60} cx={pos.cx} cy={pos.cy}>
           <stop offset="0%" stopColor="white" />

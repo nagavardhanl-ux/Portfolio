@@ -41,18 +41,18 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F7F7F2",
-  colorScheme: "light",
+  themeColor: "#0B0E18",
+  colorScheme: "dark light",
 };
 
-// Runs before paint: marks JS as available. The site is light-only.
-const bootScript = `(function(){document.documentElement.classList.add('js');})();`;
+// Runs before paint: marks JS as available and applies the saved theme (default dark) so there's no flash.
+const bootScript = `(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='light'){d.dataset.theme='light';var m=document.querySelector('meta[name="theme-color"]');m&&m.setAttribute('content','#FDFEFF');}}catch(e){}})();`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
-      data-theme="light"
+      data-theme="dark"
       suppressHydrationWarning
       className={`${fraunces.variable} ${inter.variable} ${jetbrains.variable}`}
     >

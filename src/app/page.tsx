@@ -9,6 +9,7 @@ import { aiWorkflow, hero, keyFigures, thread, whatIDo } from "@/data/content";
 import { siteById } from "@/data/sites";
 import { shipped } from "@/data/shipped";
 import { capabilityAnchors } from "@/data/whatIDo";
+import { asset } from "@/lib/config";
 import { pageMetadata } from "@/lib/meta";
 
 export const metadata = pageMetadata("/");
@@ -57,6 +58,19 @@ export default function Home() {
     <div className="signal-home">
       {/* Hero */}
       <section className="hero signal-hero hero--center" aria-labelledby="hero-title">
+        <div className="hero__video-bg" aria-hidden="true">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="hero__video-media"
+          >
+            <source src={asset("hero-bg.mp4")} type="video/mp4" />
+          </video>
+          <div className="hero__video-overlay" />
+        </div>
         <div className="container">
           <h1 id="hero-title" className="display hero__title">
             {first}
