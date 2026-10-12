@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Close, MenuIcon } from "./icons";
-import ThemeToggle from "./ThemeToggle";
 
 const links = [
   { href: "/websites/", label: "Websites" },
@@ -79,7 +78,6 @@ export default function Nav() {
         </nav>
 
         <div className="nav__actions">
-          <ThemeToggle />
           <Link href="/contact/" className="btn btn--primary btn--sm nav__cta">
             Get in touch
           </Link>

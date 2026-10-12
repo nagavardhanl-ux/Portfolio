@@ -1,94 +1,461 @@
 import Link from "next/link";
 import { ArrowRight } from "@/components/icons";
-import IndexList from "@/components/IndexList";
-import SectionNav from "@/components/SectionNav";
-import Workflow from "@/components/Workflow";
-import { aiExecutionTools, capabilitySections, whatIDoPage, type Capability } from "@/data/whatIDo";
+import Shot from "@/components/Shot";
+import { whatIDoPage, capabilitySections } from "@/data/whatIDo";
 import { pageMetadata } from "@/lib/meta";
 
 export const metadata = pageMetadata("/what-i-do/");
 
-const Sub = ({ children }: { children: React.ReactNode }) => <h3 className="marker cap__sub">{children}</h3>;
-
-/** Extra link under each section's selected work, where there is one. */
-const extras: Record<string, { href: string; label: string; primary?: boolean }> = {
-  "websites-seo": { href: "/websites/", label: "See all eight websites", primary: true },
-};
-
-/**
- * One capability as a full-width row: text on one side, selected work on the
- * other, flipping every other row. On phones it stacks text first, then work.
- */
-function CapabilityRow({ c, flip }: { c: Capability; flip: boolean }) {
-  const extra = extras[c.id];
-  const isAi = c.id === "ai-execution";
-  return (
-    <section id={c.id} className={`cap-row${flip ? " cap-row--flip" : ""}${isAi ? " cap-row--tools-first" : ""}`} aria-labelledby={`${c.id}-title`}>
-      <div className="cap-row__text reveal">
-        <p className="cap-row__index" aria-hidden="true">
-          {c.index}
-        </p>
-        <h2 className="h2" id={`${c.id}-title`}>
-          {c.title}
-        </h2>
-        <p className="lead">{c.intro}</p>
-        {!isAi && (
-          <>
-            <Sub>What I do</Sub>
-            <ul className="dash-list" role="list">
-              {c.points.map((p) => (
-                <li key={p}>{p}</li>
-              ))}
-            </ul>
-          </>
-        )}
-      </div>
-
-      <div className="cap-row__work">
-        <Sub>Selected work</Sub>
-        <IndexList items={c.work} label={`${c.title}: selected work`} />
-        {extra && (
-          <p className="reveal">
-            <Link href={extra.href} className={extra.primary ? "btn btn--primary" : "arrow-link"}>
-              {extra.label} <ArrowRight />
-            </Link>
-          </p>
-        )}
-      </div>
-
-      {isAi && (
-        <div className="cap-row__full">
-          <Sub>What I do</Sub>
-          <Workflow steps={aiExecutionTools} label="AI-led execution tools" />
-        </div>
-      )}
-    </section>
-  );
-}
-
 export default function WhatIDoPage() {
+  const [pm, dg, content, web, ai] = capabilitySections;
+
   return (
-    <>
-      <header className="page-head">
-        <div className="container">
-          <p className="marker">
-            <b>Capabilities</b>
-          </p>
-          <h1 className="h1">{whatIDoPage.heading}</h1>
-          <p className="lead">{whatIDoPage.intro}</p>
+    <main className="wid-page">
+      {/* ── Page Hero ────────────────────────────────────────── */}
+      <header className="wid-hero">
+        <div className="wid-container">
+          <div className="wid-hero__eyebrow">
+            <span className="wid-hero__dot" aria-hidden="true" />
+            <span>CAPABILITIES · 01 TO 05</span>
+          </div>
+          <h1 className="wid-hero__title">{whatIDoPage.heading}</h1>
+          <p className="wid-hero__intro">{whatIDoPage.intro}</p>
+
+          <nav className="wid-quicknav" aria-label="Capabilities jump list">
+            <a href="#product-marketing" className="wid-quicknav__link">
+              <span className="wid-quicknav__num">01</span>
+              <span>Product Marketing</span>
+            </a>
+            <span className="wid-quicknav__divider" aria-hidden="true">/</span>
+            <a href="#demand-generation" className="wid-quicknav__link">
+              <span className="wid-quicknav__num">02</span>
+              <span>Demand Generation</span>
+            </a>
+            <span className="wid-quicknav__divider" aria-hidden="true">/</span>
+            <a href="#content" className="wid-quicknav__link">
+              <span className="wid-quicknav__num">03</span>
+              <span>Content</span>
+            </a>
+            <span className="wid-quicknav__divider" aria-hidden="true">/</span>
+            <a href="#websites-seo" className="wid-quicknav__link">
+              <span className="wid-quicknav__num">04</span>
+              <span>Websites &amp; SEO</span>
+            </a>
+            <span className="wid-quicknav__divider" aria-hidden="true">/</span>
+            <a href="#ai-execution" className="wid-quicknav__link">
+              <span className="wid-quicknav__num">05</span>
+              <span>AI-Led Execution</span>
+            </a>
+          </nav>
         </div>
       </header>
 
-      <div className="container wid">
-        <aside className="wid__aside">
-          <SectionNav items={capabilitySections} />
-        </aside>
-        <div className="wid__main">
-          {capabilitySections.map((c, i) => (
-            <CapabilityRow key={c.id} c={c} flip={i % 2 === 1} />
-          ))}
-        </div>
+      <div className="wid-container">
+        {/* ── 01. Product Marketing ───────────────────────────── */}
+        <section id="product-marketing" className="wid-section" aria-labelledby="pm-title">
+          <div className="wid-sec__header">
+            <div className="wid-sec__meta">
+              <span className="wid-sec__num">01</span>
+              <span className="wid-sec__tag">POSITIONING &amp; GO-TO-MARKET</span>
+            </div>
+            <h2 id="pm-title" className="wid-sec__title">{pm.title}</h2>
+            <p className="wid-sec__lead">{pm.intro}</p>
+          </div>
+
+          <div className="wid-split wid-split--5-7">
+            <div className="wid-col-text">
+              <h3 className="wid-subheading">What I Do</h3>
+              <ul className="wid-dash-list" role="list">
+                {pm.points.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ul>
+
+              <h3 className="wid-subheading">Selected Deliverables</h3>
+              <ul className="wid-work-index" role="list">
+                {pm.work.map((w, i) => (
+                  <li key={w} className="wid-work-item">
+                    <span className="wid-work-num">{String(i + 1).padStart(2, "0")}</span>
+                    <span>{w}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="wid-col-specimen">
+              <div className="wid-specimen">
+                <div className="wid-specimen__head">
+                  <div className="wid-specimen__title">Smart AI Investor · B2B ICP Segment Matrix</div>
+                  <span className="wid-specimen__pill">80+ Segment Playbook</span>
+                </div>
+
+                <div className="wid-matrix">
+                  <div className="wid-matrix__row">
+                    <span className="wid-matrix__key">Target Segment</span>
+                    <span className="wid-matrix__val">Enterprise Growth Funds &amp; Family Offices</span>
+                  </div>
+                  <div className="wid-matrix__row">
+                    <span className="wid-matrix__key">Decision Makers</span>
+                    <span className="wid-matrix__val">Managing Directors, Partners, Head of M&amp;A</span>
+                  </div>
+                  <div className="wid-matrix__row">
+                    <span className="wid-matrix__key">Core Friction</span>
+                    <span className="wid-matrix__val">Manual screening bottlenecks across 100+ weekly pitch decks</span>
+                  </div>
+                  <div className="wid-matrix__row">
+                    <span className="wid-matrix__key">Buying Trigger</span>
+                    <span className="wid-matrix__val">Need to scale pipeline evaluation throughput without analyst headcount</span>
+                  </div>
+                  <div className="wid-matrix__row">
+                    <span className="wid-matrix__key">Positioning Angle</span>
+                    <span className="wid-matrix__val">Agentic dealflow scoring: automated synthesis in minutes, not days</span>
+                  </div>
+                </div>
+
+                <div className="wid-competitor-strip">
+                  <span className="wid-competitor-strip__label">Competitor Positioning &amp; Battlecards</span>
+                  <div className="wid-competitor-strip__tags">
+                    <span className="wid-tag">PitchBook</span>
+                    <span className="wid-tag">Affinity</span>
+                    <span className="wid-tag">Harmonic</span>
+                    <span className="wid-tag">VentureHub360 vs Market</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 02. Demand Generation ───────────────────────────── */}
+        <section id="demand-generation" className="wid-section" aria-labelledby="dg-title">
+          <div className="wid-sec__header">
+            <div className="wid-sec__meta">
+              <span className="wid-sec__num">02</span>
+              <span className="wid-sec__tag">OUTBOUND &amp; PIPELINE ARCHITECTURE</span>
+            </div>
+            <h2 id="dg-title" className="wid-sec__title">{dg.title}</h2>
+            <p className="wid-sec__lead">{dg.intro}</p>
+          </div>
+
+          <div className="wid-split wid-split--7-5">
+            <div className="wid-col-specimen">
+              <div className="wid-specimen">
+                <div className="wid-specimen__head">
+                  <div className="wid-specimen__title">Verified Investor Outreach Database</div>
+                  <span className="wid-specimen__pill">2,300+ Verified Records</span>
+                </div>
+
+                <div className="wid-stats-grid">
+                  <div className="wid-stat-box">
+                    <span className="wid-stat-val">1,221</span>
+                    <span className="wid-stat-lbl">Angel Investors</span>
+                    <span className="wid-stat-sub">Active check-writers &amp; syndicates</span>
+                  </div>
+                  <div className="wid-stat-box">
+                    <span className="wid-stat-val">835</span>
+                    <span className="wid-stat-lbl">Family Offices</span>
+                    <span className="wid-stat-sub">Single &amp; multi-family offices</span>
+                  </div>
+                  <div className="wid-stat-box">
+                    <span className="wid-stat-val">263</span>
+                    <span className="wid-stat-lbl">VC Firms</span>
+                    <span className="wid-stat-sub">Early &amp; growth-stage funds</span>
+                  </div>
+                </div>
+
+                <div className="wid-pipeline-flow">
+                  <div className="wid-pipeline-step">
+                    <span className="wid-pipeline-icon">01</span>
+                    <div>
+                      <strong style={{ color: "var(--text, #F4F0E8)" }}>Apollo Target Sourcing:</strong> Custom industry filters and scoring formula to identify verified decision-makers.
+                    </div>
+                  </div>
+                  <div className="wid-pipeline-step">
+                    <span className="wid-pipeline-icon">02</span>
+                    <div>
+                      <strong style={{ color: "var(--text, #F4F0E8)" }}>ZeroBounce &amp; MillionVerifier:</strong> List verification before dispatch to protect sender reputation and prevent burned domains.
+                    </div>
+                  </div>
+                  <div className="wid-pipeline-step">
+                    <span className="wid-pipeline-icon">03</span>
+                    <div>
+                      <strong style={{ color: "var(--text, #F4F0E8)" }}>Multi-Channel Dispatch:</strong> Personalized cold email sequences, LinkedIn outreach, and WhatsApp Business API workflows.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="wid-col-text">
+              <h3 className="wid-subheading">What I Do</h3>
+              <ul className="wid-dash-list" role="list">
+                {dg.points.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ul>
+
+              <h3 className="wid-subheading">Selected Deliverables</h3>
+              <ul className="wid-work-index" role="list">
+                {dg.work.map((w, i) => (
+                  <li key={w} className="wid-work-item">
+                    <span className="wid-work-num">{String(i + 1).padStart(2, "0")}</span>
+                    <span>{w}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 03. Content ─────────────────────────────────────── */}
+        <section id="content" className="wid-section" aria-labelledby="content-title">
+          <div className="wid-sec__header">
+            <div className="wid-sec__meta">
+              <span className="wid-sec__num">03</span>
+              <span className="wid-sec__tag">EDITORIAL &amp; AI SEARCH (SEO · AEO · GEO)</span>
+            </div>
+            <h2 id="content-title" className="wid-sec__title">{content.title}</h2>
+            <p className="wid-sec__lead">{content.intro}</p>
+          </div>
+
+          <div className="wid-split wid-split--5-7">
+            <div className="wid-col-text">
+              <h3 className="wid-subheading">What I Do</h3>
+              <ul className="wid-dash-list" role="list">
+                {content.points.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ul>
+
+              <h3 className="wid-subheading">Selected Deliverables</h3>
+              <ul className="wid-work-index" role="list">
+                {content.work.map((w, i) => (
+                  <li key={w} className="wid-work-item">
+                    <span className="wid-work-num">{String(i + 1).padStart(2, "0")}</span>
+                    <span>{w}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="wid-col-specimen">
+              <div className="wid-editorial-cards">
+                <div className="wid-pub-card">
+                  <div className="wid-pub-card__top">
+                    <span className="wid-pub-card__tag">SEO · AEO · GEO Cluster</span>
+                    <span className="wid-pub-card__status">AIQoD Blog</span>
+                  </div>
+                  <h4 className="wid-pub-card__title">11-Blog Agentic AI Content Cluster</h4>
+                  <p className="wid-pub-card__desc">
+                    Comprehensive pillar-cluster architecture built with structured FAQ schema, comparison tables, and semantic density for Google rankings and AI engine citations (Perplexity, Claude, ChatGPT).
+                  </p>
+                </div>
+
+                <div className="wid-pub-card">
+                  <div className="wid-pub-card__top">
+                    <span className="wid-pub-card__tag">20 Published Articles Across Two Series</span>
+                    <span className="wid-pub-card__status">Smart AI Investor &amp; SPA</span>
+                  </div>
+                  <h4 className="wid-pub-card__title">Startup Pitch Analyser &amp; Dealflow Series</h4>
+                  <p className="wid-pub-card__desc">
+                    A 10-blog technical cluster for Startup Pitch Analyser plus the 10-part &ldquo;Dealflow Problem&rdquo; series for Smart AI Investor, analyzing evaluation friction and founder pitch bottlenecks.
+                  </p>
+                </div>
+
+                <div className="wid-pub-card">
+                  <div className="wid-pub-card__top">
+                    <span className="wid-pub-card__tag">Automated Executive Intelligence</span>
+                    <span className="wid-pub-card__status">Every Morning</span>
+                  </div>
+                  <h4 className="wid-pub-card__title">Daily AI Intelligence Brief</h4>
+                  <p className="wid-pub-card__desc">
+                    Automated daily intelligence briefing summarizing overnight developments in generative AI, frontier models, and enterprise use cases, delivered directly to the 5-person leadership team.
+                  </p>
+                </div>
+
+                <div className="wid-pub-card">
+                  <div className="wid-pub-card__top">
+                    <span className="wid-pub-card__tag">Multi-Platform Social Distribution</span>
+                    <span className="wid-pub-card__status">LinkedIn · X · Instagram</span>
+                  </div>
+                  <h4 className="wid-pub-card__title">Consistent Weekly Publishing Engine</h4>
+                  <p className="wid-pub-card__desc">
+                    Running 5 posts per week for AIQoD and 3 per week for VentureHub360 with custom educational carousels, infographics, and data visualizations.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 04. Websites & SEO ───────────────────────────────── */}
+        <section id="websites-seo" className="wid-section" aria-labelledby="web-title">
+          <div className="wid-sec__header">
+            <div className="wid-sec__meta">
+              <span className="wid-sec__num">04</span>
+              <span className="wid-sec__tag">DIGITAL ARCHITECTURE &amp; SEARCH VISIBILITY</span>
+            </div>
+            <h2 id="web-title" className="wid-sec__title">{web.title}</h2>
+            <p className="wid-sec__lead">{web.intro}</p>
+          </div>
+
+          <div className="wid-web-gallery">
+            <div className="wid-web-frame">
+              <div className="wid-web-frame__bar">
+                <div className="wid-web-frame__dots">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                <span className="wid-web-frame__url">venturehub360.com</span>
+              </div>
+              <div className="wid-web-frame__shot">
+                <Shot name="venturehub360" alt="VentureHub360 live platform site" priority />
+              </div>
+              <div className="wid-web-frame__info">
+                <div className="wid-web-frame__name">VentureHub360</div>
+                <div className="wid-web-frame__caption">
+                  Built from scratch: full information architecture, product copy, and interactive tools.
+                </div>
+              </div>
+            </div>
+
+            <div className="wid-web-frame">
+              <div className="wid-web-frame__bar">
+                <div className="wid-web-frame__dots">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                <span className="wid-web-frame__url">aiqod.com</span>
+              </div>
+              <div className="wid-web-frame__shot">
+                <Shot name="aiqod" alt="AIQoD enterprise AI platform website" priority />
+              </div>
+              <div className="wid-web-frame__info">
+                <div className="wid-web-frame__name">AIQoD</div>
+                <div className="wid-web-frame__caption">
+                  Rebuilt off WordPress for high performance, with custom prerender crawler setup and structured schema.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="wid-tech-seo-bar">
+            <span className="accent">Technical SEO &amp; Crawlability:</span>
+            <span>llms.txt &amp; robots.txt configuration</span>
+            <span>·</span>
+            <span>React prerender crawler setup</span>
+            <span>·</span>
+            <span>AEO &amp; GEO visibility audits</span>
+            <span>·</span>
+            <span>Search Console &amp; GA4 tracking</span>
+          </div>
+
+          <div className="wid-split wid-split--6-6">
+            <div className="wid-col-text">
+              <h3 className="wid-subheading">What I Do</h3>
+              <ul className="wid-dash-list" role="list">
+                {web.points.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="wid-col-text">
+              <h3 className="wid-subheading">Selected Deliverables</h3>
+              <ul className="wid-work-index" role="list">
+                {web.work.map((w, i) => (
+                  <li key={w} className="wid-work-item">
+                    <span className="wid-work-num">{String(i + 1).padStart(2, "0")}</span>
+                    <span>{w}</span>
+                  </li>
+                ))}
+              </ul>
+              <div style={{ marginTop: "24px" }}>
+                <Link href="/websites/" className="btn btn--primary">
+                  See all eight websites <ArrowRight />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 05. AI-Led Execution ────────────────────────────── */}
+        <section id="ai-execution" className="wid-section" aria-labelledby="ai-title">
+          <div className="wid-sec__header">
+            <div className="wid-sec__meta">
+              <span className="wid-sec__num">05</span>
+              <span className="wid-sec__tag">INTEGRATED WORKFLOW &amp; TOOLING</span>
+            </div>
+            <h2 id="ai-title" className="wid-sec__title">{ai.title}</h2>
+            <p className="wid-sec__lead">{ai.intro}</p>
+          </div>
+
+          <div className="wid-ai-domains">
+            <div className="wid-ai-card">
+              <span className="wid-ai-card__num">01 / RESEARCH</span>
+              <h4 className="wid-ai-card__title">Deep Research &amp; Synthesis</h4>
+              <div className="wid-ai-card__tools">
+                <span className="wid-tool-badge">ChatGPT</span>
+                <span className="wid-tool-badge">Claude</span>
+                <span className="wid-tool-badge">Perplexity</span>
+              </div>
+              <p className="wid-ai-card__desc">
+                Accelerating ICP discovery, competitor pricing analysis, industry research, and executive briefings.
+              </p>
+            </div>
+
+            <div className="wid-ai-card">
+              <span className="wid-ai-card__num">02 / CONTENT</span>
+              <h4 className="wid-ai-card__title">Content &amp; Creative Systems</h4>
+              <div className="wid-ai-card__tools">
+                <span className="wid-tool-badge">Canva</span>
+                <span className="wid-tool-badge">ChatGPT</span>
+              </div>
+              <p className="wid-ai-card__desc">
+                Drafting structured blog clusters, custom GPT for social copy, and high-impact visual carousels.
+              </p>
+            </div>
+
+            <div className="wid-ai-card">
+              <span className="wid-ai-card__num">03 / VIDEO</span>
+              <h4 className="wid-ai-card__title">Video Production &amp; Avatars</h4>
+              <div className="wid-ai-card__tools">
+                <span className="wid-tool-badge">HeyGen</span>
+                <span className="wid-tool-badge">Google Flow</span>
+              </div>
+              <p className="wid-ai-card__desc">
+                Producing AI avatar video presentations and editing concise walkthroughs from product demo footage.
+              </p>
+            </div>
+
+            <div className="wid-ai-card">
+              <span className="wid-ai-card__num">04 / ANALYSE</span>
+              <h4 className="wid-ai-card__title">Analytics &amp; Search Visibility</h4>
+              <div className="wid-ai-card__tools">
+                <span className="wid-tool-badge">Search Console</span>
+                <span className="wid-tool-badge">GA4</span>
+              </div>
+              <p className="wid-ai-card__desc">
+                Tracking organic visibility, AI traffic channels in GA4, and query pickup across ChatGPT, Gemini, and Claude.
+              </p>
+            </div>
+          </div>
+
+          <div className="wid-col-text">
+            <h3 className="wid-subheading">Selected Deliverables</h3>
+            <ul className="wid-work-index" role="list">
+              {ai.work.map((w, i) => (
+                <li key={w} className="wid-work-item">
+                  <span className="wid-work-num">{String(i + 1).padStart(2, "0")}</span>
+                  <span>{w}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
       </div>
-    </>
+    </main>
   );
 }

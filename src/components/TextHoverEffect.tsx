@@ -23,8 +23,7 @@ export default function TextHoverEffect({ text }: { text: string }) {
     setPos({ cx: pt.x, cy: pt.y });
   };
 
-  // textLength fits the word exactly inside the viewBox, so the first and last
-  // letters sit inside the area the reveal covers.
+  // Exactly matching live website size, width, and alignment
   const textProps = {
     x: 150,
     y: 34,
@@ -48,11 +47,6 @@ export default function TextHoverEffect({ text }: { text: string }) {
       onMouseMove={onMove}
     >
       <defs>
-        <linearGradient id={`grad-${id}`} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="300" y2="0">
-          <stop offset="0%" stopColor="#6366F1" />
-          <stop offset="50%" stopColor="#A855F7" />
-          <stop offset="100%" stopColor="#EC4899" />
-        </linearGradient>
         <radialGradient id={`reveal-${id}`} gradientUnits="userSpaceOnUse" r={60} cx={pos.cx} cy={pos.cy}>
           <stop offset="0%" stopColor="white" />
           <stop offset="100%" stopColor="black" />
@@ -67,11 +61,11 @@ export default function TextHoverEffect({ text }: { text: string }) {
         {text}
       </text>
 
-      {/* Accent reveal under the cursor. */}
+      {/* Accent reveal under the cursor: solid green, no gradient. */}
       <text
         {...textProps}
         className="text-hover__text text-hover__reveal"
-        fill={`url(#grad-${id})`}
+        fill="#D5B77A"
         mask={`url(#mask-${id})`}
         style={{ opacity: hovered ? 1 : 0 }}
       >

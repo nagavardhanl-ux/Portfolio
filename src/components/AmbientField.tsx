@@ -45,7 +45,7 @@ export default function AmbientField() {
       const cs = getComputedStyle(document.documentElement);
       grey = cs.getPropertyValue("--dot").trim() || grey;
       blue = cs.getPropertyValue("--dot-accent").trim() || blue;
-      baseAlpha = document.documentElement.dataset.theme === "light" ? 0.2 : 0.15;
+      baseAlpha = 0.15;
     };
 
     const isBlue = (i: number, j: number) => {
@@ -162,12 +162,6 @@ export default function AmbientField() {
     if (document.readyState === "complete") kick();
     else window.addEventListener("load", kick, { once: true });
 
-    const mo = new MutationObserver(() => {
-      readColors();
-      if (!raf) frame();
-    });
-    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-
     window.addEventListener("resize", resize, { passive: true });
     window.addEventListener("pointermove", onMove, { passive: true });
     document.documentElement.addEventListener("pointerleave", onLeave);
@@ -181,7 +175,6 @@ export default function AmbientField() {
       window.removeEventListener("load", kick);
       if ("cancelIdleCallback" in window) window.cancelIdleCallback(idle);
       clearTimeout(idle);
-      mo.disconnect();
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onMove);
       document.documentElement.removeEventListener("pointerleave", onLeave);

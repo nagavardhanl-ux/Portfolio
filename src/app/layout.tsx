@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import AmbientField from "@/components/AmbientField";
-import BrandCursor from "@/components/BrandCursor";
+import BackToTop from "@/components/BackToTop";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import RevealObserver from "@/components/RevealObserver";
@@ -41,12 +41,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0B0E18",
-  colorScheme: "dark light",
+  themeColor: "#111214",
+  colorScheme: "dark",
 };
 
-// Runs before paint: marks JS as available and applies the saved theme (default dark) so there's no flash.
-const bootScript = `(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='light'){d.dataset.theme='light';var m=document.querySelector('meta[name="theme-color"]');m&&m.setAttribute('content','#FDFEFF');}}catch(e){}})();`;
+// Runs before paint: marks JS as available and clears any legacy theme override so dark mode is strictly enforced.
+const bootScript = `(function(){var d=document.documentElement;d.classList.add('js');d.dataset.theme='dark';try{localStorage.removeItem('theme');}catch(e){}})();`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -61,7 +61,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body>
         <AmbientField />
-        <BrandCursor />
         <a className="skip-link" href="#main">
           Skip to content
         </a>
@@ -74,6 +73,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <TextHoverEffect text="NAGAVARDHAN" />
         </section>
         <RevealObserver />
+        <BackToTop />
       </body>
     </html>
   );

@@ -26,43 +26,16 @@ const OPENAI_MARK =
    Official Full-Color Brand SVGs & Icons
 ------------------------------------------------------------------------- */
 
-// 1. Lovable — Official pink-to-red gradient heart
-function IconLovable(props: IconProps) {
-  return (
-    <svg viewBox="0 0 512 512" aria-hidden="true" focusable="false" {...props}>
-      <defs>
-        <linearGradient id="lovable-grad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#FF5572" />
-          <stop offset="100%" stopColor="#FF3366" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M151.083 0c83.413 0 151.061 67.819 151.061 151.467v57.6h50.283c83.413 0 151.082 67.797 151.082 151.466 0 83.691-67.626 151.467-151.082 151.467H0V151.467C0 67.84 67.627 0 151.083 0z"
-        fill="url(#lovable-grad)"
-      />
-    </svg>
-  );
+// 1. Lovable — Official brand icon
+function IconLovable() {
+  return <Logo file="lovable.png" alt="Lovable" />;
 }
 
-// 2. Google Antigravity — Official Google 4-color gradient emblem
-function IconAntigravity(props: IconProps) {
-  return (
-    <svg viewBox="0 0 180 180" aria-hidden="true" focusable="false" {...props}>
-      <defs>
-        <linearGradient id="antigravity-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#4285F4" />
-          <stop offset="40%" stopColor="#9C27B0" />
-          <stop offset="75%" stopColor="#EA4335" />
-          <stop offset="100%" stopColor="#FBBC04" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M144.248 149.062C151.748 154.688 162.998 150.938 152.685 140.625C121.748 110.625 128.31 28.125 89.8727 28.125C51.4352 28.125 57.9977 110.625 27.0602 140.625C15.8102 151.875 27.9977 154.688 35.4977 149.062C64.5602 129.375 62.6852 94.6875 89.8727 94.6875C117.06 94.6875 115.185 129.375 144.248 149.062Z"
-        fill="url(#antigravity-grad)"
-      />
-    </svg>
-  );
+// 2. Google Antigravity — Official app icon
+function IconAntigravity() {
+  return <Logo file="antigravity.png" alt="Antigravity" className="tools-tile__img-rounded" />;
 }
+
 
 // 3. Claude / Claude Code — Anthropic official Terracotta / Coral
 function IconClaude(props: IconProps) {
@@ -90,28 +63,9 @@ function IconHunter(props: IconProps) {
   );
 }
 
-// 5. Apollo — Official Apollo fiery orange solar starburst
-function IconApollo(props: IconProps) {
-  return (
-    <svg viewBox="0 0 36 36" aria-hidden="true" focusable="false" {...props}>
-      <path
-        d="M19.5993 0.0862365L19.605 13.2568C19.6058 15.3375 17.4222 16.6715 15.6079 15.6986L2.58376 8.7153C3.57706 7.05795 4.82616 5.57609 6.27427 4.32386L16.489 13.8945C17.0303 14.4015 17.8835 13.8518 17.6605 13.1398L13.6992 0.493553C15.0326 0.17147 16.4233 0 17.8536 0C18.4428 0 19.0248 0.0296814 19.5993 0.0862365Z"
-        fill="#FF6B00"
-      />
-      <path
-        d="M16.0635 36.1087L16.0578 23.0046C16.057 20.9239 18.2407 19.5898 20.0549 20.5627L33.0838 27.5486C32.0838 29.2016 30.8289 30.6786 29.3751 31.925L19.1738 22.3668C18.6326 21.8598 17.7793 22.4095 18.0023 23.1215L21.9486 35.72C20.6338 36.0329 19.263 36.1989 17.8539 36.1989C17.2497 36.1989 16.6523 36.1683 16.0635 36.1087Z"
-        fill="#F56523"
-      />
-      <path
-        d="M22.0105 16.77L31.4705 6.39392C30.2362 4.92008 28.7742 3.6486 27.1384 2.63702L20.2306 15.8767C19.2709 17.716 20.5871 19.9298 22.6396 19.9288L35.6183 19.923C35.6775 19.3234 35.7082 18.7151 35.7082 18.0996C35.7082 16.6683 35.5436 15.2761 35.2338 13.9406L22.7549 17.9576C22.0526 18.1837 21.5103 17.3187 22.0105 16.77Z"
-        fill="#FF8038"
-      />
-      <path
-        d="M0.0842758 16.3383L13.0237 16.3325C15.0764 16.3317 16.3923 18.5454 15.4327 20.3846L8.56047 33.5561C6.93095 32.547 5.47394 31.2801 4.24344 29.8121L13.653 19.4914C14.1531 18.9427 13.6107 18.0777 12.9084 18.3037L0.485078 22.3029C0.168551 20.954 0 19.5467 0 18.0994C0 17.5051 0.0290814 16.9177 0.0842758 16.3383Z"
-        fill="#E45214"
-      />
-    </svg>
-  );
+// 5. Apollo — Official brand emblem
+function IconApollo() {
+  return <Logo file="apollo.png" alt="Apollo" className="tools-tile__img-rounded" />;
 }
 
 // Seamless.AI — official app icon from seamless.ai
@@ -313,26 +267,9 @@ function IconHeyGen() {
   return <Logo file="heygen-logo.png" alt="HeyGen" />;
 }
 
-// Google Flow — official Flow favicon (white); one image, inverted to black in light mode
+// Google Flow — official app emblem
 function IconGoogleFlow() {
-  return <Logo file="flow-w.png" alt="Google Flow" className="tools-tile__img-invert-light" />;
-}
-
-// Codex — OpenAI mark on the blue disc used for Codex on developers.openai.com
-function IconCodex(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" {...props}>
-      <circle cx="12" cy="12" r="12" fill="#0080F7" />
-      <g transform="translate(4.8 4.8) scale(0.6)">
-        <path d={OPENAI_MARK} fill="#FFFFFF" />
-      </g>
-    </svg>
-  );
-}
-
-// MillionVerifier — the check from the official MillionVerifier logo
-function IconMillionVerifier() {
-  return <Logo file="millionverifier-mark.png" alt="MillionVerifier" />;
+  return <Logo file="google-flow.png" alt="Google Flow" className="tools-tile__img-rounded" />;
 }
 
 /* -------------------------------------------------------------------------
@@ -345,25 +282,33 @@ interface ToolItem {
 }
 
 interface ToolGroup {
+  index: string;
   heading: string;
   caption: string;
+  spanClass: string;
+  variantClass: string;
   tools: ToolItem[];
 }
 
 const groups: ToolGroup[] = [
   {
-    heading: "Build websites",
+    index: "01",
+    heading: "Build Websites",
     caption: "Building and shipping websites.",
+    spanClass: "tools-mod--span-9",
+    variantClass: "tools-mod--surface",
     tools: [
       { name: "Lovable", Icon: IconLovable },
       { name: "Antigravity", Icon: IconAntigravity },
       { name: "Claude Code", Icon: IconClaude },
-      { name: "Codex", Icon: IconCodex },
     ],
   },
   {
-    heading: "Lead generation",
+    index: "02",
+    heading: "Lead Generation",
     caption: "Target lists, prospect data and enrichment.",
+    spanClass: "tools-mod--span-7",
+    variantClass: "tools-mod--open",
     tools: [
       { name: "Apollo", Icon: IconApollo },
       { name: "Hunter", Icon: IconHunter },
@@ -371,18 +316,23 @@ const groups: ToolGroup[] = [
     ],
   },
   {
-    heading: "Email and outreach",
+    index: "03",
+    heading: "Email and Outreach",
     caption: "Mail merge, sequences and list cleaning.",
+    spanClass: "tools-mod--span-8",
+    variantClass: "tools-mod--dark",
     tools: [
       { name: "YAMM", Icon: IconYAMM },
       { name: "ZeroBounce", Icon: IconZeroBounce },
       { name: "NeverBounce", Icon: IconNeverBounce },
-      { name: "MillionVerifier", Icon: IconMillionVerifier },
     ],
   },
   {
+    index: "04",
     heading: "Research",
     caption: "Market, competitor and product research.",
+    spanClass: "tools-mod--span-8",
+    variantClass: "tools-mod--dark",
     tools: [
       { name: "ChatGPT", Icon: IconOpenAI },
       { name: "Claude", Icon: IconClaude },
@@ -390,8 +340,11 @@ const groups: ToolGroup[] = [
     ],
   },
   {
-    heading: "Content and video",
-    caption: "Creatives, product videos and AI avatar videos.",
+    index: "05",
+    heading: "Content and Video",
+    caption: "Creatives, product and AI avatar videos.",
+    spanClass: "tools-mod--span-9",
+    variantClass: "tools-mod--surface",
     tools: [
       { name: "Canva", Icon: IconCanva },
       { name: "HeyGen", Icon: IconHeyGen },
@@ -399,8 +352,11 @@ const groups: ToolGroup[] = [
     ],
   },
   {
-    heading: "SEO and analytics",
+    index: "06",
+    heading: "SEO and Analytics",
     caption: "Search visibility, keywords and performance.",
+    spanClass: "tools-mod--span-7",
+    variantClass: "tools-mod--open",
     tools: [
       { name: "Google Search Console", Icon: IconGoogleSearchConsole },
       { name: "Google Analytics 4", Icon: IconGoogleAnalytics },
@@ -411,36 +367,65 @@ const groups: ToolGroup[] = [
 
 export default function ToolsGrid() {
   return (
-    <div className="tools-grid">
-      {groups.map((group, i) => (
-        <div
-          key={group.heading}
-          className="tools-group reveal"
-          style={{ ["--delay" as string]: `${(i % 2) * 50}ms` }}
-        >
-          <div className="tools-group__header">
-            <h3 className="tools-group__heading">{group.heading}</h3>
-            <p className="tools-group__caption">{group.caption}</p>
-          </div>
-          <ul
-            className="tools-tiles"
-            role="list"
-            aria-label={`Tools for ${group.heading}`}
-          >
-            {group.tools.map((tool, idx) => (
-              <li
-                key={`${tool.name}-${idx}`}
-                className="tools-tile"
-              >
-                <span className="tools-tile__icon" aria-hidden="true">
-                  <tool.Icon />
-                </span>
-                <span className="tools-tile__name">{tool.name}</span>
-              </li>
-            ))}
-          </ul>
+    <div className="tools-editorial">
+      {/* Left side — Editorial introduction */}
+      <aside className="tools-editorial__intro reveal">
+        <div className="tools-intro__eyebrow">
+          <span className="tools-intro__rule" aria-hidden="true" />
+          <span className="tools-intro__tag">STACK &amp; WORKFLOW</span>
         </div>
-      ))}
+        <h2 id="tools-title" className="tools-intro__heading">
+          The tools<br />I work with
+        </h2>
+        <p className="tools-intro__desc">
+          The real AI and marketing tools used, grouped by what they&apos;re used for.
+        </p>
+        <div className="tools-intro__meta" aria-hidden="true">
+          <span className="tools-intro__stat">18 TOOLS</span>
+          <span className="tools-intro__sep">•</span>
+          <span className="tools-intro__stat">6 DISCIPLINES</span>
+        </div>
+      </aside>
+
+      {/* Right side — Asymmetric modular grid */}
+      <div className="tools-editorial__grid">
+        {groups.map((group, i) => (
+          <div
+            key={group.heading}
+            className={`tools-mod ${group.spanClass} ${group.variantClass} reveal`}
+            style={{ ["--delay" as string]: `${(i % 3) * 60}ms` }}
+          >
+            <div className="tools-mod__header">
+              <div className="tools-mod__meta">
+                <span className="tools-mod__idx">{group.index}</span>
+              </div>
+              <h3 className="tools-mod__heading">{group.heading}</h3>
+              <p className="tools-mod__caption">{group.caption}</p>
+            </div>
+            <ul
+              className="tools-tiles"
+              role="list"
+              aria-label={`Tools for ${group.heading}`}
+            >
+              {group.tools.map((tool, idx) => (
+                <li
+                  key={`${tool.name}-${idx}`}
+                  className="tools-tile"
+                  tabIndex={0}
+                  aria-label={tool.name}
+                >
+                  <span className="tools-tile__icon" aria-hidden="true">
+                    <tool.Icon />
+                  </span>
+                  <span className="tools-tile__tooltip" role="tooltip">
+                    {tool.name}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

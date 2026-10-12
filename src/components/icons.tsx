@@ -108,3 +108,25 @@ export const Expand = ({ size = 16, ...p }: P) => (
     <path d="M9.5 2.5h4v4M6.5 13.5h-4v-4M13.5 2.5 9 7M2.5 13.5 7 9" />
   </svg>
 );
+
+export const Compress = ({ size = 16, ...p }: P) => (
+  <svg {...base(size, p)}>
+    <path d="M14 6h-4V2M2 10h4v4M10 6l4-4M6 10l-4 4" />
+  </svg>
+);
+
+export const Laptop = ({ size = 16, ...p }: P) => (
+  <svg {...base(size, p)}>
+    <rect x="3" y="3.5" width="10" height="7" rx="1" />
+    <path d="M1.5 12.5h13" />
+  </svg>
+);
+
+export const Smartphone = ({ size = 16, ...p }: P) => (
+  <svg {...base(size, p)}>
+    <rect x="4.5" y="2" width="7" height="12" rx="1.5" />
+    <path d="M7.75 3.5h.5" />
+    <circle cx="8" cy="11.5" r=".5" fill="currentColor" />
+  </svg>
+);
+

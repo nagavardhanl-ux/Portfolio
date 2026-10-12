@@ -4,6 +4,8 @@ export type Status = "Live company site" | "Concept build";
 /** What I did: built it, or manage a site someone else built. */
 export type Role = "Built" | "Managed";
 
+export type DeviceType = "macbook" | "pixel";
+
 export interface Site {
   id: string;
   name: string;
@@ -22,6 +24,10 @@ export interface Site {
   roleDetail?: string;
   /** Basename for public/shots (screenshot) and public/clips (scroll clip), made by the scripts. */
   shot: string;
+  /** Hardware device mockup type to showcase in the bento grid. */
+  deviceType?: DeviceType;
+  /** Whether the host domain permits in-frame embedding. */
+  allowsEmbed?: boolean;
 }
 
 export const sites: Site[] = [
@@ -35,6 +41,8 @@ export const sites: Site[] = [
     role: "Built",
     roleDetail: "Built from scratch",
     shot: "venturehub360",
+    deviceType: "macbook",
+    allowsEmbed: false,
   },
   {
     id: "aiqod",
@@ -46,6 +54,8 @@ export const sites: Site[] = [
     role: "Built",
     roleDetail: "Rebuilt from its previous version",
     shot: "aiqod",
+    deviceType: "macbook",
+    allowsEmbed: false,
   },
   {
     id: "aiqod360",
@@ -56,6 +66,8 @@ export const sites: Site[] = [
     status: "Live company site",
     role: "Managed",
     shot: "aiqod360",
+    deviceType: "pixel",
+    allowsEmbed: false,
   },
   {
     id: "wayfarer",
@@ -73,6 +85,8 @@ export const sites: Site[] = [
     status: "Concept build",
     role: "Built",
     shot: "wayfarer",
+    deviceType: "macbook",
+    allowsEmbed: true,
   },
   {
     id: "f1-experience",
@@ -83,6 +97,8 @@ export const sites: Site[] = [
     status: "Concept build",
     role: "Built",
     shot: "f1-experience",
+    deviceType: "macbook",
+    allowsEmbed: true,
   },
   {
     id: "mustang",
@@ -94,6 +110,8 @@ export const sites: Site[] = [
     status: "Concept build",
     role: "Built",
     shot: "mustang",
+    deviceType: "pixel",
+    allowsEmbed: true,
   },
   {
     id: "axion",
@@ -104,6 +122,8 @@ export const sites: Site[] = [
     status: "Concept build",
     role: "Built",
     shot: "axion",
+    deviceType: "macbook",
+    allowsEmbed: true,
   },
   {
     id: "ether",
@@ -114,6 +134,8 @@ export const sites: Site[] = [
     status: "Concept build",
     role: "Built",
     shot: "ether",
+    deviceType: "pixel",
+    allowsEmbed: true,
   },
 ];
 

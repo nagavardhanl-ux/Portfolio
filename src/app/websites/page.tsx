@@ -1,5 +1,4 @@
 import SiteCard from "@/components/SiteCard";
-import SiteEmbed from "@/components/SiteEmbed";
 import { sites } from "@/data/sites";
 import { pageMetadata } from "@/lib/meta";
 
@@ -22,17 +21,16 @@ export default function WebsitesPage() {
           </p>
           <h1 className="h1">{cap(word(sites.length))} websites, shipped and managed</h1>
           <p className="lead">
-            {cap(word(companies))} company sites and {word(concepts)} concept builds. Each preview plays a short
-            scroll-through; select one to use the real site in place. On a phone, each opens in its own tab.
+            {cap(word(companies))} company sites and {word(concepts)} concept builds, showcased inside realistic MacBook Pro and Google Pixel 10 devices.
           </p>
         </div>
       </header>
 
       <section className="section" aria-label="Websites">
         <div className="container site-gallery">
-          <SiteCard site={lead} index={1} size="lead" headingLevel={2} media={<SiteEmbed site={lead} />} />
+          <SiteCard site={lead} index={1} size="lead" headingLevel={2} />
           {rest.map((s, i) => (
-            <SiteCard key={s.id} site={s} index={i + 2} headingLevel={2} media={<SiteEmbed site={s} />} />
+            <SiteCard key={s.id} site={s} index={i + 2} headingLevel={2} />
           ))}
         </div>
       </section>
