@@ -8,13 +8,7 @@ import { capabilityAnchors } from "@/data/whatIDo";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-const layerLabels = [
-  "SYSTEM LAYER 01 • STRATEGY & PERSONAS",
-  "SYSTEM LAYER 02 • OUTBOUND DISTRIBUTION",
-  "SYSTEM LAYER 03 • INBOUND & CITATION ENGINE",
-  "SYSTEM LAYER 04 • AUTONOMOUS PLATFORMS",
-  "SYSTEM LAYER 05 • CAPABILITY SYSTEM HUB",
-];
+
 
 export default function CapabilitiesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -69,9 +63,8 @@ export default function CapabilitiesSection() {
           ========================================================================= */}
       <aside className="cap-sticky" aria-label="Capabilities overview and navigation">
         <div className="cap-sticky__inner">
-          <span className="cap-sticky__eyebrow">HOW I WORK</span>
           <h2 id="do-title" className="cap-sticky__heading">
-            One person, end to end.
+            One person, end to end
           </h2>
           <p className="cap-sticky__intro">
             Product marketing, demand generation, content, websites and AI-led execution, from the brief to the thing that ships.
@@ -116,10 +109,7 @@ export default function CapabilitiesSection() {
           className="cap-seq-item"
           aria-labelledby="cap-title-0"
         >
-          <header className="cap-seq-item__header">
-            <span className="cap-seq-item__kicker">{layerLabels[0]}</span>
-            <span className="cap-seq-item__fraction">01 / 05</span>
-          </header>
+
 
           <h3 id="cap-title-0" className="cap-seq-item__title">
             {whatIDo[0].title}
@@ -204,10 +194,7 @@ export default function CapabilitiesSection() {
           className="cap-seq-item"
           aria-labelledby="cap-title-1"
         >
-          <header className="cap-seq-item__header">
-            <span className="cap-seq-item__kicker">{layerLabels[1]}</span>
-            <span className="cap-seq-item__fraction">02 / 05</span>
-          </header>
+
 
           <h3 id="cap-title-1" className="cap-seq-item__title">
             {whatIDo[1].title}
@@ -297,10 +284,7 @@ export default function CapabilitiesSection() {
           className="cap-seq-item"
           aria-labelledby="cap-title-2"
         >
-          <header className="cap-seq-item__header">
-            <span className="cap-seq-item__kicker">{layerLabels[2]}</span>
-            <span className="cap-seq-item__fraction">03 / 05</span>
-          </header>
+
 
           <h3 id="cap-title-2" className="cap-seq-item__title">
             {whatIDo[2].title}
@@ -377,10 +361,7 @@ export default function CapabilitiesSection() {
           className="cap-seq-item"
           aria-labelledby="cap-title-3"
         >
-          <header className="cap-seq-item__header">
-            <span className="cap-seq-item__kicker">{layerLabels[3]}</span>
-            <span className="cap-seq-item__fraction">04 / 05</span>
-          </header>
+
 
           <h3 id="cap-title-3" className="cap-seq-item__title">
             {whatIDo[3].title}
@@ -470,10 +451,7 @@ export default function CapabilitiesSection() {
           className="cap-seq-item cap-seq-item--concluding"
           aria-labelledby="cap-title-4"
         >
-          <header className="cap-seq-item__header">
-            <span className="cap-seq-item__kicker">{layerLabels[4]}</span>
-            <span className="cap-seq-item__fraction">05 / 05</span>
-          </header>
+
 
           <div className="cap-concluding-title-wrap">
             <h3 id="cap-title-4" className="cap-seq-item__title">

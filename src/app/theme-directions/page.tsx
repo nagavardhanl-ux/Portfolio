@@ -69,7 +69,7 @@ function PortfolioPreview({ themeId, mode }: { themeId: string; mode: "desktop" 
         {keyFigures.map((figure) => <div key={figure.label}><b>{figure.value}</b><span>{figure.label}</span></div>)}
       </section>
       <section className="td-work">
-        <div className="td-section-head"><Marker>01 / SELECTED WORK</Marker><h4>Built for the real world.</h4></div>
+        <div className="td-section-head"><Marker>01 / SELECTED WORK</Marker><h4>Built for the real world</h4></div>
         <div className="td-projects">
           {projects.map((project, i) => <a className={`td-project td-project-${i}`} href={project.url} target="_blank" rel="noreferrer" key={project.id}>
             <div className="td-browser"><span>● ● ●</span><b>{project.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</b><i>↗</i><Shot name={project.shot} alt={`${project.name} real website preview`} sizes="(min-width: 1100px) 28vw, 700px" /></div>
@@ -79,17 +79,17 @@ function PortfolioPreview({ themeId, mode }: { themeId: string; mode: "desktop" 
         </div>
       </section>
       <section className="td-career">
-        <div className="td-section-head"><Marker>02 / CAREER STORY</Marker><h4>Brochures to two AI platforms.</h4></div>
+        <div className="td-section-head"><Marker>02 / CAREER STORY</Marker><h4>Brochures to two AI platforms</h4></div>
         <ol>{thread.map((beat, i) => <li key={beat.title}><i>0{i + 1}</i><div><b>{beat.title}</b><span>{beat.line}</span></div></li>)}</ol>
       </section>
       <section className="td-capabilities">
-        <div className="td-section-head"><Marker>03 / FOUR CAPABILITIES</Marker><h4>One person, end to end.</h4></div>
+        <div className="td-section-head"><Marker>03 / FOUR CAPABILITIES</Marker><h4>One person, end to end</h4></div>
         <div className="td-cap-list">{whatIDo.map((capability, i) => <article key={capability.title}>
           <div className="td-cap-heading"><i>0{i + 1}</i><h5>{capability.title}</h5></div>
           <CapabilityArtifact index={i} /><p>{capability.body}</p>
         </article>)}</div>
       </section>
-      <footer className="td-close"><Marker>THE THROUGH-LINE</Marker><h4>Marketing, and the site it runs on.</h4><span>GET IN TOUCH ↗</span></footer>
+      <footer className="td-close"><Marker>THE THROUGH-LINE</Marker><h4>Marketing, and the site it runs on</h4><span>GET IN TOUCH ↗</span></footer>
     </div>
   );
 }
@@ -98,7 +98,7 @@ export default function ThemeDirections() {
   return <div className="theme-directions">
     <header className="td-intro">
       <Marker>PORTFOLIO REDESIGN · THREE DIRECTIONS</Marker>
-      <h1>One story.<br />Three ways to tell it.</h1>
+      <h1>One story.<br />Three ways to tell it</h1>
       <p>Same work, same facts, three distinct visual systems. Compare the desktop and mobile reading experience in each direction.</p>
       <a href="https://nagavardhanl-ux.github.io/Portfolio/" target="_blank" rel="noreferrer">Based on the live portfolio ↗</a>
     </header>

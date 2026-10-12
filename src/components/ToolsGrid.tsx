@@ -370,21 +370,13 @@ export default function ToolsGrid() {
     <div className="tools-editorial">
       {/* Left side — Editorial introduction */}
       <aside className="tools-editorial__intro reveal">
-        <div className="tools-intro__eyebrow">
-          <span className="tools-intro__rule" aria-hidden="true" />
-          <span className="tools-intro__tag">STACK &amp; WORKFLOW</span>
-        </div>
         <h2 id="tools-title" className="tools-intro__heading">
           The tools<br />I work with
         </h2>
         <p className="tools-intro__desc">
           The real AI and marketing tools used, grouped by what they&apos;re used for.
         </p>
-        <div className="tools-intro__meta" aria-hidden="true">
-          <span className="tools-intro__stat">18 TOOLS</span>
-          <span className="tools-intro__sep">•</span>
-          <span className="tools-intro__stat">6 DISCIPLINES</span>
-        </div>
+
       </aside>
 
       {/* Right side — Asymmetric modular grid */}

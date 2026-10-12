@@ -4490,9 +4490,358 @@ body:has(.signal-home) .ambient { display:none; }
   }
 }
 
-/* Grid Spans */
+/* Grid Spans & Row 1 Compact Heights */
 .sb-card--websites {
   grid-column: span 7;
+}
+
+.sb-card--cluster {
+  grid-column: span 5;
+}
+
+.sb-card--websites,
+.sb-card--cluster {
+  padding: 18px 20px 16px;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.sb-card--websites .sb-card__body,
+.sb-card--cluster .sb-card__body {
+  flex-shrink: 0;
+}
+
+.sb-card--websites .sb-visual,
+.sb-card--cluster .sb-visual {
+  margin-top: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 1. Websites Strip — Sleek panoramic ratio */
+.sb-card--websites .sb-site-strip {
+  padding: 8px 10px;
+  gap: 8px;
+}
+
+.sb-card--websites .sb-site-thumb {
+  aspect-ratio: 16 / 8.5;
+}
+
+.sb-card--websites .sb-site-label {
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  padding: 2px 5px;
+  font-size: 0.62rem;
+}
+
+/* 2. Content Cluster — Compact Tree */
+.sb-card--cluster .sb-cluster-tree {
+  padding: 8px 10px;
+  gap: 6px;
+}
+
+.sb-card--cluster .sb-cluster-pillar {
+  padding: 6px 10px;
+}
+
+.sb-card--cluster .sb-cluster-marker {
+  font-size: 0.58rem;
+}
+
+.sb-card--cluster .sb-cluster-title {
+  font-size: 0.74rem;
+}
+
+.sb-card--cluster .sb-cluster-status {
+  font-size: 0.58rem;
+  padding: 1px 5px;
+}
+
+.sb-card--cluster .sb-cluster-nodes {
+  gap: 4px;
+  padding-left: 10px;
+}
+
+.sb-card--cluster .sb-cluster-node {
+  padding: 4px 8px;
+}
+
+.sb-card--cluster .sb-node-text {
+  font-size: 0.70rem;
+}
+
+.sb-card--cluster .sb-node-chip {
+  font-size: 0.58rem;
+  padding: 1px 5px;
+}
+
+/* Live animated background for Priority Cards (Websites, Cluster, Brief, Investors & Series) */
+.sb-card--websites .sb-card__bg,
+.sb-card--cluster .sb-card__bg,
+.sb-card--brief .sb-card__bg,
+.sb-card--investors .sb-card__bg,
+.sb-card--series .sb-card__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 14px;
+}
+
+.sb-card--websites .sb-card__bg-img,
+.sb-card--cluster .sb-card__bg-img,
+.sb-card--brief .sb-card__bg-img,
+.sb-card--investors .sb-card__bg-img,
+.sb-card--series .sb-card__bg-img {
+  position: absolute;
+  inset: -15%;
+  width: 130%;
+  height: 130%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.50;
+  filter: saturate(1.2) brightness(0.85);
+  animation: sbAmbientDrift 18s ease-in-out infinite;
+  will-change: transform, filter, opacity;
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), filter 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sb-card--cluster .sb-card__bg-img {
+  animation: sbAmbientDriftCluster 20s ease-in-out infinite;
+  animation-delay: -5s;
+}
+
+.sb-card--brief .sb-card__bg-img {
+  animation: sbAmbientDriftBrief 22s ease-in-out infinite;
+  animation-delay: -9s;
+}
+
+.sb-card--investors .sb-card__bg-img {
+  animation: sbAmbientDriftInvestors 24s ease-in-out infinite;
+  animation-delay: -13s;
+}
+
+.sb-card--series .sb-card__bg-img {
+  animation: sbAmbientDriftSeries 21s ease-in-out infinite;
+  animation-delay: -11s;
+}
+
+.sb-card--websites:hover .sb-card__bg-img,
+.sb-card--websites:focus-visible .sb-card__bg-img,
+.sb-card--cluster:hover .sb-card__bg-img,
+.sb-card--cluster:focus-visible .sb-card__bg-img,
+.sb-card--brief:hover .sb-card__bg-img,
+.sb-card--brief:focus-visible .sb-card__bg-img,
+.sb-card--investors:hover .sb-card__bg-img,
+.sb-card--investors:focus-visible .sb-card__bg-img,
+.sb-card--series:hover .sb-card__bg-img,
+.sb-card--series:focus-visible .sb-card__bg-img {
+  opacity: 0.68;
+  filter: saturate(1.32) brightness(0.96);
+}
+
+.sb-card--websites .sb-card__bg-glow,
+.sb-card--cluster .sb-card__bg-glow,
+.sb-card--brief .sb-card__bg-glow,
+.sb-card--investors .sb-card__bg-glow,
+.sb-card--series .sb-card__bg-glow {
+  position: absolute;
+  inset: -15%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(213, 183, 122, 0.22) 0%,
+    rgba(140, 100, 255, 0.14) 38%,
+    transparent 72%
+  );
+  mix-blend-mode: screen;
+  animation: sbGlowPulse 12s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+  transition: opacity 600ms ease;
+  pointer-events: none;
+}
+
+.sb-card--cluster .sb-card__bg-glow {
+  animation-delay: -4s;
+}
+
+.sb-card--brief .sb-card__bg-glow {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(168, 85, 247, 0.22) 0%,
+    rgba(34, 211, 238, 0.14) 38%,
+    transparent 72%
+  );
+  animation-delay: -7s;
+}
+
+.sb-card--investors .sb-card__bg-glow {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(56, 189, 248, 0.20) 0%,
+    rgba(99, 102, 241, 0.14) 38%,
+    transparent 72%
+  );
+  animation-delay: -11s;
+}
+
+.sb-card--series .sb-card__bg-glow {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(213, 183, 122, 0.22) 0%,
+    rgba(245, 158, 11, 0.14) 38%,
+    transparent 72%
+  );
+  animation-delay: -9s;
+}
+
+.sb-card--websites:hover .sb-card__bg-glow,
+.sb-card--websites:focus-visible .sb-card__bg-glow,
+.sb-card--cluster:hover .sb-card__bg-glow,
+.sb-card--cluster:focus-visible .sb-card__bg-glow,
+.sb-card--brief:hover .sb-card__bg-glow,
+.sb-card--brief:focus-visible .sb-card__bg-glow,
+.sb-card--investors:hover .sb-card__bg-glow,
+.sb-card--investors:focus-visible .sb-card__bg-glow,
+.sb-card--series:hover .sb-card__bg-glow,
+.sb-card--series:focus-visible .sb-card__bg-glow {
+  opacity: 0.95;
+}
+
+.sb-card--websites .sb-card__bg-overlay,
+.sb-card--cluster .sb-card__bg-overlay,
+.sb-card--brief .sb-card__bg-overlay,
+.sb-card--investors .sb-card__bg-overlay,
+.sb-card--series .sb-card__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(22, 23, 27, 0.80) 0%,
+    rgba(22, 23, 27, 0.52) 45%,
+    rgba(22, 23, 27, 0.88) 100%
+  );
+  pointer-events: none;
+}
+
+.sb-card--websites .sb-visual,
+.sb-card--cluster .sb-visual,
+.sb-card--brief .sb-visual,
+.sb-card--investors .sb-visual,
+.sb-card--series .sb-visual {
+  background: rgba(25, 26, 30, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@keyframes sbAmbientDrift {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  35% {
+    transform: scale(1.06) translate3d(-1%, 0.8%, 0);
+  }
+  70% {
+    transform: scale(1.03) translate3d(0.8%, -0.8%, 0);
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes sbAmbientDriftCluster {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  35% {
+    transform: scale(1.06) translate3d(0.8%, -0.8%, 0);
+  }
+  70% {
+    transform: scale(1.03) translate3d(-0.8%, 0.8%, 0);
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes sbAmbientDriftBrief {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  35% {
+    transform: scale(1.06) translate3d(-0.8%, -0.8%, 0);
+  }
+  70% {
+    transform: scale(1.04) translate3d(0.8%, 0.8%, 0);
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes sbAmbientDriftInvestors {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  35% {
+    transform: scale(1.06) translate3d(0.8%, -0.8%, 0);
+  }
+  70% {
+    transform: scale(1.03) translate3d(-0.8%, 0.8%, 0);
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes sbAmbientDriftSeries {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  35% {
+    transform: scale(1.06) translate3d(-0.9%, 0.9%, 0);
+  }
+  70% {
+    transform: scale(1.03) translate3d(0.9%, -0.7%, 0);
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes sbGlowPulse {
+  0% {
+    transform: translate(-3%, -3%) scale(0.98);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate(3%, 3%) scale(1.12);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(-1%, 4%) scale(1.04);
+    opacity: 0.65;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sb-card--websites .sb-card__bg-img,
+  .sb-card--websites .sb-card__bg-glow,
+  .sb-card--cluster .sb-card__bg-img,
+  .sb-card--cluster .sb-card__bg-glow,
+  .sb-card--brief .sb-card__bg-img,
+  .sb-card--brief .sb-card__bg-glow,
+  .sb-card--investors .sb-card__bg-img,
+  .sb-card--investors .sb-card__bg-glow,
+  .sb-card--series .sb-card__bg-img,
+  .sb-card--series .sb-card__bg-glow {
+    animation: none;
+  }
 }
 
 .sb-card--cluster {
