@@ -124,7 +124,6 @@ export default function ShippedBento() {
         <div className="sb-card__body">
           <div className="sb-card__meta">
             <span className="sb-tag">WEB PLATFORMS</span>
-            <span className="sb-badge">{shipped[10].figure} BUILDS • 3 LIVE</span>
           </div>
           <h3 className="sb-card__title">{shipped[10].label}</h3>
           <p className="sb-card__desc">{shipped[10].detail}</p>
@@ -184,7 +183,6 @@ export default function ShippedBento() {
         <div className="sb-card__body">
           <div className="sb-card__meta">
             <span className="sb-tag">CONTENT STRATEGY</span>
-            <span className="sb-badge">{shipped[0].figure} ARTICLES</span>
           </div>
           <h3 className="sb-card__title">{shipped[0].label}</h3>
           <p className="sb-card__desc">{shipped[0].detail}</p>
@@ -228,7 +226,6 @@ export default function ShippedBento() {
         <div className="sb-card__body">
           <div className="sb-card__meta">
             <span className="sb-tag">AI EXECUTION</span>
-            <span className="sb-badge">DAILY 08:00 AM</span>
           </div>
           <h3 className="sb-card__title">{shipped[6].label}</h3>
           <p className="sb-card__desc">{shipped[6].detail}</p>
@@ -268,7 +265,6 @@ export default function ShippedBento() {
         <div className="sb-card__body">
           <div className="sb-card__meta">
             <span className="sb-tag">OUTBOUND DATA</span>
-            <span className="sb-badge">{shipped[4].figure} RECORDS</span>
           </div>
           <h3 className="sb-card__title">{shipped[4].label}</h3>
           <p className="sb-card__desc">{shipped[4].detail}</p>
@@ -321,7 +317,6 @@ export default function ShippedBento() {
         <div className="sb-card__body">
           <div className="sb-card__meta">
             <span className="sb-tag">PRODUCT MARKETING</span>
-            <span className="sb-badge">{shipped[3].figure} SEGMENTS</span>
           </div>
           <h3 className="sb-card__title">{shipped[3].label}</h3>
           <p className="sb-card__desc">{shipped[3].detail}</p>
@@ -355,7 +350,6 @@ export default function ShippedBento() {
         <div className="sb-card__body">
           <div className="sb-card__meta">
             <span className="sb-tag">EDITORIAL PRODUCTION</span>
-            <span className="sb-badge">{shipped[1].figure} BLOGS</span>
           </div>
           <h3 className="sb-card__title">{shipped[1].label}</h3>
           <p className="sb-card__desc">{shipped[1].detail}</p>
@@ -401,7 +395,6 @@ export default function ShippedBento() {
         <div className="sb-card__body">
           <div className="sb-card__meta">
             <span className="sb-tag">VIDEO PRODUCTION</span>
-            <span className="sb-badge">HEYGEN AI</span>
           </div>
           <h3 className="sb-card__title">{shipped[7].label}</h3>
           <p className="sb-card__desc">{shipped[7].detail}</p>
@@ -448,7 +441,6 @@ export default function ShippedBento() {
         <div className="sb-card__body">
           <div className="sb-card__meta">
             <span className="sb-tag">MARKET POSITIONING</span>
-            <span className="sb-badge">BATTLECARDS</span>
           </div>
           <h3 className="sb-card__title">{shipped[8].label}</h3>
           <p className="sb-card__desc">{shipped[8].detail}</p>
@@ -490,7 +482,6 @@ export default function ShippedBento() {
         <div className="sb-card__body">
           <div className="sb-card__meta">
             <span className="sb-tag">RECOVERY & ARCHITECTURE</span>
-            <span className="sb-badge">SEO RESCUE</span>
           </div>
           <h3 className="sb-card__title">{shipped[9].label}</h3>
           <p className="sb-card__desc">{shipped[9].detail}</p>
@@ -529,7 +520,6 @@ export default function ShippedBento() {
         <div className="sb-card__body">
           <div className="sb-card__meta">
             <span className="sb-tag">BUYER PERSONAS</span>
-            <span className="sb-badge">{shipped[2].figure} PRODUCTS • 6 MARKETS</span>
           </div>
           <h3 className="sb-card__title">{shipped[2].label}</h3>
           <p className="sb-card__desc">{shipped[2].detail}</p>
@@ -589,7 +579,6 @@ export default function ShippedBento() {
         <div className="sb-card__body">
           <div className="sb-card__meta">
             <span className="sb-tag">GLOBAL EXPANSION</span>
-            <span className="sb-badge">{shipped[5].figure} COUNTRIES</span>
           </div>
           <h3 className="sb-card__title">{shipped[5].label}</h3>
           <p className="sb-card__desc">{shipped[5].detail}</p>
