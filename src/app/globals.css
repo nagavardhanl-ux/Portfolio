@@ -4579,268 +4579,366 @@ body:has(.signal-home) .ambient { display:none; }
   padding: 1px 5px;
 }
 
-/* Live animated background for Priority Cards (Websites, Cluster, Brief, Investors & Series) */
-.sb-card--websites .sb-card__bg,
-.sb-card--cluster .sb-card__bg,
-.sb-card--brief .sb-card__bg,
-.sb-card--investors .sb-card__bg,
-.sb-card--series .sb-card__bg {
+/* Live animated background for Bento Cards */
+.sb-card .sb-card__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
   border-radius: 14px;
+  transform: translate3d(var(--card-px, 0px), var(--card-py, 0px), 0);
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.sb-card--websites .sb-card__bg-img,
-.sb-card--cluster .sb-card__bg-img,
-.sb-card--brief .sb-card__bg-img,
-.sb-card--investors .sb-card__bg-img,
-.sb-card--series .sb-card__bg-img {
+.sb-card .sb-card__bg-img {
   position: absolute;
-  inset: -15%;
-  width: 130%;
-  height: 130%;
+  inset: -18%;
+  width: 136%;
+  height: 136%;
   max-width: none;
   object-fit: cover;
   object-position: center;
-  opacity: 0.50;
-  filter: saturate(1.2) brightness(0.85);
-  animation: sbAmbientDrift 18s ease-in-out infinite;
+  opacity: 0.58;
+  filter: saturate(1.24) brightness(0.92);
+  animation: sbAmbientDrift1 14s ease-in-out infinite;
   will-change: transform, filter, opacity;
-  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), filter 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1),
+              filter 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Distinct phase-shifted and directional drift animations per card */
+.sb-card--websites .sb-card__bg-img {
+  animation: sbAmbientDrift1 14s ease-in-out infinite;
 }
 
 .sb-card--cluster .sb-card__bg-img {
-  animation: sbAmbientDriftCluster 20s ease-in-out infinite;
-  animation-delay: -5s;
+  animation: sbAmbientDrift2 16s ease-in-out -4s infinite;
 }
 
 .sb-card--brief .sb-card__bg-img {
-  animation: sbAmbientDriftBrief 22s ease-in-out infinite;
-  animation-delay: -9s;
+  animation: sbAmbientDrift3 15s ease-in-out -7s infinite;
 }
 
 .sb-card--investors .sb-card__bg-img {
-  animation: sbAmbientDriftInvestors 24s ease-in-out infinite;
-  animation-delay: -13s;
+  animation: sbAmbientDrift4 17s ease-in-out -10s infinite;
+}
+
+.sb-card--playbook .sb-card__bg-img {
+  animation: sbAmbientDrift5 15s ease-in-out -3s infinite;
 }
 
 .sb-card--series .sb-card__bg-img {
-  animation: sbAmbientDriftSeries 21s ease-in-out infinite;
-  animation-delay: -11s;
+  animation: sbAmbientDrift2 16s ease-in-out -8s infinite;
 }
 
-.sb-card--websites:hover .sb-card__bg-img,
-.sb-card--websites:focus-visible .sb-card__bg-img,
-.sb-card--cluster:hover .sb-card__bg-img,
-.sb-card--cluster:focus-visible .sb-card__bg-img,
-.sb-card--brief:hover .sb-card__bg-img,
-.sb-card--brief:focus-visible .sb-card__bg-img,
-.sb-card--investors:hover .sb-card__bg-img,
-.sb-card--investors:focus-visible .sb-card__bg-img,
-.sb-card--series:hover .sb-card__bg-img,
-.sb-card--series:focus-visible .sb-card__bg-img {
-  opacity: 0.68;
-  filter: saturate(1.32) brightness(0.96);
+.sb-card--videos .sb-card__bg-img {
+  animation: sbAmbientDrift3 14s ease-in-out -5s infinite;
 }
 
-.sb-card--websites .sb-card__bg-glow,
-.sb-card--cluster .sb-card__bg-glow,
-.sb-card--brief .sb-card__bg-glow,
-.sb-card--investors .sb-card__bg-glow,
-.sb-card--series .sb-card__bg-glow {
+.sb-card--competitor .sb-card__bg-img {
+  animation: sbAmbientDrift1 16s ease-in-out -9s infinite;
+}
+
+.sb-card--rebuilt .sb-card__bg-img {
+  animation: sbAmbientDrift4 15s ease-in-out -6s infinite;
+}
+
+.sb-card--products .sb-card__bg-img {
+  animation: sbAmbientDrift5 17s ease-in-out -2s infinite;
+}
+
+.sb-card--partners .sb-card__bg-img {
+  animation: sbAmbientDrift2 15s ease-in-out -11s infinite;
+}
+
+/* Hover & Focus State: Background glows and reveals artwork */
+.sb-card:hover .sb-card__bg-img,
+.sb-card:focus-visible .sb-card__bg-img {
+  opacity: 0.82;
+  filter: saturate(1.36) brightness(1.04);
+}
+
+/* Radial Glow Behind Content */
+.sb-card .sb-card__bg-glow {
   position: absolute;
-  inset: -15%;
+  inset: -20%;
   background: radial-gradient(
     circle at 50% 50%,
-    rgba(213, 183, 122, 0.22) 0%,
-    rgba(140, 100, 255, 0.14) 38%,
+    var(--cat-accent-glow, rgba(213, 183, 122, 0.25)) 0%,
+    rgba(140, 100, 255, 0.12) 38%,
     transparent 72%
   );
   mix-blend-mode: screen;
-  animation: sbGlowPulse 12s ease-in-out infinite alternate;
+  animation: sbGlowPulse 10s ease-in-out infinite alternate;
   will-change: transform, opacity;
-  transition: opacity 600ms ease;
+  transition: opacity 500ms ease;
   pointer-events: none;
 }
 
-.sb-card--cluster .sb-card__bg-glow {
-  animation-delay: -4s;
-}
-
-.sb-card--brief .sb-card__bg-glow {
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(168, 85, 247, 0.22) 0%,
-    rgba(34, 211, 238, 0.14) 38%,
-    transparent 72%
-  );
-  animation-delay: -7s;
-}
-
-.sb-card--investors .sb-card__bg-glow {
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(56, 189, 248, 0.20) 0%,
-    rgba(99, 102, 241, 0.14) 38%,
-    transparent 72%
-  );
-  animation-delay: -11s;
-}
-
-.sb-card--series .sb-card__bg-glow {
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(213, 183, 122, 0.22) 0%,
-    rgba(245, 158, 11, 0.14) 38%,
-    transparent 72%
-  );
-  animation-delay: -9s;
-}
-
-.sb-card--websites:hover .sb-card__bg-glow,
-.sb-card--websites:focus-visible .sb-card__bg-glow,
-.sb-card--cluster:hover .sb-card__bg-glow,
-.sb-card--cluster:focus-visible .sb-card__bg-glow,
-.sb-card--brief:hover .sb-card__bg-glow,
-.sb-card--brief:focus-visible .sb-card__bg-glow,
-.sb-card--investors:hover .sb-card__bg-glow,
-.sb-card--investors:focus-visible .sb-card__bg-glow,
-.sb-card--series:hover .sb-card__bg-glow,
-.sb-card--series:focus-visible .sb-card__bg-glow {
+.sb-card:hover .sb-card__bg-glow,
+.sb-card:focus-visible .sb-card__bg-glow {
   opacity: 0.95;
 }
 
-.sb-card--websites .sb-card__bg-overlay,
-.sb-card--cluster .sb-card__bg-overlay,
-.sb-card--brief .sb-card__bg-overlay,
-.sb-card--investors .sb-card__bg-overlay,
-.sb-card--series .sb-card__bg-overlay {
+.sb-card--gold .sb-card__bg-glow {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(213, 183, 122, 0.26) 0%,
+    rgba(245, 158, 11, 0.15) 36%,
+    transparent 72%
+  );
+}
+
+.sb-card--violet .sb-card__bg-glow {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(169, 154, 224, 0.28) 0%,
+    rgba(34, 211, 238, 0.16) 38%,
+    transparent 72%
+  );
+}
+
+.sb-card--blue .sb-card__bg-glow {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(131, 175, 199, 0.28) 0%,
+    rgba(99, 102, 241, 0.16) 38%,
+    transparent 72%
+  );
+}
+
+.sb-card--sage .sb-card__bg-glow {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(145, 181, 160, 0.28) 0%,
+    rgba(45, 212, 191, 0.15) 38%,
+    transparent 72%
+  );
+}
+
+/* Contrast & Readability Gradient Overlay */
+.sb-card .sb-card__bg-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(22, 23, 27, 0.80) 0%,
-    rgba(22, 23, 27, 0.52) 45%,
-    rgba(22, 23, 27, 0.88) 100%
+    rgba(22, 23, 27, 0.74) 0%,
+    rgba(22, 23, 27, 0.44) 45%,
+    rgba(22, 23, 27, 0.84) 100%
   );
   pointer-events: none;
 }
 
-.sb-card--websites .sb-visual,
-.sb-card--cluster .sb-visual,
-.sb-card--brief .sb-visual,
-.sb-card--investors .sb-visual,
-.sb-card--series .sb-visual {
+/* Glassmorphism for card visual containers */
+.sb-card:has(.sb-card__bg) .sb-visual {
   background: rgba(25, 26, 30, 0.65);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
-@keyframes sbAmbientDrift {
+/* Fluid, organic Ken Burns ambient movements with clear, graceful translation */
+@keyframes sbAmbientDrift1 {
   0% {
-    transform: scale(1) translate3d(0, 0, 0);
+    transform: scale(1.08) translate3d(0, 0, 0);
   }
-  35% {
-    transform: scale(1.06) translate3d(-1%, 0.8%, 0);
+  25% {
+    transform: scale(1.15) translate3d(-22px, 14px, 0);
   }
-  70% {
-    transform: scale(1.03) translate3d(0.8%, -0.8%, 0);
+  50% {
+    transform: scale(1.10) translate3d(18px, -16px, 0);
+  }
+  75% {
+    transform: scale(1.16) translate3d(-12px, -10px, 0);
   }
   100% {
-    transform: scale(1) translate3d(0, 0, 0);
+    transform: scale(1.08) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes sbAmbientDrift2 {
+  0% {
+    transform: scale(1.08) translate3d(0, 0, 0);
+  }
+  25% {
+    transform: scale(1.14) translate3d(20px, -18px, 0);
+  }
+  50% {
+    transform: scale(1.18) translate3d(-16px, 16px, 0);
+  }
+  75% {
+    transform: scale(1.11) translate3d(14px, 12px, 0);
+  }
+  100% {
+    transform: scale(1.08) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes sbAmbientDrift3 {
+  0% {
+    transform: scale(1.10) translate3d(0, 0, 0);
+  }
+  25% {
+    transform: scale(1.16) translate3d(-18px, -18px, 0);
+  }
+  50% {
+    transform: scale(1.12) translate3d(22px, 14px, 0);
+  }
+  75% {
+    transform: scale(1.17) translate3d(-15px, 16px, 0);
+  }
+  100% {
+    transform: scale(1.10) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes sbAmbientDrift4 {
+  0% {
+    transform: scale(1.08) translate3d(0, 0, 0);
+  }
+  25% {
+    transform: scale(1.17) translate3d(18px, 16px, 0);
+  }
+  50% {
+    transform: scale(1.11) translate3d(-20px, -12px, 0);
+  }
+  75% {
+    transform: scale(1.15) translate3d(14px, -16px, 0);
+  }
+  100% {
+    transform: scale(1.08) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes sbAmbientDrift5 {
+  0% {
+    transform: scale(1.09) translate3d(0, 0, 0);
+  }
+  25% {
+    transform: scale(1.15) translate3d(-16px, 20px, 0);
+  }
+  50% {
+    transform: scale(1.18) translate3d(18px, -14px, 0);
+  }
+  75% {
+    transform: scale(1.12) translate3d(-18px, -16px, 0);
+  }
+  100% {
+    transform: scale(1.09) translate3d(0, 0, 0);
+  }
+}
+
+/* Backward-compatible aliases */
+@keyframes sbAmbientDrift {
+  0% {
+    transform: scale(1.08) translate3d(0, 0, 0);
+  }
+  25% {
+    transform: scale(1.15) translate3d(-22px, 14px, 0);
+  }
+  50% {
+    transform: scale(1.10) translate3d(18px, -16px, 0);
+  }
+  75% {
+    transform: scale(1.16) translate3d(-12px, -10px, 0);
+  }
+  100% {
+    transform: scale(1.08) translate3d(0, 0, 0);
   }
 }
 
 @keyframes sbAmbientDriftCluster {
   0% {
-    transform: scale(1) translate3d(0, 0, 0);
+    transform: scale(1.08) translate3d(0, 0, 0);
   }
-  35% {
-    transform: scale(1.06) translate3d(0.8%, -0.8%, 0);
+  25% {
+    transform: scale(1.14) translate3d(20px, -18px, 0);
   }
-  70% {
-    transform: scale(1.03) translate3d(-0.8%, 0.8%, 0);
+  50% {
+    transform: scale(1.18) translate3d(-16px, 16px, 0);
+  }
+  75% {
+    transform: scale(1.11) translate3d(14px, 12px, 0);
   }
   100% {
-    transform: scale(1) translate3d(0, 0, 0);
+    transform: scale(1.08) translate3d(0, 0, 0);
   }
 }
 
 @keyframes sbAmbientDriftBrief {
   0% {
-    transform: scale(1) translate3d(0, 0, 0);
+    transform: scale(1.10) translate3d(0, 0, 0);
   }
-  35% {
-    transform: scale(1.06) translate3d(-0.8%, -0.8%, 0);
+  25% {
+    transform: scale(1.16) translate3d(-18px, -18px, 0);
   }
-  70% {
-    transform: scale(1.04) translate3d(0.8%, 0.8%, 0);
+  50% {
+    transform: scale(1.12) translate3d(22px, 14px, 0);
+  }
+  75% {
+    transform: scale(1.17) translate3d(-15px, 16px, 0);
   }
   100% {
-    transform: scale(1) translate3d(0, 0, 0);
+    transform: scale(1.10) translate3d(0, 0, 0);
   }
 }
 
 @keyframes sbAmbientDriftInvestors {
   0% {
-    transform: scale(1) translate3d(0, 0, 0);
+    transform: scale(1.08) translate3d(0, 0, 0);
   }
-  35% {
-    transform: scale(1.06) translate3d(0.8%, -0.8%, 0);
+  25% {
+    transform: scale(1.17) translate3d(18px, 16px, 0);
   }
-  70% {
-    transform: scale(1.03) translate3d(-0.8%, 0.8%, 0);
+  50% {
+    transform: scale(1.11) translate3d(-20px, -12px, 0);
+  }
+  75% {
+    transform: scale(1.15) translate3d(14px, -16px, 0);
   }
   100% {
-    transform: scale(1) translate3d(0, 0, 0);
+    transform: scale(1.08) translate3d(0, 0, 0);
   }
 }
 
 @keyframes sbAmbientDriftSeries {
   0% {
-    transform: scale(1) translate3d(0, 0, 0);
+    transform: scale(1.09) translate3d(0, 0, 0);
   }
-  35% {
-    transform: scale(1.06) translate3d(-0.9%, 0.9%, 0);
+  25% {
+    transform: scale(1.15) translate3d(-16px, 20px, 0);
   }
-  70% {
-    transform: scale(1.03) translate3d(0.9%, -0.7%, 0);
+  50% {
+    transform: scale(1.18) translate3d(18px, -14px, 0);
+  }
+  75% {
+    transform: scale(1.12) translate3d(-18px, -16px, 0);
   }
   100% {
-    transform: scale(1) translate3d(0, 0, 0);
+    transform: scale(1.09) translate3d(0, 0, 0);
   }
 }
 
 @keyframes sbGlowPulse {
   0% {
-    transform: translate(-3%, -3%) scale(0.98);
+    transform: translate(-14px, -14px) scale(0.96);
     opacity: 0.55;
   }
   50% {
-    transform: translate(3%, 3%) scale(1.12);
-    opacity: 0.85;
+    transform: translate(14px, 14px) scale(1.14);
+    opacity: 0.88;
   }
   100% {
-    transform: translate(-1%, 4%) scale(1.04);
-    opacity: 0.65;
+    transform: translate(-8px, 16px) scale(1.04);
+    opacity: 0.68;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sb-card--websites .sb-card__bg-img,
-  .sb-card--websites .sb-card__bg-glow,
-  .sb-card--cluster .sb-card__bg-img,
-  .sb-card--cluster .sb-card__bg-glow,
-  .sb-card--brief .sb-card__bg-img,
-  .sb-card--brief .sb-card__bg-glow,
-  .sb-card--investors .sb-card__bg-img,
-  .sb-card--investors .sb-card__bg-glow,
-  .sb-card--series .sb-card__bg-img,
-  .sb-card--series .sb-card__bg-glow {
+  .sb-card .sb-card__bg-img,
+  .sb-card .sb-card__bg-glow {
     animation: none;
+    transform: scale(1.04) translate3d(0, 0, 0);
   }
 }
 
