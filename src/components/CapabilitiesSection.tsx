@@ -49,9 +49,12 @@ export default function CapabilitiesSection() {
       const navOffset = 90;
       const rect = target.getBoundingClientRect();
       const targetTop = rect.top + window.scrollY - navOffset;
+      const prefersReducedMotion =
+        typeof window !== "undefined" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       window.scrollTo({
         top: targetTop,
-        behavior: "smooth",
+        behavior: prefersReducedMotion ? "auto" : "smooth",
       });
     }
   };

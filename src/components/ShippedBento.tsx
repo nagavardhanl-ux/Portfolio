@@ -114,19 +114,6 @@ const SvgWarning = () => (
  * distinct charcoal/slate surfaces, and restrained ambient lighting.
  */
 export default function ShippedBento() {
-  const onMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    e.currentTarget.style.setProperty("--card-px", `${(x * 16).toFixed(1)}px`);
-    e.currentTarget.style.setProperty("--card-py", `${(y * 16).toFixed(1)}px`);
-  };
-
-  const onMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
-    e.currentTarget.style.setProperty("--card-px", "0px");
-    e.currentTarget.style.setProperty("--card-py", "0px");
-  };
-
   return (
     <div className="shipped-bento" role="region" aria-label="What I've shipped gallery">
       {/* =========================================================================
@@ -136,9 +123,6 @@ export default function ShippedBento() {
       {/* 01. 8 WEBSITES (Span 7 cols) — Priority Anchor */}
       <article
         className="sb-card sb-card--websites sb-card--gold reveal"
-        tabIndex={0}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
       >
         <div className="sb-card__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -203,9 +187,6 @@ export default function ShippedBento() {
       {/* 02. 11-BLOG CONTENT CLUSTER (Span 5 cols) — Priority Anchor */}
       <article
         className="sb-card sb-card--cluster sb-card--gold reveal"
-        tabIndex={0}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
       >
         <div className="sb-card__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -260,9 +241,6 @@ export default function ShippedBento() {
       {/* 03. DAILY AI INTELLIGENCE BRIEF (Span 5 cols) */}
       <article
         className="sb-card sb-card--brief sb-card--violet reveal"
-        tabIndex={0}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
       >
         <div className="sb-card__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -313,9 +291,6 @@ export default function ShippedBento() {
       {/* 04. 2,300+ INVESTOR RECORDS (Span 7 cols) — Priority Anchor */}
       <article
         className="sb-card sb-card--investors sb-card--blue reveal"
-        tabIndex={0}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
       >
         <div className="sb-card__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -379,9 +354,6 @@ export default function ShippedBento() {
       {/* 05. 80+ SEGMENT ICP PLAYBOOK (Span 6 cols) */}
       <article
         className="sb-card sb-card--playbook sb-card--sage reveal"
-        tabIndex={0}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
       >
         <div className="sb-card__body">
           <h3 className="sb-card__title">{shipped[3].label}</h3>
@@ -414,9 +386,6 @@ export default function ShippedBento() {
       {/* 06. 20 BLOGS ACROSS TWO SERIES (Span 6 cols) */}
       <article
         className="sb-card sb-card--series sb-card--gold reveal"
-        tabIndex={0}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
       >
         <div className="sb-card__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -473,9 +442,6 @@ export default function ShippedBento() {
       {/* 07. AI AVATAR AND PRODUCT VIDEOS (Span 4 cols) */}
       <article
         className="sb-card sb-card--videos sb-card--violet reveal"
-        tabIndex={0}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
       >
         <div className="sb-card__body">
           <h3 className="sb-card__title">{shipped[7].label}</h3>
@@ -521,9 +487,6 @@ export default function ShippedBento() {
       {/* 08. COMPETITOR COMPARISON CONTENT (Span 4 cols) */}
       <article
         className="sb-card sb-card--competitor sb-card--gold reveal"
-        tabIndex={0}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
       >
         <div className="sb-card__body">
           <h3 className="sb-card__title">{shipped[8].label}</h3>
@@ -564,9 +527,6 @@ export default function ShippedBento() {
       {/* 09. REBUILT THE AIQOD BLOG (Span 4 cols) */}
       <article
         className="sb-card sb-card--rebuilt sb-card--sage reveal"
-        tabIndex={0}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
       >
         <div className="sb-card__body">
           <h3 className="sb-card__title">{shipped[9].label}</h3>
@@ -604,9 +564,6 @@ export default function ShippedBento() {
       {/* 10. ICPS FOR 6 PRODUCTS (Span 6 cols) */}
       <article
         className="sb-card sb-card--products sb-card--blue reveal"
-        tabIndex={0}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
       >
         <div className="sb-card__body">
           <h3 className="sb-card__title">{shipped[2].label}</h3>
@@ -665,9 +622,6 @@ export default function ShippedBento() {
       {/* 11. PARTNER RESEARCH, 19 COUNTRIES (Span 6 cols) */}
       <article
         className="sb-card sb-card--partners sb-card--blue reveal"
-        tabIndex={0}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
       >
         <div className="sb-card__body">
           <h3 className="sb-card__title">{shipped[5].label}</h3>

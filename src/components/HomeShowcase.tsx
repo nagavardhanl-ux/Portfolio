@@ -32,6 +32,11 @@ function LiveScreen({
     const video = videoRef.current;
     if (!video) return;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      video.pause();
+      return;
+    }
+
     video.muted = true;
     video.defaultMuted = true;
 
@@ -131,6 +136,7 @@ export default function HomeShowcase() {
               >
                 {vhSite.name}
                 <ArrowUpRight className="showcase-info__icon" />
+                <span className="sr-only">(opens in a new tab)</span>
               </a>
             </h3>
 
@@ -155,6 +161,7 @@ export default function HomeShowcase() {
                 className="showcase-btn showcase-btn--purple"
               >
                 Visit VentureHub360 <ArrowUpRight />
+                <span className="sr-only">(opens in a new tab)</span>
               </a>
             </div>
           </div>
@@ -194,6 +201,7 @@ export default function HomeShowcase() {
               >
                 {aiqodSite.name}
                 <ArrowUpRight className="showcase-info__icon" />
+                <span className="sr-only">(opens in a new tab)</span>
               </a>
             </h3>
 
@@ -218,6 +226,7 @@ export default function HomeShowcase() {
                 className="showcase-btn showcase-btn--cyan"
               >
                 Visit AIQoD <ArrowUpRight />
+                <span className="sr-only">(opens in a new tab)</span>
               </a>
             </div>
           </div>
@@ -257,6 +266,7 @@ export default function HomeShowcase() {
               >
                 {aiqod360Site.name}
                 <ArrowUpRight className="showcase-info__icon" />
+                <span className="sr-only">(opens in a new tab)</span>
               </a>
             </h3>
 
@@ -281,6 +291,7 @@ export default function HomeShowcase() {
                 className="showcase-btn showcase-btn--coral"
               >
                 Visit AIQoD360 <ArrowUpRight />
+                <span className="sr-only">(opens in a new tab)</span>
               </a>
             </div>
           </div>

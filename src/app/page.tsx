@@ -1,37 +1,18 @@
-import Link from "next/link";
-import { ArrowRight } from "@/components/icons";
 import SectionHead from "@/components/SectionHead";
 import HomeShowcase from "@/components/HomeShowcase";
 import ToolsGrid from "@/components/ToolsGrid";
 import ShippedBento from "@/components/ShippedBento";
 import CapabilitiesSection from "@/components/CapabilitiesSection";
-import { hero } from "@/data/content";
+import HeroScrollExpansion from "@/components/HeroScrollExpansion";
 import { pageMetadata } from "@/lib/meta";
 
 export const metadata = pageMetadata("/");
 
 export default function Home() {
-  const [first] = hero.headline.split(". ");
   return (
     <div className="signal-home">
       {/* Hero */}
-      <section className="hero signal-hero hero--center" aria-labelledby="hero-title">
-        <div className="container">
-          <h1 id="hero-title" className="display hero__title">
-            {first}
-          </h1>
-          <div className="hero__foot">
-            <div>
-              <p className="lead">{hero.sub}</p>
-              <div className="hero__actions">
-                <Link href="/websites/" className="btn btn--primary" data-magnetic="">
-                  See the work <ArrowRight />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroScrollExpansion />
 
       {/* What I've shipped */}
       <section className="section" aria-labelledby="shipped-title" id="shipped">

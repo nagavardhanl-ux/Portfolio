@@ -14,29 +14,66 @@ export default function RevealObserver() {
   const pathname = usePathname();
 
   useEffect(() => {
-    let frame = 0;
-    const check = () => {
-      frame = 0;
-      const limit = window.innerHeight * 0.92;
+    // Respect reduced motion: reveal all content immediately
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       document.querySelectorAll<HTMLElement>(".reveal:not(.is-in)").forEach((el) => {
-        const r = el.getBoundingClientRect();
-        if (r.top < limit && r.bottom > 0) el.classList.add("is-in");
+        el.classList.add("is-in");
+      });
+      return;
+    }
+
+    // Fallback if IntersectionObserver is not supported
+    if (!("IntersectionObserver" in window)) {
+      document.querySelectorAll<HTMLElement>(".reveal:not(.is-in)").forEach((el) => {
+        el.classList.add("is-in");
+      });
+      return;
+    }
+
+    // Trigger when element is 14% into the viewport from the bottom
+    // so the reveal animation runs visibly in front of the user, rather
+    // than firing prematurely while still off-screen.
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: "0px 0px -14% 0px",
+        threshold: 0.06,
+      }
+    );
+
+    const observeElements = () => {
+      document.querySelectorAll<HTMLElement>(".reveal:not(.is-in)").forEach((el) => {
+        io.observe(el);
       });
     };
-    const schedule = () => {
-      if (!frame) frame = requestAnimationFrame(check);
-    };
 
-    check();
-    const mo = new MutationObserver(schedule);
+    observeElements();
+
+    // Re-observe if new elements are added dynamically
+    const mo = new MutationObserver(observeElements);
     mo.observe(document.body, { childList: true, subtree: true });
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule, { passive: true });
+
+    // Safety fallback: ensure no element is left at opacity 0 if observer fails
+    const safetyTimer = setTimeout(() => {
+      document.querySelectorAll<HTMLElement>(".reveal:not(.is-in)").forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) {
+          el.classList.add("is-in");
+        }
+      });
+    }, 4000);
+
     return () => {
-      cancelAnimationFrame(frame);
+      clearTimeout(safetyTimer);
+      io.disconnect();
       mo.disconnect();
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
     };
   }, [pathname]);
 
