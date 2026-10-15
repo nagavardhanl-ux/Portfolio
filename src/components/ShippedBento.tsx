@@ -22,41 +22,6 @@ const SvgCheck = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-const SvgMigrationArrow = () => (
-  <svg
-    width="14"
-    height="14"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <line x1="12" y1="5" x2="12" y2="19" />
-    <polyline points="19 12 12 19 5 12" />
-  </svg>
-);
-
-const SvgWarning = () => (
-  <svg
-    width="13"
-    height="13"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-    <line x1="12" y1="9" x2="12" y2="13" />
-    <line x1="12" y1="17" x2="12.01" y2="17" />
-  </svg>
-);
-
 /**
  * Polished Art-Directed Asymmetric Bento Grid for "What I've Shipped"
  * Features clear card silhouettes, consistent 16px desktop gaps,
@@ -174,29 +139,72 @@ export default function ShippedBento() {
         </div>
 
         {/* Visual: Editorial Topic Cluster & Schema Framework */}
-        <div className="sb-visual sb-visual--cluster" aria-hidden="true">
+        <div className="sb-visual sb-visual--cluster">
           <div className="sb-cluster-tree">
-            <div className="sb-cluster-pillar">
-              <span className="sb-cluster-marker">CORE PILLAR</span>
-              <span className="sb-cluster-title">Enterprise Agentic AI Architecture</span>
-              <span className="sb-cluster-status">Pillar and spoke</span>
-            </div>
+            <a
+              href="https://aiqod.com/blog/what-is-agentic-ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sb-cluster-pillar"
+              style={{ textDecoration: "none" }}
+            >
+              <div style={{ display: "flex", flexDirection: "column", gap: "2px", flex: 1, minWidth: 0 }}>
+                <span className="sb-cluster-marker">CORE PILLAR</span>
+                <span className="sb-cluster-title" style={{ fontSize: "0.76rem", lineHeight: 1.3 }}>
+                  What Is Agentic AI? The Complete Enterprise Guide
+                </span>
+              </div>
+              <span className="sb-cluster-status" style={{ flexShrink: 0 }}>Pillar and spoke</span>
+            </a>
             <div className="sb-cluster-nodes">
-              <div className="sb-cluster-node">
+              <a
+                href="https://aiqod.com/blog/agentic-ai-statistics"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sb-cluster-node"
+                style={{ textDecoration: "none" }}
+              >
                 <span className="sb-node-dot" />
-                <span className="sb-node-text">Autonomous Agent Governance</span>
-                <span className="sb-node-chip sb-node-chip--teal">FAQ Schema</span>
-              </div>
-              <div className="sb-cluster-node">
+                <span className="sb-node-text">Agentic AI Statistics: Adoption, ROI and Market Size</span>
+              </a>
+              <a
+                href="https://aiqod.com/blog/ai-agent-governance"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sb-cluster-node"
+                style={{ textDecoration: "none" }}
+              >
                 <span className="sb-node-dot" />
-                <span className="sb-node-text">AEO: Zero-Click Answers</span>
-                <span className="sb-node-chip sb-node-chip--cyan">Perplexity / AI</span>
-              </div>
-              <div className="sb-cluster-node">
+                <span className="sb-node-text">AI Agent Governance: Ownership, Policies and Lifecycle</span>
+              </a>
+              <a
+                href="https://aiqod.com/blog/ai-agent-orchestration"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sb-cluster-node"
+                style={{ textDecoration: "none" }}
+              >
                 <span className="sb-node-dot" />
-                <span className="sb-node-text">Multi-Agent Workflow ROI</span>
-                <span className="sb-node-chip sb-node-chip--teal">GEO Citations</span>
-              </div>
+                <span className="sb-node-text">AI Agent Orchestration: Coordinating Multi Agent Workflows</span>
+              </a>
+            </div>
+            <div style={{ display: "flex", justifyContent: "flex-end", paddingTop: "2px" }}>
+              <a
+                href="https://aiqod.com/blog"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontSize: "0.68rem",
+                  fontFamily: "var(--font-mono)",
+                  color: "var(--cat-accent, #D5B77A)",
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "4px",
+                }}
+              >
+                Read the cluster ↗
+              </a>
             </div>
           </div>
         </div>
@@ -387,7 +395,7 @@ export default function ShippedBento() {
         </div>
       </article>
 
-      {/* 06. TWO BLOG SERIES FOR VENTUREHUB360 (Span 6 cols) */}
+      {/* 06. BLOGS FOR BOTH PLATFORMS (Span 6 cols) */}
       <article
         className="sb-card sb-card--series sb-card--gold reveal"
         tabIndex={0}
@@ -411,32 +419,104 @@ export default function ShippedBento() {
           <p className="sb-card__desc">{shipped[1].detail}</p>
         </div>
 
-        {/* Visual: Dual-Series Rack Display */}
-        <div className="sb-visual sb-visual--series" aria-hidden="true">
+        {/* Visual: Platform Blogs Rack Display */}
+        <div className="sb-visual sb-visual--series">
           <div className="sb-series-rack">
-            <div className="sb-series-card">
-              <div className="sb-series-header">
-                <span className="sb-series-badge">SERIES 1</span>
-                <span className="sb-series-count">SERIES</span>
+            <div className="sb-series-card" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <div>
+                <div className="sb-series-header" style={{ marginBottom: "10px" }}>
+                  <span style={{ fontSize: "0.76rem", fontWeight: 600, color: "#F4F0E8", letterSpacing: "0.04em" }}>AIQOD</span>
+                  <span className="sb-stat-chip" style={{ fontSize: "0.58rem", color: "var(--cat-accent, #D5B77A)", borderColor: "var(--cat-accent-border, rgba(213, 183, 122, 0.25))" }}>Enterprise AI</span>
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", margin: "6px 0 12px" }}>
+                  <span className="sb-stat-chip">Agentic AI</span>
+                  <span className="sb-stat-chip">AI Governance</span>
+                  <span className="sb-stat-chip">Enterprise Architecture</span>
+                </div>
               </div>
-              <h4 className="sb-series-name">The Dealflow Problem</h4>
-              <ul className="sb-series-list">
-                <li><span className="sb-item-num">01</span> Why Traditional Screening Fails</li>
-                <li><span className="sb-item-num">02</span> Solo GP Bandwidth Bottlenecks</li>
-                <li><span className="sb-item-num">03</span> Autonomous IC Evaluation</li>
-              </ul>
+              <div style={{ paddingTop: "8px", borderTop: "1px solid #343438" }}>
+                <a
+                  href="https://aiqod.com/blog"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontSize: "0.68rem",
+                    fontFamily: "var(--font-mono)",
+                    color: "var(--cat-accent, #D5B77A)",
+                    textDecoration: "none",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "4px",
+                  }}
+                >
+                  Visit the blog ↗
+                </a>
+              </div>
             </div>
-            <div className="sb-series-card">
-              <div className="sb-series-header">
-                <span className="sb-series-badge">SERIES 2</span>
-                <span className="sb-series-count">SERIES</span>
+
+            <div className="sb-series-card" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <div>
+                <div className="sb-series-header" style={{ marginBottom: "10px" }}>
+                  <span style={{ fontSize: "0.76rem", fontWeight: 600, color: "#F4F0E8", letterSpacing: "0.04em" }}>VENTUREHUB360</span>
+                  <span className="sb-stat-chip" style={{ fontSize: "0.58rem", color: "var(--cat-accent, #D5B77A)", borderColor: "var(--cat-accent-border, rgba(213, 183, 122, 0.25))" }}>Founders and investors</span>
+                </div>
+                <ul className="sb-series-list" style={{ margin: "6px 0 12px" }}>
+                  <li>
+                    <span className="sb-item-num">01</span>
+                    <a
+                      href="https://www.venturehub360.com/blog/evaluation-gap-pitch-decks"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: "#B9B8B3", textDecoration: "none", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+                      title="The Evaluation Gap: Why Pitch Decks Deserve More Than a Surface Read"
+                    >
+                      The Evaluation Gap: Why Pitch Decks Deserve More Than a Surface Read
+                    </a>
+                  </li>
+                  <li>
+                    <span className="sb-item-num">02</span>
+                    <a
+                      href="https://www.venturehub360.com/blog/what-investors-ask-in-a-pitch-meeting"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: "#B9B8B3", textDecoration: "none", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+                      title="What Investors Actually Ask in a Pitch Meeting"
+                    >
+                      What Investors Actually Ask in a Pitch Meeting
+                    </a>
+                  </li>
+                  <li>
+                    <span className="sb-item-num">03</span>
+                    <a
+                      href="https://www.venturehub360.com/blog/how-startup-funding-rounds-work"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: "#B9B8B3", textDecoration: "none", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+                      title="How Startup Funding Rounds Work: Pre-Seed to Series B Explained"
+                    >
+                      How Startup Funding Rounds Work: Pre-Seed to Series B Explained
+                    </a>
+                  </li>
+                </ul>
               </div>
-              <h4 className="sb-series-name">Startup Pitch Analyser</h4>
-              <ul className="sb-series-list">
-                <li><span className="sb-item-num">01</span> Anatomy of an AI Pitch Deck</li>
-                <li><span className="sb-item-num">02</span> Founder-Investor Asymmetry</li>
-                <li><span className="sb-item-num">03</span> Metrics That Matter in 2026</li>
-              </ul>
+              <div style={{ paddingTop: "8px", borderTop: "1px solid #343438" }}>
+                <a
+                  href="https://www.venturehub360.com/blog"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontSize: "0.68rem",
+                    fontFamily: "var(--font-mono)",
+                    color: "var(--cat-accent, #D5B77A)",
+                    textDecoration: "none",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "4px",
+                  }}
+                >
+                  Visit the blog ↗
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -556,7 +636,7 @@ export default function ShippedBento() {
       </article>
 
       {/* =========================================================================
-          ROW 5: MEDIA, RECOVERY & MARKETS (4 cols + 4 cols + 4 cols)
+          ROW 5: VIDEO, LINKEDIN & INTERNATIONAL PARTNERS (4 cols + 4 cols + 4 cols)
           ========================================================================= */}
 
       {/* 09. AI AVATAR AND PRODUCT VIDEOS (Span 4 cols) */}
@@ -571,22 +651,23 @@ export default function ShippedBento() {
           <p className="sb-card__desc">{shipped[7].detail}</p>
         </div>
 
-        {/* Visual: Video Monitor & Audio Waveform Preview */}
-        <div className="sb-visual sb-visual--videos" aria-hidden="true">
+        {/* Visual: Video Production & Editing */}
+        <div className="sb-visual sb-visual--videos">
           <div className="sb-video-deck">
-            <div className="sb-video-screen">
-              <div className="sb-video-avatar">
+            <div className="sb-video-screen" style={{ display: "flex", flexDirection: "column", gap: "10px", padding: "12px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={asset("icons/heygen.png")}
                   alt="HeyGen"
                   className="sb-heygen-icon"
                 />
-                <span className="sb-play-btn">▶</span>
+                <span style={{ fontSize: "0.78rem", fontWeight: 600, color: "#F4F0E8" }}>HeyGen &amp; Screen Recording</span>
               </div>
-              <div className="sb-video-meta">
-                <span className="sb-video-time">02:18 / 1080p 60fps</span>
-                <span className="sb-video-sub">“AI Agents for Enterprise Ops”</span>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                <span className="sb-stat-chip">AI avatar videos</span>
+                <span className="sb-stat-chip">Product demo cuts</span>
+                <span className="sb-stat-chip">Voiceover and editing</span>
               </div>
             </div>
             <div className="sb-waveform" aria-hidden="true">
@@ -607,7 +688,7 @@ export default function ShippedBento() {
         </div>
       </article>
 
-      {/* 10. REBUILT THE AIQOD BLOG (Span 4 cols) */}
+      {/* 10. LINKEDIN FOR BOTH BRANDS (Span 4 cols) */}
       <article
         className="sb-card sb-card--rebuilt sb-card--sage reveal"
         tabIndex={0}
@@ -619,24 +700,54 @@ export default function ShippedBento() {
           <p className="sb-card__desc">{shipped[9].detail}</p>
         </div>
 
-        {/* Visual: Migration Recovery Timeline */}
-        <div className="sb-visual sb-visual--rebuilt" aria-hidden="true">
-          <div className="sb-recovery-timeline">
-            <div className="sb-recovery-step sb-recovery-step--alert">
-              <span className="sb-step-icon"><SvgWarning /></span>
+        {/* Visual: LinkedIn Presence for Both Brands */}
+        <div className="sb-visual sb-visual--rebuilt" style={{ padding: "8px 10px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "8px" }}>
+            <div style={{ background: "#202125", border: "1px solid #343438", borderRadius: "6px", padding: "10px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <div>
-                <span className="sb-step-title">WordPress Wipe</span>
-                <span className="sb-step-sub">Database wiped during host migration</span>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "4px", marginBottom: "8px" }}>
+                  <span style={{ fontSize: "0.74rem", fontWeight: 600, color: "#F4F0E8" }}>AIQOD</span>
+                  <span className="sb-stat-chip" style={{ fontSize: "0.56rem", color: "var(--cat-accent, #91B5A0)", borderColor: "var(--cat-accent-border, rgba(145, 181, 160, 0.25))" }}>Running</span>
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "4px", margin: "4px 0 10px" }}>
+                  <span className="sb-stat-chip" style={{ fontSize: "0.62rem" }}>Weekly posts and carousels</span>
+                  <span className="sb-stat-chip" style={{ fontSize: "0.62rem" }}>Founder and sales head drafts</span>
+                  <span className="sb-stat-chip" style={{ fontSize: "0.62rem" }}>Podcast clips</span>
+                </div>
+              </div>
+              <div style={{ paddingTop: "6px", borderTop: "1px solid #343438" }}>
+                <a
+                  href="https://www.linkedin.com/company/aiqod/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: "0.66rem", fontFamily: "var(--font-mono)", color: "var(--cat-accent, #91B5A0)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}
+                >
+                  View page ↗
+                </a>
               </div>
             </div>
-            <div className="sb-recovery-arrow">
-              <SvgMigrationArrow />
-            </div>
-            <div className="sb-recovery-step sb-recovery-step--success">
-              <span className="sb-step-icon sb-step-icon--success"><SvgCheck /></span>
+
+            <div style={{ background: "#202125", border: "1px solid #343438", borderRadius: "6px", padding: "10px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <div>
-                <span className="sb-step-title">Rebuilt from scratch</span>
-                <span className="sb-step-sub">New posts, structure and SEO</span>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "4px", marginBottom: "8px" }}>
+                  <span style={{ fontSize: "0.74rem", fontWeight: 600, color: "#F4F0E8" }}>VENTUREHUB360</span>
+                  <span className="sb-stat-chip" style={{ fontSize: "0.56rem", color: "var(--cat-accent, #91B5A0)", borderColor: "var(--cat-accent-border, rgba(145, 181, 160, 0.25))" }}>Built and ran</span>
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "4px", margin: "4px 0 10px" }}>
+                  <span className="sb-stat-chip" style={{ fontSize: "0.62rem" }}>Company page from zero</span>
+                  <span className="sb-stat-chip" style={{ fontSize: "0.62rem" }}>Group posting system</span>
+                  <span className="sb-stat-chip" style={{ fontSize: "0.62rem" }}>Link in first comment format</span>
+                </div>
+              </div>
+              <div style={{ paddingTop: "6px", borderTop: "1px solid #343438" }}>
+                <a
+                  href="https://www.linkedin.com/company/venturehub360/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: "0.66rem", fontFamily: "var(--font-mono)", color: "var(--cat-accent, #91B5A0)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}
+                >
+                  View page ↗
+                </a>
               </div>
             </div>
           </div>

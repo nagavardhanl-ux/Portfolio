@@ -30,7 +30,7 @@ export default function WhatIDoPage() {
             <span className="wid-quicknav__divider" aria-hidden="true">/</span>
             <a href="#content" className="wid-quicknav__link">
               <span className="wid-quicknav__num">03</span>
-              <span>Content</span>
+              <span>Content and LinkedIn</span>
             </a>
             <span className="wid-quicknav__divider" aria-hidden="true">/</span>
             <a href="#websites-seo" className="wid-quicknav__link">
@@ -185,18 +185,18 @@ export default function WhatIDoPage() {
           </div>
         </section>
 
-        {/* ── 03. Content ─────────────────────────────────────── */}
+        {/* ── 03. Content and LinkedIn ─────────────────────────── */}
         <section id="content" className="wid-section" aria-labelledby="content-title">
           <div className="wid-sec__header">
             <div className="wid-sec__meta">
               <span className="wid-sec__num">03</span>
-              <span className="wid-sec__tag">EDITORIAL &amp; AI SEARCH (SEO · AEO · GEO)</span>
+              <span className="wid-sec__tag">EDITORIAL, BLOGS &amp; LINKEDIN</span>
             </div>
             <h2 id="content-title" className="wid-sec__title">{content.title}</h2>
             <p className="wid-sec__lead">{content.intro}</p>
           </div>
 
-          <div className="wid-split wid-split--5-7">
+          <div className="wid-split wid-split--6-6">
             <div className="wid-col-text">
               <h3 className="wid-subheading">What I Do</h3>
               <ul className="wid-dash-list" role="list">
@@ -204,7 +204,9 @@ export default function WhatIDoPage() {
                   <li key={p}>{p}</li>
                 ))}
               </ul>
+            </div>
 
+            <div className="wid-col-text">
               <h3 className="wid-subheading">Selected Deliverables</h3>
               <ul className="wid-work-index" role="list">
                 {content.work.map((w, i) => (
@@ -215,54 +217,49 @@ export default function WhatIDoPage() {
                 ))}
               </ul>
             </div>
+          </div>
 
-            <div className="wid-col-specimen">
-              <div className="wid-editorial-cards">
-                <div className="wid-pub-card">
-                  <div className="wid-pub-card__top">
-                    <span className="wid-pub-card__tag">SEO · AEO · GEO Cluster</span>
-                    <span className="wid-pub-card__status">AIQoD Blog</span>
-                  </div>
-                  <h4 className="wid-pub-card__title">Agentic AI Content Cluster</h4>
-                  <p className="wid-pub-card__desc">
-                    Comprehensive pillar-cluster architecture built with structured FAQ schema, comparison tables, and semantic density for Google rankings and AI engine citations (Perplexity, Claude, ChatGPT).
-                  </p>
-                </div>
-
-                <div className="wid-pub-card">
-                  <div className="wid-pub-card__top">
-                    <span className="wid-pub-card__tag">Published Articles Across Two Series</span>
-                    <span className="wid-pub-card__status">Smart AI Investor &amp; SPA</span>
-                  </div>
-                  <h4 className="wid-pub-card__title">Startup Pitch Analyser &amp; Dealflow Series</h4>
-                  <p className="wid-pub-card__desc">
-                    A technical cluster for Startup Pitch Analyser plus the &ldquo;Dealflow Problem&rdquo; series for Smart AI Investor, analyzing evaluation friction and founder pitch bottlenecks.
-                  </p>
-                </div>
-
-                <div className="wid-pub-card">
-                  <div className="wid-pub-card__top">
-                    <span className="wid-pub-card__tag">Automated Executive Intelligence</span>
-                    <span className="wid-pub-card__status">Every Morning</span>
-                  </div>
-                  <h4 className="wid-pub-card__title">Daily AI Intelligence Brief</h4>
-                  <p className="wid-pub-card__desc">
-                    Automated daily intelligence briefing summarizing overnight developments in generative AI, frontier models, and enterprise use cases, delivered directly to the leadership team.
-                  </p>
-                </div>
-
-                <div className="wid-pub-card">
-                  <div className="wid-pub-card__top">
-                    <span className="wid-pub-card__tag">Multi-Platform Social Distribution</span>
-                    <span className="wid-pub-card__status">LinkedIn · X · Instagram</span>
-                  </div>
-                  <h4 className="wid-pub-card__title">Consistent Weekly Publishing Engine</h4>
-                  <p className="wid-pub-card__desc">
-                    Running 5 posts per week for AIQoD and 3 per week for VentureHub360 with custom educational carousels, infographics, and data visualizations.
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="wid-links-row" style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginTop: "24px" }}>
+            <a
+              href="https://aiqod.com/blog"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="wid-tag"
+              style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "6px" }}
+            >
+              <span>AIQoD blog</span>
+              <span aria-hidden="true" style={{ color: "var(--accent-gold, #D5B77A)" }}>↗</span>
+            </a>
+            <a
+              href="https://www.venturehub360.com/blog"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="wid-tag"
+              style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "6px" }}
+            >
+              <span>VentureHub360 blog</span>
+              <span aria-hidden="true" style={{ color: "var(--accent-gold, #D5B77A)" }}>↗</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/company/aiqod/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="wid-tag"
+              style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "6px" }}
+            >
+              <span>AIQoD on LinkedIn</span>
+              <span aria-hidden="true" style={{ color: "var(--accent-gold, #D5B77A)" }}>↗</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/company/venturehub360/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="wid-tag"
+              style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "6px" }}
+            >
+              <span>VentureHub360 on LinkedIn</span>
+              <span aria-hidden="true" style={{ color: "var(--accent-gold, #D5B77A)" }}>↗</span>
+            </a>
           </div>
         </section>
 

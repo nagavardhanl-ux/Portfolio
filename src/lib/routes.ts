@@ -22,7 +22,7 @@ export const routeMeta: RouteMeta[] = [
     path: "/what-i-do/",
     title: "What I do · Nagavardhan Reddy Lella",
     description:
-      "Product marketing, demand generation, websites and SEO, and AI-led execution for two AI platforms: what each involves and the work behind it.",
+      "Product marketing, demand generation, content and LinkedIn, websites and SEO, and AI-led execution for two AI platforms: what each involves and the work behind it.",
   },
   {
     path: "/contact/",

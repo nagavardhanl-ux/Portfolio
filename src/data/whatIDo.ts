@@ -15,7 +15,7 @@ export interface Capability {
 export const whatIDoPage = {
   heading: "What I do",
   intro:
-    "I run product marketing, demand generation, content, websites and AI-led execution for two AI platforms. Here is what each one involves and the work behind it.",
+    "One person, end to end. I run product marketing, demand generation, content and LinkedIn, websites and AI-led execution for two AI platforms, and I do the hands-on work in each.",
 }
 
 export const capabilitySections: Capability[] = [
@@ -62,21 +62,18 @@ export const capabilitySections: Capability[] = [
   {
     id: "content",
     index: "03",
-    title: "Content",
+    title: "Content and LinkedIn",
     intro:
-      "I write the blogs, posts and series that bring people to the product, built to rank on Google and show up in AI search.",
+      "I write the content that brings people to the product and run the LinkedIn that puts it in front of them.",
     points: [
-      "Plan and write blog clusters around SEO, AEO and GEO together.",
-      "Run social posting across LinkedIn, Instagram, Facebook and X.",
-      "Build infographics and carousels for LinkedIn.",
-      "Keep content grounded in real, checked facts, not assumptions.",
+      "Plan and write blog clusters built to rank on Google and show up in AI answers.",
+      "Run AIQoD's company page: posts, carousels and reposts across LinkedIn, Instagram, Facebook and X.",
+      "Write LinkedIn drafts for the founder and the sales head.",
+      "Cut podcast appearances into short clips for social.",
     ],
     work: [
-      "Wrote an Agentic AI content cluster for AIQoD, with FAQ schema and comparison tables.",
-      "Wrote a blog cluster for Startup Pitch Analyser and The Dealflow Problem series for Smart AI Investor.",
-      "Rebuilt the AIQoD blog after a WordPress migration wiped it.",
-      "Run social posting of 5 posts a week for AIQoD and 3 for VentureHub360.",
-      "Built a daily AI intelligence brief that goes to the leadership team each morning.",
+      "Built the Agentic AI content cluster for AIQoD and the blog for VentureHub360.",
+      "Built VentureHub360's LinkedIn from zero: company page, carousels and a posting system across founder and investor groups.",
     ],
   },
   {
