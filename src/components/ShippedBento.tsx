@@ -22,57 +22,6 @@ const SvgCheck = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-const SvgCross = ({ className = "" }: { className?: string }) => (
-  <svg
-    width="10"
-    height="10"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-    aria-hidden="true"
-  >
-    <line x1="18" y1="6" x2="6" y2="18" />
-    <line x1="6" y1="6" x2="18" y2="18" />
-  </svg>
-);
-
-const SvgRadar = () => (
-  <svg
-    width="13"
-    height="13"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-  </svg>
-);
-
-const SvgChart = () => (
-  <svg
-    width="13"
-    height="13"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
-    <polyline points="16 7 22 7 22 13" />
-  </svg>
-);
-
 const SvgMigrationArrow = () => (
   <svg
     width="14"
@@ -230,7 +179,7 @@ export default function ShippedBento() {
             <div className="sb-cluster-pillar">
               <span className="sb-cluster-marker">CORE PILLAR</span>
               <span className="sb-cluster-title">Enterprise Agentic AI Architecture</span>
-              <span className="sb-cluster-status">Rank #1-3 Target</span>
+              <span className="sb-cluster-status">Pillar and spoke</span>
             </div>
             <div className="sb-cluster-nodes">
               <div className="sb-cluster-node">
@@ -288,21 +237,43 @@ export default function ShippedBento() {
               <span className="sb-brief-badge">
                 <span className="sb-brief-pulse" /> EXECUTIVE DISPATCH
               </span>
-              <span className="sb-brief-time">08:00 AM • Leadership team</span>
+              <span className="sb-brief-time">08:00 AM / Leadership team</span>
             </div>
-            <div className="sb-brief-signals">
-              <div className="sb-signal-item">
-                <span className="sb-sig-icon"><SvgRadar /></span>
+            <div className="sb-brief-signals" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: "6px" }}>
+              <div className="sb-signal-item" style={{ padding: "6px 8px" }}>
                 <div>
-                  <span className="sb-sig-head">Agentic AI LLM Pricing Shift</span>
-                  <p className="sb-sig-desc">Inference cost analysis on multi-agent execution pipelines.</p>
+                  <span className="sb-sig-head" style={{ fontSize: "0.68rem", color: "var(--cat-accent, #A99AE0)", fontFamily: "var(--font-mono)" }}>Top story</span>
+                  <p className="sb-sig-desc" style={{ fontSize: "0.65rem", color: "#F4F0E8", margin: "2px 0 0" }}>The one development everyone needs today</p>
                 </div>
               </div>
-              <div className="sb-signal-item">
-                <span className="sb-sig-icon"><SvgChart /></span>
+              <div className="sb-signal-item" style={{ padding: "6px 8px" }}>
                 <div>
-                  <span className="sb-sig-head">Competitor Valuation Update</span>
-                  <p className="sb-sig-desc">PitchBook rolled out autonomous startup scoring feature.</p>
+                  <span className="sb-sig-head" style={{ fontSize: "0.68rem", color: "var(--cat-accent, #A99AE0)", fontFamily: "var(--font-mono)" }}>Founder</span>
+                  <p className="sb-sig-desc" style={{ fontSize: "0.65rem", color: "#F4F0E8", margin: "2px 0 0" }}>Market and strategy</p>
+                </div>
+              </div>
+              <div className="sb-signal-item" style={{ padding: "6px 8px" }}>
+                <div>
+                  <span className="sb-sig-head" style={{ fontSize: "0.68rem", color: "var(--cat-accent, #A99AE0)", fontFamily: "var(--font-mono)" }}>Sales</span>
+                  <p className="sb-sig-desc" style={{ fontSize: "0.65rem", color: "#F4F0E8", margin: "2px 0 0" }}>Buyer and competitor signals</p>
+                </div>
+              </div>
+              <div className="sb-signal-item" style={{ padding: "6px 8px" }}>
+                <div>
+                  <span className="sb-sig-head" style={{ fontSize: "0.68rem", color: "var(--cat-accent, #A99AE0)", fontFamily: "var(--font-mono)" }}>R&amp;D</span>
+                  <p className="sb-sig-desc" style={{ fontSize: "0.65rem", color: "#F4F0E8", margin: "2px 0 0" }}>New tech and product angles</p>
+                </div>
+              </div>
+              <div className="sb-signal-item" style={{ padding: "6px 8px" }}>
+                <div>
+                  <span className="sb-sig-head" style={{ fontSize: "0.68rem", color: "var(--cat-accent, #A99AE0)", fontFamily: "var(--font-mono)" }}>Delivery</span>
+                  <p className="sb-sig-desc" style={{ fontSize: "0.65rem", color: "#F4F0E8", margin: "2px 0 0" }}>Rollout and operations</p>
+                </div>
+              </div>
+              <div className="sb-signal-item" style={{ padding: "6px 8px" }}>
+                <div>
+                  <span className="sb-sig-head" style={{ fontSize: "0.68rem", color: "var(--cat-accent, #A99AE0)", fontFamily: "var(--font-mono)" }}>Mondays</span>
+                  <p className="sb-sig-desc" style={{ fontSize: "0.65rem", color: "#F4F0E8", margin: "2px 0 0" }}>Social content pack for the week</p>
                 </div>
               </div>
             </div>
@@ -337,35 +308,32 @@ export default function ShippedBento() {
         {/* Visual: High-Density Structured Database Table */}
         <div className="sb-visual sb-visual--table" aria-hidden="true">
           <div className="sb-db-preview">
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "8px" }}>
+              <div style={{ background: "#202125", border: "1px solid #343438", borderRadius: "6px", padding: "8px 10px" }}>
+                <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: "0.58rem", color: "var(--cat-accent, #83AFC7)", letterSpacing: "0.06em", fontWeight: 600 }}>PRODUCT OUTREACH</span>
+                <span style={{ display: "block", fontSize: "0.74rem", color: "#F4F0E8", fontWeight: 500, marginTop: "2px" }}>Smart AI Investor</span>
+              </div>
+              <div style={{ background: "#202125", border: "1px solid #343438", borderRadius: "6px", padding: "8px 10px" }}>
+                <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: "0.58rem", color: "var(--cat-accent, #83AFC7)", letterSpacing: "0.06em", fontWeight: 600 }}>FUNDRAISING OUTREACH</span>
+                <span style={{ display: "block", fontSize: "0.74rem", color: "#F4F0E8", fontWeight: 500, marginTop: "2px" }}>Company seed round</span>
+              </div>
+            </div>
+
             <div className="sb-db-header-chips">
               <span className="sb-stat-chip">Angels</span>
-              <span className="sb-stat-chip">Family Offices</span>
-              <span className="sb-stat-chip">VC Firms</span>
+              <span className="sb-stat-chip">Angel networks</span>
+              <span className="sb-stat-chip">Family offices</span>
+              <span className="sb-stat-chip">VC firms</span>
+              <span className="sb-stat-chip">Accelerators</span>
             </div>
-            <div className="sb-db-table">
-              <div className="sb-db-row sb-db-row--head">
-                <span>INVESTOR ENTITY</span>
-                <span>CATEGORY</span>
-                <span>TICKET SIZE</span>
-                <span>VERIFICATION</span>
-              </div>
-              <div className="sb-db-row">
-                <span className="sb-entity">Beacon Crest Capital</span>
-                <span className="sb-category">Family Office</span>
-                <span className="sb-ticket">$2M – $10M</span>
-                <span className="sb-verified"><SvgCheck className="sb-check-icon" /> 100% Clean</span>
-              </div>
-              <div className="sb-db-row">
-                <span className="sb-entity">Nexus Horizon Ventures</span>
-                <span className="sb-category">Venture Capital</span>
-                <span className="sb-ticket">Series A / B</span>
-                <span className="sb-verified"><SvgCheck className="sb-check-icon" /> 100% Clean</span>
-              </div>
-              <div className="sb-db-row">
-                <span className="sb-entity">Bay Area Syndicate</span>
-                <span className="sb-category">Angel Syndicate</span>
-                <span className="sb-ticket">$100K – $500K</span>
-                <span className="sb-verified"><SvgCheck className="sb-check-icon" /> 100% Clean</span>
+
+            <div>
+              <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: "0.58rem", color: "#85847F", letterSpacing: "0.08em", marginBottom: "6px" }}>EACH RECORD HOLDS</span>
+              <div className="sb-db-header-chips">
+                <span className="sb-stat-chip">Investment sectors</span>
+                <span className="sb-stat-chip">Region</span>
+                <span className="sb-stat-chip">Source quality</span>
+                <span className="sb-stat-chip">Priority targets</span>
               </div>
             </div>
           </div>
@@ -390,22 +358,30 @@ export default function ShippedBento() {
 
         {/* Visual: Segment & Messaging Playbook Matrix */}
         <div className="sb-visual sb-visual--playbook" aria-hidden="true">
-          <div className="sb-playbook-grid">
-            <div className="sb-playbook-tier">
-              <div className="sb-tier-header">
-                <span className="sb-tier-title">Early-Stage VC Funds</span>
-                <span className="sb-tier-tag">Segment 01</span>
+          <div style={{ padding: "12px", display: "flex", flexDirection: "column", gap: "10px" }}>
+            <div>
+              <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: "0.58rem", color: "#85847F", letterSpacing: "0.08em", marginBottom: "6px" }}>SEGMENTS</span>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                <span className="sb-stat-chip">VC fund partners</span>
+                <span className="sb-stat-chip">Angel networks</span>
+                <span className="sb-stat-chip">Accelerators</span>
+                <span className="sb-stat-chip">Solo angels</span>
+                <span className="sb-stat-chip">Family offices</span>
               </div>
-              <p className="sb-tier-pain"><b>Pain:</b> 50+ decks/week review bandwidth bottleneck</p>
-              <p className="sb-tier-hook"><b>Hook:</b> Automated 1st-pass IC memo in under 3 minutes</p>
             </div>
-            <div className="sb-playbook-tier">
-              <div className="sb-tier-header">
-                <span className="sb-tier-title">Single Family Offices</span>
-                <span className="sb-tier-tag">Segment 02</span>
+            <div>
+              <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: "0.58rem", color: "#85847F", letterSpacing: "0.08em", marginBottom: "6px" }}>EACH SEGMENT COVERS</span>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                <span className="sb-stat-chip">Decision makers</span>
+                <span className="sb-stat-chip">Pain points</span>
+                <span className="sb-stat-chip">Buying triggers</span>
+                <span className="sb-stat-chip">Channels</span>
+                <span className="sb-stat-chip">Messaging angle</span>
               </div>
-              <p className="sb-tier-pain"><b>Pain:</b> Sourcing un-brokered direct AI startup deals</p>
-              <p className="sb-tier-hook"><b>Hook:</b> Proprietary thesis matching with vetted financials</p>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: "6px", paddingTop: "6px", borderTop: "1px solid #343438" }}>
+              <SvgCheck className="sb-check-icon" />
+              <span style={{ fontSize: "0.68rem", color: "var(--cat-accent, #91B5A0)", fontFamily: "var(--font-mono)" }}>Conflict-of-interest screening built in</span>
             </div>
           </div>
         </div>
@@ -467,10 +443,123 @@ export default function ShippedBento() {
       </article>
 
       {/* =========================================================================
-          ROW 4: MULTI-MEDIA & RECOVERY (4 cols + 4 cols + 4 cols)
+          ROW 4: COMPETITIVE RESEARCH & PRODUCT ICPS (7 cols + 5 cols)
           ========================================================================= */}
 
-      {/* 07. AI AVATAR AND PRODUCT VIDEOS (Span 4 cols) */}
+      {/* 07. COMPETITIVE RESEARCH ACROSS PRODUCTS (Span 7 cols) */}
+      <article
+        className="sb-card sb-card--competitor sb-card--gold reveal"
+        tabIndex={0}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+      >
+        <div className="sb-card__body">
+          <h3 className="sb-card__title">{shipped[8].label}</h3>
+          <p className="sb-card__desc">{shipped[8].detail}</p>
+        </div>
+
+        {/* Visual: Competitive Research by Product */}
+        <div className="sb-visual sb-visual--competitor" aria-hidden="true">
+          <div style={{ padding: "10px", display: "flex", flexDirection: "column", gap: "8px" }}>
+            <div style={{ background: "#202125", border: "1px solid #343438", borderRadius: "6px", padding: "8px 10px", display: "flex", flexDirection: "column", gap: "3px" }}>
+              <span style={{ fontSize: "0.74rem", fontWeight: 600, color: "#F4F0E8" }}>Smart AI Investor</span>
+              <p style={{ fontSize: "0.65rem", color: "#B9B8B3", margin: 0, lineHeight: 1.35 }}>
+                <span style={{ color: "#85847F", fontFamily: "var(--font-mono)", fontSize: "0.58rem" }}>Studied against: </span>
+                PitchBook, Affinity, Harmonic, Hatcher, Caena
+              </p>
+              <p style={{ fontSize: "0.65rem", color: "var(--cat-accent, #D5B77A)", margin: 0, lineHeight: 1.35 }}>
+                <span style={{ color: "#85847F", fontFamily: "var(--font-mono)", fontSize: "0.58rem" }}>Used for: </span>
+                Comparison pages and positioning
+              </p>
+            </div>
+
+            <div style={{ background: "#202125", border: "1px solid #343438", borderRadius: "6px", padding: "8px 10px", display: "flex", flexDirection: "column", gap: "3px" }}>
+              <span style={{ fontSize: "0.74rem", fontWeight: 600, color: "#F4F0E8" }}>AIQoD platform</span>
+              <p style={{ fontSize: "0.65rem", color: "#B9B8B3", margin: 0, lineHeight: 1.35 }}>
+                <span style={{ color: "#85847F", fontFamily: "var(--font-mono)", fontSize: "0.58rem" }}>Studied against: </span>
+                Point solutions, agent frameworks, vendor AI suites, services-led builds
+              </p>
+              <p style={{ fontSize: "0.65rem", color: "var(--cat-accent, #D5B77A)", margin: 0, lineHeight: 1.35 }}>
+                <span style={{ color: "#85847F", fontFamily: "var(--font-mono)", fontSize: "0.58rem" }}>Used for: </span>
+                Website messaging
+              </p>
+            </div>
+
+            <div style={{ background: "#202125", border: "1px solid #343438", borderRadius: "6px", padding: "8px 10px", display: "flex", flexDirection: "column", gap: "3px" }}>
+              <span style={{ fontSize: "0.74rem", fontWeight: 600, color: "#F4F0E8" }}>Sales X</span>
+              <p style={{ fontSize: "0.65rem", color: "#B9B8B3", margin: 0, lineHeight: 1.35 }}>
+                <span style={{ color: "#85847F", fontFamily: "var(--font-mono)", fontSize: "0.58rem" }}>Studied against: </span>
+                Established and new lead generation platforms
+              </p>
+              <p style={{ fontSize: "0.65rem", color: "var(--cat-accent, #D5B77A)", margin: 0, lineHeight: 1.35 }}>
+                <span style={{ color: "#85847F", fontFamily: "var(--font-mono)", fontSize: "0.58rem" }}>Used for: </span>
+                Pricing and packaging
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      {/* 08. PRODUCT ICPS ACROSS THE PORTFOLIO (Span 5 cols) */}
+      <article
+        className="sb-card sb-card--products sb-card--blue reveal"
+        tabIndex={0}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+      >
+        <div className="sb-card__body">
+          <h3 className="sb-card__title">{shipped[2].label}</h3>
+          <p className="sb-card__desc">{shipped[2].detail}</p>
+        </div>
+
+        {/* Visual: Product ICP Portfolio Matrix */}
+        <div className="sb-visual sb-visual--products" aria-hidden="true">
+          <div className="sb-products-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "7px", padding: "10px" }}>
+            <div className="sb-product-pill" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "2px", padding: "6px 9px" }}>
+              <span className="sb-prod-name" style={{ fontSize: "0.72rem", color: "#F4F0E8", fontWeight: 500, lineHeight: 1.25 }}>M&amp;A deal sourcing and analysis</span>
+              <span className="sb-prod-brand" style={{ fontFamily: "var(--font-mono)", fontSize: "0.58rem", color: "var(--cat-accent, #83AFC7)", letterSpacing: "0.04em" }}>AIQoD</span>
+            </div>
+            <div className="sb-product-pill" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "2px", padding: "6px 9px" }}>
+              <span className="sb-prod-name" style={{ fontSize: "0.72rem", color: "#F4F0E8", fontWeight: 500, lineHeight: 1.25 }}>Contract digitization</span>
+              <span className="sb-prod-brand" style={{ fontFamily: "var(--font-mono)", fontSize: "0.58rem", color: "var(--cat-accent, #83AFC7)", letterSpacing: "0.04em" }}>AIQoD</span>
+            </div>
+            <div className="sb-product-pill" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "2px", padding: "6px 9px" }}>
+              <span className="sb-prod-name" style={{ fontSize: "0.72rem", color: "#F4F0E8", fontWeight: 500, lineHeight: 1.25 }}>Hiring and resume screening</span>
+              <span className="sb-prod-brand" style={{ fontFamily: "var(--font-mono)", fontSize: "0.58rem", color: "var(--cat-accent, #83AFC7)", letterSpacing: "0.04em" }}>AIQoD</span>
+            </div>
+            <div className="sb-product-pill" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "2px", padding: "6px 9px" }}>
+              <span className="sb-prod-name" style={{ fontSize: "0.72rem", color: "#F4F0E8", fontWeight: 500, lineHeight: 1.25 }}>Ticket management</span>
+              <span className="sb-prod-brand" style={{ fontFamily: "var(--font-mono)", fontSize: "0.58rem", color: "var(--cat-accent, #83AFC7)", letterSpacing: "0.04em" }}>AIQoD</span>
+            </div>
+            <div className="sb-product-pill" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "2px", padding: "6px 9px" }}>
+              <span className="sb-prod-name" style={{ fontSize: "0.72rem", color: "#F4F0E8", fontWeight: 500, lineHeight: 1.25 }}>Pharma pricing analytics</span>
+              <span className="sb-prod-brand" style={{ fontFamily: "var(--font-mono)", fontSize: "0.58rem", color: "var(--cat-accent, #83AFC7)", letterSpacing: "0.04em" }}>AIQoD</span>
+            </div>
+            <div className="sb-product-pill" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "2px", padding: "6px 9px" }}>
+              <span className="sb-prod-name" style={{ fontSize: "0.72rem", color: "#F4F0E8", fontWeight: 500, lineHeight: 1.25 }}>E-KYC</span>
+              <span className="sb-prod-brand" style={{ fontFamily: "var(--font-mono)", fontSize: "0.58rem", color: "var(--cat-accent, #83AFC7)", letterSpacing: "0.04em" }}>AIQoD</span>
+            </div>
+            <div className="sb-product-pill" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "2px", padding: "6px 9px" }}>
+              <span className="sb-prod-name" style={{ fontSize: "0.72rem", color: "#F4F0E8", fontWeight: 500, lineHeight: 1.25 }}>Smart AI Investor</span>
+              <span className="sb-prod-brand" style={{ fontFamily: "var(--font-mono)", fontSize: "0.58rem", color: "var(--cat-accent, #83AFC7)", letterSpacing: "0.04em" }}>VentureHub360</span>
+            </div>
+            <div className="sb-product-pill" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "2px", padding: "6px 9px" }}>
+              <span className="sb-prod-name" style={{ fontSize: "0.72rem", color: "#F4F0E8", fontWeight: 500, lineHeight: 1.25 }}>Startup Pitch Analyser</span>
+              <span className="sb-prod-brand" style={{ fontFamily: "var(--font-mono)", fontSize: "0.58rem", color: "var(--cat-accent, #83AFC7)", letterSpacing: "0.04em" }}>VentureHub360</span>
+            </div>
+            <div className="sb-product-pill" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "2px", padding: "6px 9px" }}>
+              <span className="sb-prod-name" style={{ fontSize: "0.72rem", color: "#F4F0E8", fontWeight: 500, lineHeight: 1.25 }}>Fleet compliance</span>
+              <span className="sb-prod-brand" style={{ fontFamily: "var(--font-mono)", fontSize: "0.58rem", color: "var(--cat-accent, #83AFC7)", letterSpacing: "0.04em" }}>AIQoD</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      {/* =========================================================================
+          ROW 5: MEDIA, RECOVERY & MARKETS (4 cols + 4 cols + 4 cols)
+          ========================================================================= */}
+
+      {/* 09. AI AVATAR AND PRODUCT VIDEOS (Span 4 cols) */}
       <article
         className="sb-card sb-card--videos sb-card--violet reveal"
         tabIndex={0}
@@ -518,50 +607,7 @@ export default function ShippedBento() {
         </div>
       </article>
 
-      {/* 08. COMPETITOR COMPARISON CONTENT (Span 4 cols) */}
-      <article
-        className="sb-card sb-card--competitor sb-card--gold reveal"
-        tabIndex={0}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
-      >
-        <div className="sb-card__body">
-          <h3 className="sb-card__title">{shipped[8].label}</h3>
-          <p className="sb-card__desc">{shipped[8].detail}</p>
-        </div>
-
-        {/* Visual: Head-to-Head Comparison Grid */}
-        <div className="sb-visual sb-visual--competitor" aria-hidden="true">
-          <div className="sb-compare-box">
-            <div className="sb-compare-row sb-compare-row--head">
-              <span>CRITERIA</span>
-              <span className="sb-hl">OURS</span>
-              <span>PITCHBOOK</span>
-              <span>AFFINITY</span>
-            </div>
-            <div className="sb-compare-row">
-              <span className="sb-crit">Instant IC Memo</span>
-              <span className="sb-hl sb-check-wrap"><SvgCheck className="sb-check-icon" /> Yes</span>
-              <span className="sb-x"><SvgCross className="sb-cross-icon" /> No</span>
-              <span className="sb-x"><SvgCross className="sb-cross-icon" /> No</span>
-            </div>
-            <div className="sb-compare-row">
-              <span className="sb-crit">AI Deal Scoring</span>
-              <span className="sb-hl sb-check-wrap"><SvgCheck className="sb-check-icon" /> Yes</span>
-              <span className="sb-partial">~ Filter</span>
-              <span className="sb-x"><SvgCross className="sb-cross-icon" /> No</span>
-            </div>
-            <div className="sb-compare-row">
-              <span className="sb-crit">Solo GP Pricing</span>
-              <span className="sb-hl sb-check-wrap"><SvgCheck className="sb-check-icon" /> Yes</span>
-              <span className="sb-x">$25K+</span>
-              <span className="sb-x">Seat-fee</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      {/* 09. REBUILT THE AIQOD BLOG (Span 4 cols) */}
+      {/* 10. REBUILT THE AIQOD BLOG (Span 4 cols) */}
       <article
         className="sb-card sb-card--rebuilt sb-card--sage reveal"
         tabIndex={0}
@@ -589,80 +635,15 @@ export default function ShippedBento() {
             <div className="sb-recovery-step sb-recovery-step--success">
               <span className="sb-step-icon sb-step-icon--success"><SvgCheck /></span>
               <div>
-                <span className="sb-step-title">Next.js Headless Rebuild</span>
-                <span className="sb-step-sub">100% URLs, Meta & Schema Restored</span>
+                <span className="sb-step-title">Rebuilt from scratch</span>
+                <span className="sb-step-sub">New posts, structure and SEO</span>
               </div>
             </div>
           </div>
         </div>
       </article>
 
-      {/* =========================================================================
-          ROW 5: RESEARCH & MARKETS (6 cols + 6 cols)
-          ========================================================================= */}
-
-      {/* 10. PRODUCT ICPS FOR AIQOD (Span 6 cols) */}
-      <article
-        className="sb-card sb-card--products sb-card--blue reveal"
-        tabIndex={0}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
-      >
-        <div className="sb-card__body">
-          <h3 className="sb-card__title">{shipped[2].label}</h3>
-          <p className="sb-card__desc">{shipped[2].detail}</p>
-        </div>
-
-        {/* Visual: Product Persona Matrix */}
-        <div className="sb-visual sb-visual--products" aria-hidden="true">
-          <div className="sb-products-grid">
-            <div className="sb-product-pill">
-              <span className="sb-prod-num">01</span>
-              <div>
-                <span className="sb-prod-name">M&A Deal Platform</span>
-                <span className="sb-prod-role">Target: CFO / Corp Dev</span>
-              </div>
-            </div>
-            <div className="sb-product-pill">
-              <span className="sb-prod-num">02</span>
-              <div>
-                <span className="sb-prod-name">Contract Digitization</span>
-                <span className="sb-prod-role">Target: General Counsel</span>
-              </div>
-            </div>
-            <div className="sb-product-pill">
-              <span className="sb-prod-num">03</span>
-              <div>
-                <span className="sb-prod-name">AI ATS Recruiter</span>
-                <span className="sb-prod-role">Target: VP Talent</span>
-              </div>
-            </div>
-            <div className="sb-product-pill">
-              <span className="sb-prod-num">04</span>
-              <div>
-                <span className="sb-prod-name">Ticket Management</span>
-                <span className="sb-prod-role">Target: VP Operations</span>
-              </div>
-            </div>
-            <div className="sb-product-pill">
-              <span className="sb-prod-num">05</span>
-              <div>
-                <span className="sb-prod-name">Pharma Analytics</span>
-                <span className="sb-prod-role">Target: R&D Director</span>
-              </div>
-            </div>
-            <div className="sb-product-pill">
-              <span className="sb-prod-num">06</span>
-              <div>
-                <span className="sb-prod-name">E-KYC Verifier</span>
-                <span className="sb-prod-role">Target: Compliance Head</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      {/* 11. INTERNATIONAL PARTNER RESEARCH (Span 6 cols) */}
+      {/* 11. INTERNATIONAL PARTNER RESEARCH (Span 4 cols) */}
       <article
         className="sb-card sb-card--partners sb-card--blue reveal"
         tabIndex={0}
@@ -676,23 +657,16 @@ export default function ShippedBento() {
 
         {/* Visual: Global Market Partner Coverage Dossier */}
         <div className="sb-visual sb-visual--partners" aria-hidden="true">
-          <div className="sb-partners-dossier">
-            <div className="sb-countries-cloud">
-              <span className="sb-country-tag"><span className="sb-flag">🇺🇸</span> USA</span>
-              <span className="sb-country-tag"><span className="sb-flag">🇬🇧</span> UK</span>
-              <span className="sb-country-tag"><span className="sb-flag">🇦🇪</span> UAE</span>
-              <span className="sb-country-tag"><span className="sb-flag">🇸🇬</span> Singapore</span>
-              <span className="sb-country-tag"><span className="sb-flag">🇩🇪</span> Germany</span>
-              <span className="sb-country-tag"><span className="sb-flag">🇫🇷</span> France</span>
-              <span className="sb-country-tag"><span className="sb-flag">🇦🇺</span> Australia</span>
-              <span className="sb-country-tag"><span className="sb-flag">🇯🇵</span> Japan</span>
-              <span className="sb-country-tag"><span className="sb-flag">🇨🇦</span> Canada</span>
-              <span className="sb-country-tag"><span className="sb-flag">🇳🇱</span> Netherlands</span>
+          <div className="sb-partners-dossier" style={{ gap: "12px", padding: "14px 12px" }}>
+            <div className="sb-partner-tiers" style={{ gap: "8px" }}>
+              <span className="sb-tier-pill" style={{ padding: "4px 9px", fontSize: "0.7rem" }}>Resell and white-label</span>
+              <span className="sb-tier-pill" style={{ padding: "4px 9px", fontSize: "0.7rem" }}>Implementation partners</span>
+              <span className="sb-tier-pill" style={{ padding: "4px 9px", fontSize: "0.7rem" }}>Referral partners</span>
             </div>
-            <div className="sb-partner-tiers">
-              <span className="sb-tier-pill">System Integrators</span>
-              <span className="sb-tier-pill">Tier-1 VARs</span>
-              <span className="sb-tier-pill">B2B Consultancies</span>
+            <div className="sb-partner-tiers" style={{ gap: "8px" }}>
+              <span className="sb-tier-pill" style={{ padding: "4px 9px", fontSize: "0.7rem" }}>Tier 2 and 3 firms</span>
+              <span className="sb-tier-pill" style={{ padding: "4px 9px", fontSize: "0.7rem" }}>Mid-size and smaller companies</span>
+              <span className="sb-tier-pill" style={{ padding: "4px 9px", fontSize: "0.7rem" }}>Researched country by country</span>
             </div>
           </div>
         </div>

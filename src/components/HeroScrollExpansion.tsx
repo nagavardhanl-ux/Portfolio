@@ -10,7 +10,7 @@ import { asset } from "@/lib/config";
  * Scroll-Driven, Staged Hero Reveal & Synchronized Background Expansion
  *
  * 1. Initial State (Page Load / p = 0):
- *    - Name label ("Nagavardhan Reddy Lella") and H1 ("B2B marketer and I also build websites")
+ *    - Name label ("Nagavardhan Reddy Lella") and H1 ("B2B marketing and the websites it runs on")
  *      are fully displayed and clearly visible.
  *    - Supporting copy and "See the work" button are initially hidden, ready to reveal through scrolling.
  *    - Background workspace image is contained with rounded corners, subtle border, and shadow.

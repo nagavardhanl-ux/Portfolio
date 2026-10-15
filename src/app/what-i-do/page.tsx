@@ -87,24 +87,16 @@ export default function WhatIDoPage() {
 
                 <div className="wid-matrix">
                   <div className="wid-matrix__row">
-                    <span className="wid-matrix__key">Target Segment</span>
-                    <span className="wid-matrix__val">Enterprise Growth Funds &amp; Family Offices</span>
+                    <span className="wid-matrix__key">Target segments</span>
+                    <span className="wid-matrix__val">VC fund partners, angel networks, accelerators, solo angels, family offices</span>
                   </div>
                   <div className="wid-matrix__row">
-                    <span className="wid-matrix__key">Decision Makers</span>
-                    <span className="wid-matrix__val">Managing Directors, Partners, Head of M&amp;A</span>
+                    <span className="wid-matrix__key">Each segment covers</span>
+                    <span className="wid-matrix__val">Decision makers, pain points, buying triggers, channels, messaging angle</span>
                   </div>
                   <div className="wid-matrix__row">
-                    <span className="wid-matrix__key">Core Friction</span>
-                    <span className="wid-matrix__val">Manual screening bottlenecks across 100+ weekly pitch decks</span>
-                  </div>
-                  <div className="wid-matrix__row">
-                    <span className="wid-matrix__key">Buying Trigger</span>
-                    <span className="wid-matrix__val">Need to scale pipeline evaluation throughput without analyst headcount</span>
-                  </div>
-                  <div className="wid-matrix__row">
-                    <span className="wid-matrix__key">Positioning Angle</span>
-                    <span className="wid-matrix__val">Agentic dealflow scoring: automated synthesis in minutes, not days</span>
+                    <span className="wid-matrix__key">Screening rule</span>
+                    <span className="wid-matrix__val">Conflict-of-interest screening built in</span>
                   </div>
                 </div>
 
@@ -114,7 +106,9 @@ export default function WhatIDoPage() {
                     <span className="wid-tag">PitchBook</span>
                     <span className="wid-tag">Affinity</span>
                     <span className="wid-tag">Harmonic</span>
-                    <span className="wid-tag">VentureHub360 vs Market</span>
+                    <span className="wid-tag">Hatcher</span>
+                    <span className="wid-tag">Caena</span>
+                    <span className="wid-tag">Comparison pages</span>
                   </div>
                 </div>
               </div>

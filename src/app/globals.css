@@ -4966,7 +4966,7 @@ body:has(.signal-home) .ambient { display:none; }
 }
 
 .sb-card--competitor {
-  grid-column: span 4;
+  grid-column: span 7;
 }
 
 .sb-card--rebuilt {
@@ -4974,11 +4974,11 @@ body:has(.signal-home) .ambient { display:none; }
 }
 
 .sb-card--products {
-  grid-column: span 6;
+  grid-column: span 5;
 }
 
 .sb-card--partners {
-  grid-column: span 6;
+  grid-column: span 4;
 }
 
 /* Card Header & Text */
@@ -5848,11 +5848,11 @@ body:has(.signal-home) .ambient { display:none; }
   .sb-card--brief { grid-column: span 1; }
   .sb-card--playbook { grid-column: span 1; }
   .sb-card--series { grid-column: span 2; }
-  .sb-card--videos { grid-column: span 1; }
   .sb-card--competitor { grid-column: span 1; }
-  .sb-card--rebuilt { grid-column: span 2; }
   .sb-card--products { grid-column: span 1; }
-  .sb-card--partners { grid-column: span 1; }
+  .sb-card--videos { grid-column: span 1; }
+  .sb-card--rebuilt { grid-column: span 1; }
+  .sb-card--partners { grid-column: span 2; }
 }
 
 @media (max-width: 680px) {
@@ -8986,13 +8986,13 @@ html:not(.js) .hero-expand-actions {
   .js #shipped .sb-card--series.reveal { transition-delay: 85ms; }
 
   /* Row 4 */
-  .js #shipped .sb-card--videos.reveal { transition-delay: 0ms; }
-  .js #shipped .sb-card--competitor.reveal { transition-delay: 85ms; }
-  .js #shipped .sb-card--rebuilt.reveal { transition-delay: 170ms; }
+  .js #shipped .sb-card--competitor.reveal { transition-delay: 0ms; }
+  .js #shipped .sb-card--products.reveal { transition-delay: 85ms; }
 
   /* Row 5 */
-  .js #shipped .sb-card--products.reveal { transition-delay: 0ms; }
-  .js #shipped .sb-card--partners.reveal { transition-delay: 85ms; }
+  .js #shipped .sb-card--videos.reveal { transition-delay: 0ms; }
+  .js #shipped .sb-card--rebuilt.reveal { transition-delay: 85ms; }
+  .js #shipped .sb-card--partners.reveal { transition-delay: 170ms; }
 
   /* Showcase Cards in Selected Work */
   .js .showcase-card.reveal {
