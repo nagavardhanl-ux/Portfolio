@@ -4367,7 +4367,7 @@ body:has(.signal-home) .ambient { display:none; }
 }
 
 /* ==========================================================================
-   WHAT I'VE SHIPPED — POLISHED ART-DIRECTED ASYMMETRIC BENTO GRID
+   WHAT I'VE SHIPPED: POLISHED ART-DIRECTED ASYMMETRIC BENTO GRID
    Interactive spotlight hover, category-based accents, reduced visual clutter
    ========================================================================== */
 .shipped-bento {
@@ -4392,7 +4392,7 @@ body:has(.signal-home) .ambient { display:none; }
   padding: clamp(20px, 2.2vw, 26px);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   overflow: hidden;
   box-sizing: border-box;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
@@ -4855,39 +4855,90 @@ body:has(.signal-home) .ambient { display:none; }
   }
 }
 
+.sb-card--websites {
+  grid-column: span 7;
+}
+
 .sb-card--cluster {
   grid-column: span 5;
 }
 
-.sb-card--websites,
-.sb-card--cluster {
-  padding: 18px 20px 16px;
-  justify-content: flex-start;
-  gap: 12px;
+.sb-card--brief {
+  grid-column: span 5;
 }
 
-.sb-card--websites .sb-card__body,
-.sb-card--cluster .sb-card__body {
-  flex-shrink: 0;
+.sb-card--investors {
+  grid-column: span 7;
 }
 
-.sb-card--websites .sb-visual,
-.sb-card--cluster .sb-visual {
-  margin-top: 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.sb-card--playbook {
+  grid-column: span 5;
 }
 
-/* 1. Websites Strip — Sleek panoramic ratio */
+.sb-card--series {
+  grid-column: span 7;
+}
+
+.sb-card--competitor {
+  grid-column: span 7;
+}
+
+.sb-card--products {
+  grid-column: span 5;
+}
+
+.sb-card--rebuilt {
+  grid-column: span 7;
+}
+
+.sb-card--videos {
+  grid-column: span 5;
+}
+
+.sb-card--partners {
+  grid-column: span 12;
+}
+
+@media (min-width: 1025px) {
+  .sb-card--partners {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .sb-card--partners .sb-card__body {
+    flex: 0 0 40%;
+    max-width: 40%;
+  }
+
+  .sb-card--partners .sb-visual--partners {
+    flex: 0 0 58%;
+    max-width: 58%;
+    margin-top: 0;
+  }
+}
+
+/* 1. Websites Strip - Panel height filling */
 .sb-card--websites .sb-site-strip {
   padding: 8px 10px;
   gap: 8px;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .sb-card--websites .sb-site-thumb {
-  aspect-ratio: 16 / 8.5;
+  height: 100%;
+  min-height: 140px;
+  aspect-ratio: auto;
+}
+
+.sb-card--websites .sb-site-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
 }
 
 .sb-card--websites .sb-site-label {
@@ -4898,7 +4949,7 @@ body:has(.signal-home) .ambient { display:none; }
   font-size: 0.62rem;
 }
 
-/* 2. Content Cluster — Compact Tree */
+/* 2. Content Cluster - Compact Tree */
 .sb-card--cluster .sb-cluster-tree {
   padding: 8px 10px;
   gap: 6px;
@@ -4937,48 +4988,6 @@ body:has(.signal-home) .ambient { display:none; }
 .sb-card--cluster .sb-node-chip {
   font-size: 0.58rem;
   padding: 1px 5px;
-}
-
-
-
-.sb-card--cluster {
-  grid-column: span 5;
-}
-
-.sb-card--investors {
-  grid-column: span 7;
-}
-
-.sb-card--brief {
-  grid-column: span 5;
-}
-
-.sb-card--playbook {
-  grid-column: span 6;
-}
-
-.sb-card--series {
-  grid-column: span 6;
-}
-
-.sb-card--videos {
-  grid-column: span 4;
-}
-
-.sb-card--competitor {
-  grid-column: span 7;
-}
-
-.sb-card--rebuilt {
-  grid-column: span 4;
-}
-
-.sb-card--products {
-  grid-column: span 5;
-}
-
-.sb-card--partners {
-  grid-column: span 4;
 }
 
 /* Card Header & Text */
@@ -5038,7 +5047,7 @@ body:has(.signal-home) .ambient { display:none; }
 
 /* Card Visual Wrapper */
 .sb-visual {
-  margin-top: 20px;
+  margin-top: 24px;
   border-radius: 9px;
   background: #191A1E;
   border: 1px solid #343438;
@@ -5046,6 +5055,11 @@ body:has(.signal-home) .ambient { display:none; }
   overflow: hidden;
   position: relative;
   box-sizing: border-box;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
 
 /* Card Footer Link */
@@ -5467,8 +5481,8 @@ body:has(.signal-home) .ambient { display:none; }
 /* 6. Dual-Series Publication Rack */
 .sb-series-rack {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  grid-template-columns: 2fr 3fr;
+  gap: 12px;
   padding: 12px;
 }
 
@@ -5480,6 +5494,7 @@ body:has(.signal-home) .ambient { display:none; }
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-width: 0;
 }
 
 .sb-series-header {
@@ -5514,24 +5529,42 @@ body:has(.signal-home) .ambient { display:none; }
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 
 .sb-series-list li {
   font-size: 0.68rem;
   color: #B9B8B3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   display: flex;
-  align-items: center;
-  gap: 5px;
+  align-items: flex-start;
+  gap: 6px;
+  line-height: 1.35;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.sb-series-list li a {
+  color: #B9B8B3;
+  text-decoration: none;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  line-height: 1.35;
+  word-break: normal;
+  transition: color 180ms ease;
+}
+
+.sb-series-list li a:hover {
+  color: #F4F0E8;
 }
 
 .sb-item-num {
   font-family: var(--font-mono);
   font-size: 0.6rem;
   color: var(--cat-accent, #D5B77A);
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
 /* 7. Video Monitor */
@@ -5692,8 +5725,70 @@ body:has(.signal-home) .ambient { display:none; }
 }
 
 /* 10. LinkedIn Presence Grid */
-.sb-visual--rebuilt .sb-stat-chip {
+.sb-visual--rebuilt {
+  padding: 8px 10px;
+}
+
+.sb-linkedin-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+.sb-linkedin-col {
+  background: #202125;
+  border: 1px solid #343438;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.sb-linkedin-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.sb-linkedin-brand {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #F4F0E8;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.sb-linkedin-tag {
+  font-size: 0.56rem !important;
+  color: var(--cat-accent, #91B5A0) !important;
+  border-color: var(--cat-accent-border, rgba(145, 181, 160, 0.25)) !important;
+  white-space: nowrap !important;
+  display: inline-block;
+}
+
+.sb-linkedin-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 4px 0 10px;
+}
+
+.sb-linkedin-chips .sb-stat-chip {
+  font-size: 0.62rem;
   line-height: 1.3;
+  white-space: normal;
+}
+
+@media (min-width: 1025px) {
+  .sb-linkedin-chips .sb-stat-chip {
+    white-space: nowrap;
+  }
 }
 
 /* 10. 6-Product Persona Matrix */
@@ -5792,15 +5887,24 @@ body:has(.signal-home) .ambient { display:none; }
   }
   .sb-card--websites { grid-column: span 2; }
   .sb-card--cluster { grid-column: span 1; }
-  .sb-card--investors { grid-column: span 1; }
   .sb-card--brief { grid-column: span 1; }
+  .sb-card--investors { grid-column: span 1; }
   .sb-card--playbook { grid-column: span 1; }
   .sb-card--series { grid-column: span 2; }
   .sb-card--competitor { grid-column: span 1; }
   .sb-card--products { grid-column: span 1; }
-  .sb-card--videos { grid-column: span 1; }
   .sb-card--rebuilt { grid-column: span 1; }
+  .sb-card--videos { grid-column: span 1; }
   .sb-card--partners { grid-column: span 2; }
+}
+
+@media (max-width: 640px) {
+  .sb-series-rack {
+    grid-template-columns: 1fr;
+  }
+  .sb-linkedin-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 680px) {
@@ -5810,16 +5914,24 @@ body:has(.signal-home) .ambient { display:none; }
   }
   .sb-card--websites,
   .sb-card--cluster,
-  .sb-card--investors,
   .sb-card--brief,
+  .sb-card--investors,
   .sb-card--playbook,
   .sb-card--series,
-  .sb-card--videos,
   .sb-card--competitor,
-  .sb-card--rebuilt,
   .sb-card--products,
+  .sb-card--rebuilt,
+  .sb-card--videos,
   .sb-card--partners {
     grid-column: span 1;
+  }
+  .sb-card--websites .sb-site-strip {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+  .sb-card--websites .sb-site-thumb {
+    height: auto;
+    aspect-ratio: 16 / 9;
   }
   .sb-site-strip {
     grid-template-columns: 1fr;
@@ -8881,7 +8993,7 @@ html:not(.js) .hero-expand-actions {
 }
 
 /* ==========================================================================
-   "What I've Shipped" — Scroll-Triggered Reveal Animations
+   "What I've Shipped": Scroll-Triggered Reveal Animations
    ========================================================================== */
 
 /* ==========================================================================
@@ -8921,7 +9033,7 @@ html:not(.js) .hero-expand-actions {
 
 /* Desktop Stagger Delays */
 @media (min-width: 681px) {
-  /* Row 1 — Staggered after heading so heading reveals first */
+  /* Row 1: Staggered after heading so heading reveals first */
   .js #shipped .sb-card--websites.reveal { transition-delay: 100ms; }
   .js #shipped .sb-card--cluster.reveal { transition-delay: 185ms; }
 
@@ -8938,9 +9050,11 @@ html:not(.js) .hero-expand-actions {
   .js #shipped .sb-card--products.reveal { transition-delay: 85ms; }
 
   /* Row 5 */
-  .js #shipped .sb-card--videos.reveal { transition-delay: 0ms; }
-  .js #shipped .sb-card--rebuilt.reveal { transition-delay: 85ms; }
-  .js #shipped .sb-card--partners.reveal { transition-delay: 170ms; }
+  .js #shipped .sb-card--rebuilt.reveal { transition-delay: 0ms; }
+  .js #shipped .sb-card--videos.reveal { transition-delay: 85ms; }
+
+  /* Row 6 */
+  .js #shipped .sb-card--partners.reveal { transition-delay: 0ms; }
 
   /* Showcase Cards in Selected Work */
   .js .showcase-card.reveal {

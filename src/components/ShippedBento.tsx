@@ -101,7 +101,7 @@ export default function ShippedBento() {
             <div className="sb-site-thumb">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={asset("shots/aiqod360-800.webp")}
+                src={asset("shots/aiqod360-1440.webp")}
                 alt="AIQoD360 website preview"
                 loading="lazy"
                 className="sb-site-img"
@@ -424,14 +424,14 @@ export default function ShippedBento() {
           <div className="sb-series-rack">
             <div className="sb-series-card" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <div>
-                <div className="sb-series-header" style={{ marginBottom: "10px" }}>
-                  <span style={{ fontSize: "0.76rem", fontWeight: 600, color: "#F4F0E8", letterSpacing: "0.04em" }}>AIQOD</span>
-                  <span className="sb-stat-chip" style={{ fontSize: "0.58rem", color: "var(--cat-accent, #D5B77A)", borderColor: "var(--cat-accent-border, rgba(213, 183, 122, 0.25))" }}>Enterprise AI</span>
+                <div className="sb-series-header" style={{ marginBottom: "10px", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px" }}>
+                  <span style={{ fontSize: "0.76rem", fontWeight: 600, color: "#F4F0E8", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>AIQOD</span>
+                  <span className="sb-stat-chip" style={{ fontSize: "0.58rem", color: "var(--cat-accent, #D5B77A)", borderColor: "var(--cat-accent-border, rgba(213, 183, 122, 0.25))", whiteSpace: "nowrap", display: "inline-block" }}>Enterprise AI</span>
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", margin: "6px 0 12px" }}>
-                  <span className="sb-stat-chip">Agentic AI</span>
-                  <span className="sb-stat-chip">AI Governance</span>
-                  <span className="sb-stat-chip">Enterprise Architecture</span>
+                  <span className="sb-stat-chip" style={{ whiteSpace: "nowrap" }}>Agentic AI</span>
+                  <span className="sb-stat-chip" style={{ whiteSpace: "nowrap" }}>AI Governance</span>
+                  <span className="sb-stat-chip" style={{ whiteSpace: "nowrap" }}>Enterprise Architecture</span>
                 </div>
               </div>
               <div style={{ paddingTop: "8px", borderTop: "1px solid #343438" }}>
@@ -456,9 +456,9 @@ export default function ShippedBento() {
 
             <div className="sb-series-card" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <div>
-                <div className="sb-series-header" style={{ marginBottom: "10px" }}>
-                  <span style={{ fontSize: "0.76rem", fontWeight: 600, color: "#F4F0E8", letterSpacing: "0.04em" }}>VENTUREHUB360</span>
-                  <span className="sb-stat-chip" style={{ fontSize: "0.58rem", color: "var(--cat-accent, #D5B77A)", borderColor: "var(--cat-accent-border, rgba(213, 183, 122, 0.25))" }}>Founders and investors</span>
+                <div className="sb-series-header" style={{ marginBottom: "10px", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px" }}>
+                  <span style={{ fontSize: "0.76rem", fontWeight: 600, color: "#F4F0E8", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>VENTUREHUB360</span>
+                  <span className="sb-stat-chip" style={{ fontSize: "0.58rem", color: "var(--cat-accent, #D5B77A)", borderColor: "var(--cat-accent-border, rgba(213, 183, 122, 0.25))", whiteSpace: "nowrap", display: "inline-block" }}>Founders and investors</span>
                 </div>
                 <ul className="sb-series-list" style={{ margin: "6px 0 12px" }}>
                   <li>
@@ -467,8 +467,6 @@ export default function ShippedBento() {
                       href="https://www.venturehub360.com/blog/evaluation-gap-pitch-decks"
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ color: "#B9B8B3", textDecoration: "none", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
-                      title="The Evaluation Gap: Why Pitch Decks Deserve More Than a Surface Read"
                     >
                       The Evaluation Gap: Why Pitch Decks Deserve More Than a Surface Read
                     </a>
@@ -479,8 +477,6 @@ export default function ShippedBento() {
                       href="https://www.venturehub360.com/blog/what-investors-ask-in-a-pitch-meeting"
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ color: "#B9B8B3", textDecoration: "none", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
-                      title="What Investors Actually Ask in a Pitch Meeting"
                     >
                       What Investors Actually Ask in a Pitch Meeting
                     </a>
@@ -491,8 +487,6 @@ export default function ShippedBento() {
                       href="https://www.venturehub360.com/blog/how-startup-funding-rounds-work"
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ color: "#B9B8B3", textDecoration: "none", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
-                      title="How Startup Funding Rounds Work: Pre-Seed to Series B Explained"
                     >
                       How Startup Funding Rounds Work: Pre-Seed to Series B Explained
                     </a>
@@ -636,10 +630,76 @@ export default function ShippedBento() {
       </article>
 
       {/* =========================================================================
-          ROW 5: VIDEO, LINKEDIN & INTERNATIONAL PARTNERS (4 cols + 4 cols + 4 cols)
+          ROW 5: LINKEDIN AND VIDEO (7 cols + 5 cols)
           ========================================================================= */}
 
-      {/* 09. AI AVATAR AND PRODUCT VIDEOS (Span 4 cols) */}
+      {/* 09. LINKEDIN FOR BOTH BRANDS (Span 7 cols) */}
+      <article
+        className="sb-card sb-card--rebuilt sb-card--sage reveal"
+        tabIndex={0}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+      >
+        <div className="sb-card__body">
+          <h3 className="sb-card__title">{shipped[9].label}</h3>
+          <p className="sb-card__desc">{shipped[9].detail}</p>
+        </div>
+
+        {/* Visual: LinkedIn Presence for Both Brands */}
+        <div className="sb-visual sb-visual--rebuilt">
+          <div className="sb-linkedin-grid">
+            <div className="sb-linkedin-col">
+              <div>
+                <div className="sb-linkedin-head">
+                  <span className="sb-linkedin-brand">AIQOD</span>
+                  <span className="sb-stat-chip sb-linkedin-tag">Running</span>
+                </div>
+                <div className="sb-linkedin-chips">
+                  <span className="sb-stat-chip">Weekly posts and carousels</span>
+                  <span className="sb-stat-chip">Founder and sales head drafts</span>
+                  <span className="sb-stat-chip">Podcast clips</span>
+                </div>
+              </div>
+              <div style={{ paddingTop: "8px", borderTop: "1px solid #343438" }}>
+                <a
+                  href="https://www.linkedin.com/company/aiqod/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "var(--cat-accent, #91B5A0)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}
+                >
+                  View page ↗
+                </a>
+              </div>
+            </div>
+
+            <div className="sb-linkedin-col">
+              <div>
+                <div className="sb-linkedin-head">
+                  <span className="sb-linkedin-brand">VENTUREHUB360</span>
+                  <span className="sb-stat-chip sb-linkedin-tag">Built and ran</span>
+                </div>
+                <div className="sb-linkedin-chips">
+                  <span className="sb-stat-chip">Company page from zero</span>
+                  <span className="sb-stat-chip">Group posting system</span>
+                  <span className="sb-stat-chip">Link in first comment format</span>
+                </div>
+              </div>
+              <div style={{ paddingTop: "8px", borderTop: "1px solid #343438" }}>
+                <a
+                  href="https://www.linkedin.com/company/venturehub360/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "var(--cat-accent, #91B5A0)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}
+                >
+                  View page ↗
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      {/* 10. AI AVATAR AND PRODUCT VIDEOS (Span 5 cols) */}
       <article
         className="sb-card sb-card--videos sb-card--violet reveal"
         tabIndex={0}
@@ -688,73 +748,11 @@ export default function ShippedBento() {
         </div>
       </article>
 
-      {/* 10. LINKEDIN FOR BOTH BRANDS (Span 4 cols) */}
-      <article
-        className="sb-card sb-card--rebuilt sb-card--sage reveal"
-        tabIndex={0}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
-      >
-        <div className="sb-card__body">
-          <h3 className="sb-card__title">{shipped[9].label}</h3>
-          <p className="sb-card__desc">{shipped[9].detail}</p>
-        </div>
+      {/* =========================================================================
+          ROW 6: INTERNATIONAL PARTNER RESEARCH (12 cols)
+          ========================================================================= */}
 
-        {/* Visual: LinkedIn Presence for Both Brands */}
-        <div className="sb-visual sb-visual--rebuilt" style={{ padding: "8px 10px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "8px" }}>
-            <div style={{ background: "#202125", border: "1px solid #343438", borderRadius: "6px", padding: "10px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "4px", marginBottom: "8px" }}>
-                  <span style={{ fontSize: "0.74rem", fontWeight: 600, color: "#F4F0E8" }}>AIQOD</span>
-                  <span className="sb-stat-chip" style={{ fontSize: "0.56rem", color: "var(--cat-accent, #91B5A0)", borderColor: "var(--cat-accent-border, rgba(145, 181, 160, 0.25))" }}>Running</span>
-                </div>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "4px", margin: "4px 0 10px" }}>
-                  <span className="sb-stat-chip" style={{ fontSize: "0.62rem" }}>Weekly posts and carousels</span>
-                  <span className="sb-stat-chip" style={{ fontSize: "0.62rem" }}>Founder and sales head drafts</span>
-                  <span className="sb-stat-chip" style={{ fontSize: "0.62rem" }}>Podcast clips</span>
-                </div>
-              </div>
-              <div style={{ paddingTop: "6px", borderTop: "1px solid #343438" }}>
-                <a
-                  href="https://www.linkedin.com/company/aiqod/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ fontSize: "0.66rem", fontFamily: "var(--font-mono)", color: "var(--cat-accent, #91B5A0)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}
-                >
-                  View page ↗
-                </a>
-              </div>
-            </div>
-
-            <div style={{ background: "#202125", border: "1px solid #343438", borderRadius: "6px", padding: "10px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "4px", marginBottom: "8px" }}>
-                  <span style={{ fontSize: "0.74rem", fontWeight: 600, color: "#F4F0E8" }}>VENTUREHUB360</span>
-                  <span className="sb-stat-chip" style={{ fontSize: "0.56rem", color: "var(--cat-accent, #91B5A0)", borderColor: "var(--cat-accent-border, rgba(145, 181, 160, 0.25))" }}>Built and ran</span>
-                </div>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "4px", margin: "4px 0 10px" }}>
-                  <span className="sb-stat-chip" style={{ fontSize: "0.62rem" }}>Company page from zero</span>
-                  <span className="sb-stat-chip" style={{ fontSize: "0.62rem" }}>Group posting system</span>
-                  <span className="sb-stat-chip" style={{ fontSize: "0.62rem" }}>Link in first comment format</span>
-                </div>
-              </div>
-              <div style={{ paddingTop: "6px", borderTop: "1px solid #343438" }}>
-                <a
-                  href="https://www.linkedin.com/company/venturehub360/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ fontSize: "0.66rem", fontFamily: "var(--font-mono)", color: "var(--cat-accent, #91B5A0)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px" }}
-                >
-                  View page ↗
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      {/* 11. INTERNATIONAL PARTNER RESEARCH (Span 4 cols) */}
+      {/* 11. INTERNATIONAL PARTNER RESEARCH (Span 12 cols) */}
       <article
         className="sb-card sb-card--partners sb-card--blue reveal"
         tabIndex={0}
