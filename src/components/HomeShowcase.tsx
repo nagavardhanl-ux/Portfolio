@@ -311,7 +311,7 @@ export default function HomeShowcase() {
       {/* Footer link to all websites */}
       <div className="showcase-footer reveal">
         <Link href="/websites/" className="arrow-link">
-          All eight websites <ArrowRight />
+          See all websites <ArrowRight />
         </Link>
       </div>
     </div>

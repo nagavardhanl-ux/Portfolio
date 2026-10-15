@@ -82,7 +82,7 @@ export default function WhatIDoPage() {
               <div className="wid-specimen">
                 <div className="wid-specimen__head">
                   <div className="wid-specimen__title">Smart AI Investor · B2B ICP Segment Matrix</div>
-                  <span className="wid-specimen__pill">80+ Segment Playbook</span>
+                  <span className="wid-specimen__pill">Segment Playbook</span>
                 </div>
 
                 <div className="wid-matrix">
@@ -138,25 +138,13 @@ export default function WhatIDoPage() {
               <div className="wid-specimen">
                 <div className="wid-specimen__head">
                   <div className="wid-specimen__title">Verified Investor Outreach Database</div>
-                  <span className="wid-specimen__pill">2,300+ Verified Records</span>
+                  <span className="wid-specimen__pill">Investor Databases</span>
                 </div>
 
-                <div className="wid-stats-grid">
-                  <div className="wid-stat-box">
-                    <span className="wid-stat-val">1,221</span>
-                    <span className="wid-stat-lbl">Angel Investors</span>
-                    <span className="wid-stat-sub">Active check-writers &amp; syndicates</span>
-                  </div>
-                  <div className="wid-stat-box">
-                    <span className="wid-stat-val">835</span>
-                    <span className="wid-stat-lbl">Family Offices</span>
-                    <span className="wid-stat-sub">Single &amp; multi-family offices</span>
-                  </div>
-                  <div className="wid-stat-box">
-                    <span className="wid-stat-val">263</span>
-                    <span className="wid-stat-lbl">VC Firms</span>
-                    <span className="wid-stat-sub">Early &amp; growth-stage funds</span>
-                  </div>
+                <div className="wid-competitor-strip__tags" style={{ marginBottom: 20 }}>
+                  <span className="wid-tag">Angels</span>
+                  <span className="wid-tag">Family Offices</span>
+                  <span className="wid-tag">VC Firms</span>
                 </div>
 
                 <div className="wid-pipeline-flow">
@@ -241,7 +229,7 @@ export default function WhatIDoPage() {
                     <span className="wid-pub-card__tag">SEO · AEO · GEO Cluster</span>
                     <span className="wid-pub-card__status">AIQoD Blog</span>
                   </div>
-                  <h4 className="wid-pub-card__title">11-Blog Agentic AI Content Cluster</h4>
+                  <h4 className="wid-pub-card__title">Agentic AI Content Cluster</h4>
                   <p className="wid-pub-card__desc">
                     Comprehensive pillar-cluster architecture built with structured FAQ schema, comparison tables, and semantic density for Google rankings and AI engine citations (Perplexity, Claude, ChatGPT).
                   </p>
@@ -249,12 +237,12 @@ export default function WhatIDoPage() {
 
                 <div className="wid-pub-card">
                   <div className="wid-pub-card__top">
-                    <span className="wid-pub-card__tag">20 Published Articles Across Two Series</span>
+                    <span className="wid-pub-card__tag">Published Articles Across Two Series</span>
                     <span className="wid-pub-card__status">Smart AI Investor &amp; SPA</span>
                   </div>
                   <h4 className="wid-pub-card__title">Startup Pitch Analyser &amp; Dealflow Series</h4>
                   <p className="wid-pub-card__desc">
-                    A 10-blog technical cluster for Startup Pitch Analyser plus the 10-part &ldquo;Dealflow Problem&rdquo; series for Smart AI Investor, analyzing evaluation friction and founder pitch bottlenecks.
+                    A technical cluster for Startup Pitch Analyser plus the &ldquo;Dealflow Problem&rdquo; series for Smart AI Investor, analyzing evaluation friction and founder pitch bottlenecks.
                   </p>
                 </div>
 
@@ -265,7 +253,7 @@ export default function WhatIDoPage() {
                   </div>
                   <h4 className="wid-pub-card__title">Daily AI Intelligence Brief</h4>
                   <p className="wid-pub-card__desc">
-                    Automated daily intelligence briefing summarizing overnight developments in generative AI, frontier models, and enterprise use cases, delivered directly to the 5-person leadership team.
+                    Automated daily intelligence briefing summarizing overnight developments in generative AI, frontier models, and enterprise use cases, delivered directly to the leadership team.
                   </p>
                 </div>
 
@@ -370,7 +358,7 @@ export default function WhatIDoPage() {
               </ul>
               <div style={{ marginTop: "24px" }}>
                 <Link href="/websites/" className="btn btn--primary">
-                  See all eight websites <ArrowRight />
+                  See all websites <ArrowRight />
                 </Link>
               </div>
             </div>

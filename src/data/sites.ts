@@ -1,4 +1,4 @@
-/** Three live company sites first, then five concept builds. Order here is display order. */
+// Live company sites first, then concept builds. Order here is display order.
 export type Status = "Live company site" | "Concept build";
 
 /** What I did: built it, or manage a site someone else built. */

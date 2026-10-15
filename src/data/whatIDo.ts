@@ -33,7 +33,7 @@ export const capabilitySections: Capability[] = [
     ],
     work: [
       "Built ICPs for AIQoD's products including M&A, Contract Digitization, ATS, Ticket Management, Pharma Analytics and E-KYC.",
-      "Wrote an 80-plus segment B2B ICP playbook for Smart AI Investor, with decision makers, pain points, triggers and messaging per segment.",
+      "Wrote a B2B ICP playbook for Smart AI Investor, with decision makers, pain points, triggers and messaging per segment.",
       "Named and wrote the positioning and product copy for VentureHub360's two products.",
       "Built competitor comparison content against Affinity, PitchBook, Harmonic and others.",
       "Rebuilt audience-specific one-pagers and a product guide used in sales.",
@@ -53,7 +53,7 @@ export const capabilitySections: Capability[] = [
     ],
     work: [
       "Ran cold email sequences for partners, investors, and products like M&A and fleet compliance, into markets outside India.",
-      "Built investor lead databases: 1,221 angels, 835 family offices, 263 VC firms.",
+      "Built investor lead databases of angels, family offices and VC firms.",
       "Wrote a B2B lead generation playbook with per-industry Apollo filters and a scoring formula.",
       "Set up an email verification workflow with ZeroBounce and MillionVerifier.",
       "Built a WhatsApp Business API outreach strategy.",
@@ -72,8 +72,8 @@ export const capabilitySections: Capability[] = [
       "Keep content grounded in real, checked facts, not assumptions.",
     ],
     work: [
-      "Wrote an 11-blog Agentic AI content cluster for AIQoD, with FAQ schema and comparison tables.",
-      "Wrote a 10-blog cluster for Startup Pitch Analyser and a 10-part “Dealflow Problem” series for Smart AI Investor.",
+      "Wrote an Agentic AI content cluster for AIQoD, with FAQ schema and comparison tables.",
+      "Wrote a blog cluster for Startup Pitch Analyser and The Dealflow Problem series for Smart AI Investor.",
       "Rebuilt the AIQoD blog after a WordPress migration wiped it.",
       "Run social posting of 5 posts a week for AIQoD and 3 for VentureHub360.",
       "Built a daily AI intelligence brief that goes to the leadership team each morning.",

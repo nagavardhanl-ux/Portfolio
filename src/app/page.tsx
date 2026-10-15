@@ -29,7 +29,7 @@ export default function Home() {
             index="03"
             label="Selected work"
             id="work-title"
-            title="Three company sites"
+            title="Company sites"
           />
           <HomeShowcase />
         </div>

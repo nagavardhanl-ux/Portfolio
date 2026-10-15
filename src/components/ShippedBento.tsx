@@ -133,7 +133,7 @@ export default function ShippedBento() {
           ROW 1: FEATURED CARDS (7 cols + 5 cols)
           ========================================================================= */}
 
-      {/* 01. 8 WEBSITES (Span 7 cols) — Priority Anchor */}
+      {/* 01. COMPANY WEBSITES (Span 7 cols) - Priority Anchor */}
       <article
         className="sb-card sb-card--websites sb-card--gold reveal"
         tabIndex={0}
@@ -200,7 +200,7 @@ export default function ShippedBento() {
         </div>
       </article>
 
-      {/* 02. 11-BLOG CONTENT CLUSTER (Span 5 cols) — Priority Anchor */}
+      {/* 02. AGENTIC AI CONTENT CLUSTER (Span 5 cols) - Priority Anchor */}
       <article
         className="sb-card sb-card--cluster sb-card--gold reveal"
         tabIndex={0}
@@ -288,7 +288,7 @@ export default function ShippedBento() {
               <span className="sb-brief-badge">
                 <span className="sb-brief-pulse" /> EXECUTIVE DISPATCH
               </span>
-              <span className="sb-brief-time">08:00 AM • 5 C-Level Execs</span>
+              <span className="sb-brief-time">08:00 AM • Leadership team</span>
             </div>
             <div className="sb-brief-signals">
               <div className="sb-signal-item">
@@ -310,7 +310,7 @@ export default function ShippedBento() {
         </div>
       </article>
 
-      {/* 04. 2,300+ INVESTOR RECORDS (Span 7 cols) — Priority Anchor */}
+      {/* 04. INVESTOR DATABASES (Span 7 cols) - Priority Anchor */}
       <article
         className="sb-card sb-card--investors sb-card--blue reveal"
         tabIndex={0}
@@ -338,9 +338,9 @@ export default function ShippedBento() {
         <div className="sb-visual sb-visual--table" aria-hidden="true">
           <div className="sb-db-preview">
             <div className="sb-db-header-chips">
-              <span className="sb-stat-chip"><b>1,221</b> Angels</span>
-              <span className="sb-stat-chip"><b>835</b> Family Offices</span>
-              <span className="sb-stat-chip"><b>263</b> VC Firms</span>
+              <span className="sb-stat-chip">Angels</span>
+              <span className="sb-stat-chip">Family Offices</span>
+              <span className="sb-stat-chip">VC Firms</span>
             </div>
             <div className="sb-db-table">
               <div className="sb-db-row sb-db-row--head">
@@ -376,7 +376,7 @@ export default function ShippedBento() {
           ROW 3: B2B ICP & CONTENT SERIES (6 cols + 6 cols)
           ========================================================================= */}
 
-      {/* 05. 80+ SEGMENT ICP PLAYBOOK (Span 6 cols) */}
+      {/* 05. SEGMENT ICP PLAYBOOK (Span 6 cols) */}
       <article
         className="sb-card sb-card--playbook sb-card--sage reveal"
         tabIndex={0}
@@ -411,7 +411,7 @@ export default function ShippedBento() {
         </div>
       </article>
 
-      {/* 06. 20 BLOGS ACROSS TWO SERIES (Span 6 cols) */}
+      {/* 06. TWO BLOG SERIES FOR VENTUREHUB360 (Span 6 cols) */}
       <article
         className="sb-card sb-card--series sb-card--gold reveal"
         tabIndex={0}
@@ -441,7 +441,7 @@ export default function ShippedBento() {
             <div className="sb-series-card">
               <div className="sb-series-header">
                 <span className="sb-series-badge">SERIES 1</span>
-                <span className="sb-series-count">10 PARTS</span>
+                <span className="sb-series-count">SERIES</span>
               </div>
               <h4 className="sb-series-name">The Dealflow Problem</h4>
               <ul className="sb-series-list">
@@ -453,7 +453,7 @@ export default function ShippedBento() {
             <div className="sb-series-card">
               <div className="sb-series-header">
                 <span className="sb-series-badge">SERIES 2</span>
-                <span className="sb-series-count">10 BLOGS</span>
+                <span className="sb-series-count">SERIES</span>
               </div>
               <h4 className="sb-series-name">Startup Pitch Analyser</h4>
               <ul className="sb-series-list">
@@ -601,7 +601,7 @@ export default function ShippedBento() {
           ROW 5: RESEARCH & MARKETS (6 cols + 6 cols)
           ========================================================================= */}
 
-      {/* 10. ICPS FOR 6 PRODUCTS (Span 6 cols) */}
+      {/* 10. PRODUCT ICPS FOR AIQOD (Span 6 cols) */}
       <article
         className="sb-card sb-card--products sb-card--blue reveal"
         tabIndex={0}
@@ -613,7 +613,7 @@ export default function ShippedBento() {
           <p className="sb-card__desc">{shipped[2].detail}</p>
         </div>
 
-        {/* Visual: 6-Product Persona Matrix */}
+        {/* Visual: Product Persona Matrix */}
         <div className="sb-visual sb-visual--products" aria-hidden="true">
           <div className="sb-products-grid">
             <div className="sb-product-pill">
@@ -662,7 +662,7 @@ export default function ShippedBento() {
         </div>
       </article>
 
-      {/* 11. PARTNER RESEARCH, 19 COUNTRIES (Span 6 cols) */}
+      {/* 11. INTERNATIONAL PARTNER RESEARCH (Span 6 cols) */}
       <article
         className="sb-card sb-card--partners sb-card--blue reveal"
         tabIndex={0}
@@ -688,7 +688,6 @@ export default function ShippedBento() {
               <span className="sb-country-tag"><span className="sb-flag">🇯🇵</span> Japan</span>
               <span className="sb-country-tag"><span className="sb-flag">🇨🇦</span> Canada</span>
               <span className="sb-country-tag"><span className="sb-flag">🇳🇱</span> Netherlands</span>
-              <span className="sb-country-tag sb-country-tag--more">+9 Global Mkts</span>
             </div>
             <div className="sb-partner-tiers">
               <span className="sb-tier-pill">System Integrators</span>

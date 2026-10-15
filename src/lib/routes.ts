@@ -16,7 +16,7 @@ export const routeMeta: RouteMeta[] = [
     path: "/websites/",
     title: "Websites · Nagavardhan Reddy Lella",
     description:
-      "Eight websites, shipped and managed: three company sites (AIQoD, VentureHub360, AIQoD360) and five concept builds. Open each one in place.",
+      "Company websites for AIQoD and VentureHub360, built and run end to end, plus concept builds. Open each one in place.",
   },
   {
     path: "/what-i-do/",
