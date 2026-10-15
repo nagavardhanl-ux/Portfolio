@@ -124,18 +124,6 @@ export default function ShippedBento() {
       <article
         className="sb-card sb-card--websites sb-card--gold reveal"
       >
-        <div className="sb-card__bg" aria-hidden="true">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={asset("shipped-bg.jpg")}
-            alt=""
-            loading="lazy"
-            className="sb-card__bg-img"
-          />
-          <div className="sb-card__bg-glow" />
-          <div className="sb-card__bg-overlay" />
-        </div>
-
         <div className="sb-card__body">
           <h3 className="sb-card__title">{shipped[10].label}</h3>
           <p className="sb-card__desc">{shipped[10].detail}</p>
@@ -188,18 +176,6 @@ export default function ShippedBento() {
       <article
         className="sb-card sb-card--cluster sb-card--gold reveal"
       >
-        <div className="sb-card__bg" aria-hidden="true">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={asset("blog-cluster-bg.jpg")}
-            alt=""
-            loading="lazy"
-            className="sb-card__bg-img"
-          />
-          <div className="sb-card__bg-glow" />
-          <div className="sb-card__bg-overlay" />
-        </div>
-
         <div className="sb-card__body">
           <h3 className="sb-card__title">{shipped[0].label}</h3>
           <p className="sb-card__desc">{shipped[0].detail}</p>
@@ -242,18 +218,6 @@ export default function ShippedBento() {
       <article
         className="sb-card sb-card--brief sb-card--violet reveal"
       >
-        <div className="sb-card__bg" aria-hidden="true">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={asset("brief-bg.jpg")}
-            alt=""
-            loading="lazy"
-            className="sb-card__bg-img"
-          />
-          <div className="sb-card__bg-glow" />
-          <div className="sb-card__bg-overlay" />
-        </div>
-
         <div className="sb-card__body">
           <h3 className="sb-card__title">{shipped[6].label}</h3>
           <p className="sb-card__desc">{shipped[6].detail}</p>
@@ -292,18 +256,6 @@ export default function ShippedBento() {
       <article
         className="sb-card sb-card--investors sb-card--blue reveal"
       >
-        <div className="sb-card__bg" aria-hidden="true">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={asset("investors-bg.jpg")}
-            alt=""
-            loading="lazy"
-            className="sb-card__bg-img"
-          />
-          <div className="sb-card__bg-glow" />
-          <div className="sb-card__bg-overlay" />
-        </div>
-
         <div className="sb-card__body">
           <h3 className="sb-card__title">{shipped[4].label}</h3>
           <p className="sb-card__desc">{shipped[4].detail}</p>
@@ -387,18 +339,6 @@ export default function ShippedBento() {
       <article
         className="sb-card sb-card--series sb-card--gold reveal"
       >
-        <div className="sb-card__bg" aria-hidden="true">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={asset("series-bg.jpg")}
-            alt=""
-            loading="lazy"
-            className="sb-card__bg-img"
-          />
-          <div className="sb-card__bg-glow" />
-          <div className="sb-card__bg-overlay" />
-        </div>
-
         <div className="sb-card__body">
           <h3 className="sb-card__title">{shipped[1].label}</h3>
           <p className="sb-card__desc">{shipped[1].detail}</p>
