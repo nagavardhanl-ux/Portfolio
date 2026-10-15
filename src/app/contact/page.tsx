@@ -14,7 +14,7 @@ export default function ContactPage() {
             <b>Contact</b>
           </p>
           <h1 className="h1">Get in touch</h1>
-          <p className="lead">Questions about the work, a role or a website build. Email, call or message on LinkedIn.</p>
+          <p className="lead">Questions about the work, a role or a website build. Email or message on LinkedIn.</p>
         </div>
       </header>
 
@@ -25,12 +25,6 @@ export default function ContactPage() {
               <a href={`mailto:${contact.email}`}>
                 <span className="label">Email</span>
                 <strong>{contact.email}</strong>
-              </a>
-            </li>
-            <li>
-              <a href={contact.phoneHref}>
-                <span className="label">Phone</span>
-                <strong>{contact.phone}</strong>
               </a>
             </li>
             <li>

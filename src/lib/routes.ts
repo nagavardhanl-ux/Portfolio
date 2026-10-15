@@ -27,20 +27,14 @@ export const routeMeta: RouteMeta[] = [
   {
     path: "/contact/",
     title: "Contact · Nagavardhan Reddy Lella",
-    description: "Get in touch with Nagavardhan Reddy Lella by email, phone or LinkedIn, or send a message through the form.",
-  },
-  {
-    path: "/theme-directions/",
-    title: "Portfolio theme directions · Nagavardhan Reddy Lella",
-    description:
-      "Compare three editorial design directions for Nagavardhan Reddy Lella's portfolio, with desktop and mobile previews of the same work, career story and capabilities.",
+    description: "Get in touch with Nagavardhan Reddy Lella by email or LinkedIn, or send a message through the form.",
   },
 ];
 
 export const notFoundMeta: RouteMeta = {
   path: "/404",
   title: "Page not found · Nagavardhan Reddy Lella",
-  description: "This page does not exist. The work, the websites and the ICP builder are one click away.",
+  description: "This page does not exist. The work and the websites are one click away.",
 };
 
 const normalise = (p: string) => (p.endsWith("/") ? p : `${p}/`);

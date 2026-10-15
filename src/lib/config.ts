@@ -13,8 +13,6 @@ export const site = {
 
 export const contact = {
   email: "nagavardhan1437@gmail.com",
-  phone: "+91 90870 14237",
-  phoneHref: "tel:+919087014237",
   linkedin: "https://www.linkedin.com/in/nagavardhan-reddy-lella/",
 };
 

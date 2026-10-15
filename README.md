@@ -17,7 +17,7 @@ Every push to `main` builds and deploys through `.github/workflows/deploy.yml`.
 
 | What | File |
 | --- | --- |
-| Email, phone, LinkedIn, Formspree ID | `src/lib/config.ts` |
+| Email, LinkedIn, Formspree ID | `src/lib/config.ts` |
 | Hero, capabilities, the thread, What I do, About text, AI workflow | `src/data/content.ts` |
 | The eight websites, labels, embed URLs, deep links | `src/data/sites.ts` |
 | Page titles and meta descriptions | `src/lib/routes.ts` |

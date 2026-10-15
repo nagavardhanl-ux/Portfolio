@@ -23,7 +23,6 @@ export default function Footer() {
             <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>
-            <a href={contact.phoneHref}>{contact.phone}</a>
             <a href={`mailto:${contact.email}`}>Email</a>
           </div>
         </div>
