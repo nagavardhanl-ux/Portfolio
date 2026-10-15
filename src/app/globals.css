@@ -3405,6 +3405,7 @@ a.hover-lift:focus-visible .go {
   .tools-mod .tools-tile__icon {
     transform: none !important;
     transition: none !important;
+  }
 }
 
 /* ========================================================================
