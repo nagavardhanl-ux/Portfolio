@@ -14,10 +14,6 @@ export default function WhatIDoPage() {
       {/* ── Page Hero ────────────────────────────────────────── */}
       <header className="wid-hero">
         <div className="wid-container">
-          <div className="wid-hero__eyebrow">
-            <span className="wid-hero__dot" aria-hidden="true" />
-            <span>CAPABILITIES · 01 TO 05</span>
-          </div>
           <h1 className="wid-hero__title">{whatIDoPage.heading}</h1>
           <p className="wid-hero__intro">{whatIDoPage.intro}</p>
 
