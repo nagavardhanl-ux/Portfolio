@@ -231,19 +231,19 @@ export default function HeroScrollExpansion() {
             <picture>
               <source
                 type="image/avif"
-                srcSet={`${asset("shots/venturehub360-800.avif")} 800w, ${asset("shots/venturehub360-1440.avif")} 1440w`}
+                srcSet={`${asset("shots/hero-desk-800.avif")} 800w, ${asset("shots/hero-desk-1440.avif")} 1440w`}
                 sizes="100vw"
               />
               <source
                 type="image/webp"
-                srcSet={`${asset("shots/venturehub360-800.webp")} 800w, ${asset("shots/venturehub360-1440.webp")} 1440w`}
+                srcSet={`${asset("shots/hero-desk-800.webp")} 800w, ${asset("shots/hero-desk-1440.webp")} 1440w`}
                 sizes="100vw"
               />
               <img
-                src={asset("shots/venturehub360-1440.webp")}
-                alt="VentureHub360 platform preview"
+                src={asset("shots/hero-desk-1440.webp")}
+                alt=""
                 width={1440}
-                height={900}
+                height={960}
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
