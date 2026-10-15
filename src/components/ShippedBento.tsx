@@ -98,18 +98,6 @@ export default function ShippedBento() {
                 <span className="sb-dot sb-dot--live" /> AIQoD
               </span>
             </div>
-            <div className="sb-site-thumb">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={asset("shots/aiqod360-1440.webp")}
-                alt="AIQoD360 website preview"
-                loading="lazy"
-                className="sb-site-img"
-              />
-              <span className="sb-site-label">
-                <span className="sb-dot sb-dot--live" /> AIQoD360
-              </span>
-            </div>
           </div>
         </div>
       </article>
