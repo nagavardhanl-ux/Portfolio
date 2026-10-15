@@ -32,7 +32,7 @@ export const capabilitySections: Capability[] = [
       "Launch products and brands, from the name and positioning to the material that takes them to market.",
     ],
     work: [
-      "Built ICPs for AIQoD's products including M&A, Contract Digitization, ATS, Ticket Management, Pharma Analytics and E-KYC.",
+      "Built ICPs for products across AIQoD, VentureHub360 and new launches, from M&A and contract digitization to hiring, pharma pricing and fleet compliance.",
       "Wrote a B2B ICP playbook for Smart AI Investor, with decision makers, pain points, triggers and messaging per segment.",
       "Named and wrote the positioning and product copy for VentureHub360's two products.",
       "Built competitor comparison content against Affinity, PitchBook, Harmonic and others.",
@@ -48,15 +48,12 @@ export const capabilitySections: Capability[] = [
     points: [
       "Source and clean the target lists myself before anything goes out.",
       "Write the cold emails and LinkedIn messages, and run the sequences.",
-      "Verify every list before sending so campaigns don't burn on bad data.",
       "Read what comes back and rewrite what underperforms.",
     ],
     work: [
-      "Ran cold email sequences for partners, investors, and products like M&A and fleet compliance, into markets outside India.",
-      "Built investor lead databases of angels, family offices and VC firms.",
-      "Wrote a B2B lead generation playbook with per-industry Apollo filters and a scoring formula.",
-      "Set up an email verification workflow with ZeroBounce and MillionVerifier.",
-      "Built a WhatsApp Business API outreach strategy.",
+      "Ran cold email campaigns for channel partners, investors and AIQoD products like M&A, hiring and fleet compliance, in international markets.",
+      "Ran investor outreach for Smart AI Investor and for the company's fundraise.",
+      "Wrote a lead generation playbook with targeting rules and a scoring formula for each industry.",
     ],
   },
   {
@@ -90,7 +87,6 @@ export const capabilitySections: Capability[] = [
     ],
     work: [
       "Built VentureHub360 from scratch and rebuilt AIQoD off WordPress.",
-      "Run AIQoD360 in Wix: content, new pages and ongoing updates.",
       "Fixed crawler visibility on a React site with a prerender setup, and rewrote llms.txt and robots.txt.",
       "Ran AEO and GEO audits to find gaps in how the sites are read.",
       "Built concept sites to push myself, including a study-abroad site with working cost and loan calculators.",
@@ -110,7 +106,6 @@ export const capabilitySections: Capability[] = [
     ],
     work: [
       "Produced AI avatar videos with HeyGen and product videos cut from demo recordings.",
-      "Built a Custom GPT for AIQoD's social content.",
       "Set up AI search visibility tracking across ChatGPT, Gemini and Claude, plus the AI traffic channel in GA4.",
       "Built the daily AI intelligence brief that runs automatically for the leadership team.",
     ],

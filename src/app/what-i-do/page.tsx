@@ -121,7 +121,7 @@ export default function WhatIDoPage() {
           <div className="wid-sec__header">
             <div className="wid-sec__meta">
               <span className="wid-sec__num">02</span>
-              <span className="wid-sec__tag">OUTBOUND &amp; PIPELINE ARCHITECTURE</span>
+              <span className="wid-sec__tag">OUTBOUND</span>
             </div>
             <h2 id="dg-title" className="wid-sec__title">{dg.title}</h2>
             <p className="wid-sec__lead">{dg.intro}</p>
@@ -131,33 +131,33 @@ export default function WhatIDoPage() {
             <div className="wid-col-specimen">
               <div className="wid-specimen">
                 <div className="wid-specimen__head">
-                  <div className="wid-specimen__title">Verified Investor Outreach Database</div>
-                  <span className="wid-specimen__pill">Investor Databases</span>
+                  <div className="wid-specimen__title">How a campaign runs</div>
+                  <span className="wid-specimen__pill">Outbound</span>
                 </div>
 
                 <div className="wid-competitor-strip__tags" style={{ marginBottom: 20 }}>
-                  <span className="wid-tag">Angels</span>
-                  <span className="wid-tag">Family Offices</span>
-                  <span className="wid-tag">VC Firms</span>
+                  <span className="wid-tag">Partners</span>
+                  <span className="wid-tag">Investors</span>
+                  <span className="wid-tag">Product buyers</span>
                 </div>
 
                 <div className="wid-pipeline-flow">
                   <div className="wid-pipeline-step">
                     <span className="wid-pipeline-icon">01</span>
                     <div>
-                      <strong style={{ color: "var(--text, #F4F0E8)" }}>Apollo Target Sourcing:</strong> Custom industry filters and scoring formula to identify verified decision-makers.
+                      <strong style={{ color: "var(--text, #F4F0E8)" }}>Targeting:</strong> Industry filters and a scoring formula to find the right decision makers.
                     </div>
                   </div>
                   <div className="wid-pipeline-step">
                     <span className="wid-pipeline-icon">02</span>
                     <div>
-                      <strong style={{ color: "var(--text, #F4F0E8)" }}>ZeroBounce &amp; MillionVerifier:</strong> List verification before dispatch to protect sender reputation and prevent burned domains.
+                      <strong style={{ color: "var(--text, #F4F0E8)" }}>List checks:</strong> Every list verified before it is sent.
                     </div>
                   </div>
                   <div className="wid-pipeline-step">
                     <span className="wid-pipeline-icon">03</span>
                     <div>
-                      <strong style={{ color: "var(--text, #F4F0E8)" }}>Multi-Channel Dispatch:</strong> Personalized cold email sequences, LinkedIn outreach, and WhatsApp Business API workflows.
+                      <strong style={{ color: "var(--text, #F4F0E8)" }}>Sending:</strong> Cold email sequences and LinkedIn outreach.
                     </div>
                   </div>
                 </div>
@@ -268,7 +268,7 @@ export default function WhatIDoPage() {
           <div className="wid-sec__header">
             <div className="wid-sec__meta">
               <span className="wid-sec__num">04</span>
-              <span className="wid-sec__tag">DIGITAL ARCHITECTURE &amp; SEARCH VISIBILITY</span>
+              <span className="wid-sec__tag">SITES AND SEARCH</span>
             </div>
             <h2 id="web-title" className="wid-sec__title">{web.title}</h2>
             <p className="wid-sec__lead">{web.intro}</p>
@@ -290,7 +290,7 @@ export default function WhatIDoPage() {
               <div className="wid-web-frame__info">
                 <div className="wid-web-frame__name">VentureHub360</div>
                 <div className="wid-web-frame__caption">
-                  Built from scratch: full information architecture, product copy, and interactive tools.
+                  Built from scratch: structure, product copy and pages, with a prerender setup so search engines and AI tools can read it.
                 </div>
               </div>
             </div>
@@ -310,7 +310,7 @@ export default function WhatIDoPage() {
               <div className="wid-web-frame__info">
                 <div className="wid-web-frame__name">AIQoD</div>
                 <div className="wid-web-frame__caption">
-                  Rebuilt off WordPress for high performance, with custom prerender crawler setup and structured schema.
+                  Rebuilt off WordPress with new structure, content and SEO.
                 </div>
               </div>
             </div>
@@ -361,7 +361,7 @@ export default function WhatIDoPage() {
           <div className="wid-sec__header">
             <div className="wid-sec__meta">
               <span className="wid-sec__num">05</span>
-              <span className="wid-sec__tag">INTEGRATED WORKFLOW &amp; TOOLING</span>
+              <span className="wid-sec__tag">TOOLS AND WORKFLOW</span>
             </div>
             <h2 id="ai-title" className="wid-sec__title">{ai.title}</h2>
             <p className="wid-sec__lead">{ai.intro}</p>
@@ -370,50 +370,50 @@ export default function WhatIDoPage() {
           <div className="wid-ai-domains">
             <div className="wid-ai-card">
               <span className="wid-ai-card__num">01 / RESEARCH</span>
-              <h4 className="wid-ai-card__title">Deep Research &amp; Synthesis</h4>
+              <h4 className="wid-ai-card__title">Research</h4>
               <div className="wid-ai-card__tools">
                 <span className="wid-tool-badge">ChatGPT</span>
                 <span className="wid-tool-badge">Claude</span>
                 <span className="wid-tool-badge">Perplexity</span>
               </div>
               <p className="wid-ai-card__desc">
-                Accelerating ICP discovery, competitor pricing analysis, industry research, and executive briefings.
+                ICP research, competitor pricing, industry research and the daily leadership brief.
               </p>
             </div>
 
             <div className="wid-ai-card">
               <span className="wid-ai-card__num">02 / CONTENT</span>
-              <h4 className="wid-ai-card__title">Content &amp; Creative Systems</h4>
+              <h4 className="wid-ai-card__title">Content</h4>
               <div className="wid-ai-card__tools">
                 <span className="wid-tool-badge">Canva</span>
                 <span className="wid-tool-badge">ChatGPT</span>
               </div>
               <p className="wid-ai-card__desc">
-                Drafting structured blog clusters, custom GPT for social copy, and high-impact visual carousels.
+                Blog drafts, social copy and carousels.
               </p>
             </div>
 
             <div className="wid-ai-card">
               <span className="wid-ai-card__num">03 / VIDEO</span>
-              <h4 className="wid-ai-card__title">Video Production &amp; Avatars</h4>
+              <h4 className="wid-ai-card__title">Video</h4>
               <div className="wid-ai-card__tools">
                 <span className="wid-tool-badge">HeyGen</span>
                 <span className="wid-tool-badge">Google Flow</span>
               </div>
               <p className="wid-ai-card__desc">
-                Producing AI avatar video presentations and editing concise walkthroughs from product demo footage.
+                AI avatar videos and short walkthroughs cut from product demos.
               </p>
             </div>
 
             <div className="wid-ai-card">
               <span className="wid-ai-card__num">04 / ANALYSE</span>
-              <h4 className="wid-ai-card__title">Analytics &amp; Search Visibility</h4>
+              <h4 className="wid-ai-card__title">Analytics</h4>
               <div className="wid-ai-card__tools">
                 <span className="wid-tool-badge">Search Console</span>
                 <span className="wid-tool-badge">GA4</span>
               </div>
               <p className="wid-ai-card__desc">
-                Tracking organic visibility, AI traffic channels in GA4, and query pickup across ChatGPT, Gemini, and Claude.
+                Search traffic, AI referral traffic in GA4, and how often ChatGPT, Gemini and Claude pick up the sites.
               </p>
             </div>
           </div>

@@ -1,4 +1,3 @@
-import ContactForm from "@/components/ContactForm";
 import { ArrowUpRight } from "@/components/icons";
 import { contact } from "@/lib/config";
 import { pageMetadata } from "@/lib/meta";
@@ -18,7 +17,7 @@ export default function ContactPage() {
         </div>
       </header>
 
-      <section className="section" aria-label="Contact details and form">
+      <section className="section" aria-label="Contact details">
         <div className="container contact-grid">
           <ul className="contact-list reveal" role="list">
             <li>
@@ -37,9 +36,6 @@ export default function ContactPage() {
               </a>
             </li>
           </ul>
-          <div className="reveal" style={{ ["--delay" as string]: "50ms" }}>
-            <ContactForm />
-          </div>
         </div>
       </section>
     </>

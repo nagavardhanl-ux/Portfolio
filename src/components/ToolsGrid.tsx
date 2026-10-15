@@ -374,7 +374,7 @@ export default function ToolsGrid() {
           The tools<br />I work with
         </h2>
         <p className="tools-intro__desc">
-          The real AI and marketing tools used, grouped by what they&apos;re used for.
+          Grouped by what they&apos;re used for.
         </p>
 
       </aside>

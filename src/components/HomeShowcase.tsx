@@ -8,7 +8,6 @@ import { asset } from "@/lib/config";
 
 const vhSite = siteById("venturehub360");
 const aiqodSite = siteById("aiqod");
-const aiqod360Site = siteById("aiqod360");
 
 /**
  * Silent, looped live-scrolling screen player.
@@ -210,7 +209,7 @@ export default function HomeShowcase() {
             <div className="showcase-info__highlights">
               <div className="showcase-highlight">
                 <span className="showcase-highlight__dot" aria-hidden="true" />
-                <span>The Intelligence Layer for autonomous enterprise agents</span>
+                <span>The intelligence layer for the autonomous enterprise</span>
               </div>
               <div className="showcase-highlight">
                 <span className="showcase-highlight__dot" aria-hidden="true" />
@@ -238,71 +237,6 @@ export default function HomeShowcase() {
               url="aiqod.com"
               poster="aiqod-1440.webp"
               alt="AIQoD live scrolling screen"
-            />
-          </div>
-        </div>
-      </article>
-
-      {/* ===================================================================
-          3. AIQOD360 — Content LEFT, Visual RIGHT (Alternating!)
-          Super App & Multi-Agent Workflows
-      =================================================================== */}
-      <article className="showcase-card showcase-card--row reveal" aria-labelledby="showcase-aiqod360">
-        <div className="showcase-card__layout">
-          {/* Content Left */}
-          <div className="showcase-info">
-            <div className="showcase-info__eyebrow">
-              <span className="showcase-info__idx">03</span>
-              <span className="showcase-info__sep">•</span>
-              <span className="showcase-info__tag">MANAGED IN WIX EDITOR</span>
-            </div>
-
-            <h3 id="showcase-aiqod360" className="showcase-info__title">
-              <a
-                href={aiqod360Site.embedUrl || aiqod360Site.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="showcase-info__title-link"
-              >
-                {aiqod360Site.name}
-                <ArrowUpRight className="showcase-info__icon" />
-                <span className="sr-only">(opens in a new tab)</span>
-              </a>
-            </h3>
-
-            <p className="showcase-info__desc">{aiqod360Site.line}</p>
-
-            <div className="showcase-info__highlights">
-              <div className="showcase-highlight">
-                <span className="showcase-highlight__dot" aria-hidden="true" />
-                <span>Super App architecture: multiple AI agents in one ecosystem</span>
-              </div>
-              <div className="showcase-highlight">
-                <span className="showcase-highlight__dot" aria-hidden="true" />
-                <span>Automating accounts payable, hiring, collaboration and sales</span>
-              </div>
-            </div>
-
-            <div className="showcase-info__actions">
-              <a
-                href={aiqod360Site.embedUrl || aiqod360Site.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="showcase-btn showcase-btn--coral"
-              >
-                Visit AIQoD360 <ArrowUpRight />
-                <span className="sr-only">(opens in a new tab)</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Visual Right */}
-          <div className="showcase-stage showcase-stage--aiqod360" aria-hidden="true">
-            <LiveScreen
-              name="aiqod360"
-              url="aiqod360.com"
-              poster="aiqod360-1440.webp"
-              alt="AIQoD360 live scrolling screen"
             />
           </div>
         </div>

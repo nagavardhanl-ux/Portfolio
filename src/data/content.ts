@@ -9,7 +9,7 @@ export const hero = {
 export const capabilities = [
   "Product Marketing",
   "Demand Generation",
-  "Content",
+  "Content and LinkedIn",
   "Websites & SEO",
   "AI-Led Execution",
 ];
@@ -53,15 +53,15 @@ export const whatIDo = [
   },
   {
     title: "Demand Generation",
-    body: "Cold email, LinkedIn outreach and multi-sequence campaigns for partners, products and investors, into the US, UK, Europe, the Middle East and Southeast Asia.",
+    body: "Cold email, LinkedIn outreach and multi-step campaigns for partners, products and investors, in international markets.",
   },
   {
-    title: "Content",
+    title: "Content and LinkedIn",
     body: "I write the blogs, posts and series that bring people to the product, built to rank on Google and show up in AI search.",
   },
   {
     title: "Websites & SEO",
-    body: "Builds and ships company websites using AI tools, including the content, the structure and the SEO, without waiting on a developer.",
+    body: "Builds and ships company websites with AI tools, including the content, the structure and the SEO.",
   },
   {
     title: "AI-Led Execution",

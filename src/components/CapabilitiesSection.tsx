@@ -121,10 +121,7 @@ export default function CapabilitiesSection() {
           {/* Minimal Diagram 01: Vertical Flow */}
           <div className="cap-diag" aria-label="Product marketing workflow diagram">
             <div className="cap-diag__header">
-              <span className="cap-diag__tag">POSITIONING ARCHITECTURE</span>
-              <span className="cap-diag__status">
-                <span className="cap-status-dot" /> STRATEGIC FOUNDATION
-              </span>
+              <span className="cap-diag__tag">PRODUCT MARKETING</span>
             </div>
 
             <div className="cap-diag-vflow">
@@ -206,7 +203,7 @@ export default function CapabilitiesSection() {
           {/* Minimal Diagram 02: Campaign Flow */}
           <div className="cap-diag" aria-label="Demand generation campaign flow diagram">
             <div className="cap-diag__header">
-              <span className="cap-diag__tag">MULTI-SEQUENCE OUTBOUND CADENCE</span>
+              <span className="cap-diag__tag">OUTBOUND</span>
               <span className="cap-diag__status">EMAIL + LINKEDIN</span>
             </div>
 
@@ -252,14 +249,14 @@ export default function CapabilitiesSection() {
 
               <div className="cap-diag-hstage cap-diag-hstage--focus">
                 <span className="cap-diag-hstage__idx">04</span>
-                <strong className="cap-diag-hstage__name">Qualified Conversations</strong>
-                <span className="cap-diag-hstage__sub">High-intent buyer &amp; partner replies</span>
+                <strong className="cap-diag-hstage__name">Replies</strong>
+                <span className="cap-diag-hstage__sub">Interested buyers and partners passed to sales</span>
               </div>
             </div>
 
             <footer className="cap-diag__footer">
-              <span className="cap-diag__foot-label">INTERNATIONAL MARKETS:</span>
-              <span className="cap-diag__foot-val">US · UK · Europe · Middle East · Southeast Asia</span>
+              <span className="cap-diag__foot-label">MARKETS:</span>
+              <span className="cap-diag__foot-val">International</span>
             </footer>
           </div>
 
@@ -296,8 +293,8 @@ export default function CapabilitiesSection() {
           {/* Minimal Diagram 03: Content System Flow */}
           <div className="cap-diag" aria-label="Content system workflow diagram">
             <div className="cap-diag__header">
-              <span className="cap-diag__tag">CONTENT DISCOVERY ENGINE</span>
-              <span className="cap-diag__status">RANK + CITE</span>
+              <span className="cap-diag__tag">CONTENT</span>
+              <span className="cap-diag__status">SEARCH AND AI ANSWERS</span>
             </div>
 
             <div className="cap-diag-hflow cap-diag-hflow--3col">
@@ -330,13 +327,13 @@ export default function CapabilitiesSection() {
               <div className="cap-diag-hstage cap-diag-hstage--focus">
                 <span className="cap-diag-hstage__idx">03</span>
                 <strong className="cap-diag-hstage__name">Search Visibility</strong>
-                <span className="cap-diag-hstage__sub">Google Search ranking · Perplexity &amp; Claude AI answers</span>
+                <span className="cap-diag-hstage__sub">Google rankings and AI answers</span>
               </div>
             </div>
 
             <footer className="cap-diag__footer">
-              <span className="cap-diag__foot-label">DISCOVERY TARGETS:</span>
-              <span className="cap-diag__foot-val">Google Search · Perplexity · ChatGPT · Claude</span>
+              <span className="cap-diag__foot-label">WHERE IT SHOWS UP:</span>
+              <span className="cap-diag__foot-val">Google and AI answers</span>
             </footer>
           </div>
 
@@ -373,15 +370,14 @@ export default function CapabilitiesSection() {
           {/* Minimal Diagram 04: Website-Building Flow */}
           <div className="cap-diag" aria-label="Website building and SEO workflow diagram">
             <div className="cap-diag__header">
-              <span className="cap-diag__tag">WEBSITE &amp; SEO PIPELINE</span>
-              <span className="cap-diag__status">END-TO-END SHIP</span>
+              <span className="cap-diag__tag">WEBSITES &amp; SEO</span>
             </div>
 
             <div className="cap-diag-hflow">
               <div className="cap-diag-hstage">
                 <span className="cap-diag-hstage__idx">01</span>
                 <strong className="cap-diag-hstage__name">Structure</strong>
-                <span className="cap-diag-hstage__sub">Site architecture, pages &amp; navigation</span>
+                <span className="cap-diag-hstage__sub">Site structure, pages &amp; navigation</span>
               </div>
 
               <div className="cap-diag-hconnector" aria-hidden="true">
@@ -425,8 +421,8 @@ export default function CapabilitiesSection() {
             </div>
 
             <footer className="cap-diag__footer">
-              <span className="cap-diag__foot-label">AUTONOMOUS DEPLOYMENT:</span>
-              <span className="cap-diag__foot-val">Built &amp; shipped directly using AI tools without waiting on a developer</span>
+              <span className="cap-diag__foot-label">HOW:</span>
+              <span className="cap-diag__foot-val">Built and shipped with AI tools</span>
             </footer>
           </div>
 
@@ -460,14 +456,12 @@ export default function CapabilitiesSection() {
             <h3 id="cap-title-4" className="cap-seq-item__title">
               {whatIDo[4].title}
             </h3>
-            <span className="cap-concluding-badge">CONNECTED AI STACK</span>
           </div>
 
           {/* Minimal Diagram 05: Concluding 4-Stage Workflow */}
           <div className="cap-diag cap-diag--concluding" aria-label="AI-led execution workflow pipeline">
             <div className="cap-diag__header">
-              <span className="cap-diag__tag">FULL-LIFECYCLE AI EXECUTION PIPELINE</span>
-              <span className="cap-diag__telemetry">ACTIVE DAILY WORKFLOW</span>
+              <span className="cap-diag__tag">AI TOOLS I USE DAILY</span>
             </div>
 
             <div className="cap-diag-hflow cap-diag-hflow--hub">
@@ -477,11 +471,6 @@ export default function CapabilitiesSection() {
                   <strong className="cap-diag-hstage__name">Research</strong>
                 </div>
                 <span className="cap-diag-hstage__sub">Synthesis &amp; market intelligence</span>
-                <div className="cap-diag-pills">
-                  <span className="cap-diag-pill">ChatGPT</span>
-                  <span className="cap-diag-pill">Claude</span>
-                  <span className="cap-diag-pill">Perplexity</span>
-                </div>
               </div>
 
               <div className="cap-diag-hconnector" aria-hidden="true">
@@ -497,11 +486,6 @@ export default function CapabilitiesSection() {
                   <strong className="cap-diag-hstage__name">Creation</strong>
                 </div>
                 <span className="cap-diag-hstage__sub">Content, video &amp; graphics</span>
-                <div className="cap-diag-pills">
-                  <span className="cap-diag-pill">Canva</span>
-                  <span className="cap-diag-pill">HeyGen</span>
-                  <span className="cap-diag-pill">Google Flow</span>
-                </div>
               </div>
 
               <div className="cap-diag-hconnector" aria-hidden="true">
@@ -517,11 +501,6 @@ export default function CapabilitiesSection() {
                   <strong className="cap-diag-hstage__name">Execution</strong>
                 </div>
                 <span className="cap-diag-hstage__sub">Websites, code &amp; prototypes</span>
-                <div className="cap-diag-pills">
-                  <span className="cap-diag-pill">Lovable</span>
-                  <span className="cap-diag-pill">Antigravity</span>
-                  <span className="cap-diag-pill">Claude Code</span>
-                </div>
               </div>
 
               <div className="cap-diag-hconnector" aria-hidden="true">
@@ -537,27 +516,8 @@ export default function CapabilitiesSection() {
                   <strong className="cap-diag-hstage__name">Measurement</strong>
                 </div>
                 <span className="cap-diag-hstage__sub">Signals, traffic &amp; citations</span>
-                <div className="cap-diag-pills">
-                  <span className="cap-diag-pill">Search Console</span>
-                  <span className="cap-diag-pill">GA4</span>
-                </div>
               </div>
             </div>
-
-            <footer className="cap-diag__footer cap-diag__footer--hub">
-              <div className="cap-diag__foot-col">
-                <span className="cap-diag__foot-label">CYCLE TIME:</span>
-                <span>Brief to live deployment in days</span>
-              </div>
-              <div className="cap-diag__foot-col">
-                <span className="cap-diag__foot-label">HUMAN IN THE LOOP:</span>
-                <span>Strategy, copy &amp; code directed by one person</span>
-              </div>
-              <div className="cap-diag__foot-col">
-                <span className="cap-diag__foot-label">DISCOVERY:</span>
-                <span>Monitored in Google GA4 &amp; AI answer engines</span>
-              </div>
-            </footer>
           </div>
 
           <p className="cap-seq-item__desc">{whatIDo[4].body}</p>

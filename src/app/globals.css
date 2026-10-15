@@ -3945,7 +3945,7 @@ a.hover-lift:focus-visible .go {
 }
 
 /* ==========================================================================
-   MINIMAL PROCESS DIAGRAMS — RESTYLED EDITORIAL ARCHITECTURE
+   MINIMAL PROCESS DIAGRAMS - RESTYLED EDITORIAL PROCESS
    ========================================================================== */
 .cap-diag {
   background: #202125;
@@ -5649,25 +5649,80 @@ body:has(.signal-home) .ambient { display:none; }
   text-overflow: ellipsis;
 }
 
+/* 7. Video Waveform Track */
 .sb-waveform {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 16px;
-  padding: 0 4px;
-  gap: 3px;
+  height: 22px;
+  padding: 3px 6px;
+  gap: 4px;
+  background: rgba(22, 23, 27, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 6px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+  transition: border-color 240ms ease, background-color 240ms ease, box-shadow 240ms ease;
 }
 
-.sb-waveform span {
+.sb-waveform:hover {
+  border-color: rgba(169, 154, 224, 0.45) !important;
+  background: rgba(22, 23, 27, 0.9) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5), 0 0 12px rgba(169, 154, 224, 0.2);
+}
+
+.sb-waveform span,
+.sb-wave-bar {
   flex: 1;
-  background: var(--cat-accent-muted, #7A6DB0);
-  border-radius: 1px;
-  transition: background 200ms ease;
+  min-width: 4px;
+  background: rgba(169, 154, 224, 0.55);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  transform-origin: center bottom;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 200ms ease,
+              box-shadow 200ms ease,
+              opacity 200ms ease;
 }
 
-.sb-card:hover .sb-waveform span {
+/* Individual block hover reaction */
+.sb-waveform span:hover,
+.sb-wave-bar:hover {
+  transform: scaleY(1.45) scaleX(1.15) translateY(-2px) !important;
+  background: #C4B5FD !important;
+  box-shadow: 0 0 12px rgba(196, 181, 253, 0.85), 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  z-index: 5;
+  transition-delay: 0ms !important;
+}
+
+@keyframes sbWaveformBounce {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.35);
+  }
+}
+
+.sb-card--videos:hover .sb-waveform:not(:hover) .sb-wave-bar {
+  animation: sbWaveformBounce 1.2s ease-in-out infinite;
   background: var(--cat-accent, #A99AE0);
 }
+.sb-card--videos:hover .sb-waveform:not(:hover) .sb-wave-bar:nth-child(1) { animation-delay: 0s; }
+.sb-card--videos:hover .sb-waveform:not(:hover) .sb-wave-bar:nth-child(2) { animation-delay: 0.1s; }
+.sb-card--videos:hover .sb-waveform:not(:hover) .sb-wave-bar:nth-child(3) { animation-delay: 0.2s; }
+.sb-card--videos:hover .sb-waveform:not(:hover) .sb-wave-bar:nth-child(4) { animation-delay: 0.3s; }
+.sb-card--videos:hover .sb-waveform:not(:hover) .sb-wave-bar:nth-child(5) { animation-delay: 0.4s; }
+.sb-card--videos:hover .sb-waveform:not(:hover) .sb-wave-bar:nth-child(6) { animation-delay: 0.5s; }
+.sb-card--videos:hover .sb-waveform:not(:hover) .sb-wave-bar:nth-child(7) { animation-delay: 0.6s; }
+.sb-card--videos:hover .sb-waveform:not(:hover) .sb-wave-bar:nth-child(8) { animation-delay: 0.7s; }
+.sb-card--videos:hover .sb-waveform:not(:hover) .sb-wave-bar:nth-child(9) { animation-delay: 0.8s; }
+.sb-card--videos:hover .sb-waveform:not(:hover) .sb-wave-bar:nth-child(10) { animation-delay: 0.9s; }
+.sb-card--videos:hover .sb-waveform:not(:hover) .sb-wave-bar:nth-child(11) { animation-delay: 1.0s; }
+.sb-card--videos:hover .sb-waveform:not(:hover) .sb-wave-bar:nth-child(12) { animation-delay: 1.1s; }
 
 /* 8. Competitor Comparison Grid */
 .sb-compare-box {
@@ -5878,6 +5933,417 @@ body:has(.signal-home) .ambient { display:none; }
   background: #202125;
   border: 1px solid #343438;
   border-radius: 3px;
+}
+
+/* ==========================================================================
+   BENTO CARDS: TRANSPARENT VISUAL CONTAINERS AND STAGGERED SCROLL ANIMATIONS
+   Removes black box container backgrounds so card artwork shines through,
+   and provides glassmorphic floating elements with staggered entrance.
+   ========================================================================== */
+
+/* Universal visual container reset across all bento cards */
+.sb-card .sb-visual {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  overflow: visible !important;
+}
+
+.sb-card .sb-site-strip,
+.sb-card .sb-cluster-tree,
+.sb-card .sb-brief-dispatch,
+.sb-card .sb-db-preview,
+.sb-card .sb-playbook-content,
+.sb-card .sb-series-rack,
+.sb-card .sb-competitor-content,
+.sb-card .sb-products-grid,
+.sb-card .sb-linkedin-grid,
+.sb-card .sb-video-deck,
+.sb-card .sb-partners-dossier {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Base floating glassmorphic element style for bento cards */
+.sb-card .sb-site-thumb,
+.sb-card .sb-cluster-pillar,
+.sb-card .sb-cluster-node,
+.sb-card .sb-signal-item,
+.sb-card .sb-lane-card,
+.sb-card .sb-competitor-card,
+.sb-card .sb-product-pill,
+.sb-card .sb-linkedin-col,
+.sb-card .sb-video-screen,
+.sb-card .sb-stat-chip,
+.sb-card .sb-tier-pill {
+  background: rgba(22, 23, 27, 0.82) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 240ms ease,
+              background-color 240ms ease,
+              box-shadow 240ms ease,
+              color 240ms ease;
+}
+
+/* Micro-interaction hover states with category accent glow */
+.sb-card .sb-site-thumb:hover,
+.sb-card .sb-cluster-pillar:hover,
+.sb-card .sb-cluster-node:hover,
+.sb-card .sb-signal-item:hover,
+.sb-card .sb-lane-card:hover,
+.sb-card .sb-competitor-card:hover,
+.sb-card .sb-product-pill:hover,
+.sb-card .sb-linkedin-col:hover,
+.sb-card .sb-video-screen:hover,
+.sb-card .sb-stat-chip:hover,
+.sb-card .sb-wave-bar:hover,
+.sb-card .sb-waveform span:hover,
+.sb-card .sb-tier-pill:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: var(--cat-accent, #D5B77A) !important;
+  box-shadow: 0 6px 16px -2px rgba(0, 0, 0, 0.5), 0 0 10px var(--cat-accent-glow);
+  transition-delay: 0ms !important;
+}
+
+/* Card 1: Websites Specifics */
+.sb-card--websites .sb-site-thumb {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Card 4: Outbound Campaigns Specifics */
+.sb-lane-card {
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+.sb-lane-head {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--cat-accent, #83AFC7);
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+.sb-lane-title {
+  display: block;
+  font-size: 0.74rem;
+  color: #F4F0E8;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Card 5: Playbook Specifics */
+.sb-playbook-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Card 7: Competitor Specifics */
+.sb-competitor-content {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  align-items: stretch;
+}
+.sb-competitor-card {
+  border-radius: 8px;
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  box-sizing: border-box;
+}
+.sb-comp-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.sb-comp-desc {
+  font-size: 0.76rem;
+  color: #D4D3CE;
+  margin: 0;
+  line-height: 1.45;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.sb-comp-used {
+  font-size: 0.76rem;
+  color: var(--cat-accent, #D5B77A);
+  margin: 0;
+  line-height: 1.45;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+.sb-comp-label {
+  display: block;
+  color: #85847F;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .sb-competitor-content {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+/* Card 8: Product ICPs Specifics */
+.sb-products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+.sb-card--products .sb-product-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 6px 9px;
+  border-radius: 6px;
+  user-select: none;
+  cursor: default;
+}
+.sb-card--products .sb-prod-name {
+  font-size: 0.72rem;
+  color: #F4F0E8;
+  font-weight: 500;
+  line-height: 1.25;
+}
+.sb-card--products .sb-prod-brand {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--cat-accent, #83AFC7);
+  letter-spacing: 0.04em;
+}
+.sb-card--products .sb-product-pill--more {
+  justify-content: center;
+}
+.sb-card--products .sb-product-pill--more .sb-prod-name {
+  color: var(--cat-accent, #83AFC7);
+}
+
+/* Card 11: Partners Specifics */
+.sb-card--partners .sb-partner-tiers {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.sb-card--partners .sb-tier-pill {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #E2E1DC;
+  padding: 6px 13px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  cursor: default;
+}
+
+/* ==========================================================================
+   STAGGERED SCROLL ENTRANCE ANIMATIONS
+   Reveals floating elements sequentially as each card enters the viewport.
+   ========================================================================== */
+
+/* Initial hidden state before scroll reveal */
+.js .sb-card:not(.is-in) .sb-site-thumb,
+.js .sb-card:not(.is-in) .sb-cluster-pillar,
+.js .sb-card:not(.is-in) .sb-cluster-node,
+.js .sb-card:not(.is-in) .sb-signal-item,
+.js .sb-card:not(.is-in) .sb-lane-card,
+.js .sb-card:not(.is-in) .sb-competitor-card,
+.js .sb-card:not(.is-in) .sb-product-pill,
+.js .sb-card:not(.is-in) .sb-linkedin-col,
+.js .sb-card:not(.is-in) .sb-video-screen,
+.js .sb-card:not(.is-in) .sb-waveform,
+.js .sb-card:not(.is-in) .sb-stat-chip,
+.js .sb-card:not(.is-in) .sb-tier-pill {
+  opacity: 0;
+  transform: translateY(16px) scale(0.93);
+}
+
+/* Revealed active state */
+.js .sb-card.is-in .sb-site-thumb,
+.js .sb-card.is-in .sb-cluster-pillar,
+.js .sb-card.is-in .sb-cluster-node,
+.js .sb-card.is-in .sb-signal-item,
+.js .sb-card.is-in .sb-lane-card,
+.js .sb-card.is-in .sb-competitor-card,
+.js .sb-card.is-in .sb-product-pill,
+.js .sb-card.is-in .sb-linkedin-col,
+.js .sb-card.is-in .sb-video-screen,
+.js .sb-card.is-in .sb-waveform,
+.js .sb-card.is-in .sb-stat-chip,
+.js .sb-card.is-in .sb-tier-pill {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 480ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 480ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 240ms ease,
+              background-color 240ms ease,
+              color 240ms ease,
+              box-shadow 240ms ease;
+}
+
+/* Card 1: Websites */
+.js .sb-card--websites.is-in .sb-site-thumb:nth-child(1) { transition-delay: 90ms; }
+.js .sb-card--websites.is-in .sb-site-thumb:nth-child(2) { transition-delay: 200ms; }
+
+/* Card 2: Cluster */
+.js .sb-card--cluster.is-in .sb-cluster-pillar { transition-delay: 90ms; }
+.js .sb-card--cluster.is-in .sb-cluster-node:nth-child(1) { transition-delay: 160ms; }
+.js .sb-card--cluster.is-in .sb-cluster-node:nth-child(2) { transition-delay: 230ms; }
+.js .sb-card--cluster.is-in .sb-cluster-node:nth-child(3) { transition-delay: 300ms; }
+
+/* Card 3: Brief */
+.js .sb-card--brief.is-in .sb-signal-item:nth-child(1) { transition-delay: 90ms; }
+.js .sb-card--brief.is-in .sb-signal-item:nth-child(2) { transition-delay: 150ms; }
+.js .sb-card--brief.is-in .sb-signal-item:nth-child(3) { transition-delay: 210ms; }
+.js .sb-card--brief.is-in .sb-signal-item:nth-child(4) { transition-delay: 270ms; }
+.js .sb-card--brief.is-in .sb-signal-item:nth-child(5) { transition-delay: 330ms; }
+.js .sb-card--brief.is-in .sb-signal-item:nth-child(6) { transition-delay: 390ms; }
+
+/* Card 4: Outbound Campaigns */
+.js .sb-card--investors.is-in .sb-lane-card:nth-child(1) { transition-delay: 90ms; }
+.js .sb-card--investors.is-in .sb-lane-card:nth-child(2) { transition-delay: 160ms; }
+.js .sb-card--investors.is-in .sb-lane-card:nth-child(3) { transition-delay: 230ms; }
+.js .sb-card--investors.is-in .sb-db-preview > div:nth-child(2) .sb-stat-chip:nth-child(1) { transition-delay: 290ms; }
+.js .sb-card--investors.is-in .sb-db-preview > div:nth-child(2) .sb-stat-chip:nth-child(2) { transition-delay: 350ms; }
+.js .sb-card--investors.is-in .sb-db-preview > div:nth-child(3) .sb-stat-chip:nth-child(1) { transition-delay: 410ms; }
+.js .sb-card--investors.is-in .sb-db-preview > div:nth-child(3) .sb-stat-chip:nth-child(2) { transition-delay: 470ms; }
+.js .sb-card--investors.is-in .sb-db-preview > div:nth-child(3) .sb-stat-chip:nth-child(3) { transition-delay: 530ms; }
+
+/* Card 5: Playbook */
+.js .sb-card--playbook.is-in .sb-playbook-content > div:nth-child(1) .sb-stat-chip:nth-child(1) { transition-delay: 80ms; }
+.js .sb-card--playbook.is-in .sb-playbook-content > div:nth-child(1) .sb-stat-chip:nth-child(2) { transition-delay: 130ms; }
+.js .sb-card--playbook.is-in .sb-playbook-content > div:nth-child(1) .sb-stat-chip:nth-child(3) { transition-delay: 180ms; }
+.js .sb-card--playbook.is-in .sb-playbook-content > div:nth-child(1) .sb-stat-chip:nth-child(4) { transition-delay: 230ms; }
+.js .sb-card--playbook.is-in .sb-playbook-content > div:nth-child(1) .sb-stat-chip:nth-child(5) { transition-delay: 280ms; }
+.js .sb-card--playbook.is-in .sb-playbook-content > div:nth-child(2) .sb-stat-chip:nth-child(1) { transition-delay: 330ms; }
+.js .sb-card--playbook.is-in .sb-playbook-content > div:nth-child(2) .sb-stat-chip:nth-child(2) { transition-delay: 380ms; }
+.js .sb-card--playbook.is-in .sb-playbook-content > div:nth-child(2) .sb-stat-chip:nth-child(3) { transition-delay: 430ms; }
+.js .sb-card--playbook.is-in .sb-playbook-content > div:nth-child(2) .sb-stat-chip:nth-child(4) { transition-delay: 480ms; }
+.js .sb-card--playbook.is-in .sb-playbook-content > div:nth-child(2) .sb-stat-chip:nth-child(5) { transition-delay: 530ms; }
+
+/* Card 6: Blogs for Both Platforms */
+.js .sb-card--series.is-in .sb-series-card:nth-child(1) { transition-delay: 90ms; }
+.js .sb-card--series.is-in .sb-series-card:nth-child(2) { transition-delay: 220ms; }
+
+/* Card 7: Competitor */
+.js .sb-card--competitor.is-in .sb-competitor-card:nth-child(1) { transition-delay: 90ms; }
+.js .sb-card--competitor.is-in .sb-competitor-card:nth-child(2) { transition-delay: 190ms; }
+.js .sb-card--competitor.is-in .sb-competitor-card:nth-child(3) { transition-delay: 290ms; }
+
+/* Card 8: Product ICPs */
+.js .sb-card--products.is-in .sb-product-pill:nth-child(1) { transition-delay: 80ms; }
+.js .sb-card--products.is-in .sb-product-pill:nth-child(2) { transition-delay: 140ms; }
+.js .sb-card--products.is-in .sb-product-pill:nth-child(3) { transition-delay: 200ms; }
+.js .sb-card--products.is-in .sb-product-pill:nth-child(4) { transition-delay: 260ms; }
+.js .sb-card--products.is-in .sb-product-pill:nth-child(5) { transition-delay: 320ms; }
+.js .sb-card--products.is-in .sb-product-pill:nth-child(6) { transition-delay: 380ms; }
+.js .sb-card--products.is-in .sb-product-pill:nth-child(7) { transition-delay: 440ms; }
+.js .sb-card--products.is-in .sb-product-pill:nth-child(8) { transition-delay: 500ms; }
+
+/* Card 9: LinkedIn */
+.js .sb-card--rebuilt.is-in .sb-linkedin-col:nth-child(1) { transition-delay: 90ms; }
+.js .sb-card--rebuilt.is-in .sb-linkedin-col:nth-child(2) { transition-delay: 220ms; }
+
+/* Card 10: Videos */
+.js .sb-card--videos.is-in .sb-video-screen { transition-delay: 90ms; }
+.js .sb-card--videos.is-in .sb-waveform { transition-delay: 150ms; }
+
+/* Staggered scroll entrance animation across each of the 12 blocks */
+.js .sb-card--videos:not(.is-in) .sb-wave-bar,
+.js .sb-card--videos:not(.is-in) .sb-waveform span {
+  opacity: 0;
+  transform: scaleY(0.08) scaleX(0.7) translateY(8px);
+}
+
+.js .sb-card--videos.is-in .sb-wave-bar,
+.js .sb-card--videos.is-in .sb-waveform span {
+  opacity: 1;
+  transform: scaleY(1) scaleX(1) translateY(0);
+  transition: opacity 450ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 450ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 200ms ease,
+              box-shadow 200ms ease;
+}
+
+.js .sb-card--videos.is-in .sb-waveform span:nth-child(1),
+.js .sb-card--videos.is-in .sb-wave-bar:nth-child(1) { transition-delay: 170ms; }
+.js .sb-card--videos.is-in .sb-waveform span:nth-child(2),
+.js .sb-card--videos.is-in .sb-wave-bar:nth-child(2) { transition-delay: 200ms; }
+.js .sb-card--videos.is-in .sb-waveform span:nth-child(3),
+.js .sb-card--videos.is-in .sb-wave-bar:nth-child(3) { transition-delay: 230ms; }
+.js .sb-card--videos.is-in .sb-waveform span:nth-child(4),
+.js .sb-card--videos.is-in .sb-wave-bar:nth-child(4) { transition-delay: 260ms; }
+.js .sb-card--videos.is-in .sb-waveform span:nth-child(5),
+.js .sb-card--videos.is-in .sb-wave-bar:nth-child(5) { transition-delay: 290ms; }
+.js .sb-card--videos.is-in .sb-waveform span:nth-child(6),
+.js .sb-card--videos.is-in .sb-wave-bar:nth-child(6) { transition-delay: 320ms; }
+.js .sb-card--videos.is-in .sb-waveform span:nth-child(7),
+.js .sb-card--videos.is-in .sb-wave-bar:nth-child(7) { transition-delay: 350ms; }
+.js .sb-card--videos.is-in .sb-waveform span:nth-child(8),
+.js .sb-card--videos.is-in .sb-wave-bar:nth-child(8) { transition-delay: 380ms; }
+.js .sb-card--videos.is-in .sb-waveform span:nth-child(9),
+.js .sb-card--videos.is-in .sb-wave-bar:nth-child(9) { transition-delay: 410ms; }
+.js .sb-card--videos.is-in .sb-waveform span:nth-child(10),
+.js .sb-card--videos.is-in .sb-wave-bar:nth-child(10) { transition-delay: 440ms; }
+.js .sb-card--videos.is-in .sb-waveform span:nth-child(11),
+.js .sb-card--videos.is-in .sb-wave-bar:nth-child(11) { transition-delay: 470ms; }
+.js .sb-card--videos.is-in .sb-waveform span:nth-child(12),
+.js .sb-card--videos.is-in .sb-wave-bar:nth-child(12) { transition-delay: 500ms; }
+
+/* Card 11: Partners */
+.js .sb-card--partners.is-in .sb-partner-tiers:nth-child(1) .sb-tier-pill:nth-child(1) { transition-delay: 90ms; }
+.js .sb-card--partners.is-in .sb-partner-tiers:nth-child(1) .sb-tier-pill:nth-child(2) { transition-delay: 170ms; }
+.js .sb-card--partners.is-in .sb-partner-tiers:nth-child(1) .sb-tier-pill:nth-child(3) { transition-delay: 250ms; }
+.js .sb-card--partners.is-in .sb-partner-tiers:nth-child(2) .sb-tier-pill:nth-child(1) { transition-delay: 330ms; }
+.js .sb-card--partners.is-in .sb-partner-tiers:nth-child(2) .sb-tier-pill:nth-child(2) { transition-delay: 410ms; }
+.js .sb-card--partners.is-in .sb-partner-tiers:nth-child(2) .sb-tier-pill:nth-child(3) { transition-delay: 490ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .sb-card .sb-site-thumb,
+  .js .sb-card .sb-cluster-pillar,
+  .js .sb-card .sb-cluster-node,
+  .js .sb-card .sb-signal-item,
+  .js .sb-card .sb-lane-card,
+  .js .sb-card .sb-competitor-card,
+  .js .sb-card .sb-product-pill,
+  .js .sb-card .sb-linkedin-col,
+  .js .sb-card .sb-video-screen,
+  .js .sb-card .sb-waveform,
+  .js .sb-card .sb-wave-bar,
+  .js .sb-card .sb-waveform span,
+  .js .sb-card .sb-stat-chip,
+  .js .sb-card .sb-tier-pill {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
 }
 
 /* ==========================================================================
@@ -6469,8 +6935,7 @@ body .btn.btn--secondary:hover {
   border-color: #D5B77A !important;
 }
 
-/* Inner diagram & bento visual containers: dark charcoal #191A1E surface */
-.sb-visual,
+/* Inner diagram visual containers: dark charcoal #191A1E surface */
 .cap-diagram {
   background: #191A1E !important;
   border: 1px solid #343438 !important;

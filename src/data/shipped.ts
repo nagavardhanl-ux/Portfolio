@@ -4,7 +4,7 @@ export const shipped: { label: string; detail: string }[] = [
   { label: "Blogs for both platforms", detail: "Written for AIQoD's enterprise buyers and VentureHub360's founders and investors, built to rank on Google and show up in AI answers." },
   { label: "Product ICPs across the portfolio", detail: "Who buys, what they struggle with and what makes them act, written for each product across AIQoD, VentureHub360 and new launches." },
   { label: "Segment ICP playbook", detail: "A full B2B playbook for Smart AI Investor with messaging per segment." },
-  { label: "Investor databases", detail: "Investor lists built and enriched for two jobs: selling Smart AI Investor to investors, and fundraising outreach for the company." },
+  { label: "Outbound campaigns", detail: "Cold email and LinkedIn campaigns for channel partners, investors and AIQoD's products, on lists I build and check myself." },
   { label: "International partner research", detail: "Channel partners researched country by country: resellers, implementation partners and referral partners." },
   { label: "Daily AI intelligence brief", detail: "A daily brief with one shared top story and a section for each leader, plus a weekly social content pack." },
   { label: "AI avatar and product videos", detail: "Produced with HeyGen and cut from product demo recordings." },
