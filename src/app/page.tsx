@@ -4,13 +4,16 @@ import ToolsGrid from "@/components/ToolsGrid";
 import ShippedBento from "@/components/ShippedBento";
 import CapabilitiesSection from "@/components/CapabilitiesSection";
 import HeroScrollExpansion from "@/components/HeroScrollExpansion";
-import { pageMetadata } from "@/lib/meta";
+import JsonLd from "@/components/JsonLd";
+import { homeStructuredData, pageMetadata } from "@/lib/meta";
 
 export const metadata = pageMetadata("/");
 
 export default function Home() {
   return (
     <div className="signal-home">
+      <JsonLd data={homeStructuredData()} />
+
       {/* Hero */}
       <HeroScrollExpansion />
 
