@@ -10031,10 +10031,9 @@ html:not(.js) .hero-expand-actions {
 
 .about-road-bubble {
   position: absolute;
-  bottom: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
-  background: #202125;
+  background: #18191D;
   color: var(--accent);
   border: 1px solid rgba(213, 183, 122, 0.45);
   border-radius: 6px;
@@ -10044,20 +10043,63 @@ html:not(.js) .hero-expand-actions {
   font-weight: 600;
   white-space: nowrap;
   pointer-events: none;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.65);
   animation: roadBubbleFade 180ms ease forwards;
   z-index: 10;
 }
 
-.about-road-bubble::after {
+.about-road-bubble--below {
+  top: calc(100% - 2px);
+  bottom: auto;
+}
+
+.about-road-bubble--below::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #18191D transparent;
+}
+
+.about-road-bubble--above {
+  bottom: calc(100% - 2px);
+  top: auto;
+}
+
+.about-road-bubble--above::after {
   content: "";
   position: absolute;
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border-width: 4px;
+  border-width: 5px;
   border-style: solid;
-  border-color: #202125 transparent transparent transparent;
+  border-color: #18191D transparent transparent transparent;
+}
+
+.about-road-card-item .about-step__year {
+  font-size: 0.7rem;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.about-road-card-item .about-path-card {
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.about-road-card-item .about-path-card__title {
+  font-size: 0.85rem;
+  line-height: 1.25;
+  margin-bottom: 3px;
+}
+
+.about-road-card-item .about-path-card__desc {
+  font-size: 0.78rem;
+  line-height: 1.42;
 }
 
 @keyframes roadBubbleFade {
@@ -10133,6 +10175,33 @@ html:not(.js) .hero-expand-actions {
     position: absolute;
     pointer-events: none;
     z-index: 10;
+  }
+
+  .about-road-bubble--mobile {
+    bottom: calc(100% + 6px);
+    top: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.65rem;
+    padding: 2px 7px;
+  }
+
+  .about-road-bubble--mobile::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 4px;
+    border-style: solid;
+    border-color: #18191D transparent transparent transparent;
+  }
+
+  @media (max-width: 640px) {
+    .about-road-bubble--mobile {
+      display: none;
+    }
   }
 
   .about-road-mobile-cards {

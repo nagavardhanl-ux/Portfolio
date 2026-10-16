@@ -89,10 +89,27 @@ export const PATH_STOPS: StepData[] = [
 
 const DESKTOP_VIEWBOX_WIDTH = 1160;
 const DESKTOP_VIEWBOX_HEIGHT = 680;
-const DESKTOP_ROAD_PATH =
-  "M 70 175 L 970 175 A 85 85 0 0 1 1055 260 A 85 85 0 0 1 970 345 L 150 345 A 85 85 0 0 1 65 430 A 85 85 0 0 1 150 515 L 1050 515";
 
-const DESKTOP_STOP_DISTANCES = [0, 200, 520, 840, 1420, 1800, 2540, 3000];
+// Desktop road path:
+// Run 1: left to right (y = 190)
+// Right bend: smooth U-turn with corner radius 55
+// Run 2: right to left (y = 415)
+// Left bend: smooth U-shaped curve with radius 55 (counter-clockwise sweep, no sharp point)
+// Run 3: left to right (y = 525)
+const DESKTOP_ROAD_PATH =
+  "M 70 190 L 990 190 A 55 55 0 0 1 1045 245 L 1045 360 A 55 55 0 0 1 990 415 L 140 415 A 55 55 0 0 0 140 525 L 1050 525";
+
+const DESKTOP_STOP_DISTANCES = [0, 180, 500, 820, 1458, 1808, 2521, 2961];
+
+const DESKTOP_STOP_COORDS = [
+  { x: 250, y: 190, run: 1 },
+  { x: 570, y: 190, run: 1 },
+  { x: 890, y: 190, run: 1 },
+  { x: 740, y: 415, run: 2 },
+  { x: 390, y: 415, run: 2 },
+  { x: 430, y: 525, run: 3 },
+  { x: 870, y: 525, run: 3 },
+];
 
 const emptySubscribe = () => () => {};
 
@@ -148,11 +165,11 @@ export default function RoadTimeline() {
   // Animation state (updated in requestAnimationFrame)
   const [carState, setCarState] = useState({
     x: 70,
-    y: 175,
+    y: 190,
     angle: 0,
     isFlipped: false,
     travelledDist: 0,
-    totalDist: 3185,
+    totalDist: 3141,
     activeStopIndex: 0,
     isMoving: false,
     bubbleText: "Start",
@@ -160,12 +177,12 @@ export default function RoadTimeline() {
 
   const car = prefersReducedMotion
     ? {
-        x: 885,
-        y: 515,
+        x: 870,
+        y: 525,
         angle: 0,
         isFlipped: false,
-        travelledDist: 3185,
-        totalDist: 3185,
+        travelledDist: 3141,
+        totalDist: 3141,
         activeStopIndex: 7,
         isMoving: false,
         bubbleText: PATH_STOPS[6].year,
@@ -175,6 +192,7 @@ export default function RoadTimeline() {
   const rafIdRef = useRef<number | null>(null);
 
   // Measure mobile cards and construct vertical winding road
+  // Stop markers are placed level with the top of each card (with the year label)
   const measureMobileRoad = useCallback(() => {
     if (!isMobile || !mobileCardsRef.current) return;
     const containerTop = mobileCardsRef.current.getBoundingClientRect().top;
@@ -183,10 +201,11 @@ export default function RoadTimeline() {
     mobileCardItemRefs.current.forEach((el, index) => {
       if (!el) return;
       const r = el.getBoundingClientRect();
-      const cardCenterY = r.top - containerTop + r.height / 2;
-      const xPositions = [38, 56, 26, 54, 26, 52, 38];
+      // Level with the top of the card (year label center)
+      const cardTopY = r.top - containerTop + 12;
+      const xPositions = [38, 54, 28, 52, 28, 52, 38];
       const x = xPositions[index % xPositions.length];
-      points.push({ x, y: cardCenterY });
+      points.push({ x, y: cardTopY });
     });
 
     if (points.length === 7) {
@@ -227,11 +246,11 @@ export default function RoadTimeline() {
     mobileCardItemRefs.current.forEach((el) => {
       if (!el) return;
       const r = el.getBoundingClientRect();
-      const targetY = r.top - containerTop + r.height / 2;
+      const targetY = r.top - containerTop + 12;
 
       let bestDist = 0;
       let minDiff = Infinity;
-      const samples = 120;
+      const samples = 140;
       for (let s = 0; s <= samples; s++) {
         const d = (s / samples) * total;
         const pt = path.getPointAtLength(d);
@@ -351,7 +370,7 @@ export default function RoadTimeline() {
             bubbleText: bubble,
           });
         } else {
-          // Mobile scroll logic
+          // Mobile scroll logic: car stays upright (angle 0) and syncs with card highlights
           if (
             !mobilePathRef.current ||
             mobileStopPoints.length !== 7 ||
@@ -361,14 +380,14 @@ export default function RoadTimeline() {
 
           const path = mobilePathRef.current;
           const total = path.getTotalLength();
-          const screenCenter = window.innerHeight / 2;
+          const screenCenter = window.innerHeight * 0.45;
 
           let activeIndex = 0;
 
           const cardPositions = mobileCardItemRefs.current.map((el) => {
             if (!el) return 0;
             const r = el.getBoundingClientRect();
-            return r.top + r.height / 2;
+            return r.top + 12; // level with top year label
           });
 
           let targetDist = 0;
@@ -415,11 +434,6 @@ export default function RoadTimeline() {
           }
 
           const pt = path.getPointAtLength(targetDist);
-          const p1 = path.getPointAtLength(Math.max(0, targetDist - 3));
-          const p2 = path.getPointAtLength(Math.min(total, targetDist + 3));
-          const dx = p2.x - p1.x;
-          const dy = p2.y - p1.y;
-          const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
 
           let bubble = "Start";
           if (activeIndex > 0 && activeIndex <= 7) {
@@ -429,7 +443,7 @@ export default function RoadTimeline() {
           setCarState({
             x: pt.x,
             y: pt.y,
-            angle,
+            angle: 0, // Keep car upright on mobile
             isFlipped: false,
             travelledDist: targetDist,
             totalDist: total,
@@ -452,6 +466,9 @@ export default function RoadTimeline() {
     };
   }, [mounted, isMobile, prefersReducedMotion, mobileStopPoints]);
 
+  // Desktop speech bubble side: below car on Run 1 & 2, above car on Run 3
+  const desktopBubbleSide = car.y > 470 ? "above" : "below";
+
   return (
     <section
       ref={sectionRef}
@@ -473,7 +490,7 @@ export default function RoadTimeline() {
 
         {/* Desktop Road View (1024px and up) */}
         {!isMobile && (
-          <div className="container about-road-container">
+          <div className="container about-road-container" style={{ marginTop: "16px" }}>
             <div
               className="about-road-stage"
               style={{
@@ -529,19 +546,40 @@ export default function RoadTimeline() {
                   strokeDasharray={`${car.travelledDist} ${car.totalDist}`}
                 />
 
+                {/* Dotted Connectors from each stop marker to its card */}
+                {DESKTOP_STOP_COORDS.map((pt, idx) => {
+                  const isReached =
+                    prefersReducedMotion ||
+                    car.travelledDist >= DESKTOP_STOP_DISTANCES[idx + 1] ||
+                    car.activeStopIndex >= idx + 1;
+                  const isCurrent = car.activeStopIndex === idx + 1;
+                  const cardBoundaryY = pt.run === 3 ? 570 : pt.run === 2 ? 366 : 148;
+                  const startY = pt.run === 3 ? pt.y + 10 : pt.y - 10;
+
+                  return (
+                    <line
+                      key={`conn-${idx}`}
+                      x1={pt.x}
+                      y1={startY}
+                      x2={pt.x}
+                      y2={cardBoundaryY}
+                      stroke={
+                        isCurrent
+                          ? "var(--accent)"
+                          : isReached
+                          ? "rgba(213, 183, 122, 0.6)"
+                          : "rgba(244, 240, 232, 0.3)"
+                      }
+                      strokeWidth={1.5}
+                      strokeDasharray="2 3"
+                    />
+                  );
+                })}
+
                 {/* Seven Stops: round markers on road */}
-                {DESKTOP_STOP_DISTANCES.slice(1).map((dist, idx) => {
+                {DESKTOP_STOP_COORDS.map((pt, idx) => {
                   const stopId = idx + 1;
-                  const coords = [
-                    { x: 270, y: 175 },
-                    { x: 590, y: 175 },
-                    { x: 910, y: 175 },
-                    { x: 713, y: 345 },
-                    { x: 333, y: 345 },
-                    { x: 425, y: 515 },
-                    { x: 885, y: 515 },
-                  ];
-                  const pt = coords[idx];
+                  const dist = DESKTOP_STOP_DISTANCES[stopId];
                   const isReached =
                     prefersReducedMotion ||
                     car.travelledDist >= dist ||
@@ -573,35 +611,40 @@ export default function RoadTimeline() {
                 })}
               </svg>
 
-              {/* Phase Labels */}
+              {/* Phase Labels: placed on the side of the road opposite its cards, just before each first stop */}
+              {/* Operations: below Run 1, before Stop 1, not under car start position */}
               <div
                 className="about-road-phase-label"
                 style={{
                   position: "absolute",
-                  left: "6%",
-                  top: "26%",
+                  left: "140px",
+                  top: "228px",
                 }}
                 aria-hidden="true"
               >
                 Operations
               </div>
+
+              {/* The switch: below Run 2, before Stop 4 (driving right to left) */}
               <div
                 className="about-road-phase-label"
                 style={{
                   position: "absolute",
-                  left: "78%",
-                  top: "46%",
+                  left: "840px",
+                  top: "456px",
                 }}
                 aria-hidden="true"
               >
                 The switch
               </div>
+
+              {/* Marketing: below Run 2, before Stop 5 (driving right to left) */}
               <div
                 className="about-road-phase-label"
                 style={{
                   position: "absolute",
-                  left: "42%",
-                  top: "46%",
+                  left: "470px",
+                  top: "456px",
                 }}
                 aria-hidden="true"
               >
@@ -622,7 +665,7 @@ export default function RoadTimeline() {
                 }}
               >
                 <div
-                  className="about-road-bubble"
+                  className={`about-road-bubble about-road-bubble--${desktopBubbleSide}`}
                   key={car.bubbleText}
                 >
                   {car.bubbleText}
@@ -653,54 +696,51 @@ export default function RoadTimeline() {
                     !isCurrent &&
                     !isPassed;
 
-                  // Isolated, non-overlapping coordinates in stage:
-                  // Card 1: Run 1, above road (x: 270)
-                  // Card 2: Run 1, above road (x: 590)
-                  // Card 3: Run 1, above road (x: 910)
-                  // Card 4: Run 2, below road (x: 713)
-                  // Card 5: Run 2, above road (x: 333)
-                  // Card 6: Run 3, above road (x: 425)
-                  // Card 7: Run 3, below road (x: 885)
+                  // Coordinated, non-overlapping positions:
+                  // Run 1 (stops 1-3): above Run 1
+                  // Run 2 (stops 4-5): in band between Run 1 and Run 2, above Run 2
+                  // Run 3 (stops 6-7): below Run 3
+                  // Band between Run 2 and Run 3 is kept empty and compact
                   const desktopPositions = [
                     {
-                      left: "23.3%",
-                      top: "10px",
+                      left: "21.55%",
+                      top: "8px",
                       transform: "translateX(-50%)",
                       width: "24%",
                     },
                     {
-                      left: "50.8%",
-                      top: "10px",
+                      left: "49.14%",
+                      top: "8px",
                       transform: "translateX(-50%)",
                       width: "24%",
                     },
                     {
-                      left: "78.4%",
-                      top: "10px",
+                      left: "76.72%",
+                      top: "8px",
                       transform: "translateX(-50%)",
                       width: "24%",
                     },
                     {
-                      left: "68%",
-                      top: "370px",
+                      left: "63.79%",
+                      top: "250px",
                       transform: "translateX(-50%)",
                       width: "24%",
                     },
                     {
-                      left: "28%",
-                      top: "220px",
+                      left: "33.62%",
+                      top: "250px",
                       transform: "translateX(-50%)",
                       width: "24%",
                     },
                     {
-                      left: "32%",
-                      top: "370px",
+                      left: "37.07%",
+                      top: "572px",
                       transform: "translateX(-50%)",
                       width: "24%",
                     },
                     {
-                      left: "76.3%",
-                      top: "545px",
+                      left: "75.00%",
+                      top: "572px",
                       transform: "translateX(-50%)",
                       width: "24%",
                     },
@@ -784,6 +824,7 @@ export default function RoadTimeline() {
                   </>
                 )}
 
+                {/* Mobile Stop markers: positioned level with top of each card */}
                 {mobileStopPoints.map((pt, idx) => {
                   const stopId = idx + 1;
                   const isReached =
@@ -835,15 +876,15 @@ export default function RoadTimeline() {
                 >
                   {car.bubbleText}
                 </div>
+                {/* Mobile car stays upright and facing forward */}
                 <div
                   className={`about-road-car-rotator ${car.isMoving ? "road-car-bob" : ""}`}
                   style={{
-                    transform: `rotate(${car.angle}deg)`,
-                    transformOrigin: "center center",
+                    transform: "none",
                     color: "var(--accent)",
                   }}
                 >
-                  <RoadCar width={40} />
+                  <RoadCar width={38} />
                 </div>
               </div>
             </div>
