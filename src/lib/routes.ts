@@ -29,7 +29,7 @@ export const routeMeta: RouteMeta[] = [
     path: "/gallery/",
     title: "Gallery · Nagavardhan Reddy Lella",
     description:
-      "Videos and marketing collateral: AI avatar videos, product demo cuts and more, from the work across AIQoD and VentureHub360.",
+      "Videos and design work: AI avatar videos, product demos and a company catalogue designed end to end.",
   },
   {
     path: "/about/",

@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { ArrowUpRight, Play } from "@/components/icons";
-import type { GalleryItem } from "@/data/gallery";
+import type { VideoItem } from "@/data/gallery";
 
 interface GalleryCardProps {
-  item: GalleryItem;
+  item: VideoItem;
 }
 
 export default function GalleryCard({ item }: GalleryCardProps) {
