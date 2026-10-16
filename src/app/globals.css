@@ -9486,7 +9486,10 @@ html:not(.js) .hero-expand-actions {
   .hero-expand-track {
     height: 200vh;
   }
-  .hero-expand-title {
+  /* Scoped to .signal-hero so it overrides the more-specific
+     `.signal-hero .hero__title` sizing and the component's own
+     breakpoints actually take effect. */
+  .signal-hero .hero-expand-title {
     font-size: clamp(2.6rem, 8vw, 4.2rem);
   }
 }
@@ -9496,7 +9499,7 @@ html:not(.js) .hero-expand-actions {
   .hero-expand-track {
     height: 180vh;
   }
-  .hero-expand-title {
+  .signal-hero .hero-expand-title {
     font-size: clamp(1.85rem, 8vw, 2.5rem);
     line-height: 1.05;
   }
