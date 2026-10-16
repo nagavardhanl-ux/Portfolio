@@ -8,10 +8,6 @@ import { ArrowUpRight } from "@/components/icons";
 
 export const metadata: Metadata = {
   ...pageMetadata("/about/"),
-  robots: {
-    index: false,
-    follow: false,
-  },
 };
 
 export default function AboutPage() {

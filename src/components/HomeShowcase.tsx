@@ -113,7 +113,7 @@ export default function HomeShowcase() {
   return (
     <div className="home-showcase">
       {/* ===================================================================
-          1. VENTUREHUB360 — Content LEFT, Visual RIGHT
+          1. VentureHub360 — Content LEFT, Visual RIGHT
           AI pitch evaluation & IC memo intelligence
       =================================================================== */}
       <article className="showcase-card showcase-card--row reveal" aria-labelledby="showcase-vh">
@@ -178,7 +178,7 @@ export default function HomeShowcase() {
       </article>
 
       {/* ===================================================================
-          2. AIQOD — Visual LEFT, Content RIGHT (Alternating!)
+          2. AIQoD — Visual LEFT, Content RIGHT (Alternating!)
           Enterprise Agentic AI Platform & Operations Topology
       =================================================================== */}
       <article className="showcase-card showcase-card--row showcase-card--reverse reveal" aria-labelledby="showcase-aiqod">

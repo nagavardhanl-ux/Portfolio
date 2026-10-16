@@ -407,7 +407,7 @@ export default function ShippedBento() {
             <div className="sb-series-card" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <div>
                 <div className="sb-series-header" style={{ marginBottom: "10px", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px" }}>
-                  <span style={{ fontSize: "0.76rem", fontWeight: 600, color: "#F4F0E8", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>AIQOD</span>
+                  <span style={{ fontSize: "0.76rem", fontWeight: 600, color: "#F4F0E8", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>AIQoD</span>
                   <span className="sb-stat-chip" style={{ fontSize: "0.58rem", color: "var(--cat-accent, #D5B77A)", borderColor: "var(--cat-accent-border, rgba(213, 183, 122, 0.25))", whiteSpace: "nowrap", display: "inline-block" }}>Enterprise AI</span>
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", margin: "6px 0 12px" }}>
@@ -439,7 +439,7 @@ export default function ShippedBento() {
             <div className="sb-series-card" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <div>
                 <div className="sb-series-header" style={{ marginBottom: "10px", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px" }}>
-                  <span style={{ fontSize: "0.76rem", fontWeight: 600, color: "#F4F0E8", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>VENTUREHUB360</span>
+                  <span style={{ fontSize: "0.76rem", fontWeight: 600, color: "#F4F0E8", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>VentureHub360</span>
                   <span className="sb-stat-chip" style={{ fontSize: "0.58rem", color: "var(--cat-accent, #D5B77A)", borderColor: "var(--cat-accent-border, rgba(213, 183, 122, 0.25))", whiteSpace: "nowrap", display: "inline-block" }}>Founders and investors</span>
                 </div>
                 <ul className="sb-series-list" style={{ margin: "6px 0 12px" }}>
@@ -664,7 +664,7 @@ export default function ShippedBento() {
             <div className="sb-linkedin-col">
               <div>
                 <div className="sb-linkedin-head">
-                  <span className="sb-linkedin-brand">AIQOD</span>
+                  <span className="sb-linkedin-brand">AIQoD</span>
                   <span className="sb-stat-chip sb-linkedin-tag">Running</span>
                 </div>
                 <div className="sb-linkedin-chips">
@@ -687,7 +687,7 @@ export default function ShippedBento() {
             <div className="sb-linkedin-col">
               <div>
                 <div className="sb-linkedin-head">
-                  <span className="sb-linkedin-brand">VENTUREHUB360</span>
+                  <span className="sb-linkedin-brand">VentureHub360</span>
                   <span className="sb-stat-chip sb-linkedin-tag">Running</span>
                 </div>
                 <div className="sb-linkedin-chips">

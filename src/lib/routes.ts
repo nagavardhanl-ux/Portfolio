@@ -30,7 +30,6 @@ export const routeMeta: RouteMeta[] = [
     title: "About · Nagavardhan Reddy Lella",
     description:
       "From five years in operations to running marketing for two AI platforms: the path, how I work and what I want to learn next.",
-    hidden: true,
   },
   {
     path: "/contact/",

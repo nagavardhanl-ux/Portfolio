@@ -69,9 +69,6 @@ export const whatIDo = [
   },
 ];
 
-export const about =
-  "I came into marketing from operations and vendor work, where getting things finished mattered more than talking about them. I joined an AI company as a marketing intern and was promoted to Marketing Executive. I now run lead generation, email, LinkedIn, content, SEO and social media for two platforms, AIQoD and VentureHub360, and I build and manage both websites myself using AI tools. I like work that goes from an idea to a live thing people can use, and most of my days are some mix of writing, building and figuring out what to ship next.";
-
 /** The AI stack, as a workflow: each step and the tools used for it. */
 export const aiWorkflow = [
   { step: "Research", tools: ["ChatGPT", "Claude"] },
