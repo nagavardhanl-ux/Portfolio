@@ -21,7 +21,7 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
     setCurrentPage((p) => (p < total - 1 ? p + 1 : 0));
   }, [total]);
 
-  // Arrow key navigation
+  // Keyboard navigation with Left and Right arrow keys
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (["INPUT", "TEXTAREA"].includes((e.target as HTMLElement)?.tagName)) return;
@@ -37,7 +37,7 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [prev, next]);
 
-  // Scroll active thumbnail into view
+  // Scroll the active thumbnail into view in the sidebar
   useEffect(() => {
     thumbRefs.current[currentPage]?.scrollIntoView({
       behavior: "smooth",
@@ -53,77 +53,81 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
 
   return (
     <div className="catalogue-viewer reveal" role="region" aria-label="Catalogue viewer">
-      {/* Viewer toolbar: Previous / Counter / Next */}
-      <div className="catalogue-viewer__toolbar">
-        <button
-          type="button"
-          onClick={prev}
-          aria-label="Previous page"
-          className="catalogue-nav-btn"
-        >
-          <ArrowLeft size={16} />
-          <span>Previous</span>
-        </button>
+      <div className="catalogue-viewer__layout">
+        {/* Main Stage with Left and Right Icon Nav Buttons */}
+        <div className="catalogue-viewer__stage-card">
+          {/* Previous Icon Button on the Left */}
+          <button
+            type="button"
+            onClick={prev}
+            aria-label="Previous page"
+            className="catalogue-stage__nav catalogue-stage__nav--prev"
+          >
+            <ArrowLeft size={20} />
+          </button>
 
-        <span className="catalogue-viewer__counter" aria-live="polite">
-          Page {currentPage + 1} of {total}
-        </span>
+          {/* Main Stage Image */}
+          <div className="catalogue-stage__content">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              key={currentPage}
+              src={asset(`catalogue/${pages[currentPage]}`)}
+              alt={`LVL Groups & Enterprises Catalogue, page ${currentPage + 1} of ${total}`}
+              draggable={false}
+              loading={currentPage === 0 ? "eager" : "lazy"}
+              onContextMenu={blockSave}
+              className="catalogue-stage__img"
+            />
+          </div>
 
-        <button
-          type="button"
-          onClick={next}
-          aria-label="Next page"
-          className="catalogue-nav-btn"
-        >
-          <span>Next</span>
-          <ArrowRight size={16} />
-        </button>
-      </div>
+          {/* Next Icon Button on the Right */}
+          <button
+            type="button"
+            onClick={next}
+            aria-label="Next page"
+            className="catalogue-stage__nav catalogue-stage__nav--next"
+          >
+            <ArrowRight size={20} />
+          </button>
 
-      {/* Main stage: Large current page */}
-      <div className="catalogue-viewer__stage">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          key={currentPage}
-          src={asset(`catalogue/${pages[currentPage]}`)}
-          alt={`LVL Groups & Enterprises Catalogue, page ${currentPage + 1} of ${total}`}
-          draggable={false}
-          loading={currentPage === 0 ? "eager" : "lazy"}
-          onContextMenu={blockSave}
-          className="catalogue-viewer__img"
-        />
-      </div>
+          {/* Clean Floating Page Counter Pill */}
+          <div className="catalogue-stage__counter" aria-live="polite">
+            Page {currentPage + 1} of {total}
+          </div>
+        </div>
 
-      {/* Thumbnail strip */}
-      <div className="catalogue-viewer__thumbs" role="tablist" aria-label="Catalogue pages">
-        {pages.map((page, idx) => {
-          const isSelected = currentPage === idx;
-          return (
-            <button
-              key={page}
-              ref={(el) => {
-                thumbRefs.current[idx] = el;
-              }}
-              type="button"
-              role="tab"
-              aria-selected={isSelected}
-              aria-label={`Go to page ${idx + 1} of ${total}`}
-              onClick={() => setCurrentPage(idx)}
-              className={`catalogue-thumb ${isSelected ? "catalogue-thumb--active" : ""}`}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={asset(`catalogue/${page}`)}
-                alt=""
-                loading="lazy"
-                draggable={false}
-                onContextMenu={blockSave}
-                className="catalogue-thumb__img"
-              />
-              <span className="catalogue-thumb__num">{idx + 1}</span>
-            </button>
-          );
-        })}
+        {/* Side Thumbnails Column - Image only, no text/page numbers */}
+        <aside className="catalogue-sidebar" aria-label="Catalogue page thumbnails">
+          <div className="catalogue-sidebar__list" role="tablist" aria-label="Catalogue pages">
+            {pages.map((page, idx) => {
+              const isSelected = currentPage === idx;
+              return (
+                <button
+                  key={page}
+                  ref={(el) => {
+                    thumbRefs.current[idx] = el;
+                  }}
+                  type="button"
+                  role="tab"
+                  aria-selected={isSelected}
+                  aria-label={`Page ${idx + 1}`}
+                  onClick={() => setCurrentPage(idx)}
+                  className={`catalogue-thumb-item ${isSelected ? "catalogue-thumb-item--active" : ""}`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={asset(`catalogue/${page}`)}
+                    alt=""
+                    loading="lazy"
+                    draggable={false}
+                    onContextMenu={blockSave}
+                    className="catalogue-thumb-item__img"
+                  />
+                </button>
+              );
+            })}
+          </div>
+        </aside>
       </div>
     </div>
   );
