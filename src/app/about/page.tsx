@@ -3,6 +3,7 @@ import Link from "next/link";
 import { asset } from "@/lib/config";
 import { pageMetadata } from "@/lib/meta";
 import AboutAvatar from "@/components/AboutAvatar";
+import RoadTimeline from "@/components/RoadTimeline";
 import { ArrowUpRight } from "@/components/icons";
 
 export const metadata: Metadata = {
@@ -43,133 +44,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── SECTION 2: THE PATH (timeline) ── */}
-      <section className="about-section about-path reveal" aria-labelledby="path-title">
-        <div className="container">
-          <div className="about-sec-heading">
-            <h2 id="path-title" className="about-sec-title">The path</h2>
-            <p className="about-path__subline">
-              Before all this: B.Tech in Computer Science and Engineering, SRM Institute of Science and Technology, 2015 to 2019.
-            </p>
-          </div>
-
-          <div className="about-timeline">
-            <div className="about-timeline__phases">
-              {/* Phase 1: Operations */}
-              <div className="about-phase about-phase--ops">
-                <span className="about-phase__header">Operations</span>
-                <div className="about-phase__steps">
-                  <div className="about-step">
-                    <div className="about-step__node" aria-hidden="true">
-                      <span className="about-step__dot" />
-                    </div>
-                    <span className="about-step__year">2019 to 2021</span>
-                    <div className="about-path-card">
-                      <h3 className="about-path-card__title">Manager, family business</h3>
-                      <p className="about-path-card__desc">
-                        Ran daily operations: customer orders, deliveries, suppliers and transport.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="about-step">
-                    <div className="about-step__node" aria-hidden="true">
-                      <span className="about-step__dot" />
-                    </div>
-                    <span className="about-step__year">2021 to 2023</span>
-                    <div className="about-path-card">
-                      <h3 className="about-path-card__title">Event and Venue Manager, convention hall</h3>
-                      <p className="about-path-card__desc">
-                        Ran weddings, corporate functions and school events, working with clients and vendors on each one. Made the venue&apos;s promotions in Canva.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="about-step">
-                    <div className="about-step__node" aria-hidden="true">
-                      <span className="about-step__dot" />
-                    </div>
-                    <span className="about-step__year">2023 to 2024</span>
-                    <div className="about-path-card">
-                      <h3 className="about-path-card__title">Sourcing and Vendor Relationship Manager, trading company</h3>
-                      <p className="about-path-card__desc">
-                        Managed vendors and sourcing and cut procurement costs by 15%. Made the product brochures and wrote the website content.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Phase 2: The switch */}
-              <div className="about-phase about-phase--switch">
-                <span className="about-phase__header">The switch</span>
-                <div className="about-phase__steps">
-                  <div className="about-step">
-                    <div className="about-step__node" aria-hidden="true">
-                      <span className="about-step__dot" />
-                    </div>
-                    <span className="about-step__year">2025</span>
-                    <div className="about-path-card">
-                      <h3 className="about-path-card__title">Digital Marketing and Analytics, Boston Institute of Analytics</h3>
-                      <p className="about-path-card__desc">
-                        Moved into marketing on purpose, starting with the fundamentals.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Phase 3: Marketing */}
-              <div className="about-phase about-phase--mkt">
-                <span className="about-phase__header">Marketing</span>
-                <div className="about-phase__steps">
-                  <div className="about-step">
-                    <div className="about-step__node" aria-hidden="true">
-                      <span className="about-step__dot" />
-                    </div>
-                    <span className="about-step__year">Aug 2025</span>
-                    <div className="about-path-card">
-                      <h3 className="about-path-card__title">Marketing Intern, Roots Innovation Labs</h3>
-                      <p className="about-path-card__desc">
-                        Started on lead sourcing and content for AIQoD and VentureHub360.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="about-step">
-                    <div className="about-step__node" aria-hidden="true">
-                      <span className="about-step__dot" />
-                    </div>
-                    <span className="about-step__year">Nov 2025</span>
-                    <div className="about-path-card">
-                      <h3 className="about-path-card__title">Marketing Executive, Consultant</h3>
-                      <p className="about-path-card__desc">
-                        Took on more of the work, from campaigns to the websites.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="about-step about-step--current">
-                    <div className="about-step__node" aria-hidden="true">
-                      <span className="about-step__dot" />
-                    </div>
-                    <span className="about-step__year">
-                      May 2026
-                      <span className="about-step__badge">Now</span>
-                    </span>
-                    <div className="about-path-card about-path-card--current">
-                      <h3 className="about-path-card__title">Marketing Executive</h3>
-                      <p className="about-path-card__desc">
-                        Run marketing for both platforms.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Section 2: The path (scroll-driven road) */}
+      <RoadTimeline />
 
       {/* ── SECTION 3: WHAT OPERATIONS TAUGHT ME (three cards) ── */}
       <section className="about-section about-taught reveal" aria-labelledby="taught-title">
