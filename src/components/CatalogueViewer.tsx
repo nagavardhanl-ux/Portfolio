@@ -152,10 +152,10 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={asset(`catalogue/${page}`)}
+                    src={asset(`catalogue/thumbs/${page}`)}
                     alt=""
-                    width={1311}
-                    height={1819}
+                    width={300}
+                    height={416}
                     loading="lazy"
                     draggable={false}
                     onContextMenu={blockSave}

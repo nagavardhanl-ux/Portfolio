@@ -42,7 +42,7 @@ export default function ShippedBento() {
         <div className="sb-card__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={asset("shipped-bg.jpg")}
+            src={asset("shipped-bg.webp")}
             alt=""
             loading="lazy"
             className="sb-card__bg-img"
@@ -97,7 +97,7 @@ export default function ShippedBento() {
         <div className="sb-card__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={asset("blog-cluster-bg.jpg")}
+            src={asset("blog-cluster-bg.webp")}
             alt=""
             loading="lazy"
             className="sb-card__bg-img"
@@ -197,7 +197,7 @@ export default function ShippedBento() {
         <div className="sb-card__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={asset("brief-bg.jpg")}
+            src={asset("brief-bg.webp")}
             alt=""
             loading="lazy"
             className="sb-card__bg-img"
@@ -271,7 +271,7 @@ export default function ShippedBento() {
         <div className="sb-card__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={asset("investors-bg.jpg")}
+            src={asset("investors-bg.webp")}
             alt=""
             loading="lazy"
             className="sb-card__bg-img"
@@ -337,7 +337,7 @@ export default function ShippedBento() {
         <div className="sb-card__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={asset("playbook-bg.jpg")}
+            src={asset("playbook-bg.webp")}
             alt=""
             loading="lazy"
             className="sb-card__bg-img"
@@ -388,7 +388,7 @@ export default function ShippedBento() {
         <div className="sb-card__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={asset("series-bg.jpg")}
+            src={asset("series-bg.webp")}
             alt=""
             loading="lazy"
             className="sb-card__bg-img"
@@ -513,7 +513,7 @@ export default function ShippedBento() {
         <div className="sb-card__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={asset("competitor-bg.jpg")}
+            src={asset("competitor-bg.webp")}
             alt=""
             loading="lazy"
             className="sb-card__bg-img"
@@ -579,7 +579,7 @@ export default function ShippedBento() {
         <div className="sb-card__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={asset("products-bg.jpg")}
+            src={asset("products-bg.webp")}
             alt=""
             loading="lazy"
             className="sb-card__bg-img"
@@ -645,7 +645,7 @@ export default function ShippedBento() {
         <div className="sb-card__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={asset("linkedin-bg.jpg")}
+            src={asset("linkedin-bg.webp")}
             alt=""
             loading="lazy"
             className="sb-card__bg-img"
@@ -722,7 +722,7 @@ export default function ShippedBento() {
         <div className="sb-card__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={asset("videos-bg.jpg")}
+            src={asset("videos-bg.webp")}
             alt=""
             loading="lazy"
             className="sb-card__bg-img"
@@ -787,7 +787,7 @@ export default function ShippedBento() {
         <div className="sb-card__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={asset("partners-bg.png")}
+            src={asset("partners-bg.webp")}
             alt=""
             loading="lazy"
             className="sb-card__bg-img"
