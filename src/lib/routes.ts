@@ -26,6 +26,12 @@ export const routeMeta: RouteMeta[] = [
       "Product marketing, demand generation, content and LinkedIn, websites and SEO, and AI-led execution for two AI platforms: what each involves and the work behind it.",
   },
   {
+    path: "/gallery/",
+    title: "Gallery · Nagavardhan Reddy Lella",
+    description:
+      "Videos and marketing collateral: AI avatar videos, product demo cuts and more, from the work across AIQoD and VentureHub360.",
+  },
+  {
     path: "/about/",
     title: "About · Nagavardhan Reddy Lella",
     description:

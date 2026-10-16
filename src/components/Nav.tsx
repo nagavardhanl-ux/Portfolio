@@ -9,6 +9,7 @@ const links = [
   { href: "/about/", label: "About" },
   { href: "/websites/", label: "Websites" },
   { href: "/what-i-do/", label: "What I do" },
+  { href: "/gallery/", label: "Gallery" },
 ];
 
 const norm = (p: string) => (p.endsWith("/") ? p : `${p}/`);

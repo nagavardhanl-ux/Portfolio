@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { asset } from "@/lib/config";
 import { shipped } from "@/data/shipped";
 
@@ -711,9 +712,10 @@ export default function ShippedBento() {
       </article>
 
       {/* 10. AI AVATAR AND PRODUCT VIDEOS (Span 5 cols) */}
-      <article
+      <Link
+        href="/gallery/"
         className="sb-card sb-card--videos sb-card--violet reveal"
-        tabIndex={0}
+        style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
         onMouseMove={onMouseMove}
         onMouseLeave={onMouseLeave}
       >
@@ -769,7 +771,7 @@ export default function ShippedBento() {
             </div>
           </div>
         </div>
-      </article>
+      </Link>
 
       {/* =========================================================================
           ROW 6: INTERNATIONAL PARTNER RESEARCH (12 cols)
