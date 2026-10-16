@@ -38,7 +38,6 @@ export default function AboutPage() {
               <div className="about-avatar-glow" aria-hidden="true" />
               {/* PLACEHOLDER: replace avatar-still.png and add avatar-loop.webm with the real avatar. */}
               <AboutAvatar pngSrc={asset("about/avatar-still.png")} />
-              <p className="about-avatar-caption">My AI avatar, made with Google Flow</p>
             </div>
           </div>
         </div>

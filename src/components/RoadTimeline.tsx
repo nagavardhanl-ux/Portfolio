@@ -139,6 +139,7 @@ function useIsMobile() {
 
 export default function RoadTimeline() {
   const sectionRef = useRef<HTMLElement>(null);
+  const desktopStageRef = useRef<HTMLDivElement>(null);
   const desktopPathRef = useRef<SVGPathElement>(null);
   const mobilePathRef = useRef<SVGPathElement>(null);
   const mobileCardsRef = useRef<HTMLDivElement>(null);
@@ -153,6 +154,9 @@ export default function RoadTimeline() {
 
   const isMobile = useIsMobile();
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  // Desktop "camera pan": how far the stage is shifted up so lower rows reveal
+  const [stagePan, setStagePan] = useState(0);
 
   // Mobile layout state
   const [mobileHeight, setMobileHeight] = useState(1200);
@@ -279,6 +283,7 @@ export default function RoadTimeline() {
 
         if (prefersReducedMotion) {
           if (!isMobile && desktopPathRef.current) {
+            setStagePan(0);
             const total = desktopPathRef.current.getTotalLength();
             const pt = desktopPathRef.current.getPointAtLength(
               DESKTOP_STOP_DISTANCES[7]
@@ -306,6 +311,34 @@ export default function RoadTimeline() {
           const totalScrollable = rect.height - window.innerHeight;
           const progressRaw = (topOffset - rect.top) / totalScrollable;
           const progress = Math.min(1, Math.max(0, progressRaw));
+
+          // Camera pan: when the stage is taller than the visible area, shift it
+          // up as the car advances so lower rows scroll into view (never clipped).
+          const stageEl = desktopStageRef.current;
+          const stickyEl = sectionRef.current.querySelector(
+            ".about-road-sticky"
+          ) as HTMLElement | null;
+          if (stageEl && stickyEl) {
+            let topWithin = 0;
+            let node: HTMLElement | null = stageEl;
+            while (node && node !== stickyEl) {
+              topWithin += node.offsetTop;
+              node = node.offsetParent as HTMLElement | null;
+            }
+            const availableH = stickyEl.clientHeight - topWithin - 16;
+            const overflow = Math.max(0, stageEl.offsetHeight - availableH);
+            // Hold the view on the top rows through run 1, pan down only during
+            // the run-2 middle, then hold on the bottom rows through run 3. This
+            // keeps the first row's labels and the last row's cards fully visible
+            // at the two ends instead of clipping them.
+            const panStart = 0.42;
+            const panEnd = 0.7;
+            const panT = Math.min(
+              1,
+              Math.max(0, (progress - panStart) / (panEnd - panStart))
+            );
+            setStagePan(-overflow * panT);
+          }
 
           const path = desktopPathRef.current;
           const totalLength = path.getTotalLength();
@@ -346,16 +379,26 @@ export default function RoadTimeline() {
           const pt = path.getPointAtLength(dist);
           const p1 = path.getPointAtLength(Math.max(0, dist - 3));
           const p2 = path.getPointAtLength(Math.min(totalLength, dist + 3));
+
+          // The car always faces the path's forward direction (right on the top
+          // and bottom runs, left on the middle run); scrolling up just rewinds.
           const dx = p2.x - p1.x;
           const dy = p2.y - p1.y;
 
-          let angle = (Math.atan2(dy, dx) * 180) / Math.PI;
-          let isFlipped = false;
-
-          if (dx < -0.05) {
+          // Keep the car wheels-down everywhere: face right for rightward travel,
+          // mirror (scaleX -1) to face left for leftward travel, tilting with the
+          // road in both cases. This avoids the roof flipping over on the bends.
+          const theta = (Math.atan2(dy, dx) * 180) / Math.PI;
+          let angle: number;
+          let isFlipped: boolean;
+          if (dx >= 0) {
+            isFlipped = false;
+            angle = theta; // theta is in [-90, 90]
+          } else {
             isFlipped = true;
-            const rawAngle = (Math.atan2(dy, dx) * 180) / Math.PI;
-            angle = rawAngle > 0 ? rawAngle - 180 : rawAngle + 180;
+            let phi = theta - 180; // deviation from straight-left
+            if (phi < -180) phi += 360;
+            angle = phi; // phi is in (-90, 90]
           }
 
           setCarState({
@@ -492,13 +535,16 @@ export default function RoadTimeline() {
         {!isMobile && (
           <div className="container about-road-container">
             <div
+              ref={desktopStageRef}
               className="about-road-stage"
               style={{
                 position: "relative",
                 width: "100%",
                 maxWidth: "1160px",
-                height: "625px",
+                aspectRatio: `${DESKTOP_VIEWBOX_WIDTH} / ${DESKTOP_VIEWBOX_HEIGHT}`,
                 margin: "0 auto",
+                transform: `translateY(${stagePan}px)`,
+                willChange: "transform",
               }}
             >
               {/* SVG Road Paths */}
@@ -617,8 +663,8 @@ export default function RoadTimeline() {
                 className="about-road-phase-label"
                 style={{
                   position: "absolute",
-                  left: "140px",
-                  top: "201px",
+                  left: "12.07%",
+                  top: "32.16%",
                 }}
                 aria-hidden="true"
               >
@@ -630,8 +676,8 @@ export default function RoadTimeline() {
                 className="about-road-phase-label"
                 style={{
                   position: "absolute",
-                  left: "960px",
-                  top: "407px",
+                  left: "82.76%",
+                  top: "65.12%",
                 }}
                 aria-hidden="true"
               >
@@ -643,8 +689,8 @@ export default function RoadTimeline() {
                 className="about-road-phase-label"
                 style={{
                   position: "absolute",
-                  left: "540px",
-                  top: "407px",
+                  left: "46.55%",
+                  top: "65.12%",
                 }}
                 aria-hidden="true"
               >
@@ -701,46 +747,48 @@ export default function RoadTimeline() {
                   // Run 2 (stops 4-5): in band between Run 1 and Run 2, above Run 2
                   // Run 3 (stops 6-7): below Run 3
                   // Band between Run 2 and Run 3 is kept empty and compact
+                  // top values are percentages of the stage height (viewBox 625)
+                  // so the cards scale in lockstep with the SVG road at any width.
                   const desktopPositions = [
                     {
                       left: "21.55%",
-                      top: "2px",
+                      top: "2%",
                       transform: "translateX(-50%)",
                       width: "25.5%",
                     },
                     {
                       left: "49.14%",
-                      top: "2px",
+                      top: "2%",
                       transform: "translateX(-50%)",
                       width: "25.5%",
                     },
                     {
                       left: "76.72%",
-                      top: "2px",
+                      top: "2%",
                       transform: "translateX(-50%)",
                       width: "25.5%",
                     },
                     {
                       left: "63.79%",
-                      top: "230px",
+                      top: "36.8%",
                       transform: "translateX(-50%)",
                       width: "25.5%",
                     },
                     {
                       left: "33.62%",
-                      top: "230px",
+                      top: "36.8%",
                       transform: "translateX(-50%)",
                       width: "25.5%",
                     },
                     {
                       left: "37.07%",
-                      top: "525px",
+                      top: "84%",
                       transform: "translateX(-50%)",
                       width: "25.5%",
                     },
                     {
                       left: "75.00%",
-                      top: "525px",
+                      top: "84%",
                       transform: "translateX(-50%)",
                       width: "25.5%",
                     },

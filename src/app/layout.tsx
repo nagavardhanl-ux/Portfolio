@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import AmbientField from "@/components/AmbientField";
 import BackToTop from "@/components/BackToTop";
 import Footer from "@/components/Footer";
@@ -57,7 +58,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       className={`${fraunces.variable} ${inter.variable} ${jetbrains.variable}`}
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: bootScript }} />
+        <Script id="boot-theme" strategy="beforeInteractive">
+          {bootScript}
+        </Script>
       </head>
       <body>
         <AmbientField />
