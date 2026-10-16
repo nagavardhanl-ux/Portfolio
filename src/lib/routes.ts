@@ -3,6 +3,7 @@ export interface RouteMeta {
   path: string;
   title: string;
   description: string;
+  hidden?: boolean;
 }
 
 export const routeMeta: RouteMeta[] = [
@@ -23,6 +24,13 @@ export const routeMeta: RouteMeta[] = [
     title: "What I do · Nagavardhan Reddy Lella",
     description:
       "Product marketing, demand generation, content and LinkedIn, websites and SEO, and AI-led execution for two AI platforms: what each involves and the work behind it.",
+  },
+  {
+    path: "/about/",
+    title: "About · Nagavardhan Reddy Lella",
+    description:
+      "From five years in operations to running marketing for two AI platforms: the path, how I work and what I want to learn next.",
+    hidden: true,
   },
   {
     path: "/contact/",

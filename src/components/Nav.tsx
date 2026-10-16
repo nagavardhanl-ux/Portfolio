@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { Close, MenuIcon } from "./icons";
 
 const links = [
+  { href: "/about/", label: "About" },
   { href: "/websites/", label: "Websites" },
   { href: "/what-i-do/", label: "What I do" },
 ];

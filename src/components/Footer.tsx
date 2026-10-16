@@ -11,6 +11,7 @@ export default function Footer() {
               Pages
             </p>
             <Link href="/">Home</Link>
+            <Link href="/about/">About</Link>
             <Link href="/websites/">Websites</Link>
             <Link href="/what-i-do/">What I do</Link>
             <Link href="/contact/">Contact</Link>
