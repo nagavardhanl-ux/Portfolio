@@ -12,6 +12,7 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
   const [currentPage, setCurrentPage] = useState(0);
   const total = pages.length;
   const thumbRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const sidebarListRef = useRef<HTMLDivElement>(null);
 
   const prev = useCallback(() => {
     setCurrentPage((p) => (p > 0 ? p - 1 : total - 1));
@@ -37,13 +38,42 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [prev, next]);
 
-  // Scroll the active thumbnail into view in the sidebar
+  // Scroll active thumbnail inside the sidebar container ONLY (avoids window viewport scrolling)
   useEffect(() => {
-    thumbRefs.current[currentPage]?.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "center",
-    });
+    const list = sidebarListRef.current;
+    const thumb = thumbRefs.current[currentPage];
+    if (!list || !thumb) return;
+
+    const listRect = list.getBoundingClientRect();
+    const thumbRect = thumb.getBoundingClientRect();
+
+    // Check if vertical scrolling (desktop sidebar)
+    if (list.scrollHeight > list.clientHeight) {
+      const thumbTopRel = thumbRect.top - listRect.top;
+      const thumbBottomRel = thumbRect.bottom - listRect.top;
+
+      if (thumbTopRel < 0) {
+        list.scrollTo({ top: Math.max(0, list.scrollTop + thumbTopRel - 12), behavior: "smooth" });
+      } else if (thumbBottomRel > list.clientHeight) {
+        list.scrollTo({
+          top: list.scrollTop + (thumbBottomRel - list.clientHeight) + 12,
+          behavior: "smooth",
+        });
+      }
+    } else {
+      // Horizontal scrolling (mobile strip)
+      const thumbLeftRel = thumbRect.left - listRect.left;
+      const thumbRightRel = thumbRect.right - listRect.left;
+
+      if (thumbLeftRel < 0) {
+        list.scrollTo({ left: Math.max(0, list.scrollLeft + thumbLeftRel - 10), behavior: "smooth" });
+      } else if (thumbRightRel > list.clientWidth) {
+        list.scrollTo({
+          left: list.scrollLeft + (thumbRightRel - list.clientWidth) + 10,
+          behavior: "smooth",
+        });
+      }
+    }
   }, [currentPage]);
 
   // Casual saving deterrence only (not DRM/full protection, as files are on a public host)
@@ -70,9 +100,10 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
           <div className="catalogue-stage__content">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              key={currentPage}
               src={asset(`catalogue/${pages[currentPage]}`)}
               alt={`LVL Groups & Enterprises Catalogue, page ${currentPage + 1} of ${total}`}
+              width={1311}
+              height={1819}
               draggable={false}
               loading={currentPage === 0 ? "eager" : "lazy"}
               onContextMenu={blockSave}
@@ -98,7 +129,12 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
 
         {/* Side Thumbnails Column - Image only, no text/page numbers */}
         <aside className="catalogue-sidebar" aria-label="Catalogue page thumbnails">
-          <div className="catalogue-sidebar__list" role="tablist" aria-label="Catalogue pages">
+          <div
+            ref={sidebarListRef}
+            className="catalogue-sidebar__list"
+            role="tablist"
+            aria-label="Catalogue pages"
+          >
             {pages.map((page, idx) => {
               const isSelected = currentPage === idx;
               return (
@@ -118,6 +154,8 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
                   <img
                     src={asset(`catalogue/${page}`)}
                     alt=""
+                    width={1311}
+                    height={1819}
                     loading="lazy"
                     draggable={false}
                     onContextMenu={blockSave}

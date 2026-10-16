@@ -10738,6 +10738,7 @@ html:not(.js) .hero-expand-actions {
   height: 100%;
   max-height: calc(100% - 10px);
   width: auto;
+  aspect-ratio: 1311 / 1819;
   object-fit: contain;
   border-radius: 6px;
   box-shadow: 0 4px 32px rgba(0, 0, 0, 0.65);
@@ -10828,11 +10829,13 @@ html:not(.js) .hero-expand-actions {
 }
 
 .catalogue-sidebar__list {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 10px;
   overflow-y: auto;
+  overscroll-behavior: contain;
   flex-grow: 1;
   scrollbar-width: thin;
   scrollbar-color: var(--hairline) transparent;
