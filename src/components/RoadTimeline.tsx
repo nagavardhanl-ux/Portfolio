@@ -88,27 +88,27 @@ export const PATH_STOPS: StepData[] = [
 ];
 
 const DESKTOP_VIEWBOX_WIDTH = 1160;
-const DESKTOP_VIEWBOX_HEIGHT = 680;
+const DESKTOP_VIEWBOX_HEIGHT = 625;
 
 // Desktop road path:
-// Run 1: left to right (y = 190)
-// Right bend: smooth U-turn with corner radius 55
-// Run 2: right to left (y = 415)
-// Left bend: smooth U-shaped curve with radius 55 (counter-clockwise sweep, no sharp point)
-// Run 3: left to right (y = 525)
+// Run 1: left to right (y = 175)
+// Right bend: smooth U-turn with corner radius 48
+// Run 2: right to left (y = 385)
+// Left bend: smooth U-shaped curve with radius 48 (counter-clockwise sweep, no sharp point)
+// Run 3: left to right (y = 481)
 const DESKTOP_ROAD_PATH =
-  "M 70 190 L 990 190 A 55 55 0 0 1 1045 245 L 1045 360 A 55 55 0 0 1 990 415 L 140 415 A 55 55 0 0 0 140 525 L 1050 525";
+  "M 70 175 L 990 175 A 48 48 0 0 1 1038 223 L 1038 337 A 48 48 0 0 1 990 385 L 140 385 A 48 48 0 0 0 140 481 L 1050 481";
 
-const DESKTOP_STOP_DISTANCES = [0, 180, 500, 820, 1458, 1808, 2521, 2961];
+const DESKTOP_STOP_DISTANCES = [0, 180, 500, 820, 1435, 1785, 2476, 2916];
 
 const DESKTOP_STOP_COORDS = [
-  { x: 250, y: 190, run: 1 },
-  { x: 570, y: 190, run: 1 },
-  { x: 890, y: 190, run: 1 },
-  { x: 740, y: 415, run: 2 },
-  { x: 390, y: 415, run: 2 },
-  { x: 430, y: 525, run: 3 },
-  { x: 870, y: 525, run: 3 },
+  { x: 250, y: 175, run: 1 },
+  { x: 570, y: 175, run: 1 },
+  { x: 890, y: 175, run: 1 },
+  { x: 740, y: 385, run: 2 },
+  { x: 390, y: 385, run: 2 },
+  { x: 430, y: 481, run: 3 },
+  { x: 870, y: 481, run: 3 },
 ];
 
 const emptySubscribe = () => () => {};
@@ -165,11 +165,11 @@ export default function RoadTimeline() {
   // Animation state (updated in requestAnimationFrame)
   const [carState, setCarState] = useState({
     x: 70,
-    y: 190,
+    y: 175,
     angle: 0,
     isFlipped: false,
     travelledDist: 0,
-    totalDist: 3141,
+    totalDist: 3096,
     activeStopIndex: 0,
     isMoving: false,
     bubbleText: "Start",
@@ -178,11 +178,11 @@ export default function RoadTimeline() {
   const car = prefersReducedMotion
     ? {
         x: 870,
-        y: 525,
+        y: 481,
         angle: 0,
         isFlipped: false,
-        travelledDist: 3141,
-        totalDist: 3141,
+        travelledDist: 3096,
+        totalDist: 3096,
         activeStopIndex: 7,
         isMoving: false,
         bubbleText: PATH_STOPS[6].year,
@@ -467,7 +467,7 @@ export default function RoadTimeline() {
   }, [mounted, isMobile, prefersReducedMotion, mobileStopPoints]);
 
   // Desktop speech bubble side: below car on Run 1 & 2, above car on Run 3
-  const desktopBubbleSide = car.y > 470 ? "above" : "below";
+  const desktopBubbleSide = car.y > 430 ? "above" : "below";
 
   return (
     <section
@@ -477,7 +477,7 @@ export default function RoadTimeline() {
     >
       <div className="about-road-sticky">
         <div className="container">
-          <div className="about-sec-heading">
+          <div className="about-sec-heading" style={{ marginBottom: "8px" }}>
             <h2 id="path-title" className="about-sec-title">
               The path
             </h2>
@@ -490,14 +490,14 @@ export default function RoadTimeline() {
 
         {/* Desktop Road View (1024px and up) */}
         {!isMobile && (
-          <div className="container about-road-container" style={{ marginTop: "16px" }}>
+          <div className="container about-road-container">
             <div
               className="about-road-stage"
               style={{
                 position: "relative",
                 width: "100%",
                 maxWidth: "1160px",
-                height: "680px",
+                height: "625px",
                 margin: "0 auto",
               }}
             >
@@ -515,13 +515,13 @@ export default function RoadTimeline() {
                   pointerEvents: "none",
                 }}
               >
-                {/* Road Base: wide stroke (44px), dark grey slightly lighter than background */}
+                {/* Road Base: wide stroke (42px), dark grey slightly lighter than background */}
                 <path
                   ref={desktopPathRef}
                   d={DESKTOP_ROAD_PATH}
                   fill="none"
                   stroke="#232429"
-                  strokeWidth={44}
+                  strokeWidth={42}
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
@@ -553,8 +553,8 @@ export default function RoadTimeline() {
                     car.travelledDist >= DESKTOP_STOP_DISTANCES[idx + 1] ||
                     car.activeStopIndex >= idx + 1;
                   const isCurrent = car.activeStopIndex === idx + 1;
-                  const cardBoundaryY = pt.run === 3 ? 570 : pt.run === 2 ? 366 : 148;
-                  const startY = pt.run === 3 ? pt.y + 10 : pt.y - 10;
+                  const cardBoundaryY = pt.run === 3 ? 523 : pt.run === 2 ? 342 : 130;
+                  const startY = pt.run === 3 ? pt.y + 8 : pt.y - 8;
 
                   return (
                     <line
@@ -592,7 +592,7 @@ export default function RoadTimeline() {
                         <circle
                           cx={pt.x}
                           cy={pt.y}
-                          r={14}
+                          r={13}
                           fill="rgba(213, 183, 122, 0.2)"
                           stroke="rgba(213, 183, 122, 0.4)"
                           strokeWidth={1}
@@ -601,10 +601,10 @@ export default function RoadTimeline() {
                       <circle
                         cx={pt.x}
                         cy={pt.y}
-                        r={7}
+                        r={6.5}
                         fill={isReached ? "var(--accent)" : "#18191D"}
                         stroke="var(--accent)"
-                        strokeWidth={2.5}
+                        strokeWidth={2.2}
                       />
                     </g>
                   );
@@ -618,33 +618,33 @@ export default function RoadTimeline() {
                 style={{
                   position: "absolute",
                   left: "140px",
-                  top: "228px",
+                  top: "201px",
                 }}
                 aria-hidden="true"
               >
                 Operations
               </div>
 
-              {/* The switch: below Run 2, before Stop 4 (driving right to left) */}
+              {/* The switch: below Run 2, before Stop 4, well clear of Stop 7 */}
               <div
                 className="about-road-phase-label"
                 style={{
                   position: "absolute",
-                  left: "840px",
-                  top: "456px",
+                  left: "960px",
+                  top: "407px",
                 }}
                 aria-hidden="true"
               >
                 The switch
               </div>
 
-              {/* Marketing: below Run 2, before Stop 5 (driving right to left) */}
+              {/* Marketing: below Run 2, before Stop 5, well clear of Stop 6 */}
               <div
                 className="about-road-phase-label"
                 style={{
                   position: "absolute",
-                  left: "470px",
-                  top: "456px",
+                  left: "540px",
+                  top: "407px",
                 }}
                 aria-hidden="true"
               >
@@ -681,7 +681,7 @@ export default function RoadTimeline() {
                     color: "var(--accent)",
                   }}
                 >
-                  <RoadCar width={56} />
+                  <RoadCar width={50} />
                 </div>
               </div>
 
@@ -704,45 +704,45 @@ export default function RoadTimeline() {
                   const desktopPositions = [
                     {
                       left: "21.55%",
-                      top: "8px",
+                      top: "2px",
                       transform: "translateX(-50%)",
-                      width: "24%",
+                      width: "25.5%",
                     },
                     {
                       left: "49.14%",
-                      top: "8px",
+                      top: "2px",
                       transform: "translateX(-50%)",
-                      width: "24%",
+                      width: "25.5%",
                     },
                     {
                       left: "76.72%",
-                      top: "8px",
+                      top: "2px",
                       transform: "translateX(-50%)",
-                      width: "24%",
+                      width: "25.5%",
                     },
                     {
                       left: "63.79%",
-                      top: "250px",
+                      top: "230px",
                       transform: "translateX(-50%)",
-                      width: "24%",
+                      width: "25.5%",
                     },
                     {
                       left: "33.62%",
-                      top: "250px",
+                      top: "230px",
                       transform: "translateX(-50%)",
-                      width: "24%",
+                      width: "25.5%",
                     },
                     {
                       left: "37.07%",
-                      top: "572px",
+                      top: "525px",
                       transform: "translateX(-50%)",
-                      width: "24%",
+                      width: "25.5%",
                     },
                     {
                       left: "75.00%",
-                      top: "572px",
+                      top: "525px",
                       transform: "translateX(-50%)",
-                      width: "24%",
+                      width: "25.5%",
                     },
                   ];
                   const pos = desktopPositions[stop.id - 1];

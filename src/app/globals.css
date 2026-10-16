@@ -9957,17 +9957,23 @@ html:not(.js) .hero-expand-actions {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 24px;
+  padding-top: 12px;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+.about-road-sticky .about-sec-heading {
+  margin-bottom: 8px;
 }
 
 .about-road-container {
   width: 100%;
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
   min-height: 0;
 }
@@ -9976,8 +9982,23 @@ html:not(.js) .hero-expand-actions {
   position: relative;
   width: 100%;
   max-width: 1160px;
-  height: 680px;
+  height: 625px;
   margin: 0 auto;
+  flex-shrink: 0;
+}
+
+@media (max-height: 750px) and (min-width: 1024px) {
+  .about-road-stage {
+    transform: scale(0.86);
+    transform-origin: top center;
+  }
+}
+
+@media (max-height: 640px) and (min-width: 1024px) {
+  .about-road-stage {
+    transform: scale(0.76);
+    transform-origin: top center;
+  }
 }
 
 .about-road-svg {
@@ -10081,25 +10102,25 @@ html:not(.js) .hero-expand-actions {
 }
 
 .about-road-card-item .about-step__year {
-  font-size: 0.7rem;
-  margin-bottom: 4px;
+  font-size: 0.68rem;
+  margin-bottom: 2px;
   display: block;
 }
 
 .about-road-card-item .about-path-card {
-  padding: 10px 14px;
+  padding: 8px 12px;
   border-radius: 8px;
 }
 
 .about-road-card-item .about-path-card__title {
-  font-size: 0.85rem;
+  font-size: 0.80rem;
   line-height: 1.25;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
 .about-road-card-item .about-path-card__desc {
-  font-size: 0.78rem;
-  line-height: 1.42;
+  font-size: 0.72rem;
+  line-height: 1.35;
 }
 
 @keyframes roadBubbleFade {
