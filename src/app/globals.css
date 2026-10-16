@@ -5979,7 +5979,8 @@ body:has(.signal-home) .ambient { display:none; }
 .sb-card .sb-linkedin-col,
 .sb-card .sb-video-screen,
 .sb-card .sb-stat-chip,
-.sb-card .sb-tier-pill {
+.sb-card .sb-tier-pill,
+.sb-card .sb-series-card {
   background: rgba(22, 23, 27, 0.82) !important;
   border: 1px solid rgba(255, 255, 255, 0.14) !important;
   backdrop-filter: blur(8px);
@@ -5987,12 +5988,13 @@ body:has(.signal-home) .ambient { display:none; }
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1),
               border-color 240ms ease,
+              background 240ms ease,
               background-color 240ms ease,
               box-shadow 240ms ease,
               color 240ms ease;
 }
 
-/* Micro-interaction hover states with category accent glow */
+/* Standard standalone floating elements hover */
 .sb-card .sb-site-thumb:hover,
 .sb-card .sb-cluster-pillar:hover,
 .sb-card .sb-cluster-node:hover,
@@ -6000,12 +6002,93 @@ body:has(.signal-home) .ambient { display:none; }
 .sb-card .sb-lane-card:hover,
 .sb-card .sb-competitor-card:hover,
 .sb-card .sb-product-pill:hover,
-.sb-card .sb-linkedin-col:hover,
-.sb-card .sb-video-screen:hover,
-.sb-card .sb-stat-chip:hover,
-.sb-card .sb-wave-bar:hover,
-.sb-card .sb-waveform span:hover,
 .sb-card .sb-tier-pill:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: var(--cat-accent, #D5B77A) !important;
+  background: rgba(10, 11, 14, 0.38) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  box-shadow: 0 6px 16px -2px rgba(0, 0, 0, 0.5), 0 0 10px var(--cat-accent-glow);
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 0 8px rgba(0, 0, 0, 0.9);
+  transition-delay: 0ms !important;
+}
+
+/* Three nested container sub-cards: LinkedIn, Videos, Blogs.
+   When hovering the container card itself (and NOT a small button/link inside), it turns transparent */
+.sb-card .sb-linkedin-col:hover:not(:has(.sb-stat-chip:hover)):not(:has(a:hover)),
+.sb-card .sb-video-screen:hover:not(:has(.sb-stat-chip:hover)):not(:has(a:hover)),
+.sb-card .sb-series-card:hover:not(:has(.sb-stat-chip:hover)):not(:has(.sb-series-list li:hover)):not(:has(a:hover)) {
+  transform: translateY(-2px) scale(1.02);
+  border-color: var(--cat-accent, #D5B77A) !important;
+  background: rgba(10, 11, 14, 0.38) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  box-shadow: 0 6px 16px -2px rgba(0, 0, 0, 0.5), 0 0 10px var(--cat-accent-glow);
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 0 8px rgba(0, 0, 0, 0.9);
+  transition-delay: 0ms !important;
+}
+
+/* When a small button or link INSIDE the sub-card is hovered,
+   the container card stays/returns to its original solid color */
+.sb-card .sb-linkedin-col:has(.sb-stat-chip:hover),
+.sb-card .sb-linkedin-col:has(a:hover),
+.sb-card .sb-video-screen:has(.sb-stat-chip:hover),
+.sb-card .sb-video-screen:has(a:hover),
+.sb-card .sb-series-card:has(.sb-stat-chip:hover),
+.sb-card .sb-series-card:has(.sb-series-list li:hover),
+.sb-card .sb-series-card:has(a:hover) {
+  background: rgba(22, 23, 27, 0.82) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+  transform: none !important;
+  color: inherit !important;
+  text-shadow: none !important;
+}
+
+/* Small buttons/chips/links inside any card: transparent on hover */
+.sb-card .sb-stat-chip:hover {
+  transform: translateY(-2px) scale(1.04);
+  border-color: var(--cat-accent, #D5B77A) !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.5), 0 0 10px var(--cat-accent-glow);
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 0 8px rgba(0, 0, 0, 0.9);
+  transition-delay: 0ms !important;
+}
+
+/* High contrast text on hover across all cards */
+.sb-card .sb-stat-chip:hover,
+.sb-card .sb-tier-pill:hover,
+.sb-card .sb-cluster-node:hover .sb-node-text,
+.sb-card .sb-cluster-pillar:hover .sb-cluster-title,
+.sb-card .sb-lane-card:hover .sb-lane-title,
+.sb-card .sb-signal-item:hover .sb-sig-desc,
+.sb-card .sb-product-pill:hover .sb-prod-name,
+.sb-card .sb-competitor-card:hover .sb-comp-title,
+.sb-card .sb-competitor-card:hover .sb-comp-desc,
+.sb-card .sb-series-list li a:hover,
+.sb-card .sb-series-card a:hover {
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 0 8px rgba(0, 0, 0, 0.9);
+}
+
+.sb-card .sb-lane-card:hover .sb-lane-head,
+.sb-card .sb-signal-item:hover .sb-sig-head,
+.sb-card .sb-product-pill:hover .sb-prod-brand,
+.sb-card .sb-competitor-card:hover .sb-comp-used,
+.sb-card .sb-cluster-pillar:hover .sb-cluster-marker {
+  color: var(--cat-accent, #D5B77A) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95);
+}
+
+.sb-card .sb-wave-bar:hover,
+.sb-card .sb-waveform span:hover {
   transform: translateY(-2px) scale(1.02);
   border-color: var(--cat-accent, #D5B77A) !important;
   box-shadow: 0 6px 16px -2px rgba(0, 0, 0, 0.5), 0 0 10px var(--cat-accent-glow);
