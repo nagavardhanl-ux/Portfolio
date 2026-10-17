@@ -4,6 +4,7 @@ import ToolsGrid from "@/components/ToolsGrid";
 import ShippedBento from "@/components/ShippedBento";
 import CapabilitiesSection from "@/components/CapabilitiesSection";
 import HeroScrollExpansion from "@/components/HeroScrollExpansion";
+import ResultsStrip from "@/components/ResultsStrip";
 import JsonLd from "@/components/JsonLd";
 import { homeStructuredData, pageMetadata } from "@/lib/meta";
 
@@ -17,8 +18,11 @@ export default function Home() {
       {/* Hero */}
       <HeroScrollExpansion />
 
+      {/* Results so far */}
+      <ResultsStrip />
+
       {/* What I've shipped */}
-      <section className="section" aria-labelledby="shipped-title" id="shipped">
+      <section className="section" aria-labelledby="shipped-title" id="shipped" style={{ paddingTop: 0 }}>
         <div className="container">
           <SectionHead index="02" label="Shipped" id="shipped-title" title="What I&apos;ve shipped" intro="A sample of the work behind the roles." />
           <ShippedBento />

@@ -47,6 +47,7 @@ export const capabilitySections: Capability[] = [
       "I run outbound that reaches the right people. Lists, copy, sending and tracking, across email and LinkedIn, into international markets.",
     points: [
       "Source and clean the target lists myself before anything goes out.",
+      "Run multi-step cold email campaigns across investor, partner, ATS and M&A lists, with personalised, per-company mailers, and use open-rate and list-quality data to decide what to send next.",
       "Write the cold emails and LinkedIn messages, and run the sequences.",
       "Read what comes back and rewrite what underperforms.",
     ],
