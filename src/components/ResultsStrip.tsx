@@ -1,8 +1,9 @@
+import type { CSSProperties } from "react";
 import { results } from "@/data/results";
 
-export default function ResultsStrip() {
+export default function ResultsStrip({ style }: { style?: CSSProperties } = {}) {
   return (
-    <section className="section results-strip-section" aria-labelledby="results-title" id="results">
+    <section className="section results-strip-section" aria-labelledby="results-title" id="results" style={style}>
       <div className="container">
         <header className="results-strip__header reveal">
           <h2 id="results-title" className="results-strip__title">

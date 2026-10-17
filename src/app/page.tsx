@@ -18,16 +18,16 @@ export default function Home() {
       {/* Hero */}
       <HeroScrollExpansion />
 
-      {/* Results so far */}
-      <ResultsStrip />
-
       {/* What I've shipped */}
-      <section className="section" aria-labelledby="shipped-title" id="shipped" style={{ paddingTop: 0 }}>
+      <section className="section" aria-labelledby="shipped-title" id="shipped">
         <div className="container">
           <SectionHead index="02" label="Shipped" id="shipped-title" title="What I&apos;ve shipped" intro="A sample of the work behind the roles." />
           <ShippedBento />
         </div>
       </section>
+
+      {/* Results so far */}
+      <ResultsStrip style={{ paddingTop: 0 }} />
 
       {/* Selected work */}
       <section className="section" aria-labelledby="work-title" id="work" style={{ paddingTop: 0 }}>
