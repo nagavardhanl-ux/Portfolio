@@ -29,10 +29,10 @@
   --accent-blue: #83AFC7;
   --accent-sage: #91B5A0;
 
-  --font-display: "PP Neue Montreal Display", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-heading: "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-body: "PP Neue Montreal Text", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: "PP Neue Montreal Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-display: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   --container: 1320px;
   --gutter: clamp(20px, 5vw, 64px);
@@ -6754,7 +6754,7 @@ body:has(.signal-home) .footer {
 
 /* ==========================================================================
    Palette: Charcoal #111214 + Dark Charcoal #191A1E + Graphite #202125 + Champagne Gold #D5B77A
-   Typography: PP Neue Montreal system | Solid colors only (NO gradients)
+   Typography: Fraunces / Inter / JetBrains Mono system | Solid colors only (NO gradients)
    Headings: Ivory White (#F4F0E8)
    ========================================================================== */
 :root,
@@ -6778,10 +6778,10 @@ body:has(.signal-home) .footer {
   --overlay: rgba(17, 18, 20, 0.95);
   color-scheme: dark;
 
-  --font-display: "PP Neue Montreal Display", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-heading: "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-body: "PP Neue Montreal Text", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: "PP Neue Montreal Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-display: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 
 /* Base fill: solid #111214 */
@@ -6792,7 +6792,7 @@ body {
   font-family: var(--font-body);
 }
 
-/* Enforce Ivory White #F4F0E8 for all headings & PP Neue Montreal weights */
+/* Enforce Ivory White #F4F0E8 for all headings */
 h1, .h1, .hero__title, .page-head .h1, .display,
 .signal-hero .hero__title,
 .signal-hero .hero__title .line2 {
@@ -6892,7 +6892,7 @@ p, .lead, .body, .signal-home .beat .body, .signal-home .signal-capability > .bo
   border-bottom: 1px solid #343438 !important;
 }
 
-/* Technical Labels: PP Neue Montreal Mono 400 */
+/* Technical Labels: JetBrains Mono 400 */
 .font-mono, [class*="__num"], .num, .eyebrow, [class*="__eyebrow"], .tag, [class*="__tag"],
 .technical-label, .browser-address, .browser-index, .hero-fragment, code, kbd, samp {
   font-family: var(--font-mono) !important;
@@ -8630,7 +8630,7 @@ body::after,
 }
 
 .wid-hero__title {
-  font-family: var(--font-display, "PP Neue Montreal Display", sans-serif);
+  font-family: var(--font-display);
   font-size: clamp(3rem, 7vw, 5.25rem);
   font-weight: 350;
   line-height: 0.98;
@@ -8640,7 +8640,7 @@ body::after,
 }
 
 .wid-hero__intro {
-  font-family: var(--font-body, "PP Neue Montreal Text", sans-serif);
+  font-family: var(--font-body);
   font-size: clamp(1.0625rem, 1.8vw, 1.3125rem);
   font-weight: 400;
   line-height: 1.55;
@@ -8708,7 +8708,7 @@ body::after,
 }
 
 .wid-sec__num {
-  font-family: var(--font-display, "PP Neue Montreal Display", sans-serif);
+  font-family: var(--font-display);
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 300;
   line-height: 1;
@@ -8725,7 +8725,7 @@ body::after,
 }
 
 .wid-sec__title {
-  font-family: var(--font-display, "PP Neue Montreal Display", sans-serif);
+  font-family: var(--font-display);
   font-size: clamp(2.25rem, 4.5vw, 3.5rem);
   font-weight: 400;
   line-height: 1.05;
@@ -8735,7 +8735,7 @@ body::after,
 }
 
 .wid-sec__lead {
-  font-family: var(--font-body, "PP Neue Montreal Text", sans-serif);
+  font-family: var(--font-body);
   font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
   line-height: 1.55;
   color: var(--text-2, #B9B8B3);
@@ -8793,7 +8793,7 @@ body::after,
 .wid-dash-list li {
   position: relative;
   padding-left: 20px;
-  font-family: var(--font-body, "PP Neue Montreal Text", sans-serif);
+  font-family: var(--font-body);
   font-size: 0.9375rem;
   line-height: 1.6;
   color: var(--text-2, #B9B8B3);
@@ -8854,7 +8854,7 @@ body::after,
 }
 
 .wid-specimen__title {
-  font-family: var(--font-heading, "PP Neue Montreal", sans-serif);
+  font-family: var(--font-heading);
   font-size: 0.9375rem;
   font-weight: 500;
   color: var(--text, #F4F0E8);
@@ -8952,7 +8952,7 @@ body::after,
 }
 
 .wid-stat-val {
-  font-family: var(--font-display, "PP Neue Montreal Display", sans-serif);
+  font-family: var(--font-display);
   font-size: 1.75rem;
   font-weight: 350;
   line-height: 1;
@@ -9040,7 +9040,7 @@ body::after,
 }
 
 .wid-pub-card__title {
-  font-family: var(--font-heading, "PP Neue Montreal", sans-serif);
+  font-family: var(--font-heading);
   font-size: 1.0625rem;
   font-weight: 500;
   color: var(--text, #F4F0E8);
@@ -9133,7 +9133,7 @@ body::after,
 }
 
 .wid-web-frame__name {
-  font-family: var(--font-heading, "PP Neue Montreal", sans-serif);
+  font-family: var(--font-heading);
   font-size: 0.9375rem;
   font-weight: 500;
   color: var(--text, #F4F0E8);
@@ -9189,7 +9189,7 @@ body::after,
 }
 
 .wid-ai-card__title {
-  font-family: var(--font-heading, "PP Neue Montreal", sans-serif);
+  font-family: var(--font-heading);
   font-size: 1.0625rem;
   font-weight: 500;
   color: var(--text, #F4F0E8);
@@ -9399,7 +9399,7 @@ body::after,
 
 /* Headline — always visible */
 .hero-expand-title {
-  font-family: var(--font-display, "PP Neue Montreal Display", sans-serif);
+  font-family: var(--font-display);
   font-size: clamp(3rem, 6.8vw, 6rem);
   font-weight: 550;
   line-height: 0.94;
@@ -9412,7 +9412,7 @@ body::after,
 
 /* Supporting Copy — Staged Reveal (Stage 1) */
 .hero-expand-lead {
-  font-family: var(--font-body, "PP Neue Montreal Text", sans-serif);
+  font-family: var(--font-body);
   font-size: clamp(1.05rem, 1.4vw, 1.25rem);
   line-height: 1.55;
   color: var(--text, #B9B8B3);
@@ -11049,7 +11049,7 @@ html:not(.js) .hero-expand-actions {
 }
 
 .results-strip__title {
-  font-family: var(--font-heading, "PP Neue Montreal", sans-serif);
+  font-family: var(--font-heading);
   font-size: clamp(1.25rem, 2vw, 1.625rem);
   font-weight: 550;
   color: #F4F0E8;
@@ -11103,7 +11103,7 @@ html:not(.js) .hero-expand-actions {
 }
 
 .results-strip__val {
-  font-family: var(--font-display, "PP Neue Montreal Display", sans-serif);
+  font-family: var(--font-display);
   font-size: clamp(1.25rem, 1.8vw, 1.75rem);
   font-weight: 550;
   line-height: 1.15;
@@ -11115,7 +11115,7 @@ html:not(.js) .hero-expand-actions {
 }
 
 .results-strip__caption {
-  font-family: var(--font-body, "PP Neue Montreal Text", sans-serif);
+  font-family: var(--font-body);
   font-size: clamp(0.75rem, 1vw, 0.8125rem);
   line-height: 1.45;
   color: var(--text-2, #85847F);
