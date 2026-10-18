@@ -32,7 +32,7 @@ export default function AboutPage() {
 
             <div className="about-hero__avatar-col reveal">
               <div className="about-avatar-glow" aria-hidden="true" />
-              <AboutAvatar pngSrc={asset("about/avatar.webp")} />
+              <AboutAvatar pngSrc={asset("about/avatar-v2.webp")} />
             </div>
           </div>
         </div>

@@ -32,7 +32,7 @@ const subscribeReducedMotion = (callback: () => void) => {
 
 export default function AboutAvatar({
   webmSrc,
-  pngSrc = asset("about/avatar.webp"),
+  pngSrc = asset("about/avatar-v2.webp"),
   className = "",
 }: AboutAvatarProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
