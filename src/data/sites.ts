@@ -74,7 +74,7 @@ export const sites: Site[] = [
     name: "Wayfarer",
     line: "A full study-abroad consultancy site: 11 country pages, four branches, and working cost, loan and eligibility tools. Open the cost calculator.",
     url: "https://nagavardhanl-ux.github.io/wayfarer-study-abroad/",
-    embedUrl: "https://nagavardhanl-ux.github.io/wayfarer-study-abroad/tools/cost-calculator/",
+    embedUrl: "https://nagavardhanl-ux.github.io/wayfarer-study-abroad/",
     embedLabel: "Cost calculator",
     extraLinks: [
       {

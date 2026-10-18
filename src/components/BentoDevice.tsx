@@ -118,6 +118,8 @@ export default function BentoDevice({
                     alt={mobileAlt}
                     loading="eager"
                     decoding="async"
+                    width={412}
+                    height={892}
                     className="bento-pixel__scroll-img"
                   />
                 </div>

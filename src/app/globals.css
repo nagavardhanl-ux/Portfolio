@@ -7593,6 +7593,7 @@ body::after,
   top: 0 !important;
   left: 0 !important;
   width: 100% !important;
+  min-height: 100% !important;
   will-change: transform !important;
   animation: pixel-mobile-scroll 16s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate !important;
 }
@@ -7609,6 +7610,7 @@ body::after,
 .bento-pixel__scroll-img {
   width: 100% !important;
   height: auto !important;
+  min-height: 100% !important;
   display: block !important;
   pointer-events: none !important;
 }
@@ -7661,20 +7663,28 @@ body::after,
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .site-card__media {
     padding: 8px 0 0 !important;
   }
   .dual-showcase {
-    height: clamp(230px, 60vw, 300px) !important;
-    gap: 8px !important;
+    height: auto !important;
+    min-height: auto !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 24px !important;
   }
   .dual-showcase__macbook {
-    height: 88% !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto !important;
+    aspect-ratio: 16 / 10.6 !important;
   }
   .dual-showcase__pixel {
-    height: 76% !important;
-    max-width: 105px !important;
+    width: 175px !important;
+    max-width: 190px !important;
+    height: auto !important;
+    aspect-ratio: 9 / 19 !important;
   }
 }
 
