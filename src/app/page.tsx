@@ -26,7 +26,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Results so far */}
+      {/* Where the work is moving */}
       <ResultsStrip style={{ paddingTop: 0 }} />
 
       {/* Selected work */}

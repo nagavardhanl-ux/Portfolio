@@ -65,6 +65,7 @@ export const capabilitySections: Capability[] = [
       "I write the content that brings people to the product and run the LinkedIn that puts it in front of them.",
     points: [
       "Plan and write blog clusters built to rank on Google and show up in AI answers.",
+      "Track how AIQoD shows up across ChatGPT, Gemini, Claude and Perplexity, and shape content to improve how the sites get picked up.",
       "Run AIQoD's company page: posts, carousels and reposts across LinkedIn, Instagram, Facebook and X.",
       "Write LinkedIn drafts for the founder and the sales head.",
       "Cut podcast appearances into short clips for social.",

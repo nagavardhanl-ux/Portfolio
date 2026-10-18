@@ -13,11 +13,11 @@ export const results: ResultItem[] = [
     caption: "Search click-through, after rewriting page titles and meta",
   },
   {
-    value: "+80%",
-    caption: "AIQoD LinkedIn page visitors, from consistent, optimised posting",
+    value: "~30%",
+    caption: "Average email open rate across cold outreach campaigns",
   },
   {
-    value: "4 AI engines",
-    caption: "AIQoD now described in ChatGPT, Gemini, Claude and Perplexity when searched",
+    value: "+18%",
+    caption: "AIQoD LinkedIn search appearances, from consistent, optimised posting",
   },
 ];

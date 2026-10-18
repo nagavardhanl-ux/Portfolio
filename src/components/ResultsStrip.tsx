@@ -7,14 +7,14 @@ export default function ResultsStrip({ style }: { style?: CSSProperties } = {}) 
       <div className="container">
         <header className="results-strip__header reveal">
           <h2 id="results-title" className="results-strip__title">
-            Results so far
+            Where the work is moving
           </h2>
           <p className="results-strip__sub">
-            AIQoD marketing, as of October 2026.
+            A snapshot of the AIQoD marketing results.
           </p>
         </header>
 
-        <div className="results-strip__grid" role="list" aria-label="Results so far metrics">
+        <div className="results-strip__grid" role="list" aria-label="AIQoD marketing results metrics">
           {results.map((item) => (
             <article key={item.caption} className="results-strip__card reveal" role="listitem">
               <span className="results-strip__val">{item.value}</span>
