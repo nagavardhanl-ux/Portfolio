@@ -712,10 +712,9 @@ export default function ShippedBento() {
       </article>
 
       {/* 10. AI AVATAR AND PRODUCT VIDEOS (Span 5 cols) */}
-      <Link
-        href="/gallery/"
+      <article
         className="sb-card sb-card--videos sb-card--violet reveal"
-        style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
+        tabIndex={0}
         onMouseMove={onMouseMove}
         onMouseLeave={onMouseLeave}
       >
@@ -769,9 +768,25 @@ export default function ShippedBento() {
               <span className="sb-wave-bar" style={{ height: "50%" }} />
               <span className="sb-wave-bar" style={{ height: "80%" }} />
             </div>
+            <div style={{ paddingTop: "8px", borderTop: "1px solid #343438" }}>
+              <Link
+                href="/gallery/"
+                style={{
+                  fontSize: "0.68rem",
+                  fontFamily: "var(--font-mono)",
+                  color: "var(--cat-accent, #A99AE0)",
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "4px",
+                }}
+              >
+                Watch videos ↗
+              </Link>
+            </div>
           </div>
         </div>
-      </Link>
+      </article>
 
       {/* =========================================================================
           ROW 6: INTERNATIONAL PARTNER RESEARCH (12 cols)
