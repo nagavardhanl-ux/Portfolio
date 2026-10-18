@@ -66,13 +66,15 @@ export const capabilitySections: Capability[] = [
     points: [
       "Plan and write blog clusters built to rank on Google and show up in AI answers.",
       "Track how AIQoD shows up across ChatGPT, Gemini, Claude and Perplexity, and shape content to improve how the sites get picked up.",
-      "Run AIQoD's company page: posts, carousels and reposts across LinkedIn, Instagram, Facebook and X.",
+      "Run AIQoD's social: LinkedIn company page, plus Instagram, Facebook and X.",
       "Write LinkedIn drafts for the founder and the sales head.",
       "Cut podcast appearances into short clips for social.",
     ],
     work: [
       "Built the Agentic AI content cluster for AIQoD and the blog for VentureHub360.",
       "Built VentureHub360's LinkedIn from zero: company page, carousels and a posting system across founder and investor groups.",
+      "Built a daily AI intelligence brief that goes to the leadership team each morning.",
+      "Run AIQoD's weekly posting: company-page posts and carousels, plus LinkedIn drafts for the founder and sales head.",
     ],
   },
   {
