@@ -16,7 +16,8 @@ export default function ResultsStrip({ style }: { style?: CSSProperties } = {}) 
 
         <div className="results-strip__grid" role="list" aria-label="AIQoD marketing results metrics">
           {results.map((item) => (
-            <article key={item.caption} className="results-strip__card reveal" role="listitem">
+            <article key={item.label} className="results-strip__card reveal" role="listitem">
+              <span className="results-strip__label">{item.label}</span>
               <span className="results-strip__val">{item.value}</span>
               <p className="results-strip__caption">{item.caption}</p>
             </article>
