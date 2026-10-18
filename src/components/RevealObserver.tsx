@@ -5,10 +5,11 @@ import { useEffect } from "react";
 
 /**
  * Any element with class "reveal" fades and rises in once it scrolls into view.
- * Uses a rAF-throttled scroll check rather than IntersectionObserver, which
- * stopped reporting after the first callback on this page and left content
- * hidden. New or re-created blocks are picked up through a MutationObserver.
- * Under prefers-reduced-motion the CSS never hides anything in the first place.
+ * Tested against Emil Kowalski & UI Skills interaction design principles:
+ * - Fluid, natural entrance right as content enters the viewport
+ * - Instant unhide for elements already in or near viewport on mount
+ * - Passive scroll safeguard ensuring content is never stuck at opacity 0
+ * - Unconditional fallback for prefers-reduced-motion and missing IO
  */
 export default function RevealObserver() {
   const pathname = usePathname();
@@ -30,9 +31,11 @@ export default function RevealObserver() {
       return;
     }
 
-    // Trigger when element is 14% into the viewport from the bottom
-    // so the reveal animation runs visibly in front of the user, rather
-    // than firing prematurely while still off-screen.
+    const isMobile = window.innerWidth <= 680;
+
+    // Trigger naturally as content enters the viewport.
+    // -6% on mobile so cards enter promptly without empty gaps.
+    // -10% on desktop so reveals run visibly right within the user's field of view.
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -43,14 +46,21 @@ export default function RevealObserver() {
         });
       },
       {
-        rootMargin: "0px 0px -14% 0px",
-        threshold: 0.06,
+        rootMargin: isMobile ? "0px 0px -6% 0px" : "0px 0px -10% 0px",
+        threshold: 0.04,
       }
     );
 
     const observeElements = () => {
+      const vh = window.innerHeight;
       document.querySelectorAll<HTMLElement>(".reveal:not(.is-in)").forEach((el) => {
-        io.observe(el);
+        const rect = el.getBoundingClientRect();
+        // If element is already in the viewport on mount, reveal it immediately
+        if (rect.top < vh && rect.bottom > 0) {
+          el.classList.add("is-in");
+        } else {
+          io.observe(el);
+        }
       });
     };
 
@@ -60,18 +70,43 @@ export default function RevealObserver() {
     const mo = new MutationObserver(observeElements);
     mo.observe(document.body, { childList: true, subtree: true });
 
-    // Safety fallback: ensure no element is left at opacity 0 if observer fails
+    // Passive scroll check: safety fallback for rapid flings or throttled IO
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const vh = window.innerHeight;
+          const pending = document.querySelectorAll<HTMLElement>(".reveal:not(.is-in)");
+          if (pending.length === 0) {
+            window.removeEventListener("scroll", onScroll);
+          } else {
+            pending.forEach((el) => {
+              const r = el.getBoundingClientRect();
+              if (r.top < vh + 50 && r.bottom > -50) {
+                el.classList.add("is-in");
+                io.unobserve(el);
+              }
+            });
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    // Safety timer: guarantees content is NEVER permanently hidden if any observer stalls
     const safetyTimer = setTimeout(() => {
       document.querySelectorAll<HTMLElement>(".reveal:not(.is-in)").forEach((el) => {
-        const r = el.getBoundingClientRect();
-        if (r.top < window.innerHeight && r.bottom > 0) {
-          el.classList.add("is-in");
-        }
+        el.classList.add("is-in");
       });
-    }, 4000);
+      window.removeEventListener("scroll", onScroll);
+    }, 2500);
 
     return () => {
       clearTimeout(safetyTimer);
+      window.removeEventListener("scroll", onScroll);
       io.disconnect();
       mo.disconnect();
     };

@@ -9620,9 +9620,18 @@ html:not(.js) .hero-expand-actions {
   /* Row 6 */
   .js #shipped .sb-card--partners.reveal { transition-delay: 0ms; }
 
+  /* Results Strip Metric Cards: Staggered entrance */
+  .js .results-strip__header.reveal {
+    transition-duration: 480ms;
+  }
+  .js .results-strip__card.reveal:nth-child(1) { transition-delay: 60ms; }
+  .js .results-strip__card.reveal:nth-child(2) { transition-delay: 130ms; }
+  .js .results-strip__card.reveal:nth-child(3) { transition-delay: 200ms; }
+  .js .results-strip__card.reveal:nth-child(4) { transition-delay: 270ms; }
+
   /* Showcase Cards in Selected Work */
   .js .showcase-card.reveal {
-    transition-duration: 560ms;
+    transition-duration: 520ms;
   }
 
   /* Tools Grid Module Cards */
@@ -9632,11 +9641,24 @@ html:not(.js) .hero-expand-actions {
 }
 
 /* Card Hover Polish: Clean -4px lift with subtle border & shadow glow.
-   Avoids blurry scale(1.025) transforms that degrade font rendering. */
+   Avoids blurry scale transforms that degrade font rendering. */
 .js #shipped .sb-card.reveal.is-in:hover {
   transition-delay: 0ms !important;
   transform: translateY(-4px);
   box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(213, 183, 122, 0.25);
+}
+
+.js .showcase-card.reveal.is-in:hover {
+  transition-delay: 0ms !important;
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.75);
+}
+
+.js .results-strip__card.reveal.is-in:hover {
+  transition-delay: 0ms !important;
+  transform: translateY(-3px);
+  border-color: var(--accent, #D5B77A);
+  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(213, 183, 122, 0.2);
 }
 
 /* De-emphasize unhovered sibling cards cleanly without expensive GPU blur */
@@ -9657,6 +9679,26 @@ html:not(.js) .hero-expand-actions {
   }
   .js .reveal.is-in {
     transform: translateY(0);
+  }
+
+  /* On mobile, keep card internals visible immediately so cards reveal as a unified block */
+  .js .sb-card .sb-site-thumb,
+  .js .sb-card .sb-cluster-pillar,
+  .js .sb-card .sb-cluster-node,
+  .js .sb-card .sb-signal-item,
+  .js .sb-card .sb-lane-card,
+  .js .sb-card .sb-competitor-card,
+  .js .sb-card .sb-product-pill,
+  .js .sb-card .sb-linkedin-col,
+  .js .sb-card .sb-video-screen,
+  .js .sb-card .sb-waveform,
+  .js .sb-card .sb-wave-bar,
+  .js .sb-card .sb-waveform span,
+  .js .sb-card .sb-stat-chip,
+  .js .sb-card .sb-tier-pill {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
