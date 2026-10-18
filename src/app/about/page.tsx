@@ -133,9 +133,9 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="about-chips-wrap">
-              <span className="about-chip">Product marketing and positioning</span>
-              <span className="about-chip">Demand generation</span>
-              <span className="about-chip">SEO and AI search</span>
+              <span className="about-chip">AI visibility</span>
+              <span className="about-chip">LinkedIn marketing</span>
+              <span className="about-chip">Google and Meta ads</span>
               <span className="about-chip">Marketing analytics</span>
             </div>
           </div>
