@@ -739,14 +739,8 @@ export default function ShippedBento() {
         <div className="sb-visual sb-visual--videos">
           <div className="sb-video-deck">
             <div className="sb-video-screen">
-              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={asset("icons/heygen.png")}
-                  alt="HeyGen"
-                  className="sb-heygen-icon"
-                />
-                <span style={{ fontSize: "0.78rem", fontWeight: 600, color: "#F4F0E8" }}>HeyGen &amp; Screen Recording</span>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <span style={{ fontSize: "0.78rem", fontWeight: 600, color: "#F4F0E8" }}>Video production</span>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
                 <span className="sb-stat-chip">AI avatar videos</span>
