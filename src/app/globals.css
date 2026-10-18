@@ -9799,6 +9799,11 @@ html:not(.js) .hero-expand-actions {
     max-width: 280px;
   }
 
+  .about-avatar__media {
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  }
+
   .about-hero__text {
     order: 2;
     padding-bottom: 48px;

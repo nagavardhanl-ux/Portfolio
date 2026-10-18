@@ -32,7 +32,7 @@ const subscribeReducedMotion = (callback: () => void) => {
 
 export default function AboutAvatar({
   webmSrc,
-  pngSrc = asset("about/avatar-still.png"),
+  pngSrc = asset("about/avatar.webp"),
   className = "",
 }: AboutAvatarProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -88,9 +88,11 @@ export default function AboutAvatar({
         /* eslint-disable-next-line @next/next/no-img-element */
         <img
           src={pngSrc}
-          alt="Nagavardhan's AI avatar"
+          alt="Nagavardhan"
           className="about-avatar__media"
           loading="eager"
+          width={1024}
+          height={935}
         />
       )}
     </div>
