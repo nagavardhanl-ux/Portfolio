@@ -9656,9 +9656,9 @@ html:not(.js) .hero-expand-actions {
 
 .js .results-strip__card.reveal.is-in:hover {
   transition-delay: 0ms !important;
-  transform: translateY(-3px);
-  border-color: var(--accent, #D5B77A);
-  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(213, 183, 122, 0.2);
+  transform: translateY(-4px);
+  border-color: rgba(213, 183, 122, 0.45);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.65), 0 0 22px -4px rgba(213, 183, 122, 0.16);
 }
 
 /* De-emphasize unhovered sibling cards cleanly without expensive GPU blur */
@@ -11180,12 +11180,50 @@ html:not(.js) .hero-expand-actions {
   justify-content: flex-start;
   gap: clamp(8px, 1.2vw, 12px);
   min-width: 0;
-  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.results-strip__card:hover {
-  border-color: var(--accent, #D5B77A);
-  transform: translateY(-2px);
+/* Single bold 'L' corner line on outer surface (Top & Left covering till corners).
+   At rest: hidden so card displays cleanly as a normal card.
+   On hover: smoothly draws/blooms to full edges with glowing champagne gold highlight. */
+.results-strip__card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 0;
+  height: 0;
+  border-top: 3px solid #EAD5A8;
+  border-left: 3px solid #EAD5A8;
+  border-top-left-radius: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: width 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.22s ease,
+              filter 0.3s ease;
+}
+
+/* Hover: L-line draws across top to top-right corner and down to bottom-left corner */
+.results-strip__card:hover::before,
+.js .results-strip__card.reveal.is-in:hover::before {
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(213, 183, 122, 0.85))
+          drop-shadow(0 0 16px rgba(213, 183, 122, 0.4));
+}
+
+.results-strip__card:hover,
+.js .results-strip__card.reveal.is-in:hover {
+  transition-delay: 0ms !important;
+  transform: translateY(-4px);
+  border-color: rgba(213, 183, 122, 0.45);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.65), 0 0 24px -4px rgba(213, 183, 122, 0.18);
 }
 
 .results-strip__label {
@@ -11236,6 +11274,10 @@ html:not(.js) .hero-expand-actions {
     padding: 14px 12px;
     border-radius: 10px;
     gap: 8px;
+  }
+
+  .results-strip__card::before {
+    border-top-left-radius: 10px;
   }
 
   .results-strip__label {
