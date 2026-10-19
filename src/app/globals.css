@@ -9710,6 +9710,12 @@ html:not(.js) .hero-expand-actions {
     transform: none !important;
     transition: none !important;
   }
+  .about-avatar-glow,
+  .about-avatar__media {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 
@@ -9788,35 +9794,42 @@ html:not(.js) .hero-expand-actions {
   width: 100%;
 }
 
-/* Ambient breathing animation for the background gold glow */
-@keyframes aboutGlowPulse {
+/* Continuous floating animation for avatar image */
+@keyframes avatarContinuousFloat {
   0%, 100% {
-    transform: translateX(-50%) scale(1);
-    opacity: 0.85;
+    transform: translateY(0px);
   }
   50% {
-    transform: translateX(-50%) scale(1.06);
+    transform: translateY(-7px);
+  }
+}
+
+/* Synchronized subtle glow breathing behind the head */
+@keyframes headGlowFloat {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0px) scale(1);
+    opacity: 0.82;
+  }
+  50% {
+    transform: translateX(-50%) translateY(-5px) scale(1.06);
     opacity: 1;
   }
 }
 
 .about-avatar-glow {
   position: absolute;
-  bottom: 24px;
+  top: 18px;
   left: 50%;
   transform: translateX(-50%);
-  width: clamp(240px, 30vw, 360px);
-  height: clamp(240px, 30vw, 360px);
+  width: clamp(200px, 25vw, 310px);
+  height: clamp(200px, 25vw, 310px);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(213, 183, 122, 0.26) 0%, rgba(213, 183, 122, 0.09) 50%, rgba(17, 18, 20, 0) 72%);
+  background: radial-gradient(circle, rgba(213, 183, 122, 0.24) 0%, rgba(213, 183, 122, 0.08) 46%, rgba(213, 183, 122, 0.02) 66%, transparent 76%);
   pointer-events: none;
   z-index: 0;
   filter: blur(28px);
-  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 520ms cubic-bezier(0.16, 1, 0.3, 1),
-              filter 520ms ease,
-              background 520ms ease;
-  animation: aboutGlowPulse 6s ease-in-out infinite;
+  animation: headGlowFloat 5.5s ease-in-out infinite;
+  transition: opacity 480ms ease, filter 480ms ease, background 480ms ease;
 }
 
 .about-avatar {
@@ -9830,7 +9843,6 @@ html:not(.js) .hero-expand-actions {
   background: transparent;
   border: none;
   box-shadow: none;
-  cursor: pointer;
 }
 
 .about-avatar__media {
@@ -9844,23 +9856,15 @@ html:not(.js) .hero-expand-actions {
   border: none;
   -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
-  transition: transform 480ms cubic-bezier(0.16, 1, 0.3, 1),
-              filter 480ms ease;
-  will-change: transform, filter;
+  animation: avatarContinuousFloat 5.5s ease-in-out infinite;
+  will-change: transform;
 }
 
-/* Hover State: Radiate intensified warm gold glow and subtle upward avatar lift */
+/* Subtle glow enhancement behind the head on hover (no artificial highlight on image) */
 .about-hero__avatar-col:hover .about-avatar-glow {
-  transform: translateX(-50%) scale(1.22);
   opacity: 1;
-  filter: blur(36px);
-  background: radial-gradient(circle, rgba(213, 183, 122, 0.46) 0%, rgba(213, 183, 122, 0.18) 46%, rgba(213, 183, 122, 0.04) 70%, rgba(17, 18, 20, 0) 80%);
-  animation-play-state: paused;
-}
-
-.about-hero__avatar-col:hover .about-avatar__media {
-  transform: translateY(-4px) scale(1.015);
-  filter: drop-shadow(0 10px 24px rgba(213, 183, 122, 0.22));
+  filter: blur(32px);
+  background: radial-gradient(circle, rgba(213, 183, 122, 0.35) 0%, rgba(213, 183, 122, 0.12) 48%, rgba(213, 183, 122, 0.03) 68%, transparent 78%);
 }
 
 .about-avatar-caption {
