@@ -3131,7 +3131,8 @@ a.hover-lift:focus-visible .go {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden;
+  /* visible so tool tooltips can extend past the card edge without being clipped */
+  overflow: visible;
   transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1),
               border-color 200ms ease,
               box-shadow 240ms ease;
@@ -3341,6 +3342,42 @@ a.hover-lift:focus-visible .go {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
+}
+
+/* Edge tiles: anchor the tooltip to the tile edge so long labels (e.g.
+   "Google Search Console") never spill past the card or the viewport. */
+.tools-mod .tools-tile:first-child .tools-tile__tooltip {
+  left: 0;
+  right: auto;
+  transform: translateX(0) translateY(4px);
+}
+
+.tools-mod .tools-tile:first-child:hover .tools-tile__tooltip,
+.tools-mod .tools-tile:first-child:focus-visible .tools-tile__tooltip {
+  transform: translateX(0) translateY(0);
+}
+
+.tools-mod .tools-tile:first-child .tools-tile__tooltip::after {
+  left: 16px;
+  right: auto;
+  transform: none;
+}
+
+.tools-mod .tools-tile:last-child .tools-tile__tooltip {
+  left: auto;
+  right: 0;
+  transform: translateX(0) translateY(4px);
+}
+
+.tools-mod .tools-tile:last-child:hover .tools-tile__tooltip,
+.tools-mod .tools-tile:last-child:focus-visible .tools-tile__tooltip {
+  transform: translateX(0) translateY(0);
+}
+
+.tools-mod .tools-tile:last-child .tools-tile__tooltip::after {
+  left: auto;
+  right: 16px;
+  transform: none;
 }
 
 /* Responsive Breakpoints */
