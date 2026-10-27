@@ -4,7 +4,6 @@ import ToolsGrid from "@/components/ToolsGrid";
 import ShippedBento from "@/components/ShippedBento";
 import CapabilitiesSection from "@/components/CapabilitiesSection";
 import HeroScrollExpansion from "@/components/HeroScrollExpansion";
-import ResultsStrip from "@/components/ResultsStrip";
 import JsonLd from "@/components/JsonLd";
 import { homeStructuredData, pageMetadata } from "@/lib/meta";
 
@@ -25,9 +24,6 @@ export default function Home() {
           <ShippedBento />
         </div>
       </section>
-
-      {/* Where the work is moving */}
-      <ResultsStrip style={{ paddingTop: 0 }} />
 
       {/* Selected work */}
       <section className="section" aria-labelledby="work-title" id="work" style={{ paddingTop: 0 }}>
