@@ -1108,9 +1108,9 @@ a {
 .page-head--websites .page-head__bg-img,
 .page-head--gallery .page-head__bg-img {
   object-position: right center;
-  opacity: 0.44;
-  filter: blur(3.5px) saturate(1.1) brightness(0.9);
-  transform: scale(1.03);
+  opacity: 0.48;
+  filter: blur(1px) saturate(1.1) brightness(0.92);
+  transform: scale(1.01);
 }
 
 .page-head--about .page-head__scrim,
@@ -8878,9 +8878,9 @@ body::after,
   height: 100%;
   object-fit: cover;
   object-position: right center;
-  opacity: 0.44;
-  filter: blur(3.5px) saturate(1.1) brightness(0.9);
-  transform: scale(1.03);
+  opacity: 0.48;
+  filter: blur(1px) saturate(1.1) brightness(0.92);
+  transform: scale(1.01);
 }
 
 .wid-hero--has-bg .wid-hero__scrim {
