@@ -3,6 +3,7 @@ import { ArrowRight } from "@/components/icons";
 import Shot from "@/components/Shot";
 import { whatIDoPage, capabilitySections } from "@/data/whatIDo";
 import { pageMetadata } from "@/lib/meta";
+import { asset } from "@/lib/config";
 
 export const metadata = pageMetadata("/what-i-do/");
 
@@ -12,7 +13,16 @@ export default function WhatIDoPage() {
   return (
     <main className="wid-page">
       {/* ── Page Hero ────────────────────────────────────────── */}
-      <header className="wid-hero">
+      <header className="wid-hero wid-hero--has-bg">
+        <div className="wid-hero__bg" aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={asset("what-i-do/what-i-do-hero.webp")}
+            alt=""
+            className="wid-hero__bg-img"
+          />
+          <div className="wid-hero__scrim" />
+        </div>
         <div className="wid-container">
           <h1 className="wid-hero__title">{whatIDoPage.heading}</h1>
           <p className="wid-hero__intro">{whatIDoPage.intro}</p>

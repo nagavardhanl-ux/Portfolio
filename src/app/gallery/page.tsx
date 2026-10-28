@@ -3,18 +3,25 @@ import GalleryCard from "@/components/GalleryCard";
 import CatalogueViewer from "@/components/CatalogueViewer";
 import { videos, cataloguePages } from "@/data/gallery";
 import { pageMetadata } from "@/lib/meta";
+import { asset } from "@/lib/config";
 
 export const metadata = pageMetadata("/gallery/");
 
 export default function GalleryPage() {
   return (
     <>
-      <header className="page-head">
+      <header className="page-head page-head--has-bg page-head--gallery" aria-labelledby="gallery-hero-title">
+        <div className="page-head__bg" aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={asset("gallery/gallery-hero.webp")}
+            alt=""
+            className="page-head__bg-img"
+          />
+          <div className="page-head__scrim" />
+        </div>
         <div className="container">
-          <p className="marker">
-            <b>Gallery</b>
-          </p>
-          <h1 className="h1">Gallery</h1>
+          <h1 id="gallery-hero-title" className="h1">Gallery</h1>
           <p className="lead">Videos and design work. More added as it ships.</p>
         </div>
       </header>

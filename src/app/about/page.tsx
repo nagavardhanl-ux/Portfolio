@@ -13,15 +13,33 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="about-page">
-      {/* ── SECTION 1: HERO (split layout) ── */}
-      <section className="about-hero" aria-labelledby="about-hero-title">
+      {/* ── Page Hero Header ── */}
+      <header className="page-head page-head--about" aria-labelledby="about-page-title">
+        <div className="page-head__bg" aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={asset("about/about-hero.webp")}
+            alt=""
+            className="page-head__bg-img"
+          />
+          <div className="page-head__scrim" />
+        </div>
+        <div className="container">
+          <h1 id="about-page-title" className="h1">About</h1>
+          <p className="lead">
+            From five years in operations to marketing for AI platforms.
+          </p>
+        </div>
+      </header>
+
+      {/* ── SECTION 1: STORY (split layout) ── */}
+      <section className="about-hero about-story" aria-labelledby="about-story-title">
         <div className="container">
           <div className="about-hero__grid">
             <div className="about-hero__text reveal">
-              <span className="about-eyebrow">About</span>
-              <h1 id="about-hero-title" className="about-hero__title">
+              <h2 id="about-story-title" className="about-hero__title">
                 From operations to marketing for AI companies
-              </h1>
+              </h2>
               <p className="about-hero__intro">
                 I spent five years running a family business, a convention hall and the vendor side of a trading company. In 2025 I moved into marketing, and nine months later I was running it for two AI platforms.
               </p>

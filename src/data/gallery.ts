@@ -8,13 +8,18 @@ export interface VideoItem {
 
 export const videos: VideoItem[] = [
   {
+    id: "gsYJwu_CHGM",
+    title: "AIQoD: The Enterprise Intelligence Platform That Gets AI Agents Into Production",
+    role: "Product video, created using Claude",
+  },
+  {
     id: "aRwER0h7pvI",
     title: "Great Opportunities Rarely Wait for Slow Decisions",
     role: "Smart AI Investor promo, AI avatar video (HeyGen)",
   },
   {
     id: "r6Pd00z7t7c",
-    title: "Limon, Smart Investor: Funding Readiness Buddy",
+    title: "Lemon Buddy",
     role: "Product feature on the Lemon Ideas podcast",
   },
 ];
