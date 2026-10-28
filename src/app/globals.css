@@ -2379,84 +2379,111 @@ textarea.input {
   z-index: 1;
 }
 
-/* ── The Graphical Navigation Deck ── */
-.footer-deck {
-  margin-bottom: clamp(32px, 4vw, 48px);
+/* ── Border Beam Navigation Box ── */
+.footer-nav-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 1.5px;
+  background: var(--hairline);
+  margin-bottom: clamp(36px, 5vw, 56px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -8px rgba(213, 183, 122, 0.15);
 }
 
-.footer-deck__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
+/* Continuous rotating gold line beam passing around the box */
+.footer-nav-box::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250%;
+  height: 600%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 260deg,
+    rgba(213, 183, 122, 0.15) 290deg,
+    rgba(213, 183, 122, 0.95) 330deg,
+    #FFF6E0 350deg,
+    rgba(213, 183, 122, 0.95) 360deg
+  );
+  animation: footerGoldBeam 5s linear infinite;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.footer-deck__label {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin: 0;
+@keyframes footerGoldBeam {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
-.footer-deck__grid {
+@media (prefers-reduced-motion: reduce) {
+  .footer-nav-box::before {
+    animation: none;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}
+
+.footer-nav-box__inner {
+  position: relative;
+  z-index: 1;
+  background: #141518;
+  border-radius: 14.5px;
+  padding: 8px;
+}
+
+.footer-nav-box__grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 12px;
+  gap: 8px;
 }
 
 @media (max-width: 900px) {
-  .footer-deck__grid {
+  .footer-nav-box__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 520px) {
-  .footer-deck__grid {
+  .footer-nav-box__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-.footer-deck__item {
+.footer-nav-box__item {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 14px 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 12px;
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--hairline);
-  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
   text-decoration: none;
   transition: all 220ms var(--ease);
 }
 
-.footer-deck__item:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--accent);
-  transform: translateY(-2px);
+.footer-nav-box__item:hover {
+  background: rgba(213, 183, 122, 0.08);
+  border-color: rgba(213, 183, 122, 0.3);
+  transform: translateY(-1px);
 }
 
-.footer-deck__num {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: #85847F;
-  transition: color 220ms var(--ease);
-}
-
-.footer-deck__item:hover .footer-deck__num {
-  color: var(--accent);
-}
-
-.footer-deck__name {
+.footer-nav-box__name {
   font-family: var(--font-heading);
   font-size: 0.95rem;
   font-weight: 500;
   color: #F4F0E8;
+  letter-spacing: -0.01em;
   transition: color 220ms var(--ease);
 }
 
-.footer-deck__item:hover .footer-deck__name {
-  color: var(--accent);
+.footer-nav-box__item:hover .footer-nav-box__name {
+  color: var(--accent, #D5B77A);
 }
 
 /* ── 3. Bottom Colophon Bar ── */
