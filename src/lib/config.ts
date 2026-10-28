@@ -4,8 +4,8 @@
 export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export const site = {
-  name: "Nagavardhan Reddy Lella",
-  shortName: "Nagavardhan",
+  name: "Nagavardhan Lella",
+  shortName: "Nagavardhan Lella",
   /** Absolute URL of the site root (with trailing slash). Used for canonical, OpenGraph and sitemap. */
   url: "https://nagavardhanl-ux.github.io/Portfolio/",
   ogImage: "og/og-default.png",

@@ -63,8 +63,8 @@ export default function Nav() {
   return (
     <header className="nav" data-scrolled={scrolled || mobileOpen}>
       <div className="container nav__inner">
-        <Link href="/" className="wordmark" aria-label="Nagavardhan, home">
-          Nagavardhan
+        <Link href="/" className="wordmark" aria-label="Nagavardhan Lella, home">
+          Nagavardhan Lella
         </Link>
 
         <nav aria-label="Main">

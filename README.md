@@ -1,4 +1,4 @@
-# Nagavardhan Reddy Lella · Portfolio
+# Nagavardhan Lella · Portfolio
 
 Next.js 16 (App Router) exported as static HTML and hosted on GitHub Pages at
 https://nagavardhanl-ux.github.io/Portfolio/

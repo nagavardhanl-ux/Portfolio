@@ -29,7 +29,7 @@ export default function Footer() {
         {/* Bottom Colophon Bar */}
         <div className="footer-bottom">
           <div className="footer-bottom__left">
-            <span className="footer-bottom__wordmark">Nagavardhan Reddy Lella</span>
+            <span className="footer-bottom__wordmark">Nagavardhan Lella</span>
             <span className="footer-bottom__sub">B2B marketing and the websites it runs on</span>
           </div>
 
