@@ -1,3 +1,4 @@
+import ContactForm from "@/components/ContactForm";
 import { ArrowUpRight } from "@/components/icons";
 import { contact } from "@/lib/config";
 import { pageMetadata } from "@/lib/meta";
@@ -13,11 +14,11 @@ export default function ContactPage() {
             <b>Contact</b>
           </p>
           <h1 className="h1">Get in touch</h1>
-          <p className="lead">Questions about the work, a role or a website build. Email or message on LinkedIn.</p>
+          <p className="lead">Questions about the work, a role or a website build. Send a message, email or connect on LinkedIn.</p>
         </div>
       </header>
 
-      <section className="section" aria-label="Contact details">
+      <section className="section" aria-label="Contact details and message form">
         <div className="container contact-grid">
           <ul className="contact-list reveal" role="list">
             <li>
@@ -36,6 +37,10 @@ export default function ContactPage() {
               </a>
             </li>
           </ul>
+
+          <div className="reveal" style={{ ["--delay" as string]: "50ms" }}>
+            <ContactForm />
+          </div>
         </div>
       </section>
     </>

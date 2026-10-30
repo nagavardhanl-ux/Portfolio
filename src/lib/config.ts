@@ -17,11 +17,11 @@ export const contact = {
 };
 
 /**
- * Contact form.
- * PLACEHOLDER: create a form at formspree.io and paste its ID (the part after /f/).
- * While empty, the form says it is not connected yet and offers email instead.
+ * Contact form with Web3Forms.
+ * Get a free Access Key at https://web3forms.com (delivered to your email instantly).
+ * You can also set NEXT_PUBLIC_WEB3FORMS_KEY in your environment or .env.local file.
  */
-export const formspreeId = "";
+export const web3formsAccessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "4bf2a59d-46b5-4a66-99ec-8fd9b9e2b592";
 
 /** Prefix a public/ file path with the base path, for plain <img>, <a href> and fetch. */
 export const asset = (path: string) => `${BASE_PATH}/${path.replace(/^\//, "")}`;

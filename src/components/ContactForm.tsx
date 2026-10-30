@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { contact, formspreeId } from "@/lib/config";
+import { contact, web3formsAccessKey } from "@/lib/config";
 import { Alert, ArrowRight, Check } from "./icons";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -19,11 +19,15 @@ const validate = (data: FormData): Errors => {
   return errors;
 };
 
-/** Posts to Formspree. Until formspreeId is set it shows as not connected. */
+/**
+ * Web3Forms contact form integration.
+ * Free plan delivers submissions directly to email via https://api.web3forms.com/submit
+ */
 export default function ContactForm() {
-  const connected = Boolean(formspreeId);
+  const connected = Boolean(web3formsAccessKey);
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Errors>({});
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,15 +43,23 @@ export default function ContactForm() {
     if (!connected) return;
 
     setStatus("submitting");
+    setErrorMessage("");
+
     try {
-      const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
       });
-      if (!res.ok) throw new Error(String(res.status));
-      form.reset();
-      setStatus("success");
+      const result = await res.json();
+
+      if (res.ok && result.success) {
+        form.reset();
+        setStatus("success");
+      } else {
+        setErrorMessage(result.message || "Failed to submit form.");
+        setStatus("error");
+      }
     } catch {
       setStatus("error");
     }
@@ -69,8 +81,13 @@ export default function ContactForm() {
       <div className="notice" data-tone="success" role="status">
         <Check />
         <div>
-          <p>Thanks. Your message is in, and I&apos;ll reply by email.</p>
-          <button type="button" className="link" style={{ background: "none", border: 0, padding: 0, cursor: "pointer", marginTop: 8 }} onClick={() => setStatus("idle")}>
+          <p>Thanks! Your message has been sent, and I&apos;ll get back to you shortly.</p>
+          <button
+            type="button"
+            className="link"
+            style={{ background: "none", border: 0, padding: 0, cursor: "pointer", marginTop: 8 }}
+            onClick={() => setStatus("idle")}
+          >
             Send another message
           </button>
         </div>
@@ -80,15 +97,27 @@ export default function ContactForm() {
 
   return (
     <form className="form" onSubmit={onSubmit} noValidate aria-describedby={connected ? undefined : "cf-offline"}>
+      {/* Hidden Web3Forms configuration fields */}
+      <input type="hidden" name="access_key" value={web3formsAccessKey} />
+      <input type="hidden" name="subject" value="New Portfolio Inquiry from Nagavardhan Lella Site" />
+      <input type="hidden" name="from_name" value="Portfolio Contact Form" />
+
+      {/* Bot detection honeypot */}
+      <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
+
       {!connected && (
         <p className="notice" id="cf-offline">
           <Alert />
           <span>
-            <strong style={{ color: "var(--text)", fontWeight: 500 }}>Form not connected yet.</strong> Email{" "}
+            <strong style={{ color: "var(--text)", fontWeight: 500 }}>Web3Forms Access Key not set.</strong> Get a free key at{" "}
+            <a className="link" href="https://web3forms.com" target="_blank" rel="noopener noreferrer">
+              web3forms.com
+            </a>{" "}
+            and paste it into <code style={{ fontSize: "0.85em", color: "var(--accent)" }}>web3formsAccessKey</code> in <code style={{ fontSize: "0.85em" }}>src/lib/config.ts</code> or directly reach out at{" "}
             <a className="link" href={`mailto:${contact.email}`}>
               {contact.email}
-            </a>{" "}
-            in the meantime.
+            </a>
+            .
           </span>
         </p>
       )}
@@ -96,7 +125,7 @@ export default function ContactForm() {
       <div className="form__row">
         <div className="field">
           <label htmlFor="cf-name">Name</label>
-          <input {...field("name")} type="text" autoComplete="name" required />
+          <input {...field("name")} type="text" autoComplete="name" placeholder="Your name" required />
           {errors.name && (
             <p className="field__error" id="cf-name-err">
               {errors.name}
@@ -105,7 +134,7 @@ export default function ContactForm() {
         </div>
         <div className="field">
           <label htmlFor="cf-email">Email</label>
-          <input {...field("email")} type="email" autoComplete="email" inputMode="email" required />
+          <input {...field("email")} type="email" autoComplete="email" inputMode="email" placeholder="you@domain.com" required />
           {errors.email && (
             <p className="field__error" id="cf-email-err">
               {errors.email}
@@ -118,12 +147,12 @@ export default function ContactForm() {
         <label htmlFor="cf-company">
           Company <span>(optional)</span>
         </label>
-        <input id="cf-company" name="company" type="text" autoComplete="organization" className="input" disabled={busy} />
+        <input id="cf-company" name="company" type="text" autoComplete="organization" placeholder="Your company or project" className="input" disabled={busy} />
       </div>
 
       <div className="field">
         <label htmlFor="cf-message">Message</label>
-        <textarea {...field("message")} required />
+        <textarea {...field("message")} placeholder="What are you looking to build or discuss?" required />
         {errors.message && (
           <p className="field__error" id="cf-message-err">
             {errors.message}
@@ -131,14 +160,11 @@ export default function ContactForm() {
         )}
       </div>
 
-      {/* Spam trap for Formspree; hidden from people and assistive tech. */}
-      <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ display: "none" }} />
-
       {status === "error" && (
         <p className="notice" data-tone="error" role="alert">
           <Alert />
           <span>
-            That didn&apos;t send. Try again, or email{" "}
+            {errorMessage || "That didn't send."} Try again, or email{" "}
             <a className="link" href={`mailto:${contact.email}`}>
               {contact.email}
             </a>
@@ -151,7 +177,7 @@ export default function ContactForm() {
         <button type="submit" className="btn btn--primary" disabled={!connected || busy} aria-busy={busy}>
           {busy ? (
             <>
-              <span className="spinner" aria-hidden="true" /> Sending
+              <span className="spinner" aria-hidden="true" /> Sending...
             </>
           ) : (
             <>
