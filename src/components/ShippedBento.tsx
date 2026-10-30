@@ -29,65 +29,10 @@ export default function ShippedBento() {
   return (
     <div className="shipped-bento" role="region" aria-label="What I've shipped gallery">
       {/* =========================================================================
-          ROW 1: FEATURED CARDS (7 cols + 5 cols)
+          ROW 1: FEATURED CARD (Span 12 cols)
           ========================================================================= */}
 
-      {/* 01. COMPANY WEBSITES (Span 7 cols) - Priority Anchor */}
-      <article
-        className="sb-card sb-card--websites sb-card--gold reveal"
-        tabIndex={0}
-        onMouseMove={onMouseMove}
-        onMouseLeave={onMouseLeave}
-      >
-        <div className="sb-card__bg" aria-hidden="true">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={asset("shipped-bg.webp")}
-            alt=""
-            loading="lazy"
-            className="sb-card__bg-img"
-          />
-          <div className="sb-card__bg-glow" />
-          <div className="sb-card__bg-overlay" />
-        </div>
-
-        <div className="sb-card__body">
-          <h3 className="sb-card__title">{shipped[10].label}</h3>
-          <p className="sb-card__desc">{shipped[10].detail}</p>
-        </div>
-
-        {/* Visual: Direct Multi-Site Panoramic Screenshot Strip */}
-        <div className="sb-visual sb-visual--websites" aria-hidden="true">
-          <div className="sb-site-strip">
-            <div className="sb-site-thumb">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={asset("shots/venturehub360-800.webp")}
-                alt="VentureHub360 website preview"
-                loading="lazy"
-                className="sb-site-img"
-              />
-              <span className="sb-site-label">
-                <span className="sb-dot sb-dot--live" /> VentureHub360
-              </span>
-            </div>
-            <div className="sb-site-thumb">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={asset("shots/aiqod-800.webp")}
-                alt="AIQoD website preview"
-                loading="lazy"
-                className="sb-site-img"
-              />
-              <span className="sb-site-label">
-                <span className="sb-dot sb-dot--live" /> AIQoD
-              </span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      {/* 02. AGENTIC AI CONTENT CLUSTER (Span 5 cols) - Priority Anchor */}
+      {/* 01. AGENTIC AI CONTENT CLUSTER (Span 12 cols) - Priority Anchor */}
       <article
         className="sb-card sb-card--cluster sb-card--gold reveal"
         tabIndex={0}

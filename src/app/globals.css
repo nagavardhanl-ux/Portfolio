@@ -5095,7 +5095,28 @@ body:has(.signal-home) .ambient { display:none; }
 }
 
 .sb-card--cluster {
-  grid-column: span 5;
+  grid-column: span 12;
+}
+
+@media (min-width: 1025px) {
+  .sb-card--cluster {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .sb-card--cluster .sb-card__body {
+    flex: 0 0 38%;
+    max-width: 38%;
+  }
+
+  .sb-card--cluster .sb-visual--cluster {
+    flex: 0 0 58%;
+    max-width: 58%;
+    margin-top: 0;
+  }
 }
 
 .sb-card--brief {
@@ -6672,7 +6693,6 @@ body:has(.signal-home) .ambient { display:none; }
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
   }
-  .sb-card--websites { grid-column: span 2; }
   .sb-card--cluster { grid-column: span 1; }
   .sb-card--brief { grid-column: span 1; }
   .sb-card--investors { grid-column: span 1; }
@@ -9875,8 +9895,7 @@ html:not(.js) .hero-expand-actions {
 /* Desktop Stagger Delays */
 @media (min-width: 681px) {
   /* Row 1: Staggered after heading so heading reveals first */
-  .js #shipped .sb-card--websites.reveal { transition-delay: 100ms; }
-  .js #shipped .sb-card--cluster.reveal { transition-delay: 185ms; }
+  .js #shipped .sb-card--cluster.reveal { transition-delay: 100ms; }
 
   /* Row 2 */
   .js #shipped .sb-card--brief.reveal { transition-delay: 0ms; }

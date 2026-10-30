@@ -243,7 +243,7 @@ export default function HeroScrollExpansion() {
                 src={asset("shots/hero-desk-1440.webp")}
                 alt=""
                 width={1440}
-                height={960}
+                height={638}
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
