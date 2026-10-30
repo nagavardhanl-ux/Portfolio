@@ -20,23 +20,31 @@ export default function ContactPage() {
 
       <section className="section" aria-label="Contact details and message form">
         <div className="container contact-grid">
-          <ul className="contact-list reveal" role="list">
-            <li>
-              <a href={`mailto:${contact.email}`}>
-                <span className="label">Email</span>
-                <strong>{contact.email}</strong>
-              </a>
-            </li>
-            <li>
-              <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
-                <span className="label">LinkedIn</span>
-                <strong>
-                  nagavardhan-reddy-lella <ArrowUpRight size={18} style={{ display: "inline", verticalAlign: "middle" }} />
-                </strong>
-                <span className="sr-only">(opens in a new tab)</span>
-              </a>
-            </li>
-          </ul>
+          <div className="contact-aside reveal">
+            <p className="contact-aside__note">
+              I work with startups and AI companies on product marketing, demand generation, content and websites. If you have a project or a role, I&apos;d like to hear about it.
+            </p>
+
+            <ul className="contact-list" role="list">
+              <li>
+                <a href={`mailto:${contact.email}`}>
+                  <span className="label">Email</span>
+                  <strong>{contact.email}</strong>
+                </a>
+              </li>
+              <li>
+                <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
+                  <span className="label">LinkedIn</span>
+                  <strong>
+                    nagavardhan-reddy-lella <ArrowUpRight size={18} style={{ display: "inline", verticalAlign: "middle" }} />
+                  </strong>
+                  <span className="sr-only">(opens in a new tab)</span>
+                </a>
+              </li>
+            </ul>
+
+            <p className="contact-aside__meta">Based in India, working remotely. Usually responds within a day.</p>
+          </div>
 
           <div className="reveal" style={{ ["--delay" as string]: "50ms" }}>
             <ContactForm />

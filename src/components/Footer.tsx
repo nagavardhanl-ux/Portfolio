@@ -13,17 +13,15 @@ export default function Footer() {
   return (
     <footer className="footer-graphical" aria-label="Site footer">
       <div className="container">
-        {/* Animated Gold Border Beam Navigation Box */}
-        <nav aria-label="Footer pages navigation" className="footer-nav-box">
-          <div className="footer-nav-box__inner">
-            <div className="footer-nav-box__grid">
-              {navPages.map((page) => (
-                <Link key={page.href} href={page.href} className="footer-nav-box__item">
-                  <span className="footer-nav-box__name">{page.label}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
+        {/* Animated Gold Border Beam Navigation Cards */}
+        <nav aria-label="Footer pages navigation" className="footer-nav-grid">
+          {navPages.map((page, idx) => (
+            <Link key={page.href} href={page.href} className="footer-card" style={{ ["--beam-delay" as string]: `${idx * -0.8}s` }}>
+              <span className="footer-card__inner">
+                <span className="footer-card__name">{page.label}</span>
+              </span>
+            </Link>
+          ))}
         </nav>
 
         {/* Bottom Colophon Bar */}
