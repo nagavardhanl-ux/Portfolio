@@ -22,6 +22,16 @@ export const videos: VideoItem[] = [
     title: "Lemon Buddy",
     role: "Product feature on the Lemon Ideas podcast",
   },
+  {
+    id: "EQAWHkdcptM",
+    title: "The One Question That Decides Your Investor Meeting | Startup Pitch Analyser",
+    role: "Startup Pitch Analyser promo, VentureHub360",
+  },
+  {
+    id: "FXYyd3wzR54",
+    title: "Smart AI Investor | AI That Interviews Founders and Scores Every Pitch",
+    role: "Smart AI Investor product overview, VentureHub360",
+  },
 ];
 
 export const cataloguePages: string[] = [
