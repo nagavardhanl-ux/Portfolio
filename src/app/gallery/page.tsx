@@ -1,7 +1,7 @@
 import SectionHead from "@/components/SectionHead";
 import GalleryCard from "@/components/GalleryCard";
 import CatalogueViewer from "@/components/CatalogueViewer";
-import { videos, cataloguePages } from "@/data/gallery";
+import { videos, podcastMarketingReels, cataloguePages } from "@/data/gallery";
 import { pageMetadata } from "@/lib/meta";
 import { asset } from "@/lib/config";
 
@@ -22,7 +22,7 @@ export default function GalleryPage() {
         </div>
         <div className="container">
           <h1 id="gallery-hero-title" className="h1">Gallery</h1>
-          <p className="lead">Videos and design work. More added as it ships.</p>
+          <p className="lead">Videos, podcast marketing reels, and design work. More added as it ships.</p>
         </div>
       </header>
 
@@ -41,7 +41,23 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Section 2: Catalogue (View Only) */}
+      {/* Section 2: Podcast Marketing */}
+      <section className="section" aria-labelledby="podcast-marketing-title" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <SectionHead
+            id="podcast-marketing-title"
+            title="Podcast marketing"
+            intro="Short-form reels created using Claude for podcast marketing, executive soundbites, and audience growth."
+          />
+          <div className="gallery-grid gallery-grid--reels">
+            {podcastMarketingReels.map((item) => (
+              <GalleryCard key={item.id} item={item} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: Catalogue (View Only) */}
       <section className="section" aria-labelledby="catalogue-title" style={{ paddingTop: 0 }}>
         <div className="container">
           <SectionHead

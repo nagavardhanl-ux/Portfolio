@@ -10,14 +10,22 @@ interface GalleryCardProps {
 
 export default function GalleryCard({ item }: GalleryCardProps) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [thumbSrc, setThumbSrc] = useState(
+    `https://i.ytimg.com/vi/${item.id}/maxresdefault.jpg`
+  );
 
-  const youtubeWatchUrl = `https://www.youtube.com/watch?v=${item.id}`;
+  const isReel = item.aspectRatio === "9/16" || item.type === "reel";
+  const youtubeUrl = isReel
+    ? `https://www.youtube.com/shorts/${item.id}`
+    : `https://www.youtube.com/watch?v=${item.id}`;
   const embedUrl = `https://www.youtube-nocookie.com/embed/${item.id}?autoplay=1`;
-  const thumbnailUrl = `https://i.ytimg.com/vi/${item.id}/hqdefault.jpg`;
 
   return (
-    <article className="gallery-card reveal" aria-labelledby={`gallery-title-${item.id}`}>
-      <div className="gallery-card__media">
+    <article
+      className={`gallery-card reveal ${isReel ? "gallery-card--reel" : ""}`}
+      aria-labelledby={`gallery-title-${item.id}`}
+    >
+      <div className={`gallery-card__media ${isReel ? "gallery-card__media--reel" : ""}`}>
         {!isPlaying ? (
           <button
             type="button"
@@ -27,10 +35,13 @@ export default function GalleryCard({ item }: GalleryCardProps) {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={thumbnailUrl}
+              src={thumbSrc}
               alt=""
               loading="lazy"
               className="gallery-card__thumb"
+              onError={() => {
+                setThumbSrc(`https://i.ytimg.com/vi/${item.id}/hqdefault.jpg`);
+              }}
             />
             <span className="gallery-card__play" aria-hidden="true">
               <Play size={24} />
@@ -54,12 +65,12 @@ export default function GalleryCard({ item }: GalleryCardProps) {
         <p className="gallery-card__role">{item.role}</p>
         <div className="gallery-card__actions">
           <a
-            href={youtubeWatchUrl}
+            href={youtubeUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="gallery-card__link"
           >
-            <span>Watch on YouTube</span>
+            <span>{isReel ? "Watch on YouTube Shorts" : "Watch on YouTube"}</span>
             <ArrowUpRight size={14} aria-hidden="true" />
             <span className="sr-only">(opens in a new tab)</span>
           </a>

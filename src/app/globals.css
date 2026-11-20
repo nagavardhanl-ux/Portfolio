@@ -7214,7 +7214,17 @@ body:has(.signal-home) .footer {
 }
 
 .section-head--plain .section-head__text {
-  max-width: 860px;
+  max-width: 900px;
+  gap: 12px;
+}
+
+.section-head .lead,
+.section-head--plain .lead {
+  max-width: 100%;
+  margin: 0;
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--text-2);
 }
 
 .signal-proof__inner,
@@ -11245,6 +11255,28 @@ html:not(.js) .hero-expand-actions {
   }
 }
 
+/* Vertical Reels / Shorts in Gallery (3 in row 1, 2 in row 2) */
+.gallery-grid--reels {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3.5vw, 44px);
+  width: 100%;
+}
+
+@media (max-width: 959px) and (min-width: 580px) {
+  .gallery-grid--reels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+}
+
+@media (max-width: 579px) {
+  .gallery-grid--reels {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+}
+
 .gallery-card {
   display: flex;
   flex-direction: column;
@@ -11256,6 +11288,55 @@ html:not(.js) .hero-expand-actions {
   transition: border-color 220ms var(--ease),
               transform 220ms var(--ease),
               box-shadow 220ms var(--ease);
+}
+
+.gallery-card--reel .gallery-card__media {
+  aspect-ratio: 9 / 16;
+}
+
+.gallery-card--reel .gallery-card__title {
+  font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+  line-height: 1.35;
+}
+
+.gallery-card--reel .gallery-card__body {
+  padding: 16px;
+  gap: 6px;
+}
+
+.gallery-card__tag {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(213, 183, 122, 0.08);
+  border: 1px solid rgba(213, 183, 122, 0.28);
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+}
+
+.gallery-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(17, 18, 20, 0.88);
+  border: 1px solid rgba(213, 183, 122, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 3px 8px;
+  border-radius: 999px;
+  pointer-events: none;
 }
 
 .gallery-card:hover {

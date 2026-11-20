@@ -2,8 +2,9 @@ export interface VideoItem {
   id: string;
   title: string;
   role: string;
-  type?: "video";
+  type?: "video" | "reel" | "short";
   platform?: "youtube";
+  aspectRatio?: "16/9" | "9/16";
 }
 
 export const videos: VideoItem[] = [
@@ -31,6 +32,44 @@ export const videos: VideoItem[] = [
     id: "FXYyd3wzR54",
     title: "Smart AI Investor | AI That Interviews Founders and Scores Every Pitch",
     role: "Smart AI Investor product overview, VentureHub360",
+  },
+];
+
+export const podcastMarketingReels: VideoItem[] = [
+  {
+    id: "IhJ1hZ_QbsQ",
+    title: "How a Family Vacation Moved AIQoD from RPA to AI | Anil Nair",
+    role: "Podcast marketing reel, created using Claude",
+    type: "reel",
+    aspectRatio: "9/16",
+  },
+  {
+    id: "heZTNeVwEdE",
+    title: "We Run On It Before We Sell It | Anil Nair, AIQoD",
+    role: "Podcast marketing reel, created using Claude",
+    type: "reel",
+    aspectRatio: "9/16",
+  },
+  {
+    id: "grutg13BOmQ",
+    title: "When AI Fails, Someone Asks Why",
+    role: "Podcast marketing reel, created using Claude",
+    type: "reel",
+    aspectRatio: "9/16",
+  },
+  {
+    id: "nhncQTMh1os",
+    title: "Who Maintains 40,000 Lines of AI-Generated Code?",
+    role: "Podcast marketing reel, created using Claude",
+    type: "reel",
+    aspectRatio: "9/16",
+  },
+  {
+    id: "ZhJPmobmj-g",
+    title: "4 Weeks, Not 6 Months: How a Government E-Visa System Went Live",
+    role: "Podcast marketing reel, created using Claude",
+    type: "reel",
+    aspectRatio: "9/16",
   },
 ];
 
