@@ -1,0 +1,34 @@
+# Nagavardhan Lella
+
+> B2B marketer running marketing for two AI platforms, AIQoD and VentureHub360, and building the sites, content, and campaigns that go with them.
+
+Nagavardhan Lella is a B2B marketer with a background in operations who handles end-to-end marketing, positioning, demand generation, content, SEO, and full-stack website builds for enterprise AI software platforms.
+
+## Core Information
+- Role: B2B Marketer & Web Builder
+- Location: India (working remotely)
+- Primary Platforms: AIQoD (Enterprise Intelligence Platform) and VentureHub360 (Startup Ecosystem & Investor Platform)
+- Contact Email: nagavardhan1437@gmail.com
+- LinkedIn: https://www.linkedin.com/in/nagavardhan-reddy-lella/
+- Portfolio Website: https://nagavardhanl-ux.github.io/Portfolio/
+
+## Pages
+- [Home](https://nagavardhanl-ux.github.io/Portfolio/): Overview of shipped work, live company websites, capabilities, and tools.
+- [About](https://nagavardhanl-ux.github.io/Portfolio/about/): Background from operations (convention hall, family business, trading) to AI marketing; how Nagavardhan works and principles.
+- [Websites](https://nagavardhanl-ux.github.io/Portfolio/websites/): End-to-end company websites built for AIQoD and VentureHub360, plus concept builds (Axion, Wayfarer, Mustang, Ether, F1 Experience).
+- [What I Do](https://nagavardhanl-ux.github.io/Portfolio/what-i-do/): Deep dive into product marketing, demand generation, content & LinkedIn, websites & SEO, and AI-led execution.
+- [Gallery](https://nagavardhanl-ux.github.io/Portfolio/gallery/): Product videos, AI avatar videos, podcast marketing reels created using Claude, and an earlier IT sourcing catalogue designed end to end.
+- [Contact](https://nagavardhanl-ux.github.io/Portfolio/contact/): Get in touch via email, LinkedIn, or the message form.
+
+## Capabilities & Specializations
+- Product Marketing: Positioning, messaging frameworks, ICP segmentation matrix, competitive intelligence, feature launch decks, sales battlecards.
+- Demand Generation: Inbound capture, outbound cadences, account lists, lead magnet playbooks, pipeline tracking.
+- Content & LinkedIn: Topic clusters, pillar content, thought leadership carousels, executive soundbites, case studies.
+- Websites & SEO: Next.js, React, Tailwind CSS, TypeScript, technical SEO, semantic HTML, schema markup, Core Web Vitals optimization.
+- AI-Led Execution: Claude, Cursor, HeyGen AI avatars, prompt workflows, automated research, data synthesis.
+
+## Shipped Work Highlights
+- AIQoD Enterprise Site: 42 pages built in Next.js/Tailwind, launched in 5 weeks, supporting enterprise sales cycles.
+- VentureHub360 Ecosystem: Multi-product platform marketing, investor scoring workflows, and product launch assets.
+- Topic Clusters & Organic Search: Pillar guides and topic clusters with FAQ schema and HTML tables for AI and search visibility.
+- Thought Leadership & Video: Executive podcast marketing reels created using Claude, HeyGen avatar explainers, and interactive demos.

@@ -1,8 +1,9 @@
 import SectionHead from "@/components/SectionHead";
 import GalleryCard from "@/components/GalleryCard";
 import CatalogueViewer from "@/components/CatalogueViewer";
+import JsonLd from "@/components/JsonLd";
 import { videos, podcastMarketingReels, cataloguePages } from "@/data/gallery";
-import { pageMetadata } from "@/lib/meta";
+import { galleryStructuredData, pageMetadata } from "@/lib/meta";
 import { asset } from "@/lib/config";
 
 export const metadata = pageMetadata("/gallery/");
@@ -10,6 +11,7 @@ export const metadata = pageMetadata("/gallery/");
 export default function GalleryPage() {
   return (
     <>
+      <JsonLd data={galleryStructuredData()} />
       <header className="page-head page-head--has-bg page-head--gallery" aria-labelledby="gallery-hero-title">
         <div className="page-head__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}

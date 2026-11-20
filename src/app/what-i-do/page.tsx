@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { ArrowRight } from "@/components/icons";
 import Shot from "@/components/Shot";
+import JsonLd from "@/components/JsonLd";
 import { whatIDoPage, capabilitySections } from "@/data/whatIDo";
-import { pageMetadata } from "@/lib/meta";
+import { pageMetadata, whatIDoStructuredData } from "@/lib/meta";
 import { asset } from "@/lib/config";
 
 export const metadata = pageMetadata("/what-i-do/");
@@ -11,7 +12,8 @@ export default function WhatIDoPage() {
   const [pm, dg, content, web, ai] = capabilitySections;
 
   return (
-    <main className="wid-page">
+    <div className="wid-page">
+      <JsonLd data={whatIDoStructuredData()} />
       {/* ── Page Hero ────────────────────────────────────────── */}
       <header className="wid-hero wid-hero--has-bg">
         <div className="wid-hero__bg" aria-hidden="true">
@@ -380,7 +382,7 @@ export default function WhatIDoPage() {
           <div className="wid-ai-domains">
             <div className="wid-ai-card">
               <span className="wid-ai-card__num">01 / RESEARCH</span>
-              <h4 className="wid-ai-card__title">Research</h4>
+              <h3 className="wid-ai-card__title">Research</h3>
               <div className="wid-ai-card__tools">
                 <span className="wid-tool-badge">ChatGPT</span>
                 <span className="wid-tool-badge">Claude</span>
@@ -393,7 +395,7 @@ export default function WhatIDoPage() {
 
             <div className="wid-ai-card">
               <span className="wid-ai-card__num">02 / CONTENT</span>
-              <h4 className="wid-ai-card__title">Content</h4>
+              <h3 className="wid-ai-card__title">Content</h3>
               <div className="wid-ai-card__tools">
                 <span className="wid-tool-badge">Canva</span>
                 <span className="wid-tool-badge">ChatGPT</span>
@@ -405,7 +407,7 @@ export default function WhatIDoPage() {
 
             <div className="wid-ai-card">
               <span className="wid-ai-card__num">03 / VIDEO</span>
-              <h4 className="wid-ai-card__title">Video</h4>
+              <h3 className="wid-ai-card__title">Video</h3>
               <div className="wid-ai-card__tools">
                 <span className="wid-tool-badge">HeyGen</span>
                 <span className="wid-tool-badge">Google Flow</span>
@@ -417,7 +419,7 @@ export default function WhatIDoPage() {
 
             <div className="wid-ai-card">
               <span className="wid-ai-card__num">04 / ANALYSE</span>
-              <h4 className="wid-ai-card__title">Analytics</h4>
+              <h3 className="wid-ai-card__title">Analytics</h3>
               <div className="wid-ai-card__tools">
                 <span className="wid-tool-badge">Search Console</span>
                 <span className="wid-tool-badge">GA4</span>
@@ -441,6 +443,6 @@ export default function WhatIDoPage() {
           </div>
         </section>
       </div>
-    </main>
+    </div>
   );
 }

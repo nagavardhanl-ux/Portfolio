@@ -97,7 +97,12 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
           </button>
 
           {/* Main Stage Image */}
-          <div className="catalogue-stage__content">
+          <div
+            id="catalogue-stage-panel"
+            role="tabpanel"
+            aria-label={`Catalogue page ${currentPage + 1}`}
+            className="catalogue-stage__content"
+          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={asset(`catalogue/${pages[currentPage]}`)}
@@ -146,6 +151,7 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
                   type="button"
                   role="tab"
                   aria-selected={isSelected}
+                  aria-controls="catalogue-stage-panel"
                   aria-label={`Page ${idx + 1}`}
                   onClick={() => setCurrentPage(idx)}
                   className={`catalogue-thumb-item ${isSelected ? "catalogue-thumb-item--active" : ""}`}

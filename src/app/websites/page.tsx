@@ -1,7 +1,8 @@
 import SiteCard from "@/components/SiteCard";
 import SectionHead from "@/components/SectionHead";
+import JsonLd from "@/components/JsonLd";
 import { sites } from "@/data/sites";
-import { pageMetadata } from "@/lib/meta";
+import { pageMetadata, websitesStructuredData } from "@/lib/meta";
 import { asset } from "@/lib/config";
 
 export const metadata = pageMetadata("/websites/");
@@ -13,6 +14,7 @@ export default function WebsitesPage() {
 
   return (
     <>
+      <JsonLd data={websitesStructuredData()} />
       <header className="page-head page-head--has-bg page-head--websites" aria-labelledby="websites-hero-title">
         <div className="page-head__bg" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}

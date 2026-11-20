@@ -736,6 +736,8 @@ a {
 
   .nav__toggle {
     display: inline-grid;
+    min-width: 44px;
+    min-height: 44px;
   }
 }
 
@@ -2432,6 +2434,11 @@ textarea.input {
 .footer-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.5), 0 0 16px -4px rgba(213, 183, 122, 0.2);
+}
+
+.footer-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .footer-card::before {
@@ -10087,12 +10094,12 @@ html:not(.js) .hero-expand-actions {
    Tested against Emil Kowalski & UI Skills performance and craft bars.
    ========================================================================== */
 
-/* Base Reveal State for all marked elements */
+/* Base Reveal State for all marked elements: calm, purposeful entrance */
 .js .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 540ms cubic-bezier(0.16, 1, 0.3, 1),
-              transform 540ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(8px);
+  transition: opacity 380ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--delay, 0ms);
   will-change: transform, opacity;
 }
@@ -10105,8 +10112,8 @@ html:not(.js) .hero-expand-actions {
 
 /* Section Headings enter slightly quicker with crisp upward rise */
 .js .section-head.reveal {
-  transform: translateY(16px);
-  transition-duration: 500ms;
+  transform: translateY(6px);
+  transition-duration: 340ms;
 }
 
 /* Shipped Bento Cards: additional transitions for border & shadow */
@@ -10179,8 +10186,8 @@ html:not(.js) .hero-expand-actions {
 /* Mobile Breakpoint: Shorter, simpler transitions with zero delay to prevent cards being hidden */
 @media (max-width: 680px) {
   .js .reveal {
-    transform: translateY(14px);
-    transition-duration: 400ms;
+    transform: translateY(6px);
+    transition-duration: 300ms;
     transition-delay: 0ms !important;
   }
   .js .reveal.is-in {

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { asset } from "@/lib/config";
-import { pageMetadata } from "@/lib/meta";
+import { aboutStructuredData, pageMetadata } from "@/lib/meta";
 import AboutAvatar from "@/components/AboutAvatar";
+import JsonLd from "@/components/JsonLd";
 import RoadTimeline from "@/components/RoadTimeline";
 import { ArrowUpRight } from "@/components/icons";
 
@@ -12,7 +13,8 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="about-page">
+    <div className="about-page">
+      <JsonLd data={aboutStructuredData()} />
       {/* ── Page Hero Header ── */}
       <header className="page-head page-head--about" aria-labelledby="about-page-title">
         <div className="page-head__bg" aria-hidden="true">
@@ -191,6 +193,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

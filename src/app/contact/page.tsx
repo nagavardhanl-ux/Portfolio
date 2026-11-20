@@ -1,13 +1,15 @@
 import ContactForm from "@/components/ContactForm";
+import JsonLd from "@/components/JsonLd";
 import { ArrowUpRight } from "@/components/icons";
 import { contact } from "@/lib/config";
-import { pageMetadata } from "@/lib/meta";
+import { contactStructuredData, pageMetadata } from "@/lib/meta";
 
 export const metadata = pageMetadata("/contact/");
 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={contactStructuredData()} />
       <header className="page-head">
         <div className="container">
           <p className="marker">

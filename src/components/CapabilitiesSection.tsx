@@ -42,6 +42,7 @@ export default function CapabilitiesSection() {
             >
               <button
                 type="button"
+                id={`cap-trigger-${idx}`}
                 className="cap-acc-trigger"
                 onClick={() => toggle(idx)}
                 aria-expanded={isOpen}

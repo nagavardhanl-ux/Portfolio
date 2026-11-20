@@ -59,9 +59,9 @@ export default function GalleryCard({ item }: GalleryCardProps) {
       </div>
 
       <div className="gallery-card__body">
-        <h2 id={`gallery-title-${item.id}`} className="gallery-card__title">
+        <h3 id={`gallery-title-${item.id}`} className="gallery-card__title">
           {item.title}
-        </h2>
+        </h3>
         <p className="gallery-card__role">{item.role}</p>
         <div className="gallery-card__actions">
           <a

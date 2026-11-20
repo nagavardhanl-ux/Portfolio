@@ -37,6 +37,12 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   applicationName: site.name,
+  title: {
+    default: "Nagavardhan Lella · B2B marketer who builds the websites too",
+    template: `%s · ${site.name}`,
+  },
+  description:
+    "B2B marketer running marketing for two AI platforms, AIQoD and VentureHub360, and building the sites, content and campaigns that go with them.",
   authors: [{ name: site.name }],
   icons: { icon: asset("favicon.svg") },
 };
