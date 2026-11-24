@@ -33,6 +33,21 @@ export const videos: VideoItem[] = [
     title: "Smart AI Investor | AI That Interviews Founders and Scores Every Pitch",
     role: "Smart AI Investor product overview, VentureHub360",
   },
+  {
+    id: "fNqPLrtcYTA",
+    title: "VentureHub360: AI Agents for Every Business | Sales, Hiring, Finance and More",
+    role: "Platform overview & promo, VentureHub360",
+  },
+];
+
+export const productReels: VideoItem[] = [
+  {
+    id: "3BV_RFMATaE",
+    title: "Why the second AI agent should not start from zero",
+    role: "Product concept reel, AIQoD",
+    type: "reel",
+    aspectRatio: "9/16",
+  },
 ];
 
 export const podcastMarketingReels: VideoItem[] = [
