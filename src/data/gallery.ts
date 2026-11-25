@@ -14,6 +14,11 @@ export const videos: VideoItem[] = [
     role: "Product video, created using Claude",
   },
   {
+    id: "fZpt3OwI138",
+    title: "Axlon by AIQoD | Fleet Compliance for Every Vehicle, Driver and Vendor",
+    role: "Product video, created using Claude",
+  },
+  {
     id: "aRwER0h7pvI",
     title: "Great Opportunities Rarely Wait for Slow Decisions",
     role: "Smart AI Investor promo, AI avatar video (HeyGen)",

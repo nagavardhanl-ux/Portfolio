@@ -36,7 +36,7 @@ export default function GalleryPage() {
             id="videos-title"
             title="Videos"
           />
-          <div className="gallery-grid">
+          <div className="gallery-grid gallery-grid--videos">
             {videos.map((item) => (
               <GalleryCard key={item.id} item={item} />
             ))}

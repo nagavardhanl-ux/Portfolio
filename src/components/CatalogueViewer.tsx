@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import { ArrowLeft, ArrowRight } from "@/components/icons";
+import { createPortal } from "react-dom";
+import { ArrowLeft, ArrowRight, Close, Expand } from "@/components/icons";
 import { asset } from "@/lib/config";
 
 interface CatalogueViewerProps {
@@ -10,9 +11,11 @@ interface CatalogueViewerProps {
 
 export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
   const [currentPage, setCurrentPage] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const total = pages.length;
   const thumbRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const sidebarListRef = useRef<HTMLDivElement>(null);
+  const fullscreenRef = useRef<HTMLDivElement>(null);
 
   const prev = useCallback(() => {
     setCurrentPage((p) => (p > 0 ? p - 1 : total - 1));
@@ -22,7 +25,7 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
     setCurrentPage((p) => (p < total - 1 ? p + 1 : 0));
   }, [total]);
 
-  // Keyboard navigation with Left and Right arrow keys
+  // Keyboard navigation with Left and Right arrow keys, and Escape to close fullscreen
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (["INPUT", "TEXTAREA"].includes((e.target as HTMLElement)?.tagName)) return;
@@ -32,11 +35,31 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
         next();
+      } else if (e.key === "Escape" && isFullscreen) {
+        e.preventDefault();
+        setIsFullscreen(false);
       }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [prev, next]);
+  }, [prev, next, isFullscreen]);
+
+  // Lock background page scroll while fullscreen preview is open
+  useEffect(() => {
+    if (!isFullscreen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [isFullscreen]);
+
+  // Reset fullscreen scroll position to top when changing pages
+  useEffect(() => {
+    if (isFullscreen && fullscreenRef.current) {
+      fullscreenRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [currentPage, isFullscreen]);
 
   // Scroll active thumbnail inside the sidebar container ONLY (avoids window viewport scrolling)
   useEffect(() => {
@@ -86,6 +109,17 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
       <div className="catalogue-viewer__layout">
         {/* Main Stage with Left and Right Icon Nav Buttons */}
         <div className="catalogue-viewer__stage-card">
+          {/* Preview / Fullscreen Icon Button */}
+          <button
+            type="button"
+            onClick={() => setIsFullscreen(true)}
+            aria-label="Preview page in full screen"
+            title="Full screen preview"
+            className="catalogue-stage__preview-btn"
+          >
+            <Expand size={16} />
+          </button>
+
           {/* Previous Icon Button on the Left */}
           <button
             type="button"
@@ -93,7 +127,7 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
             aria-label="Previous page"
             className="catalogue-stage__nav catalogue-stage__nav--prev"
           >
-            <ArrowLeft size={20} />
+            <ArrowLeft size={18} />
           </button>
 
           {/* Main Stage Image */}
@@ -123,7 +157,7 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
             aria-label="Next page"
             className="catalogue-stage__nav catalogue-stage__nav--next"
           >
-            <ArrowRight size={20} />
+            <ArrowRight size={18} />
           </button>
 
           {/* Clean Floating Page Counter Pill */}
@@ -173,6 +207,71 @@ export default function CatalogueViewer({ pages }: CatalogueViewerProps) {
           </div>
         </aside>
       </div>
+
+      {isFullscreen &&
+        typeof document !== "undefined" &&
+        createPortal(
+          <div
+            ref={fullscreenRef}
+            className="catalogue-fullscreen"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Full screen preview: Catalogue page ${currentPage + 1} of ${total}`}
+            onClick={(e) => {
+              if (e.target === e.currentTarget || (e.target as HTMLElement).classList.contains("catalogue-fullscreen__stage")) {
+                setIsFullscreen(false);
+              }
+            }}
+          >
+            <button
+              type="button"
+              onClick={() => setIsFullscreen(false)}
+              aria-label="Close full screen preview"
+              title="Close (Esc)"
+              className="catalogue-fullscreen__close"
+            >
+              <Close size={20} />
+            </button>
+
+            <button
+              type="button"
+              onClick={prev}
+              aria-label="Previous page"
+              title="Previous page (Left arrow)"
+              className="catalogue-fullscreen__nav catalogue-fullscreen__nav--prev"
+            >
+              <ArrowLeft size={20} />
+            </button>
+
+            <div className="catalogue-fullscreen__stage">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={asset(`catalogue/${pages[currentPage]}`)}
+                alt={`LVL Groups & Enterprises Catalogue, page ${currentPage + 1} of ${total}`}
+                width={1311}
+                height={1819}
+                draggable={false}
+                onContextMenu={blockSave}
+                className="catalogue-fullscreen__img"
+              />
+            </div>
+
+            <button
+              type="button"
+              onClick={next}
+              aria-label="Next page"
+              title="Next page (Right arrow)"
+              className="catalogue-fullscreen__nav catalogue-fullscreen__nav--next"
+            >
+              <ArrowRight size={20} />
+            </button>
+
+            <div className="catalogue-fullscreen__counter" aria-live="polite">
+              Page {currentPage + 1} of {total}
+            </div>
+          </div>,
+          document.body
+        )}
     </div>
   );
 }

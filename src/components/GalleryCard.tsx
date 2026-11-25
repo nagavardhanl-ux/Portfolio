@@ -6,15 +6,17 @@ import type { VideoItem } from "@/data/gallery";
 
 interface GalleryCardProps {
   item: VideoItem;
+  showMeta?: boolean;
 }
 
-export default function GalleryCard({ item }: GalleryCardProps) {
+export default function GalleryCard({ item, showMeta }: GalleryCardProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [thumbSrc, setThumbSrc] = useState(
     `https://i.ytimg.com/vi/${item.id}/maxresdefault.jpg`
   );
 
   const isReel = item.aspectRatio === "9/16" || item.type === "reel";
+  const shouldShowMeta = showMeta ?? isReel;
   const youtubeUrl = isReel
     ? `https://www.youtube.com/shorts/${item.id}`
     : `https://www.youtube.com/watch?v=${item.id}`;
@@ -44,7 +46,7 @@ export default function GalleryCard({ item }: GalleryCardProps) {
               }}
             />
             <span className="gallery-card__play" aria-hidden="true">
-              <Play size={24} />
+              <Play size={isReel ? 18 : 22} />
             </span>
           </button>
         ) : (
@@ -62,19 +64,23 @@ export default function GalleryCard({ item }: GalleryCardProps) {
         <h3 id={`gallery-title-${item.id}`} className="gallery-card__title">
           {item.title}
         </h3>
-        <p className="gallery-card__role">{item.role}</p>
-        <div className="gallery-card__actions">
-          <a
-            href={youtubeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="gallery-card__link"
-          >
-            <span>{isReel ? "Watch on YouTube Shorts" : "Watch on YouTube"}</span>
-            <ArrowUpRight size={14} aria-hidden="true" />
-            <span className="sr-only">(opens in a new tab)</span>
-          </a>
-        </div>
+        {shouldShowMeta && item.role && (
+          <p className="gallery-card__role">{item.role}</p>
+        )}
+        {shouldShowMeta && (
+          <div className="gallery-card__actions">
+            <a
+              href={youtubeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="gallery-card__link"
+            >
+              <span>{isReel ? "Watch on YouTube Shorts" : "Watch on YouTube"}</span>
+              <ArrowUpRight size={14} aria-hidden="true" />
+              <span className="sr-only">(opens in a new tab)</span>
+            </a>
+          </div>
+        )}
       </div>
     </article>
   );
